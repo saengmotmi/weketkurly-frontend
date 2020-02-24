@@ -1,0 +1,825 @@
+
+.ProductDetail {
+
+    width: 1050px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    ul {
+        list-style:none;
+        padding-left:0px;
+    }
+    body {
+        font-family: 'Noto Sans';
+        font-weight: 400;
+        margin: 0;
+    }
+
+    .product-top {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .product-img {
+        width: 430px;
+        height: 552px;
+        background-color: lightgray;
+    }
+
+    .product-info {
+        margin-left: 50px;
+        width: 560px;
+
+        .product-title {
+            .title {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin: 10px 0 5px 0;
+                p {
+                    font-weight: 700;
+                    font-size: 24px;
+                    color: #333;
+                    margin: 0;
+                }
+                div {
+                    width: 40px;
+                    height: 40px;
+                    background-size: cover;
+                    background-image: url(https://res.kurly.com/mobile/service/goodsview/1910/ico_view_sns_x2.png);
+                }
+            }
+            span {
+                font-size: 14px;
+                color: #999;
+            }
+        }
+
+        .priceBar {
+            margin: 30px 0 7px 0;
+            color: #333;
+            .price {
+                font-weight: 700;
+                font-size: 28px;
+            }
+            .won {
+                padding: 0 7px 0 2px;
+                font-weight: 700;
+                font-size: 18px;
+            }
+        }
+
+        .accumulate {
+            .befor-login-point{
+                font-size: 14px;
+                color: #5f0080;
+                
+            }
+            .after-login-point {
+                .save-point {
+                    border: 1px solid #5f0080;
+                    color: #5f0080;  
+                    border-radius: 12px;
+                    height: 22px;
+                    padding: 0 8px;
+                    font-size: 12px;    
+                    font-weight: 700;  
+                }
+                .each {
+                    font-size: 14px;
+                    color: #333;
+                    margin-left: 5px;
+                }
+                .won-save {
+                    font-size: 14px;
+                    color: #333;
+                    font-weight: 700; 
+                    margin-left: 3px;
+                }
+            }
+        }
+
+        .goodsInfo {
+            margin-top: 20px;
+            border-top: 1px solid #f4f4f4;
+            width: 560px;
+            font-size: 14px;
+            dl {
+                padding-top: 18px;
+                margin: 0;
+            }
+
+            dt {
+                float: left;
+                width: 150px;
+                color: #666;
+            }
+
+            .list {
+                padding: 18px 0;
+                border-bottom: 1px solid #f4f4f4;
+                margin: 0;
+                
+                dt {
+                    float: left;
+                    width: 150px;
+                    color: #666;
+                }
+
+                dd {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                }
+
+                .delivery {
+                    padding-top: 4px;
+                    font-weight: 400;
+                    font-size: 12px;
+                    color: #666;
+                    margin: 0;
+                }
+
+                .option {
+                    display: flex;
+                    flex-direction: row;
+                    width: 86px;
+                    border: 1px solid #dddfe1;
+                    border-radius: 3px;
+
+
+                    button {
+                        margin: 0;
+                        padding: 0;
+                        width: 22px;
+                        height: 22px;
+                        border: 0;
+                        background: #f6f7f7;
+                        color: #5f0080;
+                        font-size: 18px;
+                        outline: none;
+                        border: 0;
+                    }
+            
+                    .leftBtn {
+                        border-right: 1px solid #dddfe1;
+                    }
+
+                    .rightBtn {
+                        border-left: 1px solid #dddfe1;
+                    }
+
+                    input {
+                        margin: 0;
+                        padding: 0;
+                        width: 42px;
+                        height: 22px;
+                        border: 0;
+                        background-color: #fff;
+                        color: #333;
+                        outline: none;
+                        border: 0;
+                    }
+                }
+            }
+        }   
+
+    }
+
+
+    .total-price-cart {
+        display: flex;
+        flex-direction: column;
+            
+        .total-price-point {
+            box-sizing: border-box; 
+            padding: 30px 0 20px 0;
+            .total-price {
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+                .total {
+                    font-weight: 700;
+                    font-size: 13px;
+                }
+                .price {
+                    margin: 0 3px -5px 8px;
+                    font-weight: 800;
+                    font-size: 32px;
+                    padding: 0;
+                }
+                .won {
+                    padding-left: 2px;
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+            }
+
+            .point {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                align-items: center;
+                padding-top: 15px;
+                
+                .save-icon {
+                    box-sizing: border-box; 
+                    width: 38px;
+                    height: 20px;
+                    font-size: 11px;
+                    font-weight: 500;
+                    line-height: 18px;
+                    text-align: center;
+                    color: #fff;
+                    border: 1px solid #e8a828;
+                    border-radius: 10px;
+                    background-color: #ffbf00;
+                    margin-right: 7px;
+                }
+
+                .point-after-login {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    .each {
+                    font-size: 14px;
+                    color: #333;
+                    }
+                    .won-save {
+                        font-size: 14px;
+                        color: #333;
+                        font-weight: 700; 
+                        margin-left: 3px;
+                    }
+                }
+            }
+        }
+
+        .btn {
+            display: flex;
+            justify-content: flex-end;
+            padding-bottom: 40px;
+                    
+            .cartBtn {
+                width: 560px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                background: #fff;
+                text-align: center;
+
+                .alarmOff {
+                    width: 128px;
+                    height: 54px;
+                    border: 1px solid #ddd;
+                    border-radius: 3px;
+                    font-weight: 700;
+                    font-size: 16px;
+                    color: #ddd;
+                }
+                .alarmOn {
+                    width: 128px;
+                    height: 54px;
+                    border: 1px solid #5f0080;
+                    border-radius: 3px;
+                    font-weight: 700;
+                    font-size: 16px;
+                    color: #5f0080;
+                }
+                .saveItem {
+                    width: 128px;
+                    height: 54px;
+                    border: 1px solid #5f0080;
+                    border-radius: 3px;
+                    font-weight: 700;
+                    font-size: 16px;
+                    color: #5f0080;
+                }
+                .goToCart {
+                    width: 278px;
+                    height: 54px;
+                    color: white;
+                    border-radius: 3px;
+                    font-weight: 700;
+                    font-size: 16px;
+                    border: 1px solid #5f0080;
+                    background-color: #5f0080;
+                }
+            }
+        }
+    }
+
+
+    .slide {
+        width: 1010px;
+        .related-product {
+            div {
+                width: 20px;
+                height: 5px;
+                background-color: #000;
+            }
+            h3 {
+                font-size: 13px;
+                margin-top: 3px; 
+                font-weight: 400;
+            }
+        }
+
+        .slideBtn {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            .left-btn {
+                width: 30px;
+                height: 230px;
+                border: 0;
+                outline: none;
+                margin-right: 10px;
+                background: url(https://res.kurly.com/pc/etc/old/images/common/slide-sub-left-button-black.png) center no-repeat;
+            }
+            .right-btn {
+                width: 30px;
+                height: 230px;
+                border: 0;
+                outline: none;
+                background: url(https://res.kurly.com/pc/etc/old/images/common/slide-sub-right-button-black.png) center no-repeat;
+            }
+            ul {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                li {
+                    border: 1px solid #ddd;
+                    margin-right: 10px;
+                    .relatedImg {
+                        width: 180px;
+                        height: 230px;
+                        background-image: url(//img-cf.kurly.com/shop/data/goods/1530172984445m0.jpg);
+                        box-sizing: border-box;
+                    }
+                    .relatedInfo {
+                        font-family: malgun gothic,AppleGothic;
+                        border-top: 1px solid #ddd;
+                        box-sizing: border-box;
+                        width: 180px;
+                        height: 75px;
+                        color: #4c4c4c;
+                        padding: 10px;
+                        font-weight: 600;
+                        font-size: 14px;
+                    }
+                }
+            }
+            
+        }
+        
+    }
+
+    .tab {
+        width: 1010px;
+        margin-top: 20px;
+        ul {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            z-index: 1;
+            .tabOn {
+                box-sizing: border-box;
+                background-color: white;
+                border-left: 1px solid #bfbfbf;
+                border-top: 1px solid #bfbfbf;
+                border-right: 1px solid #bfbfbf;
+                width: 170px;
+                height: 46px;
+                text-align: center;
+                line-height: 46px;
+                color: #4c4c4c;
+                font-size: 14px;
+                z-index: 10;
+            }
+            .tabOff {
+                box-sizing: border-box;
+                border: 1px solid #bfbfbf;
+                background-color: #f0eef1;
+                width: 170px;
+                height: 46px;
+                text-align: center;
+                line-height: 46px;
+                color: #4c4c4c;
+                font-size: 14px;
+            }
+            .line {
+                width: 180px;
+                border-bottom: 1px solid #bfbfbf;
+            }
+        }
+    }
+
+
+    .detail {
+        width: 1010px;
+        text-align: center;
+        color: #666;
+        margin: 0;
+        font-family: noto sans;
+        .detail-main-img {
+            width: 100%;
+            margin: 60px 0 50px 0;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        h1 {
+            font-size: 38px;
+            margin: 0 0 30px 0;
+        }
+        .line {
+            width: 100%;
+            border-bottom: 1px solid #c1c1c1;
+        }
+        p {
+            margin: 30px 0 180px 0;
+            text-align: left;
+            font-size: 18px;
+            line-height: 32px;
+            color: #373737;
+        }
+
+        .kurly-check-point {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            .line-left, .line-right {
+                width: 25%;
+                border: 1px solid #c1c1c1;
+            }
+            h3 {
+                margin: 0;
+                font-size: 50px;
+            }
+        }
+
+        .check-point-img {
+            max-width: 100%;
+            margin-bottom: 180px;
+        }
+
+        .pick-img {
+            margin-bottom: 60px;
+        }
+
+        .kurly-pick {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            .line-left, .line-right {
+                width: 35%;
+                border: 1px solid #c1c1c1;
+            }
+            h3 {
+                margin: 0;
+                font-size: 50px;
+            }
+        }
+
+        .txt {
+            color: #373737;
+        .txtTitle {
+                font-size: 30px;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+
+            .txtContents {
+                font-size: 18px;
+            }
+        }
+    }
+
+    .why-kurly {
+        width: 1010px;
+        text-align: center;
+        h3 {
+            font-size: 33px;
+            font-weight: 500;
+            color: #666;
+            margin: 70px 0 70px 0;
+            
+        }
+        .why-kurly-contents-1, .why-kurly-contents-2 {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            .why-kurly-info {
+                padding-bottom: 80px;
+                margin: 0 30px;
+                .title {
+                    color: #5f0080;
+                    font-weight: 600;
+                    font-size: 18px;
+                    margin: 10px 0 20px 0;
+                }
+                .content {
+                    color: #333;
+                    padding: 0;
+                    font-size: 16px;
+                    line-height: 1.56;
+                }
+            }
+        }
+    }
+
+    .full-line {
+        width: 100%;
+        border-top: 1px solid #d4d3d3;
+    }
+
+    .customer-center {
+        margin-top: 40px;
+        .customer-center-title {
+            margin: 30px 0 60px 0;
+            h3 {
+                font-size: 28px;
+                color: #666;
+            }
+            .service {
+                font-size: 18px;
+                font-weight: 600;
+                color: #666;
+                margin-bottom: 10px;
+            }
+            .help {
+                font-size: 16px;
+                font-weight: 100;
+                color: #666;
+                margin-bottom: 40px;
+            }
+        }
+        .contents {
+            display: flex;
+            flex-direction: row;
+            .call, .kakao, .homepage {
+                padding-right: 120px;
+                .mark-title {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    .mark {
+                        background-color: #5f0080;
+                        width: 3px;
+                        height: 20px;
+                        margin-right: 10px;
+                    }
+                    .mark-name {
+                        font-size: 18px;
+                        font-weight: 400;
+                        color: #5f0080;
+                    }
+                }
+                .mark-time {
+                    color: #333;
+                    font-size: 17px;
+                    font-weight: 300;
+                    margin-top: 9px;
+                }
+                .mark-contents {
+                    color: #666;
+                    font-size: 15px;  
+                    font-weight: 100;
+                    margin-top: 13px;  
+                }
+            }
+        }
+        
+        
+        
+    }
+
+    .refund {
+        border: 1px solid #ddd;
+        margin: 80px 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        .refund-left {
+            display: flex;
+            flex-direction: row;
+            .refund-notice {
+                font-size: 18px;
+                color: #5f0080;
+            }
+            .txt {
+                font-size: 16px;
+                color: #333;
+                font-weight: 200;
+                margin-left: 10px;
+            }
+        }
+        .more {
+            outline: none;
+            color: #5f0080;
+            img {
+                width:14px;
+                margin-left: 5px;
+            }
+        }
+    }
+
+    .review {
+        width: 1010px;
+        .product-review {
+            display: flex;
+            justify-content: space-between;    
+            margin-top: 60px;
+            align-items: flex-end;
+            h2 {
+                font-size: 13px;
+                font-weight: 700;
+                margin: 0;
+                color: #4c4c4c;
+            }
+            
+            li {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                .ico {
+                    width: 4px;
+                    height: 4px;
+                    background-color: #514859;
+                }
+
+                div {
+                    margin-left: 7px;
+                    font-size: 12px;
+                    color: #666;
+                    strong {
+                        text-decoration: underline;
+                    }
+                }
+            }
+            
+    
+            select {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                border: 1px solid #bfbfbf;
+                outline: none;
+                padding: 7px 12px;
+                font-size: 12px;
+                margin-bottom: 15px;
+            }
+    
+            select::-ms-expand {
+                display: none;
+            }
+            
+        }
+        .form {
+            width: 1010px;
+            border-top: 2px solid rgb(82, 39, 114);
+            border-bottom: 1px solid #522772;;
+            .tableHeader {
+                color: #353535;
+                font-size: 12px;
+                padding: 25px 0;
+                .number {
+                    width: 70px;
+                }
+                .title {
+                    width: 640px;
+                }
+                .userName {
+                    width: 77px;
+                }
+                .date {
+                    width: 100px;
+                }
+                .help {
+                    width: 40px;
+                }
+                .watch {
+                    width: 80px;
+                }
+            }
+            
+            .tableBody {
+                width: 100%;
+                color: #353535;
+                font-size: 12px;
+                border-top: 1px solid #e3e3e3;
+                padding: 25px 0;
+                .number {
+                    text-align: center;
+                    width: 70px;
+                }
+                .title {
+                    text-align: left;
+                    width: 640px;
+                }
+                .userName {
+                    text-align: center;
+                    width: 77px;
+                }
+                .date {
+                    text-align: center;
+                    width: 100px;
+                    color: #939393;
+                }
+                .help {
+                    text-align: center;
+                    width: 40px;
+                }
+                .watch {
+                    text-align: center;
+                    width: 80px;
+                }
+            }
+
+        }
+        
+    
+        .write {
+            margin: 30px 0 100px 0;
+            .write-btn {
+                width: 130px;
+                padding: 10px 0;
+                float: right;
+                background-color: #795b8f;
+                border: 1px solid #5f0080;
+                color: #fff;
+                font-size: 13px;
+                text-align: center;
+                font-weight: 600;
+            }
+            .write-hover {
+                width: 130px;
+                padding: 10px 0;
+                float: right;
+                background-color: #fff;
+                border: 1px solid #5f0080;
+                color: #5f0080;
+                font-size: 13px;
+                text-align: center;
+                font-weight: 600;
+            }
+        }
+        
+
+        .page-btn {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            .first-page {
+                width: 34px;
+                height: 34px;
+                border: 1px solid rgb(221, 221, 221);
+                background-position: 50% 50%;
+                background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-first.png) no-repeat;
+            }
+            .before {
+                width: 34px;
+                height: 34px;
+                border: 1px solid rgb(221, 221, 221);
+                background-position: 50% 50%;
+                background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-prev.png) no-repeat;
+            }
+            .num {
+                width: 34px;
+                height: 34px;
+                border: 1px solid rgb(221, 221, 221);
+            }
+            .next {
+                width: 34px;
+                height: 34px;
+                border: 1px solid rgb(221, 221, 221);
+                background-position: 50% 50%;
+                background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-next.png) no-repeat; 
+            }
+            .last-page {
+                width: 34px;
+                height: 34px;
+                border: 1px solid rgb(221, 221, 221);
+                background-position: 50% 50%;
+                background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-last.png) no-repeat;
+            }
+        }
+    }
+    
+
+    
+}

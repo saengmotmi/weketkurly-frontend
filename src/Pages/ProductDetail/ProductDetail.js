@@ -160,24 +160,20 @@ export default class ProductDetail extends Component {
                     </h1>
                     <div className = "line" />
                     <p>
-                        바삭하고 달콤한 쿠키 한 입이면, 나른한 시간을 채우기에 충분하죠. 
-                        컬리가 준비한 댄케이크의 싱글서브 버터쿠키는 조금씩 꺼내어 즐길 수 있는 편리한 쿠키예요. 
-                        바깥의 종이 박스를 열면, 캡슐 커피를 닮은 자그마한 패키지가 나타나는데요. 
-                        바로 이 패키지 안에 고소한 버터쿠키가 들어 있답니다. 
-                        한 번에 즐기기 꼭 알맞은 양 만큼씩 포장했기에, 하나씩 뜯어 깔끔하게 즐길 수 있지요. 
-                        손잡이가 달린 종이 박스에 포장해 보내드리니, 주변에 선물하는 용도로 활용해도 좋아요. 
+                    매일 꼬박꼬박 챙겨먹을 수 있는 견과 제품은 많지만, 소중한 분께 챙겨드릴 수 있는 제품은 의외로 많지 않아요. 정성들여 만든 모양과 고급스러운 맛이 돋보이는 선물세트를 컬리가 준비했어요. 커다란 땅콩처럼 생긴 브라질너트는 약간 무른 듯 부드러운 식감을 가진 견과류에요. 단 2알 만으로도 풍부한 셀레늄을 섭취할 수 있는 브라질너트와 비타민 B군, 사포닌, 식이섬유가 풍부한 대추가 만나 달달고소한 영양간식이 되었답니다. <br /><br />
+                    오랜 기간 친환경 견과류를 고집해온 유기샘은 체계적이면서도 위생적인 제조 공정을 거치는 것으로 잘 알려져 있어요. 상품의 원재료도 생산자와 직접 계약하여 꼼꼼히 품질을 확인한 뒤 수급하지요. 어린이부터 할머니, 할아버지까지 건강하게 먹을 수 있도록 식품첨가물은 단 한 가지도 넣지 않아 더 믿고 먹을 수 있답니다.
                     </p>
                     
-                    <div className = "kurly-check-point">
+                    {/* <div className = "kurly-check-point">
                         <div className = "line-left" />
                         <h3>Kurly's Check Point</h3>
                         <div className = "line-right" />
-                    </div>
+                    </div> */}
 
 
-                    <div className = "check-point-img" >
+                    {/* <div className = "check-point-img" >
                         <img src = "https://img-cf.kurly.com/shop/data/goodsview/20190730/gv10000057639_1.jpg" alt = "Kurly's Check Point" />
-                    </div>
+                    </div> */}
 
                     <div className = "kurly-pick">
                         <div className = "line-left" />
@@ -185,23 +181,31 @@ export default class ProductDetail extends Component {
                         <div className = "line-right" />
                     </div>
 
-                    <div className = "pick-img">
+                    {/* <div className = "pick-img">
                         <img src = "https://img-cf.kurly.com/shop/data/goodsview/20190730/gv40000057640_1.jpg" alt = "Kurly's Pick" />
-                    </div>
+                    </div> */}
 
                     <p className = "txt">
                         <div className = "txtTitle">
-                            싱글서브 버터쿠키 18입
+                            유기샘 브라질너트 바삭대추
                         </div>
                         <div className = "txtContents">
-                            <b>・중량</b>
-                            <span> : 1박스(18g X 18개입/ 쿠키 개수 총 54개)</span><br />
+                            <b>・구성</b>
+                            <span> : 1박스(100g X 3개입)</span><br />
                             <b>・특징</b>
-                            <span> : 자그마한 패키지에 버터쿠키가 3개씩 들어 있어 하나씩 뜯어먹기 편리해요. 18개로 소분된 패키지를 한 박스에 담아 보내드려요.</span> <br />
+                            <span> : 커다란 땅콩처럼 생긴 브라질너트를 PET 용기에 담아 보관이 편리해요.</span> <br />
                             <b>・테이스팅 노트</b>
-                            <span> : 지나치게 달지 않고, 고소한 버터의 풍미가 은은하게 퍼지는 쿠키예요. 묵직하기 보다는 입 안에서 파사삭 부서지는 식감입니다. </span><br />
+                            <span> : 건대추로 브라질너트를 감싼 뒤 작게 잘라 한 입에 먹기 좋아요. 바삭하면서도 오독오독한 식감과 함께 달콤하고 고소한 맛이에요.</span><br />
                         </div>
                     </p>
+
+                    <div className = "kurly-tip">
+                        <h3>Kurly's Tip</h3>
+                        <div className = "contents">
+                            <div>구입 전 확인하세요</div>
+                            <div>선물세트를 넣을 수 있는 전용 쇼핑백을 함께 보내드립니다.</div>
+                        </div>
+                    </div>
                 </div>
 
                 {/* tab */}
@@ -216,7 +220,7 @@ export default class ProductDetail extends Component {
                     </ul>
                 </div>
 
-                <img className = "detail-info" src = "https://img-cf.kurly.com/shop/data/goodsview/20190730/gv40000057642_1.jpg" alt = "detail-info" />
+                <img className = "detail-info" src = "https://img-cf.kurly.com/shop/data/goodsview/20190730/gv30000057970_1.jpg" alt = "detail-info" />
 
 
                 {/* tab */}

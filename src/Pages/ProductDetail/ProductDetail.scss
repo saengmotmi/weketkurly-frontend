@@ -424,8 +424,6 @@
         width: 1010px;
         text-align: center;
         color: #666;
-        margin: 0;
-        font-family: noto sans;
         .detail-main-img {
             width: 100%;
             margin: 60px 0 50px 0;
@@ -494,6 +492,7 @@
 
         .txt {
             color: #373737;
+            margin-top: 100px;
         .txtTitle {
                 font-size: 30px;
                 font-weight: 700;
@@ -502,6 +501,24 @@
 
             .txtContents {
                 font-size: 18px;
+            }
+        }
+
+        .kurly-tip {
+            margin-bottom: 100px;
+            h3 {
+                margin: 0;
+                font-size: 50px;
+                z-index: 1;
+                position: relative;
+                padding: 0 10px;
+            }
+            .contents {
+                width: 100%;
+                padding: 30px;
+                border: 1px solid #b9b9b9;
+                position: absolute;
+                z-index: 0;
             }
         }
     }

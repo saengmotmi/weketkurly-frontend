@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import './Nav.scss';
+import '../Styles/reset.scss';
 
 class Nav extends Component {
     constructor(props) {
@@ -50,10 +52,10 @@ class Nav extends Component {
     render() {
         return(
             <header>
-                <div>
-                    <div>
+                <div className="nav-top">
+                    {/* <div>
                         <span onClick={this._test} className={this.state.testClassName}>테스트{this.state.test.test2.testClassName}</span>
-                    </div>
+                    </div> */}
                     {/* 최상단 */}
                     <img alt="좌상단 배너" src="https://res.kurly.com/pc/service/common/1908/delivery_190819.gif" />
                     <div>
@@ -74,34 +76,19 @@ class Nav extends Component {
                         </ul>
                     </div>
                 </div>
-                <div>
+                <div className="nav-logo">
                     {/* 로고 */}
                     <img alt="로고" src="https://res.kurly.com/images/marketkurly/logo/logo_x2.png" />
                 </div>
-                <div>
+                <div className="nav-bottom">
                     {/* 카테고리 & 검색 & 장바구니 */}
-                    <ul>
+                    <ul className="nav-bottom-bar">
                         <li>
-                            <div style={{border: 'solid'}}
+                            <div className="category-listdown"
                                 onMouseOver={() => this._visible('category-listdown')}
                                 onMouseOut={() => this._visible('category-listdown')}>
                                 <img alt="카테고리" style={{display:"inline-block"}} src="https://res.kurly.com/pc/service/common/1908/ico_gnb_all_off.png" />
-                                <div style={{padding: '1px'}} /> 
-                                <div style={{display: 'block'}}><div>전체 카테고리</div>
-                                    <div style={this.state.visibleCategory? {display: "block"}:{display: "none"}}>
-                                    {/* <div style={{display: this.state.visibleCategory}}> */}
-                                        <ul>
-                                            <li>채소</li>
-                                            <li>과일·견과·쌀</li>
-                                                <li>국산과일</li>
-                                                <li>수입과일</li>
-                                                <li>냉동·건과일</li>
-                                                <li>견과류</li>
-                                                <li>쌀·잡곡</li>
-                                            <li></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <div>전체 카테고리</div>
                             </div>
                         </li>
                         <li>신상품</li>
@@ -114,6 +101,25 @@ class Nav extends Component {
                         </div>
                         <img alt="장바구니" src="https://res.kurly.com/pc/ico/1908/ico_cart_x2_v2.png" />
                     </ul>
+                    
+                    <div className="nav-cate-list" style={{display: 'block'}}>
+                        <div style={this.state.visibleCategory? {display: "block"}:{display: "none"}}>
+                        {/* <div style={{display: this.state.visibleCategory}}> */}
+                            <ul>
+                                <li>채소</li>
+                                <li>과일·견과·쌀</li>
+                                    <li>국산과일</li>
+                                    <li>수입과일</li>
+                                    <li>냉동·건과일</li>
+                                    <li>견과류</li>
+                                    <li>쌀·잡곡</li>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style={{width: "100%"}}>
+                    <span>main main main main main main main main main main main main main main main main main main main main main main main main main </span>
                 </div>
             </header>
         );

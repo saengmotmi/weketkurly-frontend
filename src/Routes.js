@@ -4,7 +4,7 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import Main from './Pages/Main';
+import Main from './Pages/Main/Main.js';
 
 class Routes extends React.Component {
   render() {

@@ -44,7 +44,7 @@ class Main extends Component {
         )});
 
         return(
-            <div>
+            <Main>
                 {console.log('in')}
                 <Nav />
                 <div className="main-slide" style={this.state.slideStyle}>
@@ -56,8 +56,7 @@ class Main extends Component {
                         <img src="https://img-cf.kurly.com/shop/data/goods/1562566197539l0.jpg" alt="메이플 시럽"/>
                     </div>
                 </div>
-
-            </div>
+            </Main>
         );
     }
 }

@@ -1,12 +1,39 @@
 import React, { Component } from 'react';
-import DetailSlide from '../../Components/DetailSlide'
-import WhyKurly from '../../Components/WhyKurly'
-
+import DetailSlide from '../../Components/DetailSlide';
+import Count from '../../Components/Count';
+import WhyKurly from '../../Components/WhyKurly';
 import './ProductDetail.scss';
 
 
 export default class ProductDetail extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            number: 1
+        };
+    }
+
+    handleOnClickPlus = () => {
+        this.setState({ 
+            number: this.state.number + 1
+        })
+    }
+
+    handleOnClickMinus = () => {
+        if (this.state.number <= 1) {
+            this.setState({
+                number: this.state.number 
+            })
+        } else {
+            this.setState({ 
+                number: this.state.number - 1
+            })
+        }
+    }
+
+
     render() {
+        const { number } = this.state;
         return (
             <div className = "ProductDetail">
                 <div className = "product-top">
@@ -30,12 +57,12 @@ export default class ProductDetail extends Component {
                         </div>
                         
                         <div className = "accumulate">
-                            <span className = "befor-login-point">로그인 후, 적립혜택이 제공됩니다.</span>
-                            {/* <div className = "after-login-point">
+                            {/* <span className = "befor-login-point">로그인 후, 적립혜택이 제공됩니다.</span> */}
+                            <div className = "after-login-point">
                                 <span className = "save-point">일반 0.5%</span>
                                 <span className = "each">개당</span>
-                                <span className = "won-save">68원 적립</span>
-                            </div> */}
+                                <span className = "won-save">185원 적립</span>
+                            </div>
                         </div>
 
                         <div className = "goodsInfo">
@@ -45,7 +72,7 @@ export default class ProductDetail extends Component {
                             </dl>
                             <dl className = "list">
                                 <dt>중량/용량</dt>
-                                <dd>75g</dd>
+                                <dd>100g*3입</dd>
                             </dl>
                             <dl className = "list">
                                 <dt>배송구분</dt>
@@ -70,11 +97,11 @@ export default class ProductDetail extends Component {
                             </dl>
                             <dl className = "list">
                                 <dt>구매수량</dt>
-                                <div className = "option">
-                                    <button className = "leftBtn">-</button>
-                                    <input type = "number"></input>
-                                    <button className = "rightBtn">+</button>
-                                </div>
+                                <Count 
+                                    number = {number} 
+                                    handleOnClickPlus = {this.handleOnClickPlus}
+                                    handleOnClickMinus = {this.handleOnClickMinus}
+                                />
                             </dl>
                         </div>
                     </div>
@@ -97,7 +124,7 @@ export default class ProductDetail extends Component {
                             <div className = "point-after-login">
                                 <div className = "save-icon">적립</div>
                                 <span className = "each">구매 시</span>
-                                <span className = "won-save">68원 적립</span>
+                                <span className = "won-save">185원 적립</span>
                             </div>
                         </div>
                     </div>
@@ -122,7 +149,7 @@ export default class ProductDetail extends Component {
                     </div>
 
                     <div className = "slideBtn">
-                        <button className = "left-btn" />
+                        <button className = "left-btn"/>
                         <div>
                             <ul>
                                 <DetailSlide />
@@ -144,7 +171,7 @@ export default class ProductDetail extends Component {
                         <li className = "tabOff">상품이미지</li>
                         <li className = "tabOff">상세정보</li>
                         <li className = "tabOff">고객후기(1)</li>
-                        <li className = "tabOff">상품문의(2)</li>
+                        <li className = "tabLast">상품문의(2)</li>
                         <div className = "line" />
                     </ul>
                 </div>
@@ -215,7 +242,7 @@ export default class ProductDetail extends Component {
                         <li className = "tabOn">상품이미지</li>
                         <li className = "tabOff">상세정보</li>
                         <li className = "tabOff">고객후기(1)</li>
-                        <li className = "tabOff">상품문의(2)</li>
+                        <li className = "tabLast">상품문의(2)</li>
                         <div className = "line" />
                     </ul>
                 </div>
@@ -230,12 +257,32 @@ export default class ProductDetail extends Component {
                         <li className = "tabOff">상품이미지</li>
                         <li className = "tabOn">상세정보</li>
                         <li className = "tabOff">고객후기(1)</li>
-                        <li className = "tabOff">상품문의(2)</li>
+                        <li className = "tabLast">상품문의(2)</li>
                         <div className = "line" />
                     </ul>
                 </div>
 
                 <div className = "why-kurly">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th></th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <h3>
                         WHY KURLY
                     </h3>
@@ -316,7 +363,7 @@ export default class ProductDetail extends Component {
                         <li className = "tabOff">상품이미지</li>
                         <li className = "tabOff">상세정보</li>
                         <li className = "tabOn">고객후기(1)</li>
-                        <li className = "tabOff">상품문의(2)</li>
+                        <li className = "tabLast">상품문의(2)</li>
                         <div className = "line" />
                     </ul>
                 </div>

@@ -1,19 +1,14 @@
 
 .ProductDetail {
-
     width: 1050px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     ul {
         list-style:none;
         padding-left:0px;
-    }
-    body {
-        font-family: 'Noto Sans';
-        font-weight: 400;
-        margin: 0;
     }
 
     .product-top {
@@ -171,9 +166,10 @@
 
                     .rightBtn {
                         border-left: 1px solid #dddfe1;
+                        
                     }
 
-                    input {
+                    div {
                         margin: 0;
                         padding: 0;
                         width: 42px;
@@ -183,6 +179,7 @@
                         color: #333;
                         outline: none;
                         border: 0;
+                        text-align: center;
                     }
                 }
             }
@@ -263,15 +260,14 @@
             display: flex;
             justify-content: flex-end;
             padding-bottom: 40px;
-                    
+            width: 100%;
             .cartBtn {
                 width: 560px;
                 display: flex;
                 flex-direction: row;
-                justify-content: space-around;
+                justify-content: space-between;
                 background: #fff;
                 text-align: center;
-
                 .alarmOff {
                     width: 128px;
                     height: 54px;
@@ -308,6 +304,7 @@
                     font-size: 16px;
                     border: 1px solid #5f0080;
                     background-color: #5f0080;
+                    padding: 0;
                 }
             }
         }
@@ -323,9 +320,12 @@
                 background-color: #000;
             }
             h3 {
+                font-family: 'Malgun Gothic', AppleGothic, dotum;
                 font-size: 13px;
                 margin-top: 3px; 
                 font-weight: 400;
+                letter-spacing: -0.05em;
+                color: #4c4c4c;
             }
         }
 
@@ -334,6 +334,7 @@
             align-items: center;
             flex-direction: row;
             .left-btn {
+                cursor: pointer;
                 width: 30px;
                 height: 230px;
                 border: 0;
@@ -342,6 +343,7 @@
                 background: url(https://res.kurly.com/pc/etc/old/images/common/slide-sub-left-button-black.png) center no-repeat;
             }
             .right-btn {
+                cursor: pointer;
                 width: 30px;
                 height: 230px;
                 border: 0;
@@ -392,7 +394,7 @@
                 background-color: white;
                 border-left: 1px solid #bfbfbf;
                 border-top: 1px solid #bfbfbf;
-                border-right: 1px solid #bfbfbf;
+                border-right: 1px solid #f0eef1;
                 width: 170px;
                 height: 46px;
                 text-align: center;
@@ -402,6 +404,20 @@
                 z-index: 10;
             }
             .tabOff {
+                box-sizing: border-box;
+                border-left: 1px solid #bfbfbf;
+                border-right: 1px solid #f0eef1;
+                border-top: 1px solid #bfbfbf;
+                border-bottom: 1px solid #bfbfbf;
+                background-color: #f0eef1;
+                width: 170px;
+                height: 46px;
+                text-align: center;
+                line-height: 46px;
+                color: #4c4c4c;
+                font-size: 14px;
+            }
+            .tabLast {
                 box-sizing: border-box;
                 border: 1px solid #bfbfbf;
                 background-color: #f0eef1;

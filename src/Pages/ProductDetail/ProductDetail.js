@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DetailSlide from '../../Components/DetailSlide';
 import Count from '../../Components/Count';
 import WhyKurly from '../../Components/WhyKurly';
+import Table from '../../Components/Table';
 import './ProductDetail.scss';
 
 
@@ -9,31 +10,54 @@ export default class ProductDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            number: 1
+            number: 1,
+            price: 37000,
+            point: 185,
+            left: 0,
         };
     }
 
     handleOnClickPlus = () => {
         this.setState({ 
-            number: this.state.number + 1
+            number: this.state.number + 1,
+            price: this.state.price + this.state.price,
+            point: this.state.point + this.state.point
         })
     }
 
     handleOnClickMinus = () => {
         if (this.state.number <= 1) {
             this.setState({
-                number: this.state.number 
+                number: this.state.number,
+                price: this.state.price,
+                point: this.state.point
             })
         } else {
             this.setState({ 
-                number: this.state.number - 1
+                number: this.state.number - 1,
             })
         }
     }
 
+    handleOnClickBefore = (e) => {
+        this.setState({
+            left: this.state.left + 960
+        })
+     }
+
+    handleOnClickNext = (e) => {
+       this.setState({
+            left: this.state.left - 960
+       })
+    }
+
+    MoveToImg = () => {
+        window.scrollTo(0, 3350, "smooth")
+    }
+
 
     render() {
-        const { number } = this.state;
+        const { number, price, point} = this.state;
         return (
             <div className = "ProductDetail">
                 <div className = "product-top">
@@ -52,7 +76,7 @@ export default class ProductDetail extends Component {
                         </div>
 
                         <div className = "priceBar">
-                            <span className = "price">37,000</span>
+                            <span className = "price">{ price }</span>
                             <span className = "won">원</span>
                         </div>
                         
@@ -61,7 +85,7 @@ export default class ProductDetail extends Component {
                             <div className = "after-login-point">
                                 <span className = "save-point">일반 0.5%</span>
                                 <span className = "each">개당</span>
-                                <span className = "won-save">185원 적립</span>
+                                <span className = "won-save">{ point }원 적립</span>
                             </div>
                         </div>
 
@@ -113,7 +137,7 @@ export default class ProductDetail extends Component {
                     <div className = "total-price-point">
                         <div className = "total-price">
                             <span className = "total">총 상품금액: </span>
-                            <span className = "price">37,000</span>
+                            <b className = "price">{ price }</b>
                             <span className = "won">원</span>
                         </div>
                         <div className = "point">
@@ -124,7 +148,7 @@ export default class ProductDetail extends Component {
                             <div className = "point-after-login">
                                 <div className = "save-icon">적립</div>
                                 <span className = "each">구매 시</span>
-                                <span className = "won-save">185원 적립</span>
+                                <span className = "won-save">{ point }원 적립</span>
                             </div>
                         </div>
                     </div>
@@ -149,9 +173,14 @@ export default class ProductDetail extends Component {
                     </div>
 
                     <div className = "slideBtn">
-                        <button className = "left-btn"/>
-                        <div>
-                            <ul>
+                        <button className = "left-btn" onClick = {this.handleOnClickNext}/>
+                        <div className = "slideBar">
+                            <ul style = {{ left: this.state.left }}>
+                                <DetailSlide />
+                                <DetailSlide />
+                                <DetailSlide />
+                                <DetailSlide />
+                                <DetailSlide />
                                 <DetailSlide />
                                 <DetailSlide />
                                 <DetailSlide />
@@ -159,7 +188,7 @@ export default class ProductDetail extends Component {
                                 <DetailSlide />
                             </ul>
                         </div>
-                        <button className = "right-btn"></button>
+                        <button className = "right-btn" onClick = {this.handleOnClickNext}></button>
                     </div>
                 </div>
 
@@ -168,7 +197,7 @@ export default class ProductDetail extends Component {
                 <div className = "tab">
                     <ul>
                         <li className = "tabOn">상품설명</li>
-                        <li className = "tabOff">상품이미지</li>
+                        <li className = "tabOff" onClick = {this.MoveToImg}>상품이미지</li>
                         <li className = "tabOff">상세정보</li>
                         <li className = "tabOff">고객후기(1)</li>
                         <li className = "tabLast">상품문의(2)</li>
@@ -212,25 +241,25 @@ export default class ProductDetail extends Component {
                         <img src = "https://img-cf.kurly.com/shop/data/goodsview/20190730/gv40000057640_1.jpg" alt = "Kurly's Pick" />
                     </div> */}
 
-                    <p className = "txt">
+                    <div className = "txt">
                         <div className = "txtTitle">
                             유기샘 브라질너트 바삭대추
                         </div>
                         <div className = "txtContents">
-                            <b>・구성</b>
+                            <b>・ 구성</b>
                             <span> : 1박스(100g X 3개입)</span><br />
-                            <b>・특징</b>
+                            <b>・ 특징</b>
                             <span> : 커다란 땅콩처럼 생긴 브라질너트를 PET 용기에 담아 보관이 편리해요.</span> <br />
-                            <b>・테이스팅 노트</b>
+                            <b>・ 테이스팅 노트</b>
                             <span> : 건대추로 브라질너트를 감싼 뒤 작게 잘라 한 입에 먹기 좋아요. 바삭하면서도 오독오독한 식감과 함께 달콤하고 고소한 맛이에요.</span><br />
                         </div>
-                    </p>
+                    </div>
 
                     <div className = "kurly-tip">
                         <h3>Kurly's Tip</h3>
                         <div className = "contents">
-                            <div>구입 전 확인하세요</div>
-                            <div>선물세트를 넣을 수 있는 전용 쇼핑백을 함께 보내드립니다.</div>
+                            <div className = "check">구입 전 확인하세요</div>
+                            <div className = "content">・ 선물세트를 넣을 수 있는 전용 쇼핑백을 함께 보내드립니다.</div>
                         </div>
                     </div>
                 </div>
@@ -266,20 +295,33 @@ export default class ProductDetail extends Component {
                     <table>
                         <tbody>
                             <tr>
-                                <th></th>
-                                <td></td>
+                                <th>포장단위별 용량(중량), 수량, 크기</th>
+                                <td>상품설명 및 상품이미지 참조</td>
+                                <th>관련법상 표시사항</th>
+                                <td>
+                                    농산물 - 농수산물품질관리법상 유전자변형농산물 표시, 지리적 표시 <br />
+                                    축산물 - 축산법에 따른 등급 표시, 쇠고기의 경우 이력관리에 따른 표시 유무  <br />
+                                    수산물 - 농수산물품질관리법상 유전자변형수산물 표시, 지리적 표시 <br />
+                                    수입식품에 해당하는 경우 “식품위생법에 따른 수입신고를 필함”의 문구 <br />
+                                </td>
                             </tr>
                             <tr>
-                                <th></th>
-                                <td></td>
+                                <th>생산자, 수입품의 경우 수입자를 함께 표기</th>
+                                <td>농업회사법인 유기샘 주식회사</td>
+                                <th>상품구성</th>
+                                <td>상품설명 및 상품이미지 참조</td>
                             </tr>
                             <tr>
-                                <th></th>
-                                <td></td>
+                                <th>농수산물의 원산지 표시에 관한 법률에 따른 원산지</th>
+                                <td>브라질 너트 - 페루산 / 대추 - 국내산</td>
+                                <th>보관방법 또는 취급방법</th>
+                                <td>상온 보관</td>
                             </tr>
                             <tr>
-                                <th></th>
-                                <td></td>
+                                <th>제조연월일(포장일 또는 생산연도), 유통기한 또는 품질유지기한</th>
+                                <td>제품 별도 라벨 표기 참조</td>
+                                <th>소비자상담 관련 전화번호</th>
+                                <td>마켓컬리 고객행복센터(1644-1107)</td>
                             </tr>
                         </tbody>
                     </table>
@@ -327,7 +369,7 @@ export default class ProductDetail extends Component {
                             </div>
                         </div>
 
-                        <div className = "hompage">
+                        <div className = "homepage">
                             <div className = "mark-title">
                                 <div className = "mark" />
                                 <div className = "mark-name"> 홈페이지 문의</div>
@@ -354,6 +396,34 @@ export default class ProductDetail extends Component {
                         <span>자세히 보기</span>
                         <img alt = "arrow" src = "https://res.kurly.com/pc/ico/2001/pc_arrow_open@2x.png" />
                     </div>
+                </div>
+
+                <div className = "hide">
+                    <div className = "title">
+                        01. 받으신 상품에 문제가 있는 경우
+                    </div>
+                    <div className = "contents">
+                        <div className = "hidle-contents">
+                            상품이 표시·광고 내용과 다르거나 부패한 경우 등 상품에 문제가 있는 정도에 따라 <br />
+                            재배송, 일부 환불, 전액 환불해드립니다.
+                        </div>
+                        <div className = "hidle-title">신선 / 냉장 / 냉동 식품 </div>
+                        <div className = "hidle-contents">
+                            상품을 받은 날부터 2일 이내에 상품 상태를 확인할 수 있는 사진을 첨부해 1:1 문의 게시판에 남겨주세요. <br />
+                        </div>
+                        <div className = "hidle-title">
+                            유통기한 30일 이상의 식품 (신선 / 냉장 / 냉동 제외) 및 기타 상품
+                        </div>
+                        <div className = "hidle-contents">
+                            상품을 받은 날부터 3개월 이내 또는 문제가 있다는 사실을 알았거나 알 수 있었던 날부터 30일 이내에  <br />
+                            상품의 상태를 확인할 수 있는 사진을 첨부해 1: 1 문의 게시판에 남겨주세요.
+                        </div>
+                        <div className = "hide-extra">
+                            ※상품에 문제가 있는 것으로 확인되면 배송비는 컬리가 부담합니다.
+                        </div>
+                    </div>
+
+                    <div className = "line" />
                 </div>
 
                  {/* tab */}
@@ -394,107 +464,9 @@ export default class ProductDetail extends Component {
                     </div>
 
                     {/* review */}
-                    <div className = "form">
-                        <table className = "tableHeader">
-                            <tbody>
-                                <tr>
-                                    <th className = "number">번호</th>
-                                    <th className = "title">제목</th>
-                                    <th className = "userName">작성자</th>
-                                    <th className = "date">작성일</th>
-                                    <th className = "help">도움</th>
-                                    <th className = "watch">조회</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table className = "tableBody">
-                            <tbody>
-                                <tr>
-                                    <th className = "number">공지</th>
-                                    <th className = "title"><div>금주의 Best 후기 안내</div></th>
-                                    <th className = "userName">Marketkurly</th>
-                                    <th className = "date">2019-11-01</th>
-                                    <th className = "help"><span>0</span></th>
-                                    <th className = "watch"><span>64138</span></th>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table className = "tableBody">
-                            <tbody>
-                                <tr>
-                                    <th className = "number">공지</th>
-                                    <th className = "title"><div>금주의 Best 후기 안내</div></th>
-                                    <th className = "userName">Marketkurly</th>
-                                    <th className = "date">2019-11-01</th>
-                                    <th className = "help"><span>0</span></th>
-                                    <th className = "watch"><span>64138</span></th>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table className = "tableBody">
-                            <tbody>
-                                <tr>
-                                    <th className = "number">공지</th>
-                                    <th className = "title"><div>금주의 Best 후기 안내</div></th>
-                                    <th className = "userName">Marketkurly</th>
-                                    <th className = "date">2019-11-01</th>
-                                    <th className = "help"><span>0</span></th>
-                                    <th className = "watch"><span>64138</span></th>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table className = "tableBody">
-                            <tbody>
-                                <tr>
-                                    <th className = "number">공지</th>
-                                    <th className = "title"><div>금주의 Best 후기 안내</div></th>
-                                    <th className = "userName">Marketkurly</th>
-                                    <th className = "date">2019-11-01</th>
-                                    <th className = "help"><span>0</span></th>
-                                    <th className = "watch"><span>64138</span></th>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table className = "tableBody">
-                            <tbody>
-                                <tr>
-                                    <th className = "number">공지</th>
-                                    <th className = "title"><div>금주의 Best 후기 안내</div></th>
-                                    <th className = "userName">Marketkurly</th>
-                                    <th className = "date">2019-11-01</th>
-                                    <th className = "help"><span>0</span></th>
-                                    <th className = "watch"><span>64138</span></th>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table className = "tableBody">
-                            <tbody>
-                                <tr>
-                                    <th className = "number">공지</th>
-                                    <th className = "title"><div>금주의 Best 후기 안내</div></th>
-                                    <th className = "userName">Marketkurly</th>
-                                    <th className = "date">2019-11-01</th>
-                                    <th className = "help"><span>0</span></th>
-                                    <th className = "watch"><span>64138</span></th>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table className = "tableBody">
-                            <tbody>
-                                <tr>
-                                    <th className = "number">공지</th>
-                                    <th className = "title"><div>금주의 Best 후기 안내</div></th>
-                                    <th className = "userName">Marketkurly</th>
-                                    <th className = "date">2019-11-01</th>
-                                    <th className = "help"><span>0</span></th>
-                                    <th className = "watch"><span>64138</span></th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
+                    <Table />
                     <div className = "write">
-                        <button class = "write-btn">후기쓰기</button>
+                        <button className = "write-btn">후기쓰기</button>
                     </div>
 
                     <div className = "page-btn">

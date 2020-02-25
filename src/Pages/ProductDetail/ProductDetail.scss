@@ -36,7 +36,7 @@
                 align-items: center;
                 margin: 10px 0 5px 0;
                 p {
-                    font-weight: 700;
+                    font-weight: 500;
                     font-size: 24px;
                     color: #333;
                     margin: 0;
@@ -58,12 +58,12 @@
             margin: 30px 0 7px 0;
             color: #333;
             .price {
-                font-weight: 700;
+                font-weight: 500;
                 font-size: 28px;
             }
             .won {
                 padding: 0 7px 0 2px;
-                font-weight: 700;
+                font-weight: 500;
                 font-size: 18px;
             }
         }
@@ -92,7 +92,7 @@
                 .won-save {
                     font-size: 14px;
                     color: #333;
-                    font-weight: 700; 
+                    font-weight: 500; 
                     margin-left: 3px;
                 }
             }
@@ -145,28 +145,28 @@
                     width: 86px;
                     border: 1px solid #dddfe1;
                     border-radius: 3px;
-
-
                     button {
                         margin: 0;
                         padding: 0;
                         width: 22px;
                         height: 22px;
-                        border: 0;
                         background: #f6f7f7;
                         color: #5f0080;
-                        font-size: 18px;
                         outline: none;
                         border: 0;
+                        cursor: pointer;
                     }
             
                     .leftBtn {
                         border-right: 1px solid #dddfe1;
+                        font-size: 24px;
+                        line-height: 0;
                     }
 
                     .rightBtn {
                         border-left: 1px solid #dddfe1;
-                        
+                        font-size: 20px;
+                        line-height: 0;
                     }
 
                     div {
@@ -200,19 +200,18 @@
                 justify-content: flex-end;
                 align-items: flex-end;
                 .total {
-                    font-weight: 700;
+                    font-weight: 500;
                     font-size: 13px;
                 }
                 .price {
-                    margin: 0 3px -5px 8px;
-                    font-weight: 800;
+                    margin: 2px 3px -5px 8px;
                     font-size: 32px;
                     padding: 0;
                 }
                 .won {
                     padding-left: 2px;
                     font-size: 20px;
-                    font-weight: 700;
+                    font-weight: 500;
                 }
             }
 
@@ -249,7 +248,7 @@
                     .won-save {
                         font-size: 14px;
                         color: #333;
-                        font-weight: 700; 
+                        font-weight: 500; 
                         margin-left: 3px;
                     }
                 }
@@ -330,33 +329,48 @@
         }
 
         .slideBtn {
+            width: 1010px;
             display: flex;
             align-items: center;
             flex-direction: row;
+            justify-content: space-between;
+            position: relative;
             .left-btn {
                 cursor: pointer;
-                width: 30px;
+                margin-right: 5px;
+                padding: 0;
+                width: 19px;
                 height: 230px;
                 border: 0;
                 outline: none;
-                margin-right: 10px;
                 background: url(https://res.kurly.com/pc/etc/old/images/common/slide-sub-left-button-black.png) center no-repeat;
             }
             .right-btn {
                 cursor: pointer;
-                width: 30px;
+                margin-left: 5px;
+                width: 19px;
+                padding: 0;
                 height: 230px;
                 border: 0;
                 outline: none;
                 background: url(https://res.kurly.com/pc/etc/old/images/common/slide-sub-right-button-black.png) center no-repeat;
             }
+            .slideBar {
+                width: 100%;
+                height: 325px;
+                overflow: hidden;
+                position: relative;
+                padding: 0;
+                margin: 0;
+            }
             ul {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
+                position: absolute;
                 li {
                     border: 1px solid #ddd;
-                    margin-right: 10px;
+                    margin: 0 5px;
                     .relatedImg {
                         width: 180px;
                         height: 230px;
@@ -383,7 +397,7 @@
 
     .tab {
         width: 1010px;
-        margin-top: 20px;
+        margin-top: 40px;
         ul {
             display: flex;
             flex-direction: row;
@@ -402,6 +416,7 @@
                 color: #4c4c4c;
                 font-size: 14px;
                 z-index: 10;
+                cursor: pointer;
             }
             .tabOff {
                 box-sizing: border-box;
@@ -416,6 +431,7 @@
                 line-height: 46px;
                 color: #4c4c4c;
                 font-size: 14px;
+                cursor: pointer;
             }
             .tabLast {
                 box-sizing: border-box;
@@ -427,6 +443,7 @@
                 line-height: 46px;
                 color: #4c4c4c;
                 font-size: 14px;
+                cursor: pointer;
             }
             .line {
                 width: 180px;
@@ -447,10 +464,13 @@
 
         h3 {
             font-size: 24px;
+            font-weight: 500;
             margin-bottom: 8px;
         }
         h1 {
             font-size: 38px;
+            font-weight: 500;
+            line-height: 50px;
             margin: 0 0 30px 0;
         }
         .line {
@@ -463,6 +483,7 @@
             font-size: 18px;
             line-height: 32px;
             color: #373737;
+            font-weight: 300;
         }
 
         .kurly-check-point {
@@ -509,32 +530,60 @@
         .txt {
             color: #373737;
             margin-top: 100px;
+            text-align: left;
+
         .txtTitle {
                 font-size: 30px;
-                font-weight: 700;
+                font-weight: 500;
                 margin-bottom: 20px;
             }
 
             .txtContents {
                 font-size: 18px;
+                line-height: 32px;
+                b {
+                    font-weight: 500;
+                }
+                span {
+                    font-weight: 200;
+                }
             }
         }
 
         .kurly-tip {
-            margin-bottom: 100px;
+            box-sizing: border-box;
+            width: 1010px;
+            margin: 150px 0 300px 0;
+            text-align: left;
+            display: inline-block;
             h3 {
-                margin: 0;
-                font-size: 50px;
-                z-index: 1;
-                position: relative;
+                width: 190px;
+                background-color: #fff;
+                font-size: 36px;
                 padding: 0 10px;
+                position: relative;
+                z-index: 10;
+                margin: 0 0 0 60px;
             }
             .contents {
-                width: 100%;
-                padding: 30px;
+                width: 1010px;
+                padding: 60px 0 60px 60px;
                 border: 1px solid #b9b9b9;
                 position: absolute;
-                z-index: 0;
+                color: #373737;
+                z-index: 1;
+                margin-top: -25px;
+                .check {
+                    font-size: 25px;
+                    line-height: 38px;
+                    font-weight: 500;
+                    margin-bottom: 10px;
+                }
+                .content {
+                    font-size: 18px;
+                    font-weight: 300;
+                    line-height: 32px;
+                }
             }
         }
     }
@@ -542,11 +591,47 @@
     .why-kurly {
         width: 1010px;
         text-align: center;
+        table {
+            background: #e0e0e0;
+            margin: 70px 0;
+            width: 100%;
+            text-align: left;
+            font-family: 'Dotum';
+            font-weight: normal;
+            word-spacing: -3px;
+            border-collapse: collapse;
+            border-spacing: 0;
+            tr {
+                th {
+                    width: 15%;
+                    background: #f5f5f5;
+                    color: #515151;
+                    font-weight: normal;
+                    padding-left: 15px;
+                    font-size: 11px;
+                    height: 28px;
+                    padding: 5px 0 5px 10px;
+                    border-width: 1px;
+                    line-height: 20px;
+                }
+                td {
+                    width: 35%;
+                    color: #666666;
+                    padding-left: 15px;
+                    background: #ffffff;
+                    font-size: 11px;
+                    height: 28px;
+                    padding: 5px 0 5px 10px;
+                    border-width: 1px;
+                    line-height: 20px;
+                }
+            }
+        }
         h3 {
             font-size: 33px;
-            font-weight: 500;
+            font-weight: 400;
             color: #666;
-            margin: 70px 0 70px 0;
+            margin: 70px 0 90px 0;
             
         }
         .why-kurly-contents-1, .why-kurly-contents-2 {
@@ -558,7 +643,7 @@
                 margin: 0 30px;
                 .title {
                     color: #5f0080;
-                    font-weight: 600;
+                    font-weight: 500;
                     font-size: 18px;
                     margin: 10px 0 20px 0;
                 }
@@ -566,6 +651,7 @@
                     color: #333;
                     padding: 0;
                     font-size: 16px;
+                    font-weight: 300;
                     line-height: 1.56;
                 }
             }
@@ -573,27 +659,29 @@
     }
 
     .full-line {
-        width: 100%;
+        width: 1010px;
         border-top: 1px solid #d4d3d3;
     }
 
     .customer-center {
+        width: 995px;
         margin-top: 40px;
         .customer-center-title {
             margin: 30px 0 60px 0;
             h3 {
                 font-size: 28px;
+                font-weight: 400;
                 color: #666;
             }
             .service {
                 font-size: 18px;
-                font-weight: 600;
+                font-weight: 400;
                 color: #666;
-                margin-bottom: 10px;
+                margin-bottom: 5px;
             }
             .help {
                 font-size: 16px;
-                font-weight: 100;
+                font-weight: 300;
                 color: #666;
                 margin-bottom: 40px;
             }
@@ -628,7 +716,7 @@
                 .mark-contents {
                     color: #666;
                     font-size: 15px;  
-                    font-weight: 100;
+                    font-weight: 300;
                     margin-top: 13px;  
                 }
             }
@@ -639,16 +727,19 @@
     }
 
     .refund {
+        width: 995px;
         border: 1px solid #ddd;
-        margin: 80px 0;
+        box-sizing: border-box;
+        margin: 80px 0 50px 0;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        padding: 20px;
+        padding: 15px;
         .refund-left {
             display: flex;
             flex-direction: row;
+            align-items: center;
             .refund-notice {
                 font-size: 18px;
                 color: #5f0080;
@@ -670,18 +761,51 @@
         }
     }
 
+    .hide {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        border-bottom: 1px solid #f4f4f4;
+        .title {
+            width: 257px;
+            font-family: 'NotoSansCJKkr';
+            font-size: 17px;
+            vertical-align: top;
+            padding-left: 30px;
+            font-weight: 500;
+        }
+        .contents {
+            padding: 0 0 40px 60px;
+            line-height: 150%;
+            font-size: 15px;
+            .hide-contents {
+                color: #333;
+                margin: 0 0 30px 0;
+                font-weight: 300;
+            }
+            .hide-title {
+                color: #5f0080;
+                margin: 0 0 6px 0;
+                font-weight: 500;
+            }
+        }
+    }
+
     .review {
         width: 1010px;
         .product-review {
             display: flex;
             justify-content: space-between;    
-            margin-top: 60px;
+            margin-top: 40px;
             align-items: flex-end;
             h2 {
                 font-size: 13px;
-                font-weight: 700;
+                font-weight: 500;
                 margin: 0;
                 color: #4c4c4c;
+            }
+            ul {
+                margin:  5px 0 15px 0;
             }
             
             li {
@@ -692,6 +816,7 @@
                     width: 4px;
                     height: 4px;
                     background-color: #514859;
+                    margin: 0;
                 }
 
                 div {
@@ -711,7 +836,7 @@
                 appearance: none;
                 border: 1px solid #bfbfbf;
                 outline: none;
-                padding: 7px 12px;
+                padding: 7px 12px 7px 4px;
                 font-size: 12px;
                 margin-bottom: 15px;
             }
@@ -725,64 +850,73 @@
             width: 1010px;
             border-top: 2px solid rgb(82, 39, 114);
             border-bottom: 1px solid #522772;;
-            .tableHeader {
-                color: #353535;
-                font-size: 12px;
-                padding: 25px 0;
-                .number {
-                    width: 70px;
-                }
-                .title {
-                    width: 640px;
-                }
-                .userName {
-                    width: 77px;
-                }
-                .date {
-                    width: 100px;
-                }
-                .help {
-                    width: 40px;
-                }
-                .watch {
-                    width: 80px;
-                }
-            }
-            
-            .tableBody {
-                width: 100%;
-                color: #353535;
-                font-size: 12px;
-                border-top: 1px solid #e3e3e3;
-                padding: 25px 0;
-                .number {
-                    text-align: center;
-                    width: 70px;
-                }
-                .title {
-                    text-align: left;
-                    width: 640px;
-                }
-                .userName {
-                    text-align: center;
-                    width: 77px;
-                }
-                .date {
-                    text-align: center;
-                    width: 100px;
-                    color: #939393;
-                }
-                .help {
-                    text-align: center;
-                    width: 40px;
-                }
-                .watch {
-                    text-align: center;
-                    width: 80px;
-                }
-            }
-
         }
+
+        .table-header {
+            color: #353535;
+            font-size: 12px;
+            padding: 25px 0;
+            th {
+                font-weight: 400;
+            }
+            .number {
+                width: 70px;
+            }
+            .title {
+                width: 640px;
+            }
+            .userName {
+                width: 77px;
+            }
+            .date {
+                width: 100px;
+            }
+            .help {
+                width: 40px;
+            }
+            .watch {
+                width: 80px;
+            }
+        }
+            
+        .table-body {
+            width: 100%;
+            color: #353535;
+            font-size: 12px;
+            border-top: 1px solid #e3e3e3;
+            padding: 25px 0;
+            td {
+                font-weight: 400;
+            }
+            .number {
+                text-align: center;
+                width: 70px;
+            }
+            .title {
+                text-align: left;
+                width: 640px;
+                padding-left: 40px;
+            }
+            .userName {
+                text-align: center;
+                width: 77px;
+            }
+            .date {
+                text-align: center;
+                width: 100px;
+                color: #939393;
+            }
+            .help {
+                text-align: center;
+                width: 40px;
+            }
+            .watch {
+                text-align: center;
+                width: 80px;
+            }
+        } 
+
+        
         
     
         .write {
@@ -817,6 +951,8 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
+            outline: none;
+            border: 0;
             .first-page {
                 width: 34px;
                 height: 34px;
@@ -827,19 +963,25 @@
             .before {
                 width: 34px;
                 height: 34px;
-                border: 1px solid rgb(221, 221, 221);
+                border-top: 1px solid rgb(221, 221, 221);
+                border-right: 1px solid rgb(221, 221, 221);
+                border-bottom: 1px solid rgb(221, 221, 221);
                 background-position: 50% 50%;
                 background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-prev.png) no-repeat;
             }
             .num {
                 width: 34px;
                 height: 34px;
-                border: 1px solid rgb(221, 221, 221);
+                border-top: 1px solid rgb(221, 221, 221);
+                border-right: 1px solid rgb(221, 221, 221);
+                border-bottom: 1px solid rgb(221, 221, 221);
             }
             .next {
                 width: 34px;
                 height: 34px;
-                border: 1px solid rgb(221, 221, 221);
+                border-top: 1px solid rgb(221, 221, 221);
+                border-right: 1px solid rgb(221, 221, 221);
+                border-bottom: 1px solid rgb(221, 221, 221);
                 background-position: 50% 50%;
                 background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-next.png) no-repeat; 
             }

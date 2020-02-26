@@ -22,7 +22,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #4d4d4d;
+    border-bottom: 2px solid #4d4d4d;
+    border-top: 2px solid #4d4d4d;
     background-color: #f7f5f8;
   }
   .complete-contents {
@@ -79,16 +80,16 @@
     height: 42px;
     border: 1px solid #6a3664;
     background-color: #795b8f;
+    color: white;
 
     cursor: pointer;
   }
-  .left-button a {
+  .left-button {
     text-decoration: none;
-    color: #6a3664;
+    color: purple;
     font-weight: 600;
   }
-  .right-button a {
-    text-decoration: none;
-    color: white;
+  .benefit {
+    color: purple;
   }
 }

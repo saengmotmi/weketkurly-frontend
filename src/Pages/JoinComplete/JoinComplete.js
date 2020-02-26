@@ -26,10 +26,10 @@ class JoinComplete extends Component {
                 </div>
                 <div className="bottom-button-box">
                   <button className="left-button">
-                    <a href="google.com">신규 혜택 100원 상품 보러가기</a>
+                    <div className="benefit">신규 혜택 100원 상품 보러가기</div>
                   </button>
                   <button className="right-button">
-                    <a href="google.com">마이페이지로 이동</a>
+                    <div>마이페이지로 이동</div>
                   </button>
                 </div>
               </div>

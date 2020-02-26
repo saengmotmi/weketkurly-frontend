@@ -978,7 +978,7 @@
       .write-all-view-hover,
       .write-qa-hover {
         width: 130px;
-        padding: 10px 0;
+        padding: 7px 0;
         float: right;
         background-color: #fff;
         border: 1px solid #5f0080;
@@ -986,6 +986,7 @@
         font-size: 13px;
         text-align: center;
         font-weight: 600;
+        margin-left: 5px;
         cursor: pointer;
       }
     }

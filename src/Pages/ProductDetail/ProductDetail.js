@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import ProductInfo from "../../Components/ProductInfo";
 import DetailSlide from "../../Components/DetailSlide";
 import Count from "../../Components/Count";
 import TotalPrice from "../../Components/TotalPrice";
 import CartBtn from "../../Components/CartBtn";
+import WhyKurlyTable from "../../Components/WhyKurlyTable";
 import WhyKurly from "../../Components/WhyKurly";
 import Table from "../../Components/Table";
 import PageBtn from "../../Components/PageBtn";
@@ -22,8 +24,11 @@ export default class ProductDetail extends Component {
       moreBtn: true,
       closeBtn: false,
       translate: 0,
-      button: false,
-      data: []
+      writeButton: false,
+      allButton: false,
+      qaButton: false,
+      data: [],
+      info: []
     };
   }
 
@@ -35,6 +40,14 @@ export default class ProductDetail extends Component {
       .then(res => {
         this.setState({
           data: res.data
+        });
+      });
+
+    fetch("https://api.kurly.com/v3/home/products/27422?&ver=1582712067853")
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          info: res.data
         });
       });
   };
@@ -54,6 +67,10 @@ export default class ProductDetail extends Component {
         scroll: false
       });
     }
+  };
+
+  numberWithCommas = number => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
   handleOnClickPlus = () => {
@@ -138,15 +155,39 @@ export default class ProductDetail extends Component {
     });
   };
 
-  handlerOver = e => {
+  handlerOverWrite = e => {
     this.setState({
-      button: true
+      writeButton: true
     });
   };
 
-  handlerOut = e => {
+  handlerOutWrite = e => {
     this.setState({
-      button: false
+      writeButton: false
+    });
+  };
+
+  handlerOverAll = e => {
+    this.setState({
+      allButton: true
+    });
+  };
+
+  handlerOutAll = e => {
+    this.setState({
+      allButton: false
+    });
+  };
+
+  handlerOverQa = e => {
+    this.setState({
+      qaButton: true
+    });
+  };
+
+  handlerOutQa = e => {
+    this.setState({
+      qaButton: false
     });
   };
 
@@ -161,9 +202,14 @@ export default class ProductDetail extends Component {
       moreBtn,
       closeBtn,
       translate,
-      button,
+      writeButton,
+      allButton,
+      qaButton,
+      info,
       data
     } = this.state;
+
+    const originalImg = info.original_image_url;
 
     const x = translate;
     const next = {
@@ -181,83 +227,29 @@ export default class ProductDetail extends Component {
       <div className="ProductDetail">
         <div className="product-top">
           <div className="product-img">
-            <img
-              src="https://res.kurly.com/mobile/service/goodsview/1910/bg_375x482.png"
-              alt="상품 대표 이미지"
-            />
+            <div style={{ backgroundImg: `url(${originalImg})` }} />
           </div>
 
           {/* 상품 구매 정보 */}
-          <div className="product-info">
-            <div className="product-title">
-              <div className="title">
-                <p>[선물세트] 유기샘 브라질너트 바삭대추 세트</p>
-                <div className="share-icon"></div>
-              </div>
-              <span>달콤한 대추 속에 숨은 고소한 브라질 너트 (1박스/3입)</span>
-            </div>
-
-            <div className="priceBar">
-              <span className="price">{price}</span>
-              <span className="won">원</span>
-            </div>
-
-            <div className="accumulate">
-              {/* <span className = "befor-login-point">로그인 후, 적립혜택이 제공됩니다.</span> */}
-              <div className="after-login-point">
-                <span className="save-point">일반 0.5%</span>
-                <span className="each">개당</span>
-                <span className="won-save">{point}원 적립</span>
-              </div>
-            </div>
-
-            <div className="goodsInfo">
-              <dl>
-                <dt>판매단위</dt>
-                <dd>1박스</dd>
-              </dl>
-              <dl className="list">
-                <dt>중량/용량</dt>
-                <dd>100g*3입</dd>
-              </dl>
-              <dl className="list">
-                <dt>배송구분</dt>
-                <dd>샛별배송/택배배송</dd>
-              </dl>
-              <dl className="list">
-                <dt>원산지</dt>
-                <dd>브라질너트 : 페루산 / 대추 : 국내산</dd>
-              </dl>
-              <dl className="list">
-                <dt>포장타입</dt>
-                <dd>
-                  <div>상온/종이포장</div>
-                  <div className="delivery">
-                    택배배송은 에코포장이 스티로폼으로 대체됩니다.
-                  </div>
-                </dd>
-              </dl>
-              <dl className="list">
-                <dt>알레르기정보</dt>
-                <dd>
-                  <div>- 호두, 땅콩, 대두와 같은 시설에서 제조</div>
-                </dd>
-              </dl>
-              <dl className="list">
-                <dt>구매수량</dt>
-                <Count
-                  number={number}
-                  handleOnClickPlus={this.handleOnClickPlus}
-                  handleOnClickMinus={this.handleOnClickMinus}
-                />
-              </dl>
-            </div>
-          </div>
+          <ProductInfo
+            name={info.name}
+            short_description={info.short_description}
+            origin={info.origin}
+            price={this.numberWithCommas(price)}
+            point={point}
+            unit_text={info.unit_text}
+            weight={info.weight}
+            delivery_time_type_text={info.delivery_time_type_text}
+            number={number}
+            contactant={info.contactant}
+            handleOnClickPlus={this.handleOnClickPlus}
+            handleOnClickMinus={this.handleOnClickMinus}
+          />
         </div>
 
         {/* 가격정보 */}
         <div className="total-price-cart">
-          <TotalPrice price={price} point={point} />
+          <TotalPrice price={this.numberWithCommas(price)} point={point} />
           <CartBtn />
         </div>
 
@@ -292,7 +284,7 @@ export default class ProductDetail extends Component {
               상세정보
             </li>
             <li className="tabOff" onClick={this.MoveToReview}>
-              고객후기(1)
+              고객후기({info.review_count})
             </li>
             <li className="tabLast" onClick={this.MoveToQA}>
               상품문의(2)
@@ -397,7 +389,7 @@ export default class ProductDetail extends Component {
               상세정보
             </li>
             <li className="tabOff" onClick={this.MoveToReview}>
-              고객후기(1)
+              고객후기({info.review_count})
             </li>
             <li className="tabLast" onClick={this.MoveToQA}>
               상품문의(2)
@@ -425,7 +417,7 @@ export default class ProductDetail extends Component {
               상세정보
             </li>
             <li className="tabOff" onClick={this.MoveToReview}>
-              고객후기(1)
+              고객후기({info.review_count})
             </li>
             <li className="tabLast" onClick={this.MoveToQA}>
               상품문의(2)
@@ -435,45 +427,7 @@ export default class ProductDetail extends Component {
         </div>
 
         <div className="why-kurly">
-          <table>
-            <tbody>
-              <tr>
-                <th>포장단위별 용량(중량), 수량, 크기</th>
-                <td>상품설명 및 상품이미지 참조</td>
-                <th>관련법상 표시사항</th>
-                <td>
-                  농산물 - 농수산물품질관리법상 유전자변형농산물 표시, 지리적
-                  표시 <br />
-                  축산물 - 축산법에 따른 등급 표시, 쇠고기의 경우 이력관리에
-                  따른 표시 유무 <br />
-                  수산물 - 농수산물품질관리법상 유전자변형수산물 표시, 지리적
-                  표시 <br />
-                  수입식품에 해당하는 경우 “식품위생법에 따른 수입신고를 필함”의
-                  문구 <br />
-                </td>
-              </tr>
-              <tr>
-                <th>생산자, 수입품의 경우 수입자를 함께 표기</th>
-                <td>농업회사법인 유기샘 주식회사</td>
-                <th>상품구성</th>
-                <td>상품설명 및 상품이미지 참조</td>
-              </tr>
-              <tr>
-                <th>농수산물의 원산지 표시에 관한 법률에 따른 원산지</th>
-                <td>브라질 너트 - 페루산 / 대추 - 국내산</td>
-                <th>보관방법 또는 취급방법</th>
-                <td>상온 보관</td>
-              </tr>
-              <tr>
-                <th>
-                  제조연월일(포장일 또는 생산연도), 유통기한 또는 품질유지기한
-                </th>
-                <td>제품 별도 라벨 표기 참조</td>
-                <th>소비자상담 관련 전화번호</th>
-                <td>마켓컬리 고객행복센터(1644-1107)</td>
-              </tr>
-            </tbody>
-          </table>
+          <WhyKurlyTable />
           <h3>WHY KURLY</h3>
           <div className="why-kurly-contents-1">
             <WhyKurly />
@@ -617,7 +571,7 @@ export default class ProductDetail extends Component {
               상세정보
             </li>
             <li className="tabOn" onClick={this.MoveToReview}>
-              고객후기(1)
+              고객후기({info.review_count})
             </li>
             <li className="tabLast" onClick={this.MoveToQA}>
               상품문의(2)
@@ -660,9 +614,9 @@ export default class ProductDetail extends Component {
           <Table />
           <div className="write">
             <button
-              className={button ? "write-hover" : "write-btn"}
-              onMouseOver={this.handlerOver}
-              onMouseOut={this.handlerOut}
+              className={writeButton ? "write-hover" : "write-btn"}
+              onMouseOver={this.handlerOverWrite}
+              onMouseOut={this.handlerOutWrite}
             >
               후기쓰기
             </button>
@@ -682,7 +636,7 @@ export default class ProductDetail extends Component {
               상세정보
             </li>
             <li className="tabOff" onClick={this.MoveToReview}>
-              고객후기(1)
+              고객후기({info.review_count})
             </li>
             <li
               className="tabOn"
@@ -730,18 +684,20 @@ export default class ProductDetail extends Component {
           <div className="qa-btn">
             <div>
               <button
-                className={button ? "write-all-view-hover" : "write-all-view"}
-                onMouseOver={this.handlerOver}
-                onMouseOut={this.handlerOut}
+                className={
+                  allButton ? "write-all-view-hover" : "write-all-view"
+                }
+                onMouseOver={this.handlerOverAll}
+                onMouseOut={this.handlerOutAll}
               >
                 전체보기
               </button>
             </div>
             <div>
               <button
-                className={button ? "write-qa-hover" : "write-qa"}
-                onMouseOver={this.handlerOver}
-                onMouseOut={this.handlerOut}
+                className={qaButton ? "write-qa-hover" : "write-qa"}
+                onMouseOver={this.handlerOverQa}
+                onMouseOut={this.handlerOutQa}
               >
                 상품문의
               </button>
@@ -766,9 +722,7 @@ export default class ProductDetail extends Component {
             <div className="bar-info">
               <ul>
                 <li>
-                  <span className="title">
-                    [선물세트] 유기샘 브라질너트 바삭대추 세트
-                  </span>
+                  <span className="title">{info.name}</span>
                   <span className="count">
                     <Count
                       number={number}
@@ -776,11 +730,16 @@ export default class ProductDetail extends Component {
                       handleOnClickMinus={this.handleOnClickMinus}
                     />
                   </span>
-                  <span className="price">{price}원</span>
+                  <span className="price">
+                    {this.numberWithCommas(price)}원
+                  </span>
                 </li>
               </ul>
               <div className="total-price-point">
-                <TotalPrice price={price} point={point} />
+                <TotalPrice
+                  price={this.numberWithCommas(price)}
+                  point={point}
+                />
               </div>
               <div className="btn">
                 <CartBtn />

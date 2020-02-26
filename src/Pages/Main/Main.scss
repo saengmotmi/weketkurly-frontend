@@ -3,13 +3,21 @@ main {
     flex-direction: column;
     align-items: center;
 
+    .quick-menu {
+        position: absolute;
+        float: right;
+        top: 700px;
+        right: 20px;
+        width: 80px;
+        z-index: 1;
+    }
+
     .main-font {
         font-weight: 700;
         font-size: 28px;
         line-height: 32px;
         letter-spacing: -0.3px;
         text-align: center;
-
         padding: 79px 0 35px;
     }
 

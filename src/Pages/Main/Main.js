@@ -38,6 +38,12 @@ class Main extends Component {
                 {console.log(this.state.data)}
                 <Nav />
                 <main>
+                    <div className="quick-menu">
+                        <img width="80" height="120" style={{paddingBottom: "7px"}}
+                            src="https://res.kurly.com/pc/service/main/1904/bnr_quick_20190403.png" alt="" />
+                        <div className="side-menu"></div>
+                        <div className="side-recent"></div>
+                    </div>
                     <img src="https://img-cf.kurly.com/shop/data/main/1/pc_img_1582274479.jpg" alt="" />
                     <p>메인 이미지 슬라이드</p>
                     {mainCateList}

@@ -21,8 +21,9 @@ export default class ProductDetail extends Component {
       more: false,
       moreBtn: true,
       closeBtn: false,
-      data: [],
-      translate: 0
+      translate: 0,
+      button: false,
+      data: []
     };
   }
 
@@ -79,15 +80,13 @@ export default class ProductDetail extends Component {
 
   handleOnClickNext = e => {
     this.setState({
-      translate: true
-      //ul의 transform: translateX(960px)
+      translate: this.state.translate - 960
     });
   };
 
   handleOnClickBefore = e => {
     this.setState({
-      translate: false
-      //ul의 transform: tranlateX(-960px)
+      translate: this.state.translate + 960
     });
   };
 
@@ -139,6 +138,18 @@ export default class ProductDetail extends Component {
     });
   };
 
+  handlerOver = e => {
+    this.setState({
+      button: true
+    });
+  };
+
+  handlerOut = e => {
+    this.setState({
+      button: false
+    });
+  };
+
   render() {
     const {
       number,
@@ -150,8 +161,14 @@ export default class ProductDetail extends Component {
       moreBtn,
       closeBtn,
       translate,
+      button,
       data
     } = this.state;
+
+    const x = translate;
+    const next = {
+      transform: `translateX(${x}px)`
+    };
 
     const dataImg =
       data.length === 0
@@ -159,15 +176,6 @@ export default class ProductDetail extends Component {
         : this.state.data.map(el => {
             return <DetailSlide img={el.img} name={el.name} price={el.price} />;
           });
-
-    const x = -960;
-    const y = 960;
-    const next = {
-      transform: `translateX(${x}px)`
-    };
-    const before = {
-      transform: `translateX(${y}px)`
-    };
 
     return (
       <div className="ProductDetail">
@@ -262,7 +270,7 @@ export default class ProductDetail extends Component {
           <div className="slideBtn">
             <button className="left-btn" onClick={this.handleOnClickBefore} />
             <div className="slideBar">
-              <ul style={translate ? { next } : { before }}>{dataImg}</ul>
+              <ul style={next}>{dataImg}</ul>
             </div>
             <button
               className="right-btn"
@@ -651,7 +659,13 @@ export default class ProductDetail extends Component {
           {/* review */}
           <Table />
           <div className="write">
-            <button className="write-btn">후기쓰기</button>
+            <button
+              className={button ? "write-hover" : "write-btn"}
+              onMouseOver={this.handlerOver}
+              onMouseOut={this.handlerOut}
+            >
+              후기쓰기
+            </button>
           </div>
           <PageBtn />
         </div>
@@ -715,10 +729,22 @@ export default class ProductDetail extends Component {
           <Table />
           <div className="qa-btn">
             <div>
-              <button className="write-all-view">전체보기</button>
+              <button
+                className={button ? "write-all-view-hover" : "write-all-view"}
+                onMouseOver={this.handlerOver}
+                onMouseOut={this.handlerOut}
+              >
+                전체보기
+              </button>
             </div>
             <div>
-              <button className="write-qa">상품문의</button>
+              <button
+                className={button ? "write-qa-hover" : "write-qa"}
+                onMouseOver={this.handlerOver}
+                onMouseOut={this.handlerOut}
+              >
+                상품문의
+              </button>
             </div>
           </div>
           <PageBtn />
@@ -733,9 +759,10 @@ export default class ProductDetail extends Component {
           <div
             className="bar-close"
             style={{ display: display ? "block" : "none" }}
-            onClick={this.onClickBarClose}
           >
-            <div className="btn-close">상품 선택</div>
+            <div className="btn-close" onClick={this.onClickBarClose}>
+              상품 선택
+            </div>
             <div className="bar-info">
               <ul>
                 <li>

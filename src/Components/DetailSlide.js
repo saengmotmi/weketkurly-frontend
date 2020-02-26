@@ -10,8 +10,8 @@ export default class DetailSlide extends Component {
           style={{ backgroundImage: `url(${img})` }}
         ></div>
         <div className="relatedInfo">
-          <div>{name}</div>
-          <div>{price}</div>
+          <div className="name">{name}</div>
+          <div className="price">{price}</div>
         </div>
       </li>
     );

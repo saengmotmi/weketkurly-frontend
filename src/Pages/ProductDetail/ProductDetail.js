@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom'
 import DetailSlide from '../../Components/DetailSlide';
 import Count from '../../Components/Count';
+import TotalPrice from '../../Components/TotalPrice';
+import CartBtn from '../../Components/CartBtn';
 import WhyKurly from '../../Components/WhyKurly';
 import Table from '../../Components/Table';
+import PageBtn from '../../Components/PageBtn';
 import './ProductDetail.scss';
 
 
@@ -14,7 +18,13 @@ export default class ProductDetail extends Component {
             price: 37000,
             point: 185,
             left: 0,
-        };
+            scroll: false,
+            scrollTop: 0,
+            display: false,
+            more: false,
+            moreBtn: true,
+            closeBtn: false,
+        }
     }
 
     handleOnClickPlus = () => {
@@ -55,9 +65,58 @@ export default class ProductDetail extends Component {
         window.scrollTo(0, 3350, "smooth")
     }
 
+    componentDidMount() {
+        window.addEventListener('scroll', this.onScroll);
+    }
+    
+    onScroll = (e) => {
+    // 스크롤 할때마다 state에 scroll한 만큼 scrollTop 값 증가하므로 이를 업데이트해줌, 
+    //따라서 스크롤 시점에 따라 특정액션을 추후에 state를 활용하여 구현 가능
+        const scrollTop = ('scroll', e.srcElement.scrollingElement.scrollTop);
+        // const top = ReactDOM.findDOMNode(this).getBoundingClientRect().top; 
+        if (scrollTop > 1270) {
+            this.setState({ 
+                scroll: true,
+                scrollTop: scrollTop,
+             });
+        } else {
+            this.setState({
+                scroll: false,
+            })
+        }
+    };
+
+    onClickBarOpen = () => {
+        this.setState({
+            display: true
+        })
+    }
+
+    onClickBarClose = () => {
+        this.setState({
+            display: false
+        })
+    }
+
+    onClickMoreOpen = () => {
+        this.setState({
+            more: true,
+            moreBtn: false,
+            closeBtn: true,
+        })
+    }
+
+    onClickMoreClose = () => {
+        this.setState({
+            more: false,
+            moreBtn: true,
+            closeBtn: false,
+        })
+    }
+
 
     render() {
-        const { number, price, point} = this.state;
+        const { number, price, point, scroll, display, more, moreBtn, closeBtn } = this.state;
         return (
             <div className = "ProductDetail">
                 <div className = "product-top">
@@ -134,34 +193,8 @@ export default class ProductDetail extends Component {
 
                 {/* 가격정보 */}
                 <div className = "total-price-cart">
-                    <div className = "total-price-point">
-                        <div className = "total-price">
-                            <span className = "total">총 상품금액: </span>
-                            <b className = "price">{ price }</b>
-                            <span className = "won">원</span>
-                        </div>
-                        <div className = "point">
-                            {/* <div className = "point-before-login">
-                                <div className = "save-icon">적립</div>
-                                <div>로그인 후, 적립혜택 제공</div>
-                            </div> */}
-                            <div className = "point-after-login">
-                                <div className = "save-icon">적립</div>
-                                <span className = "each">구매 시</span>
-                                <span className = "won-save">{ point }원 적립</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-
-                    {/* 상품 담기 버튼 */}
-                    <div className = "btn">
-                        <div className = "cartBtn">
-                            <button className = "alarmOff">재입고 알림</button>
-                            <button className = "saveItem">늘 사는것</button>
-                            <button className = "goToCart">장바구니 담기</button>
-                        </div>
-                    </div>
+                    <TotalPrice price = { price } point = { point } />
+                    <CartBtn />
                 </div>
                 
                 
@@ -392,37 +425,42 @@ export default class ProductDetail extends Component {
                         <div className = "refund-notice">교환 및 환불 안내</div>
                         <div className = "txt">고객님의 단순 변심으로 인한 반품은 어려울 수 있으니 양해 부탁드립니다.</div>
                     </div>
-                    <div className = "more">
+                    <div className = "more-btn" onClick = {this.onClickMoreOpen} style = {{ display: moreBtn ? 'block': 'none'}}>
                         <span>자세히 보기</span>
                         <img alt = "arrow" src = "https://res.kurly.com/pc/ico/2001/pc_arrow_open@2x.png" />
                     </div>
+                    <div className = "close-btn" onClick = {this.onClickMoreClose} style = {{ display: closeBtn ? 'block': 'none'}}>
+                        <span>닫기</span>
+                        <img alt = "arrow" src = "https://res.kurly.com/pc/ico/2001/pc_arrow_close@2x.png" />
+                    </div>
                 </div>
 
-                <div className = "hide">
-                    <div className = "title">
-                        01. 받으신 상품에 문제가 있는 경우
+                <div className = "hide"  style = {{ display: more ? 'block': 'none'}}>
+                    <div className = "refund-info">
+                        <div className = "title">
+                            01. 받으신 상품에 문제가 있는 경우
+                        </div>
+                        <div className = "contents">
+                            <div className = "hide-contents">
+                                상품이 표시·광고 내용과 다르거나 부패한 경우 등 상품에 문제가 있는 정도에 따라 <br />
+                                재배송, 일부 환불, 전액 환불해드립니다.
+                            </div>
+                            <div className = "hide-title">신선 / 냉장 / 냉동 식품 </div>
+                            <div className = "hide-contents">
+                                상품을 받은 날부터 2일 이내에 상품 상태를 확인할 수 있는 사진을 첨부해 1:1 문의 게시판에 남겨주세요. <br />
+                            </div>
+                            <div className = "hide-title">
+                                유통기한 30일 이상의 식품 (신선 / 냉장 / 냉동 제외) 및 기타 상품
+                            </div>
+                            <div className = "hide-contents">
+                                상품을 받은 날부터 3개월 이내 또는 문제가 있다는 사실을 알았거나 알 수 있었던 날부터 30일 이내에  <br />
+                                상품의 상태를 확인할 수 있는 사진을 첨부해 1: 1 문의 게시판에 남겨주세요.
+                            </div>
+                            <div className = "hide-extra">
+                                ※상품에 문제가 있는 것으로 확인되면 배송비는 컬리가 부담합니다.
+                            </div>
+                        </div>
                     </div>
-                    <div className = "contents">
-                        <div className = "hidle-contents">
-                            상품이 표시·광고 내용과 다르거나 부패한 경우 등 상품에 문제가 있는 정도에 따라 <br />
-                            재배송, 일부 환불, 전액 환불해드립니다.
-                        </div>
-                        <div className = "hidle-title">신선 / 냉장 / 냉동 식품 </div>
-                        <div className = "hidle-contents">
-                            상품을 받은 날부터 2일 이내에 상품 상태를 확인할 수 있는 사진을 첨부해 1:1 문의 게시판에 남겨주세요. <br />
-                        </div>
-                        <div className = "hidle-title">
-                            유통기한 30일 이상의 식품 (신선 / 냉장 / 냉동 제외) 및 기타 상품
-                        </div>
-                        <div className = "hidle-contents">
-                            상품을 받은 날부터 3개월 이내 또는 문제가 있다는 사실을 알았거나 알 수 있었던 날부터 30일 이내에  <br />
-                            상품의 상태를 확인할 수 있는 사진을 첨부해 1: 1 문의 게시판에 남겨주세요.
-                        </div>
-                        <div className = "hide-extra">
-                            ※상품에 문제가 있는 것으로 확인되면 배송비는 컬리가 부담합니다.
-                        </div>
-                    </div>
-
                     <div className = "line" />
                 </div>
 
@@ -468,24 +506,41 @@ export default class ProductDetail extends Component {
                     <div className = "write">
                         <button className = "write-btn">후기쓰기</button>
                     </div>
+                    <PageBtn />
+                </div>
 
-                    <div className = "page-btn">
-                        <button className = "first-page" />
-                        <button className = "before" />
-                        <button className = "num">1</button>
-                        <button className = "num">2</button>
-                        <button className = "num">3</button>
-                        <button className = "num">4</button>
-                        <button className = "num">5</button>
-                        <button className = "num">6</button>
-                        <button className = "num">7</button>
-                        <button className = "num">8</button>
-                        <button className = "num">9</button>
-                        <button className = "num">10</button>
-                        <button className = "next" />
-                        <button className = "last-page" />
+                <div className = 'bar' style = {{ display: scroll ? 'block': 'none'}}>
+                    <div className = "bar-open">
+                        <div className = "btn-open" onClick = {this.onClickBarOpen} >
+                            상품 선택 
+                        </div>  
                     </div>
-
+                    <div className = "bar-close" style = {{ display: display ? 'block': 'none'}} onClick = {this.onClickBarClose} >
+                        <div className = "btn-close">
+                            상품 선택
+                        </div>
+                        <div className = "bar-info">
+                            <ul>
+                                <li>
+                                    <span className = "title">[선물세트] 유기샘 브라질너트 바삭대추 세트</span>
+                                    <span className = "count">
+                                        <Count 
+                                            number = {number} 
+                                            handleOnClickPlus = {this.handleOnClickPlus}
+                                            handleOnClickMinus = {this.handleOnClickMinus}
+                                        />
+                                    </span>
+                                    <span className = "price">{ price }원</span>
+                                </li>
+                            </ul>
+                            <div className = "total-price-point">
+                                <TotalPrice price = { price } point = { point } />
+                            </div>
+                            <div className = "btn">
+                                <CartBtn />
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
             </div>

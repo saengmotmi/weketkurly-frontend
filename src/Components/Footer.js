@@ -139,7 +139,7 @@ class Footer extends Component {
             </li>
           </ul>
         </div>
-      </d>
+      </div>
     );
   }
 }

@@ -4,7 +4,7 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import Main from './Pages/Main/Main.js';
+import Main from './Pages/Main/Main';
 import Nav from './Components/Nav';
 import Footer from './Components/Footer';
 

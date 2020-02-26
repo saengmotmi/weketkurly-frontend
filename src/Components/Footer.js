@@ -6,25 +6,25 @@ class Footer extends Component {
 
     render() {
         return(
-            <div className="footer">
+            <footer>
                 <div className="footer-top">
                     <div className="footer-top-left">
                         <span><b>고객행복센터</b></span>
-                        <div className="custom-1">
+                        <div className="custom">
                             <h3>1644-1107</h3>
                             <div>
                                 <p>365고객센터</p>
                                 <p>오전7시 - 오후7시</p>
                             </div>
                         </div>
-                        <div className="custom-2">
+                        <div className="custom">
                             <h3>카카오톡 문의</h3>
                             <div>
                                 <p>365고객센터</p>
                                 <p>오전7시 - 오후7시</p>
                             </div>
                         </div>
-                        <div className="custom-3">
+                        <div className="custom">
                             <h3>1:1 문의</h3>
                             <div>
                                 <p>24시간 접수 가능</p>
@@ -88,10 +88,9 @@ class Footer extends Component {
                                 <img src="https://res.kurly.com/pc/ico/1810/ico_youtube.png" alt="youtube" />
                             </li>
                         </ul>
-
                     </div>
                 </div>
-            </div>
+            </footer>
         );
     }
 }

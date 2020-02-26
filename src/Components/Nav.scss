@@ -2,10 +2,13 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-size: 16px;
+    letter-spacing: -0.3px;
 
     li {
         list-style: none;
         display: inline-block;
+        word-break: break-all;
     }
 
     .nav-top {
@@ -13,7 +16,38 @@ header {
         justify-content: space-between;
         align-items: center;
         width: 1050px;
+        height: 37px;
         margin: 0 auto;
+        font-size: 12px;
+        
+        .profile-listdown {
+            color: #5f0080;
+        }
+
+        li {
+            span {
+                padding: 0 10px;
+                letter-spacing: -0.3px;
+            }
+
+            &::after {
+                content: " | ";
+                color: #d8d8d8;
+            }
+
+            &:nth-child(3) {
+                &::before {
+                    content: " ";
+                    background: url(https://res.kurly.com/pc/ico/1908/ico_down_8x5.png);
+                }
+            }
+
+            &:last-child {
+                &::after {
+                    content: "";
+                }
+            }
+        }
 
         img {
             width: 163px;
@@ -31,38 +65,64 @@ header {
         }
     }
 
-    .nav-cate-list {
+    .nav-cate-list,
+    .nav-prof-list {
         position: absolute;
-        border: 1px solid black;
 
         ul {
             margin: 0;
             padding: 0;
             background-color: white;
             width: 100%;
-        }
 
-        li {
-            display: block;
-            z-index: 1;
+            li {
+                display: block;
+                z-index: 1;
+            }
         }
     }
 
+    .nav-prof-list {
+        top: -10px;
+        padding-top: 10px;
+        right: 250px;
+        background-color: white;
+        z-index: 1;
+    }
+
+    .nav-cate-list {
+        left: 50px;
+        font-weight: 700;
+        line-height: 20px;
+    }
+
     .nav-bottom-bar {
-        width: 100vw;
+        width: 1050px;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
 
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
         position: relative;
 
-        li {
-            width: 141.27px;
+        li {            
             height: 55px;
             padding: 16px 50px 0 48px;
             text-align: center;
+            letter-spacing: -0.3px;
+            font-weight: 700;
+
+            &::after {
+                content: " | ";
+                color: #d8d8d8;
+            }
+
+            &:last-child {
+                &::after {
+                    content: "";
+                }
+            }
         }
 
         img {
@@ -74,14 +134,48 @@ header {
             display: flex;
             align-items: center;
         }
+    }
 
-        .category-listdown {
-            display: flex;
+    .search-wrap {
+        border-radius: 18px;
+        display: flex;
+        border: 1px solid #f7f7f6;
+        background-color: #f7f7f7;
+        position: relative;
 
-            img {
-                width: 16px;
-                height: 14px;
+        input {
+            font-size: 12px;
+            color: #666;
+            border: none;
+            border-radius: 18px;
+            background-color: #f7f7f7;
+            width: 166px;
+            height: 36px;
+            padding: 0 50px 0 20px;                
+
+            &:focus {
+                outline: none;
+                background-color: white;
+
             }
+        }
+
+        img {
+            position: absolute;
+            right: 10px;
+            top: 3px;
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+
+    .category-listdown {
+        display: flex;
+
+        img {
+            width: 16px;
+            height: 14px;
         }
     }
 }

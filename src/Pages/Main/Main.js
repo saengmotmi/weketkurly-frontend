@@ -12,8 +12,8 @@ class Main extends Component {
     };
   }
 
-  _getApi = () => {
-    fetch("https://api.kurly.com/v2/home/recommendation") //API 주소
+  _getApi = url => {
+    fetch(`https://api.kurly.com/v2/home/${url}`) //API 주소
       .then(res => {
         return res.json();
       })
@@ -25,7 +25,7 @@ class Main extends Component {
   };
 
   componentDidMount = () => {
-    this._getApi();
+    this._getApi("recommendation");
   };
 
   render() {
@@ -71,7 +71,6 @@ class Main extends Component {
             src="https://img-cf.kurly.com/shop/data/main/1/pc_img_1582274479.jpg"
             alt=""
           />
-          <p>메인 이미지 슬라이드</p>
           {mainCateList}
           <img
             className="img-bottom"

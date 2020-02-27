@@ -6,6 +6,7 @@ class MainCategory extends Component {
     super(props);
     this.state = {
       mdButtonSelect: 0,
+      mdButtonValue: "채소",
       buttonStyle: {
         border: "1px solid #5f0081",
         backgroundColor: "#5f0080",
@@ -17,7 +18,8 @@ class MainCategory extends Component {
 
   _mdClick = e => {
     this.setState({
-      mdButtonSelect: Number(e.target.id.split(".")[1])
+      mdButtonSelect: Number(e.target.id.split(".")[1]),
+      mdButtonValue: e.target.textContent
     });
     this._getMdApi(Number(e.target.id.split(".")[0]));
   };
@@ -34,7 +36,6 @@ class MainCategory extends Component {
           data: res.data["products"].filter(item => item !== undefined)
         })
       );
-    console.log(this.state.mdButtonSelect, this.state.data);
   };
 
   componentDidMount() {
@@ -196,8 +197,42 @@ class MainCategory extends Component {
         <p className="main-font">{title}</p>
         {title === "MD의 추천" ? (
           <div>
-            <div className="md-cate-div">{categoryList}</div>
+            <div
+              style={{ paddingBottom: "20px", margin: "0 auto" }}
+              className="md-cate-div"
+            >
+              {categoryList}
+            </div>
             <ul className="goods-item">{mdProductsArr}</ul>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "514px",
+                  height: "54px",
+                  borderRadius: "3px",
+                  border: "1px solid #e3e3e3",
+                  textAlign: "center"
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: "16px",
+                    verticalAlign: "middle"
+                  }}
+                >
+                  {this.state.mdButtonValue + " 전체보기"}
+                </span>
+              </div>
+            </div>
           </div>
         ) : null}
 

@@ -1,0 +1,208 @@
+.EventMain {
+  .event-view {
+    .event-img {
+      width: 100%px;
+      height: 484px;
+      background: url(https://res.kurly.com/images/event/join/200115/pc/img_main.jpg)
+        no-repeat 50% 0;
+      .button {
+        width: 300px;
+        height: 71px;
+        left: 200px;
+        top: 280px;
+        position: absolute;
+        cursor: pointer;
+        background-color: #5f0080;
+        color: #fff;
+        font-family: "Malgun Gothic";
+        font-size: 24px;
+        border-radius: 50px;
+        text-align: center;
+        line-height: 75px;
+      }
+    }
+    .join-btn {
+      text-align: center;
+      .bg {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        width: 100%;
+        height: 100px;
+        background: url(https://res.kurly.com/images/event/join/200115/pc/bg_tab.jpg)
+          no-repeat 50% 0;
+        .welcome-gift {
+          width: 348px;
+          height: 100px;
+          background-image: url(https://res.kurly.com/images/event/join/200115/pc/tab_menu.jpg);
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          outline: none;
+          border: 0;
+          cursor: pointer;
+          &:hover {
+            background-position: 0 -100px;
+          }
+        }
+        .free-delivery {
+          width: 349px;
+          height: 100px;
+          left: 352px;
+          background-image: url(https://res.kurly.com/images/event/join/200115/pc/tab_menu.jpg);
+          background-position: -348px 0;
+          outline: none;
+          border: 0;
+          cursor: pointer;
+          &:hover {
+            background-position: -348px -100px;
+          }
+        }
+        .point {
+          width: 348px;
+          height: 100px;
+          background-image: url(https://res.kurly.com/images/event/join/200115/pc/tab_menu.jpg);
+          background-position: -697px 0;
+          outline: none;
+          border: 0;
+          cursor: pointer;
+          &:hover {
+            background-position: -697px -100px;
+          }
+        }
+      }
+    }
+  }
+
+  .no1 {
+    width: 100%;
+    text-align: center;
+    padding: 160px 0 34px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      margin-bottom: 50px;
+    }
+    .list-goods {
+      .list {
+        width: 1050px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        list-style: none;
+      }
+      .list-txt {
+        font-size: 17px;
+        font-weight: 500;
+        color: #999;
+        letter-spacing: -0.06em;
+        margin: 60px auto 80px;
+        list-style: none;
+      }
+    }
+  }
+
+  .no2 {
+    width: 100%;
+    height: 878px;
+    background: #f7f8f9
+      url(https://res.kurly.com/images/event/join/191113/pc/img_benefit2.png)
+      no-repeat 50% 80px;
+  }
+
+  .no3 {
+    width: 100%;
+    height: 922px;
+    background: #ebecee
+      url(https://res.kurly.com/images/event/join/191113/pc/img_benefit3.png)
+      no-repeat 50% 80px;
+  }
+
+  .no4 {
+    width: 100%;
+    height: 893px;
+    background: #f9f9f9
+      url(https://res.kurly.com/images/event/join/191023/pc/img_benefit4_v2.png)
+      no-repeat 50% 80px;
+  }
+
+  .special {
+    height: 773px;
+    background: #ebecee
+      url(https://res.kurly.com/images/event/join/191023/pc/img_special.png)
+      no-repeat 50% 80px;
+  }
+
+  .rec {
+    h4 {
+      padding: 80px 0 36px;
+      text-align: center;
+      box-sizing: border-box;
+      color: #5f0080;
+      font-size: 46px;
+      letter-spacing: -0.07em;
+      word-spacing: 0.1em;
+      .bold {
+        font-weight: 700;
+        letter-spacing: -0.06em;
+      }
+    }
+  }
+
+  .last-btn {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 280px;
+    .rec {
+      button {
+        width: 400px;
+        height: 80px;
+        background-position: 18px 7px;
+        border: 2px solid #5f0080;
+        border-radius: 50px;
+        background-color: #fff;
+        outline: none;
+        font-size: 30px;
+        font-weight: 700;
+        color: #5f0080;
+        letter-spacing: -0.06em;
+        margin: 0 15px;
+        .bold {
+          font-weight: 500;
+          letter-spacing: -0.06em;
+        }
+      }
+    }
+
+    .join {
+      button {
+        width: 400px;
+        height: 80px;
+        background-position: 18px 7px;
+        border: 2px solid #5f0080;
+        border-radius: 50px;
+        background-color: #5f0080;
+        outline: none;
+        font-size: 30px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: -0.06em;
+        margin: 0 15px;
+        .bold {
+          font-weight: 500;
+          letter-spacing: -0.06em;
+        }
+      }
+    }
+  }
+}

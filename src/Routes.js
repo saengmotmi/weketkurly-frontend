@@ -6,6 +6,7 @@ import Nav from "./Components/Nav";
 import Footer from "./Components/Footer";
 import ProductDetail from "./Pages/ProductDetail/ProductDetail.js";
 import Join from "./Pages/Join/Join";
+import Login from "./Pages/Login/Login";
 
 class Routes extends React.Component {
   render() {
@@ -18,6 +19,7 @@ class Routes extends React.Component {
           <Route exact path="/nav" component={Nav} />
           <Route exact path="/product-detail" component={ProductDetail} />
           <Route exact path="/Join" component={Join} />
+          <Route exact path="/Login" component={Login} />
         </Switch>
       </Router>
     );

@@ -2,12 +2,12 @@ import React, { Component } from "react";
 
 export default class SaleEventList extends Component {
   render() {
-    const { img, alt } = this.props;
+    const { img, alt, scrollArrow, scrollSale } = this.props;
     return (
       <li>
         <img src={img} alt={alt} />
-        <div className="arrow" />
-        <div className="price" />
+        <div className={scrollArrow ? "arrow-move" : "arrow"} />
+        <div className={scrollSale ? "price-move" : "price"} />
       </li>
     );
   }

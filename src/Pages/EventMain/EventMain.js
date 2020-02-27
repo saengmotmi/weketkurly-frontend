@@ -12,6 +12,8 @@ export default class EventMain extends Component {
       scroll: false,
       scrollValue: false,
       scrollEvent: false,
+      scrollArrow: false,
+      scrollSale: false,
       scrollTop: 0,
       event: [],
       best: []
@@ -41,7 +43,7 @@ export default class EventMain extends Component {
   onScroll = e => {
     const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
     console.log(scrollTop);
-    if (scrollTop > 2329 && scrollTop < 3112) {
+    if (scrollTop > 2100 && scrollTop < 3112) {
       this.setState({
         scroll: true,
         scrollTop: scrollTop
@@ -52,7 +54,7 @@ export default class EventMain extends Component {
       });
     }
 
-    if (scrollTop > 2329 && scrollTop < 3112) {
+    if (scrollTop > 2800 && scrollTop < 3900) {
       this.setState({
         scrollValue: true,
         scrollTop: scrollTop
@@ -63,7 +65,7 @@ export default class EventMain extends Component {
       });
     }
 
-    if (scrollTop > 4120 && scrollTop < 4875) {
+    if (scrollTop > 3600 && scrollTop < 4850) {
       this.setState({
         scrollEvent: true,
         scrollTop: scrollTop
@@ -73,15 +75,64 @@ export default class EventMain extends Component {
         scrollEvent: false
       });
     }
+
+    if (scrollTop > 905 && scrollTop < 2600) {
+      this.setState({
+        scrollArrow: true,
+        scrollTop: scrollTop
+      });
+    } else {
+      this.setState({
+        scrollArrow: false
+      });
+    }
+
+    if (scrollTop > 905 && scrollTop < 2600) {
+      this.setState({
+        scrollSale: true,
+        scrollTop: scrollTop
+      });
+    } else {
+      this.setState({
+        scrollSale: false
+      });
+    }
+  };
+
+  MoveToGift = () => {
+    window.scrollTo(0, 845, "smooth");
+  };
+
+  MoveToFreeDelivery = () => {
+    window.scrollTo(0, 2800, "smooth");
+  };
+
+  MoveToPoint = () => {
+    window.scrollTo(0, 3705, "smooth");
   };
 
   render() {
-    const { scroll, scrollValue, scrollEvent, event, best } = this.state;
+    const {
+      scroll,
+      scrollValue,
+      scrollEvent,
+      scrollArrow,
+      scrollSale,
+      event,
+      best
+    } = this.state;
     const eventList =
       event.length === 0
         ? null
         : this.state.event.map(el => {
-            return <SaleEventList img={el.img} alt={el.alt} />;
+            return (
+              <SaleEventList
+                img={el.img}
+                alt={el.alt}
+                scrollArrow={scrollArrow}
+                scrollSale={scrollSale}
+              />
+            );
           });
 
     const bestList =
@@ -97,14 +148,19 @@ export default class EventMain extends Component {
         <div className="event-view">
           {/* img */}
           <div className="event-img">
-            <div className="button">가입하고 혜택 받기 ></div>
+            <div className="img">
+              <div className="button">가입하고 혜택받기 ></div>
+            </div>
           </div>
           {/* btn */}
           <div className="join-btn">
             <div className="bg">
-              <button className="welcome-gift" />
-              <button className="free-delivery" />
-              <button className="point" />
+              <button className="welcome-gift" onClick={this.MoveToGift} />
+              <button
+                className="free-delivery"
+                onClick={this.MoveToFreeDelivery}
+              />
+              <button className="point" onClick={this.MoveToPoint} />
             </div>
           </div>
         </div>
@@ -127,22 +183,22 @@ export default class EventMain extends Component {
         </div>
 
         <div className="no2">
-          <img
-            src="https://res.kurly.com/images/event/join/191113/pc/img_benefit2.png"
-            alt=""
-          ></img>
-          <span className={scroll ? "free-move" : "free"}>무료배송!</span>
+          <div className="img">
+            <span className={scroll ? "free-move" : "free"}>무료배송!</span>
+          </div>
         </div>
 
         <div className="no3">
-          <span className={scrollValue ? "discount " : "discount-move"}>
-            5%
-          </span>
+          <div className="img">
+            <span className={scrollValue ? "discount-move" : "discount"}>
+              5%
+            </span>
+          </div>
         </div>
 
         <div className="no4">
-          <div>
-            <span className={scrollEvent ? "contents" : "contents-move"}>
+          <div className="img">
+            <span className={scrollEvent ? "contents-move" : "contents"}>
               적립금 5천원!
             </span>
           </div>
@@ -162,14 +218,15 @@ export default class EventMain extends Component {
           <div className="rec">
             <button>
               추천상품 <span className="bold">더 보러가기</span>
+              <span className="arrow" />
             </button>
             <div className="arrow" />
           </div>
           <div className="join">
             <button>
               회원가입 <span className="bold">하러가기</span>
+              <span className="arrow" />
             </button>
-            <div className="arrow" />
           </div>
         </div>
         <Footer />

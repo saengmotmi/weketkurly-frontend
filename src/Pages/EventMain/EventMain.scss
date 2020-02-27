@@ -1,25 +1,39 @@
 .EventMain {
   .event-view {
     .event-img {
-      width: 100%px;
+      width: 100%;
       height: 484px;
       background: url(https://res.kurly.com/images/event/join/200115/pc/img_main.jpg)
         no-repeat 50% 0;
-      position: relative;
-      .button {
-        width: 300px;
-        height: 71px;
-        left: 200px;
-        top: 280px;
-        position: absolute;
-        cursor: pointer;
-        background-color: #5f0080;
-        color: #fff;
-        font-family: "Malgun Gothic";
-        font-size: 24px;
-        border-radius: 50px;
-        text-align: center;
-        line-height: 75px;
+      .img {
+        width: 1100px;
+        height: 484px;
+        margin: 0 auto;
+        position: relative;
+        .button {
+          width: 300px;
+          height: 71px;
+          left: 30px;
+          top: 58%;
+          position: absolute;
+          cursor: pointer;
+          background-color: #5f0080;
+          color: #fff;
+          font-family: "Malgun Gothic";
+          font-weight: 500;
+          font-size: 24px;
+          letter-spacing: -0.02em;
+          border-radius: 50px;
+          text-align: center;
+          line-height: 75px;
+          box-shadow: 4px 10px 20px #999;
+          &:hover {
+            background-color: #fff;
+            border: 2px solid #5f0080;
+            color: #5f0080;
+            font-weight: 600;
+          }
+        }
       }
     }
     .join-btn {
@@ -97,23 +111,61 @@
         flex-wrap: wrap;
         justify-content: space-between;
         list-style: none;
-        position: relative;
-        .arrow {
-          top: 460px;
-          left: 70px;
-          width: 110px;
-          height: 8px;
-          background: url(https://res.kurly.com/images/event/join/191204/pc/ico_arrow.png)
-            no-repeat 50% 0;
-        }
-        .price {
-          left: 165px;
-          top: 457px;
-          width: 61px;
-          height: 21px;
-          z-index: 50;
-          background: url(https://res.kurly.com/images/event/join/191204/pc/ico_price.png)
-            no-repeat 50% 0;
+        li {
+          width: 320px;
+          height: 480px;
+          position: relative;
+          margin-bottom: 50px;
+          .arrow {
+            display: inline-block;
+            position: absolute;
+            top: 460px;
+            left: 34px;
+            width: 110px;
+            height: 8px;
+            background: url(https://res.kurly.com/images/event/join/191204/pc/ico_arrow.png)
+              no-repeat 50% 0;
+            opacity: 0;
+          }
+          .arrow-move {
+            display: inline-block;
+            position: absolute;
+            top: 460px;
+            left: 34px;
+            width: 110px;
+            height: 8px;
+            background: url(https://res.kurly.com/images/event/join/191204/pc/ico_arrow.png)
+              no-repeat 50% 0;
+            opacity: 1;
+            transition: transform 0.5s;
+            transform-origin: center left;
+            transform: translateX(27px);
+          }
+          .price {
+            display: inline-block;
+            position: absolute;
+            left: 155px;
+            top: 457px;
+            width: 61px;
+            height: 21px;
+            background: url(https://res.kurly.com/images/event/join/191204/pc/ico_price.png)
+              no-repeat 50% 0;
+            opacity: 0;
+          }
+          .price-move {
+            display: inline-block;
+            position: absolute;
+            left: 155px;
+            top: 457px;
+            width: 61px;
+            height: 21px;
+            background: url(https://res.kurly.com/images/event/join/191204/pc/ico_price.png)
+              no-repeat 50% 0;
+            opacity: 1;
+            transition: transform 0.5s;
+            transform-origin: center left;
+            transform: translateX(25px);
+          }
         }
       }
       .list-txt {
@@ -129,89 +181,107 @@
 
   .no2 {
     width: 100%;
-    height: 878px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    height: 718px;
     background-color: #f7f8f9;
-    .free {
-      position: absolute;
-      left: 790px;
-      top: 220px;
-      font-weight: 600;
-      color: #4a4748;
-      opacity: 0.1;
-    }
-    .free-move {
-      position: absolute;
-      left: 790px;
-      top: 220px;
-      font-size: 20px;
-      font-weight: 600;
-      color: #4a4748;
-      opacity: 1;
-      transition: transform 0.5s;
-      transform-origin: bottom center;
-      transform: scale(2.3);
+    padding: 80px 0;
+    .img {
+      width: 600px;
+      height: 718px;
+      margin: auto;
+      background: url(https://res.kurly.com/images/event/join/191113/pc/img_benefit2.png)
+        no-repeat;
+      position: relative;
+      .free {
+        position: absolute;
+        left: 370px;
+        top: 140px;
+        font-weight: 600;
+        color: #4a4748;
+        opacity: 0;
+        letter-spacing: -0.04em;
+      }
+      .free-move {
+        position: absolute;
+        left: 370px;
+        top: 140px;
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        color: #4a4748;
+        opacity: 1;
+        transition: transform 0.5s;
+        transform-origin: bottom center;
+        transform: scale(2.3);
+      }
     }
   }
 
   .no3 {
     width: 100%;
     height: 922px;
-    position: relative;
-    background: #ebecee
-      url(https://res.kurly.com/images/event/join/191113/pc/img_benefit3.png)
-      no-repeat 50% 80px;
-    .discount {
-      position: absolute;
-      left: 530px;
-      top: 220px;
-      font-weight: 600;
-      color: #4a4748;
-      opacity: 0.1;
-    }
-    .discount-move {
-      position: absolute;
-      left: 530px;
-      top: 220px;
-      font-size: 20px;
-      font-weight: 600;
-      color: #4a4748;
-      opacity: 1;
-      transition: transform 0.5s;
-      transform-origin: bottom center;
-      transform: scale(2.3);
+    background-color: #ebecee;
+    .img {
+      width: 1060px;
+      height: 922px;
+      margin: 0 auto;
+      position: relative;
+      background: #ebecee
+        url(https://res.kurly.com/images/event/join/191113/pc/img_benefit3.png)
+        no-repeat 50% 80px;
+      .discount {
+        position: absolute;
+        left: 460px;
+        top: 220px;
+        font-weight: 600;
+        color: #4a4748;
+        opacity: 0;
+      }
+      .discount-move {
+        position: absolute;
+        left: 460px;
+        top: 220px;
+        font-size: 20px;
+        font-weight: 600;
+        color: #4a4748;
+        opacity: 1;
+        transition: transform 0.5s;
+        transform-origin: bottom center;
+        transform: scale(2.3);
+      }
     }
   }
 
   .no4 {
+    width: 100%;
     height: 893px;
-    background: #f9f9f9
-      url(https://res.kurly.com/images/event/join/191023/pc/img_benefit4_v2.png)
-      no-repeat 50% 80px;
-    div {
+    background-color: #f9f9f9;
+    .img {
       width: 1050px;
       height: 893px;
+      margin: 0 auto;
+      position: relative;
+      background: url(https://res.kurly.com/images/event/join/191023/pc/img_benefit4_v2.png)
+        no-repeat 50% 80px;
       .contents {
         position: absolute;
-        width: 252px;
-        height: 43px;
-        left: 600px;
-        top: 10px;
-        opacity: 0.1;
+        left: 610px;
+        top: 217px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: #4a4748;
+        opacity: 0;
       }
       .contents-move {
         position: absolute;
-        width: 252px;
-        height: 43px;
-        left: 200px;
-        top: 10px;
+        left: 610px;
+        top: 217px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: #4a4748;
         opacity: 1;
         transition: transform 1s;
         transform-origin: bottom center;
-        transform: scale(2.3);
+        transform: scale(2.8);
       }
     }
   }
@@ -276,9 +346,17 @@
         color: #5f0080;
         letter-spacing: -0.06em;
         margin: 0 15px;
+        cursor: pointer;
+        &:hover {
+          box-shadow: 4px 10px 20px #c5c5c5;
+        }
         .bold {
           font-weight: 500;
           letter-spacing: -0.06em;
+        }
+        .arrow {
+          width: 20px;
+          background-image: url("../../Images/next.png");
         }
       }
     }
@@ -297,6 +375,10 @@
         color: #fff;
         letter-spacing: -0.06em;
         margin: 0 15px;
+        cursor: pointer;
+        &:hover {
+          box-shadow: 4px 10px 20px #c5c5c5;
+        }
         .bold {
           font-weight: 500;
           letter-spacing: -0.06em;

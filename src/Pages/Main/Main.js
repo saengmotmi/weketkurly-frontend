@@ -12,7 +12,7 @@ class Main extends Component {
     };
   }
 
-  componentDidMount = () => {
+  _getApi = () => {
     fetch("https://api.kurly.com/v2/home/recommendation") //API 주소
       .then(res => {
         return res.json();
@@ -22,6 +22,10 @@ class Main extends Component {
           data: res.data["section_list"].filter(item => item !== undefined)
         })
       );
+  };
+
+  componentDidMount = () => {
+    this._getApi();
   };
 
   render() {
@@ -35,8 +39,11 @@ class Main extends Component {
                 section_id={param["section_id"]}
                 section_type={param["section_type"]}
                 title={param["title"]}
+                events={param["events"]}
                 products={param["products"]}
                 categories={param["categories"]}
+                recipes={param["recipes"]}
+                reviews={param["reviews"]}
               />
             ); // 배열
           });
@@ -50,11 +57,14 @@ class Main extends Component {
             <img
               width="80"
               height="120"
-              style={{ paddingBottom: "7px" }}
               src="https://res.kurly.com/pc/service/main/1904/bnr_quick_20190403.png"
               alt=""
             />
-            <div className="side-menu"></div>
+            <div className="side-menu">
+              <span>등급별 혜택</span>
+              <span>레시피</span>
+              <span>베스트 후기</span>
+            </div>
             <div className="side-recent"></div>
           </div>
           <img

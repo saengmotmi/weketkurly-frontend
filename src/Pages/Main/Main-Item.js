@@ -29,7 +29,7 @@ class MainItem extends Component {
             <div className="sale-box">
               <p style={{ fontSize: "13px" }}>SAVE</p>
               <p>
-                <span>{100 - (price / original_price) * 100}</span>%
+                <span>{Math.round(100 - (price / original_price) * 100)}</span>%
               </p>
             </div>
           ) : null}

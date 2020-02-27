@@ -5,6 +5,7 @@
       height: 484px;
       background: url(https://res.kurly.com/images/event/join/200115/pc/img_main.jpg)
         no-repeat 50% 0;
+      position: relative;
       .button {
         width: 300px;
         height: 71px;
@@ -49,7 +50,6 @@
         .free-delivery {
           width: 349px;
           height: 100px;
-          left: 352px;
           background-image: url(https://res.kurly.com/images/event/join/200115/pc/tab_menu.jpg);
           background-position: -348px 0;
           outline: none;
@@ -97,6 +97,24 @@
         flex-wrap: wrap;
         justify-content: space-between;
         list-style: none;
+        position: relative;
+        .arrow {
+          top: 460px;
+          left: 70px;
+          width: 110px;
+          height: 8px;
+          background: url(https://res.kurly.com/images/event/join/191204/pc/ico_arrow.png)
+            no-repeat 50% 0;
+        }
+        .price {
+          left: 165px;
+          top: 457px;
+          width: 61px;
+          height: 21px;
+          z-index: 50;
+          background: url(https://res.kurly.com/images/event/join/191204/pc/ico_price.png)
+            no-repeat 50% 0;
+        }
       }
       .list-txt {
         font-size: 17px;
@@ -112,25 +130,90 @@
   .no2 {
     width: 100%;
     height: 878px;
-    background: #f7f8f9
-      url(https://res.kurly.com/images/event/join/191113/pc/img_benefit2.png)
-      no-repeat 50% 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #f7f8f9;
+    .free {
+      position: absolute;
+      left: 790px;
+      top: 220px;
+      font-weight: 600;
+      color: #4a4748;
+      opacity: 0.1;
+    }
+    .free-move {
+      position: absolute;
+      left: 790px;
+      top: 220px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #4a4748;
+      opacity: 1;
+      transition: transform 0.5s;
+      transform-origin: bottom center;
+      transform: scale(2.3);
+    }
   }
 
   .no3 {
     width: 100%;
     height: 922px;
+    position: relative;
     background: #ebecee
       url(https://res.kurly.com/images/event/join/191113/pc/img_benefit3.png)
       no-repeat 50% 80px;
+    .discount {
+      position: absolute;
+      left: 530px;
+      top: 220px;
+      font-weight: 600;
+      color: #4a4748;
+      opacity: 0.1;
+    }
+    .discount-move {
+      position: absolute;
+      left: 530px;
+      top: 220px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #4a4748;
+      opacity: 1;
+      transition: transform 0.5s;
+      transform-origin: bottom center;
+      transform: scale(2.3);
+    }
   }
 
   .no4 {
-    width: 100%;
     height: 893px;
     background: #f9f9f9
       url(https://res.kurly.com/images/event/join/191023/pc/img_benefit4_v2.png)
       no-repeat 50% 80px;
+    div {
+      width: 1050px;
+      height: 893px;
+      .contents {
+        position: absolute;
+        width: 252px;
+        height: 43px;
+        left: 600px;
+        top: 10px;
+        opacity: 0.1;
+      }
+      .contents-move {
+        position: absolute;
+        width: 252px;
+        height: 43px;
+        left: 200px;
+        top: 10px;
+        opacity: 1;
+        transition: transform 1s;
+        transform-origin: bottom center;
+        transform: scale(2.3);
+      }
+    }
   }
 
   .special {
@@ -141,6 +224,10 @@
   }
 
   .rec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     h4 {
       padding: 80px 0 36px;
       text-align: center;
@@ -149,9 +236,21 @@
       font-size: 46px;
       letter-spacing: -0.07em;
       word-spacing: 0.1em;
+      margin-bottom: 10px;
       .bold {
-        font-weight: 700;
+        font-weight: 600;
         letter-spacing: -0.06em;
+      }
+    }
+    .best-list {
+      width: 1050px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: row;
+      justify-content: space-between;
+      li {
+        list-style: none;
       }
     }
   }
@@ -162,7 +261,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-bottom: 280px;
+    margin: 80px 0 150px;
     .rec {
       button {
         width: 400px;

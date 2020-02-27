@@ -6,8 +6,8 @@ export default class SaleEventList extends Component {
     return (
       <li>
         <img src={img} alt={alt} />
-        <div className="arrow"></div>
-        <div clssName="price">100원</div>
+        <div className="arrow" />
+        <div className="price" />
       </li>
     );
   }

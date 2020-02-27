@@ -1,0 +1,54 @@
+{
+  "best": [
+    {
+      "id": 1,
+      "img": "https://res.kurly.com/images/event/join/180730/pc/img_best_goods1.jpg",
+      "alt": "제주 목초 우유"
+    },
+    {
+      "id": 2,
+      "img": "https://res.kurly.com/images/event/join/190522/pc/img_best_goods2.jpg",
+      "alt": "[마담로익] 크림치즈 4종"
+    },
+    {
+      "id": 3,
+      "img": "https://res.kurly.com/images/event/join/181031/pc/img_best_goods3.jpg",
+      "alt": "[컬리] 동물복지 유정란"
+    },
+    {
+      "id": 4,
+      "img": "https://res.kurly.com/images/event/join/190703/pc/img_best_goods4.jpg",
+      "alt": "[산줄리아노] 바베큐 폭립 2종"
+    },
+    {
+      "id": 5,
+      "img": "https://res.kurly.com/images/event/join/180730/pc/img_best_goods5.jpg",
+      "alt": "일상미소 안심"
+    },
+    {
+      "id": 6,
+      "img": "https://res.kurly.com/images/event/join/190313/pc/img_best_goods6.jpg",
+      "alt": "[샐러드판다] 병 샐러드 7종"
+    },
+    {
+      "id": 7,
+      "img": "https://res.kurly.com/images/event/join/190925/pc/img_best_goods7.jpg",
+      "alt": "[대학두유] 대학약콩 (약콩두유)"
+    },
+    {
+      "id": 8,
+      "img": "https://res.kurly.com/images/event/join/190102/pc/img_best_goods8_v2.jpg",
+      "alt": "[쌜모네키친]오로라 생연어"
+    },
+    {
+      "id": 9,
+      "img": "https://res.kurly.com/images/event/join/190814/pc/img_best_goods9.jpg",
+      "alt": "MY FIRST 처음 만나는 진짜 식빵"
+    },
+    {
+      "id": 10,
+      "img": "https://res.kurly.com/images/event/join/190313/pc/img_best_goods10.jpg",
+      "alt": "미미네 떡볶이"
+    }
+  ]
+}

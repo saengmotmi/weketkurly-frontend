@@ -95,6 +95,8 @@ class Nav extends Component {
       );
     });
 
+    const itemCartCount = this.props.itemCartCount;
+
     return (
       <div className="header">
         <div className="nav-top">

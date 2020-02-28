@@ -17,6 +17,7 @@ class MainItem extends Component {
   render() {
     const {
       key,
+      style,
       no,
       name,
       price,
@@ -27,44 +28,44 @@ class MainItem extends Component {
     } = this.props;
 
     return (
-      <Slick>
-        <Slider>
-          <li className={cN}>
-            <div style={{ position: "relative" }}>
-              {price !== original_price ? (
-                <div className="sale-box">
-                  <p style={{ fontSize: "13px" }}>SAVE</p>
-                  <p>
-                    <span>
-                      {Math.round(100 - (price / original_price) * 100)}
-                    </span>
-                    %
-                  </p>
-                </div>
-              ) : null}
-              <img src={thumbnail_image_url} alt="goods" />
-            </div>
-            <div style={{ wordBreak: "break-all" }}>
-              <p>{name}</p>
-              <p style={{ fontWeight: "700", paddingTop: "6px" }}>
-                {this.numberWithCommas(price)}원
+      <li style={style} className={cN}>
+        <div
+          style={{
+            position: "relative",
+            overflow: "hidden",
+            width: "249px",
+            height: "320px"
+          }}
+        >
+          {price !== original_price ? (
+            <div className="sale-box">
+              <p style={{ fontSize: "13px" }}>SAVE</p>
+              <p>
+                <span>{Math.round(100 - (price / original_price) * 100)}</span>%
               </p>
-              {price === original_price ? null : (
-                <p
-                  style={{
-                    paddingTop: "4px",
-                    textDecoration: "line-through",
-                    color: "#ccc",
-                    fontSize: "14px"
-                  }}
-                >
-                  {this.numberWithCommas(original_price)}원
-                </p>
-              )}
             </div>
-          </li>
-        </Slider>
-      </Slick>
+          ) : null}
+          <img className="zoom-in" src={thumbnail_image_url} alt="goods" />
+        </div>
+        <div style={{ wordBreak: "break-all" }}>
+          <p>{name}</p>
+          <p style={{ fontWeight: "700", paddingTop: "6px" }}>
+            {this.numberWithCommas(price)}원
+          </p>
+          {price === original_price ? null : (
+            <p
+              style={{
+                paddingTop: "4px",
+                textDecoration: "line-through",
+                color: "#ccc",
+                fontSize: "14px"
+              }}
+            >
+              {this.numberWithCommas(original_price)}원
+            </p>
+          )}
+        </div>
+      </li>
     );
   }
 }

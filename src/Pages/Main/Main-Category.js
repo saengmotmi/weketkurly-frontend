@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import MainItem from "./Main-Item";
 
 class MainCategory extends Component {
@@ -12,7 +12,8 @@ class MainCategory extends Component {
         backgroundColor: "#5f0080",
         color: "#fff"
       },
-      data: []
+      data: [],
+      moveX: "0px"
     };
   }
 
@@ -36,6 +37,32 @@ class MainCategory extends Component {
           data: res.data["products"].filter(item => item !== undefined)
         })
       );
+  };
+
+  _moveLeft = () => {
+    this.setState(
+      {
+        moveX: parseInt(this.state.moveX) - 175 + "px"
+      },
+      () => {
+        if (this.state.moveX === "-2625px") {
+          this.setState({ moveX: 0 });
+        }
+      }
+    );
+  };
+
+  _moveRight = () => {
+    this.setState(
+      {
+        moveX: parseInt(this.state.moveX) + 175 + "px"
+      },
+      () => {
+        if (this.state.moveX === "+2625px") {
+          this.setState({ moveX: 0 });
+        }
+      }
+    );
   };
 
   componentDidMount() {
@@ -121,11 +148,15 @@ class MainCategory extends Component {
                       textDecoration: "none",
                       color: "#333",
                       fontSize: "16px",
-                      textAlign: "center"
+                      textAlign: "center",
+                      overflow: "hidden",
+                      display: "block",
+                      width: "249px",
+                      height: "320px"
                     }}
                   >
                     <img
-                      className="recipe-img"
+                      className="recipe-img zoom-in"
                       key={idx}
                       src={param["image_url"]}
                       alt="review"
@@ -145,8 +176,13 @@ class MainCategory extends Component {
             <div style={{ textAlign: "center" }} className="product-item">
               <ul>
                 <li>
-                  <a href={param["landing_url"]}>
-                    <img src={param["image_url"]} key={idx} alt="" />
+                  <a style={{ overflow: "hidden" }} href={param["landing_url"]}>
+                    <img
+                      className="zoom-in"
+                      src={param["image_url"]}
+                      key={idx}
+                      alt=""
+                    />
                   </a>
                   <p
                     style={{
@@ -180,7 +216,15 @@ class MainCategory extends Component {
     const instaReviewList = reviews
       ? reviews.map((param, idx) => {
           return (
-            <a href={param["landing_url"]}>
+            <a
+              style={{
+                transform: `translateX(${this.state.moveX})`,
+                display: "block",
+                width: "249px",
+                height: "320px"
+              }}
+              href={param["landing_url"]}
+            >
               <img
                 className="insta-img"
                 key={idx}
@@ -237,17 +281,44 @@ class MainCategory extends Component {
         ) : null}
 
         {title === "이벤트 소식" ? (
-          <div style={{ justifyContent: "center" }} className="goods-item">
+          <div
+            style={{ justifyContent: "center", overflow: "hidden" }}
+            className="goods-item"
+          >
             {eventList}
           </div>
         ) : null}
 
         {title === "컬리의 레시피" ? (
-          <ul className="goods-item">{recipeList}</ul>
+          <div style={{ overflow: "hidden" }} className="goods-item">
+            {recipeList}
+          </div>
         ) : null}
 
         {title === "인스타그램 고객 후기" ? (
-          <div className="goods-item">{instaReviewList}</div>
+          <Fragment>
+            :hover
+            <ul className="goods-item">{instaReviewList}</ul>
+            <button onClick={this._moveLeft}>-175px</button>
+            <button onClick={this._moveRight}>+175px</button>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+                fontSize: "16px",
+                lineHeight: "29px"
+              }}
+            >
+              <p style={{ color: "#999", display: "block" }}>
+                더 많은 고객 후기가 궁금하다면?
+              </p>
+              <p style={{ fontWeight: "700", display: "block" }}>
+                @marketkuly_regram
+              </p>
+            </div>
+          </Fragment>
         ) : null}
 
         <div className="goods-item">{productsArr}</div>

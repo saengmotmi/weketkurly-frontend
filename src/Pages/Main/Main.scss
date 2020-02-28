@@ -120,4 +120,11 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
+
+  .zoom-in {
+    &:hover {
+      transform: scale(1.02);
+      transition: all 0.3s ease-in-out;
+    }
+  }
 }

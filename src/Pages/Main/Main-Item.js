@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import Slick from "react-slick";
+import Slider from "react-slick/lib/slider";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 class MainItem extends Component {
   constructor(props) {
@@ -23,37 +27,44 @@ class MainItem extends Component {
     } = this.props;
 
     return (
-      <li className={cN}>
-        <div style={{ position: "relative" }}>
-          {price !== original_price ? (
-            <div className="sale-box">
-              <p style={{ fontSize: "13px" }}>SAVE</p>
-              <p>
-                <span>{Math.round(100 - (price / original_price) * 100)}</span>%
-              </p>
+      <Slick>
+        <Slider>
+          <li className={cN}>
+            <div style={{ position: "relative" }}>
+              {price !== original_price ? (
+                <div className="sale-box">
+                  <p style={{ fontSize: "13px" }}>SAVE</p>
+                  <p>
+                    <span>
+                      {Math.round(100 - (price / original_price) * 100)}
+                    </span>
+                    %
+                  </p>
+                </div>
+              ) : null}
+              <img src={thumbnail_image_url} alt="goods" />
             </div>
-          ) : null}
-          <img src={thumbnail_image_url} alt="goods" />
-        </div>
-        <div style={{ wordBreak: "break-all" }}>
-          <p>{name}</p>
-          <p style={{ fontWeight: "700", paddingTop: "6px" }}>
-            {this.numberWithCommas(price)}원
-          </p>
-          {price === original_price ? null : (
-            <p
-              style={{
-                paddingTop: "4px",
-                textDecoration: "line-through",
-                color: "#ccc",
-                fontSize: "14px"
-              }}
-            >
-              {this.numberWithCommas(original_price)}원
-            </p>
-          )}
-        </div>
-      </li>
+            <div style={{ wordBreak: "break-all" }}>
+              <p>{name}</p>
+              <p style={{ fontWeight: "700", paddingTop: "6px" }}>
+                {this.numberWithCommas(price)}원
+              </p>
+              {price === original_price ? null : (
+                <p
+                  style={{
+                    paddingTop: "4px",
+                    textDecoration: "line-through",
+                    color: "#ccc",
+                    fontSize: "14px"
+                  }}
+                >
+                  {this.numberWithCommas(original_price)}원
+                </p>
+              )}
+            </div>
+          </li>
+        </Slider>
+      </Slick>
     );
   }
 }

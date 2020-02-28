@@ -27,9 +27,10 @@ class Nav extends Component {
         "대량주문 문의",
         "상품 제안",
         "에코포장 피드백"
-      ]
+      ],
       // dataCategoryList1: [],
-      // dataCategoryList2: []
+      // dataCategoryList2: [],
+      itemCartCount: 0
     };
   }
 
@@ -105,7 +106,7 @@ class Nav extends Component {
           <div>
             <ul>
               <li
-                className="profile-listdown1"
+                className="profile-listdown"
                 onMouseOver={() => this._visible("profile-listdown1")}
                 onMouseOut={() => this._visible("profile-listdown1")}
               >
@@ -131,7 +132,7 @@ class Nav extends Component {
                 </ul>
               </li>
               <li
-                className="profile-listdown2"
+                className="profile-listdown"
                 onMouseOver={() => this._visible("profile-listdown2")}
                 onMouseOut={() => this._visible("profile-listdown2")}
               >

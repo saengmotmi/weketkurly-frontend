@@ -4,7 +4,8 @@ import JoinComplete from "./Pages/JoinComplete/JoinComplete";
 import Main from "./Pages/Main/Main";
 import Nav from "./Components/Nav";
 import Footer from "./Components/Footer";
-import ProductDetail from "./Pages/ProductDetail/ProductDetail.js";
+import ProductDetail from "./Pages/ProductDetail/ProductDetail";
+import EventMain from "./Pages/EventMain/EventMain";
 import Join from "./Pages/Join/Join";
 import Login from "./Pages/Login/Login";
 
@@ -17,7 +18,8 @@ class Routes extends React.Component {
           <Route exact path="/JoinComplete" component={JoinComplete} />
           <Route exact path="/footer" component={Footer} />
           <Route exact path="/nav" component={Nav} />
-          <Route exact path="/product-detail" component={ProductDetail} />
+          <Route exact path="/detail" component={ProductDetail} />
+          <Route exact path="/eventmain" component={EventMain} />
           <Route exact path="/Join" component={Join} />
           <Route exact path="/Login" component={Login} />
         </Switch>

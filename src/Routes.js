@@ -7,6 +7,7 @@ import Footer from "./Components/Footer";
 import ProductDetail from "./Pages/ProductDetail/ProductDetail.js";
 import Join from "./Pages/Join/Join";
 import Login from "./Pages/Login/Login";
+import ItemCart from "./Pages/ItemCart/ItemCart";
 
 class Routes extends React.Component {
   render() {
@@ -20,6 +21,7 @@ class Routes extends React.Component {
           <Route exact path="/product-detail" component={ProductDetail} />
           <Route exact path="/Join" component={Join} />
           <Route exact path="/Login" component={Login} />
+          <Route exact path="/itemcart" component={ItemCart} />
         </Switch>
       </Router>
     );

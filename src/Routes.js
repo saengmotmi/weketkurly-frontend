@@ -1,12 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import JoinComplete from "./Pages/JoinComplete/JoinComplete";
 import Main from "./Pages/Main/Main";
 import Nav from "./Components/Nav";
 import Footer from "./Components/Footer";
-import ProductDetail from "./Pages/ProductDetail/ProductDetail.js";
+import ProductDetail from "./Pages/ProductDetail/ProductDetail";
+import EventMain from "./Pages/EventMain/EventMain";
 import Join from "./Pages/Join/Join";
+import Login from "./Pages/Login/Login";
 import Order from "./Pages/Order/Order";
-import 
 
 class Routes extends React.Component {
   render() {
@@ -14,11 +16,14 @@ class Routes extends React.Component {
       <Router>
         <Switch>
           <Route exact path="/" component={Main} />
+          <Route exact path="/JoinComplete" component={JoinComplete} />
           <Route exact path="/footer" component={Footer} />
           <Route exact path="/nav" component={Nav} />
-          <Route exact path="/product-detail" component={ProductDetail} />
+          <Route exact path="/detail" component={ProductDetail} />
+          <Route exact path="/eventmain" component={EventMain} />
           <Route exact path="/Join" component={Join} />
           <Route exact path="/order" component={Order} />
+          <Route exact path="/Login" component={Login} />
         </Switch>
       </Router>
     );

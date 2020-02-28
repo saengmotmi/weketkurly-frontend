@@ -6,9 +6,30 @@ class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visibleProfile: false,
+      visibleProfile1: false,
+      visibleProfile2: false,
       visibleCategory: false,
-      inputValue: "서울 맛집 로드 week.2"
+      inputValue: "서울 맛집 로드 week.2",
+      data: [],
+      dataProfileList1: [
+        "주문 내역",
+        "늘 사는 것",
+        "상품 후기",
+        "적립금",
+        "쿠폰",
+        "개인 정보 수정",
+        "로그아웃"
+      ],
+      dataProfileList2: [
+        "공지사항",
+        "자주하는 질문",
+        "1:1 문의",
+        "대량주문 문의",
+        "상품 제안",
+        "에코포장 피드백"
+      ]
+      // dataCategoryList1: [],
+      // dataCategoryList2: []
     };
   }
 
@@ -20,18 +41,59 @@ class Nav extends Component {
   };
 
   _visible = name => {
-    if (name === "profile-listdown") {
+    if (name === "profile-listdown1") {
       this.setState({
-        visibleProfile: !this.state.visibleProfile
+        visibleProfile1: !this.state.visibleProfile1,
+        dataCategoryList1: this.state.data
+      });
+    } else if (name === "profile-listdown2") {
+      this.setState({
+        visibleProfile2: !this.state.visibleProfile2,
+        dataCategoryList2: this.state.data
       });
     } else if (name === "category-listdown") {
       this.setState({
-        visibleCategory: !this.state.visibleCategory
+        visibleCategory: !this.state.visibleCategory,
+        liProfileListdown: []
       });
     }
   };
 
+  _getApi = url => {
+    fetch(`https://api.kurly.com/v2/${url}`) //API 주소
+      .then(res => {
+        return res.json();
+      })
+      .then(
+        res =>
+          this.setState({
+            data: res.data
+          }),
+        console.log("data", this.state.data)
+      );
+  };
+
+  componentDidMount = () => {
+    this._getApi("categories");
+  };
+
   render() {
+    const liProfileListdown1 = this.state.dataProfileList1.map((param, idx) => {
+      return (
+        <li key={idx}>
+          <p>{param}</p>
+        </li>
+      );
+    });
+
+    const liProfileListdown2 = this.state.dataProfileList2.map((param, idx) => {
+      return (
+        <li key={idx}>
+          <p>{param}</p>
+        </li>
+      );
+    });
+
     return (
       <div className="header">
         <div className="nav-top">
@@ -43,9 +105,9 @@ class Nav extends Component {
           <div>
             <ul>
               <li
-                className="profile-listdown"
-                onMouseOver={() => this._visible("profile-listdown")}
-                onMouseOut={() => this._visible("profile-listdown")}
+                className="profile-listdown1"
+                onMouseOver={() => this._visible("profile-listdown1")}
+                onMouseOut={() => this._visible("profile-listdown1")}
               >
                 <span
                   style={{
@@ -62,34 +124,26 @@ class Nav extends Component {
                 <ul
                   className="nav-prof-list"
                   style={{
-                    display: this.state.visibleProfile ? "block" : "none"
+                    display: this.state.visibleProfile1 ? "block" : "none"
                   }}
                 >
-                  <li>
-                    <p>주문 내역</p>
-                  </li>
-                  <li>
-                    <p>늘 사는 것</p>
-                  </li>
-                  <li>
-                    <p>상품후기</p>
-                  </li>
-                  <li>
-                    <p>적립금</p>
-                  </li>
-                  <li>
-                    <p>쿠폰</p>
-                  </li>
-                  <li>
-                    <p>개인 정보 수정</p>
-                  </li>
-                  <li>
-                    <p>로그아웃</p>
-                  </li>
+                  {liProfileListdown1}
                 </ul>
               </li>
-              <li>
+              <li
+                className="profile-listdown2"
+                onMouseOver={() => this._visible("profile-listdown2")}
+                onMouseOut={() => this._visible("profile-listdown2")}
+              >
                 <span>고객센터</span>
+                <ul
+                  className="nav-prof-list"
+                  style={{
+                    display: this.state.visibleProfile2 ? "block" : "none"
+                  }}
+                >
+                  {liProfileListdown2}
+                </ul>
               </li>
               <li>
                 <span>배송지역 검색</span>

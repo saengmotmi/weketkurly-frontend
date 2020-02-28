@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import "./Order.scss";
 
 export default class Order extends Component {
   render() {
     return (
-      <div className="order">
+      <div className="Order">
         <div>
           <div>주문서</div>
           <div>주문하실 상품명 및 수량을 정확하게 확인해 주세요.</div>
@@ -149,9 +150,9 @@ export default class Order extends Component {
             {/* -----------------
                 결제수단 
         -------------------*/}
-            <div className="product-info">
-              <div>쿠폰 / 적립금</div>
-              <div className="user-info-table">
+            <div className="product-payment">
+              <div>결제 수단</div>
+              <div className="payment-table">
                 <table>
                   <tbody>
                     <tr>
@@ -169,7 +170,48 @@ export default class Order extends Component {
                       <td>
                         <div className="card-select">
                           <div className="card">
-                            <div></div>
+                            <div>
+                              <select className="card-list">
+                                <option value="1">카드를 선택해주세요</option>
+                                <option value="2">현대 (무이자)</option>
+                                <option value="3">신한 (무이자)</option>
+                                <option value="4">비씨 (무이자)</option>
+                                <option value="5">KB국민 (무이자)</option>
+                                <option value="6">삼성 (무이자)</option>
+                                <option value="7">롯데 (무이자)</option>
+                                <option value="8">하나(외한) (무이자)</option>
+                                <option value="9">NH채움 (무이자)</option>
+                                <option value="10">우리 (무이자)</option>
+                                <option value="11">수협 (무이자)</option>
+                                <option value="12">씨티 (무이자)</option>
+                                <option value="13">광주 (무이자)</option>
+                                <option value="14">전북 (무이자)</option>
+                                <option value="15">제주</option>
+                                <option value="16">신협체크</option>
+                                <option value="17">MG새마을체크</option>
+                                <option value="18">저축은행체크</option>
+                                <option value="19">우체국카드</option>
+                                <option value="20">KDB산업은행</option>
+                                <option value="21">카카오뱅크</option>
+                              </select>
+                              <select className="card-install-list">
+                                <option value="1">
+                                  할부기간을 선택해주세요
+                                </option>
+                                <option value="2">일시불</option>
+                                <option value="3">2개월 (무이자)</option>
+                                <option value="4">3개월 (무이자)</option>
+                                <option value="5">4개월 (무이자)</option>
+                                <option value="6">5개월 (무이자)</option>
+                                <option value="7">6개월 (무이자)</option>
+                                <option value="8">7개월</option>
+                                <option value="9">8개월</option>
+                                <option value="10">9개월</option>
+                                <option value="11">10개월</option>
+                                <option value="12">11개월</option>
+                                <option value="13">12개월</option>
+                              </select>
+                            </div>
                           </div>
                           <div>
                             *무이자할부 유의사항
@@ -183,27 +225,71 @@ export default class Order extends Component {
                     </tr>
                     <tr>
                       <th>에스크로결제</th>
-                      <td></td>
+                      <td>
+                        <label>
+                          <input type="radio">계좌이체</input>
+                        </label>
+                      </td>
                     </tr>
                     <tr>
                       <th>스마일페이 결제</th>
-                      <td></td>
+                      <td>
+                        <label>
+                          <input type="radio" />
+                          <img
+                            src="//res.kurly.com/pc/service/order/1712/ico_smilepay_v2.png"
+                            alt="스마일페이"
+                          />
+                        </label>
+                      </td>
                     </tr>
                     <tr>
                       <th>Paynow 결제</th>
-                      <td></td>
+                      <td>
+                        <label>
+                          <input type="radio" />
+                          <img
+                            src="https://res.kurly.com/pc/service/order/1801/logo_paynow.png"
+                            alt="페이나우"
+                          />
+                        </label>
+                      </td>
                     </tr>
                     <tr>
                       <th>PAYCO 결제</th>
-                      <td></td>
+                      <td>
+                        <label>
+                          <input type="radio" />
+                          <img
+                            src="https://static-bill.nhnent.com/payco/checkout/img/v2/btn_checkout2.png"
+                            alt="페이코"
+                          />
+                        </label>
+                      </td>
                     </tr>
                     <tr>
                       <th>네이버페이 결제</th>
-                      <td></td>
+                      <td>
+                        <label>
+                          <input type="radio" />
+                          <img
+                            src="//res.kurly.com/pc/service/order/1710/ico_naverpay_v3.png"
+                            alt="네이버 페이"
+                          />
+                        </label>
+                      </td>
                     </tr>
                     <tr>
                       <th>토스 결제</th>
-                      <td></td>
+                      <td>
+                        <label>
+                          <input type="radio" />
+                          <img
+                            src="http://res.kurly.com/pc/service/order/1912/toss-logo-signature.svg"
+                            alt="토스"
+                          />
+                        </label>
+                      </td>
                     </tr>
                   </tbody>
                 </table>

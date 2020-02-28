@@ -8,6 +8,7 @@ import ProductDetail from "./Pages/ProductDetail/ProductDetail";
 import EventMain from "./Pages/EventMain/EventMain";
 import Join from "./Pages/Join/Join";
 import Login from "./Pages/Login/Login";
+import Order from "./Pages/Order/Order";
 
 class Routes extends React.Component {
   render() {
@@ -21,6 +22,7 @@ class Routes extends React.Component {
           <Route exact path="/detail" component={ProductDetail} />
           <Route exact path="/eventmain" component={EventMain} />
           <Route exact path="/Join" component={Join} />
+          <Route exact path="/order" component={Order} />
           <Route exact path="/Login" component={Login} />
         </Switch>
       </Router>

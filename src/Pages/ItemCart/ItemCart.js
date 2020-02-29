@@ -5,6 +5,7 @@ class ItemCart extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      test: 0,
       itemCount: 0,
       data: {
         products: [
@@ -63,26 +64,67 @@ class ItemCart extends Component {
         product_changed_message: "",
         product_changed_message_type: 0,
         free_shipping_products: ["3056", "3057"],
-        0: "3056",
-        1: "3057",
         is_member_dc: false
       }
     };
   }
 
-  render() {
-    const itemProductArr = this.state.data.products.map((param, idx) => {
-      return (
-        <div key={idx}>
-          <input type="checkbox" />
-          {param["name"]}
-        </div>
-      );
-    });
+  numberWithCommas = x => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
-    console.log(this.state.data.products[1]);
+  componentDidMount() {}
+
+  render() {
+    const itemProductArr =
+      this.state.data.products !== 0 ? (
+        this.state.data.products.map((param, idx) => {
+          return (
+            <tr
+              key={idx}
+              className="item-table-row"
+              style={{ borderBottom: "2px solid #ddd" }}
+            >
+              <td>
+                <input type="checkbox" />
+                <img src={param["thumbnail_image_url"]} alt="" />
+              </td>
+              <td>
+                <p className="item-table-row-title">{param["name"]}</p>
+                <p className="item-table-row-price">
+                  {this.numberWithCommas(param["price"])}원
+                </p>
+              </td>
+              <td className="item-table-row-count">
+                <p>{param["ea"]}</p>
+              </td>
+            </tr>
+          );
+        })
+      ) : (
+        <tr>
+          <td colspan="4">장바구니에 담긴 상품이 없습니다</td>
+        </tr>
+      );
+
     return (
-      <div className="item-cart">
+      <div className="item">
+        <button
+          onClick={() => {
+            for (let i = 0; i < 10; i++) {
+              this.setState(
+                {
+                  [i % 5]: this.state[i % 5] ? this.state[i % 5] + 1 : 1
+                },
+                () => {
+                  console.log(i, i % 5, this.state);
+                }
+              );
+            }
+          }}
+        >
+          test
+        </button>
         <div style={{ padding: "20px 40px 10px" }}></div>
         <div className="item-title">
           <p id="title">장바구니</p>
@@ -91,17 +133,25 @@ class ItemCart extends Component {
           </p>
         </div>
         <div className="item-content">
-          <div className="item-table">
-            <div className="item-table-header">
-              <input type="checkbox" />
-              <span>
-                전체선택({`${this.state.itemCount}/${this.state.itemCount}`})
-              </span>
-              <span>상품 정보</span>
-              <span>수량</span>
-              <span>상품금액</span>
-            </div>
-            <div className="item-wrapper">{itemProductArr}</div>
+          <table className="item-table">
+            <tr className="item-table-header">
+              <td>
+                <input type="checkbox" />
+                <span>
+                  전체선택({`${this.state.itemCount}/${this.state.itemCount}`})
+                </span>
+              </td>
+              <td>
+                <span>상품 정보</span>
+              </td>
+              <td>
+                <span>수량</span>
+              </td>
+              <td>
+                <span>상품금액</span>
+              </td>
+            </tr>
+            {itemProductArr}
             <div className="item-wrapper-btn">
               <input type="checkbox" />
               <span>
@@ -110,7 +160,7 @@ class ItemCart extends Component {
               <button>선택 삭제</button>
               <button>품절 상품 삭제</button>
             </div>
-          </div>
+          </table>
           <div className="item-price-result">
             <div>
               <span>상품금액</span>

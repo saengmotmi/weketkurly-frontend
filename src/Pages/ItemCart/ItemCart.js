@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import "./ItemCart.scss";
+
 class ItemCart extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      itemCount: 0,
       data: {
         products: [
           {
@@ -70,26 +72,41 @@ class ItemCart extends Component {
 
   render() {
     const itemProductArr = this.state.data.products.map((param, idx) => {
-      return <div key={idx}>{param["name"]}</div>;
+      return (
+        <div key={idx}>
+          <input type="checkbox" />
+          {param["name"]}
+        </div>
+      );
     });
 
     console.log(this.state.data.products[1]);
     return (
       <div className="item-cart">
+        <div style={{ padding: "20px 40px 10px" }}></div>
         <div className="item-title">
-          <p>장바구니</p>
-          <p>주문하실 상품명 및 수량을 정확하게 확인해 주세요.</p>
+          <p id="title">장바구니</p>
+          <p id="title-desc">
+            주문하실 상품명 및 수량을 정확하게 확인해 주세요.
+          </p>
         </div>
         <div className="item-content">
           <div className="item-table">
             <div className="item-table-header">
-              <span>전체선택</span>
+              <input type="checkbox" />
+              <span>
+                전체선택({`${this.state.itemCount}/${this.state.itemCount}`})
+              </span>
               <span>상품 정보</span>
               <span>수량</span>
               <span>상품금액</span>
             </div>
             <div className="item-wrapper">{itemProductArr}</div>
             <div className="item-wrapper-btn">
+              <input type="checkbox" />
+              <span>
+                전체선택({`${this.state.itemCount}/${this.state.itemCount}`})
+              </span>
               <button>선택 삭제</button>
               <button>품절 상품 삭제</button>
             </div>
@@ -109,11 +126,13 @@ class ItemCart extends Component {
             </div>
           </div>
           <button>주문하기</button>
-          <p>
-            ‘입금확인’ 상태일 때는 주문내역 상세 페이지에서 직접 주문취소가
-            가능합니다.
-          </p>
-          <p>‘입금확인’ 이후 상태에는 고객행복센터로 문의해주세요.</p>
+          <div className="item-bottom-desc">
+            <p>
+              ‘입금확인’ 상태일 때는 주문내역 상세 페이지에서 직접 주문취소가
+              가능합니다.
+            </p>
+            <p>‘입금확인’ 이후 상태에는 고객행복센터로 문의해주세요.</p>
+          </div>
         </div>
       </div>
     );

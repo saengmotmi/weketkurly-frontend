@@ -3,6 +3,24 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  width: 1050px;
+
+  .item-title {
+    height: 152px;
+
+    #title {
+      color: #333;
+      font-weight: 700;
+      letter-spacing: -0.6px;
+      font-size: 40px;
+      padding: 10px 0 14px 0;
+
+      &-desc {
+        color: #999;
+        font-size: 16px;
+      }
+    }
+  }
 
   .item-table {
     border: 1px solid black;
@@ -11,5 +29,17 @@
   .item-price-result {
     display: flex;
     justify-content: space-evenly;
+    width: 100%;
+    padding: 30px 0 80px 20px;
+  }
+
+  .item-bottom-desc {
+    background-color: #fafafa;
+    margin-top: 50px;
+    display: block;
+    p {
+      color: #777;
+      font-size: 12px;
+    }
   }
 }

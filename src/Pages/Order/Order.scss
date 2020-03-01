@@ -1,19 +1,247 @@
 .Order {
+  width: 1050px;
+  margin: 0 auto;
+  font-size: 14px;
+  text-align: left;
+  letter-spacing: -0.3px;
+  background-color: #fff;
+
+  h2 {
+    margin-top: 60px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #808080;
+  }
+  table {
+    width: 100%;
+    margin: 20px 0 20px;
+    border-top: 2px solid #512772;
+    border-bottom: 1px solid #ddd;
+    th {
+      width: 190px;
+      padding: 22px 0 0 20px;
+      font-weight: 500;
+      text-align: left;
+      color: #202020;
+    }
+    td {
+      padding: 16px 0 0 0;
+      text-align: left;
+    }
+  }
+  input {
+    box-sizing: border-box;
+    border: 0;
+    height: 33px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+    color: #000;
+  }
+
+  .title {
+    padding: 30px 0 80px;
+    text-align: center;
+    h1 {
+      font-size: 36px;
+      font-weight: 500;
+      color: #333;
+    }
+    h3 {
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: -0.023em;
+      margin-top: 10px;
+      color: #999;
+    }
+  }
+
+  // 상품 정보
+  .product-info {
+    margin-top: 50px;
+    .product-info-table {
+      padding: 20px 0;
+      text-align: center;
+      .name {
+        padding-bottom: 14px;
+      }
+      img {
+        width: 14px;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  // 주문자 정보
+  .user-info {
+    .phone {
+      input {
+        width: 50px;
+      }
+      span {
+        width: 8px;
+        height: 1px;
+        border-top: 1px solid #d8d8d8;
+      }
+    }
+    .email {
+      width: 360px;
+      letter-spacing: 0;
+      p {
+        font-size: 12px;
+        line-height: 21px;
+        padding: 13px 0 19px;
+        color: #514859;
+        .color {
+          font-weight: 500;
+          color: #000;
+        }
+      }
+    }
+  }
+
+  // 배송 정보
+  .delivery-info {
+    h2 {
+      display: inline-block;
+    }
+    input {
+      border: 1px solid #ddd;
+      font-size: 12px;
+    }
+    .delivery-notice {
+      padding: 8px 0 0 18px;
+      font-weight: 500;
+      color: #000;
+      .red {
+        font-weight: 500;
+        color: #f00;
+      }
+    }
+    .field {
+      th,
+      td {
+        border-bottom: 2px solid #512772;
+        padding: 23px 0 25px;
+      }
+    }
+    .address {
+      input {
+        width: 600px;
+        margin-bottom: 8px;
+      }
+      span {
+        font-size: 12px;
+      }
+      .road {
+        font-size: 12px;
+        color: #777;
+      }
+    }
+    .deli {
+      .txt {
+        font-weight: 600;
+      }
+      p {
+        margin-top: 7px;
+        font-size: 12px;
+      }
+    }
+    .receive-name {
+      padding-top: 14px;
+    }
+    .receive-phone {
+      .first-number {
+        width: 43px;
+      }
+      .second-number {
+        width: 50px;
+      }
+      .hyphen {
+        width: 8px;
+        height: 1px;
+        background-color: #d8d8d8;
+      }
+    }
+    .memo {
+      textarea {
+        width: 600px;
+        height: 73px;
+        border: 1px solid #ddd;
+        padding: 16px 0 0 0;
+      }
+    }
+    .gate {
+      width: 100%;
+      border-bottom: 1px solid #ddd;
+    }
+    .notice {
+      padding: 30px;
+      background: #fafafa;
+      border: 1px solid #e5e5e5;
+      .notice-ic {
+        width: 22px;
+        height: 19px;
+        display: inline-block;
+        background: url(https://res.kurly.com/images/common/old/common/ico_speaker.gif)
+          no-repeat;
+      }
+      .red {
+        color: #ff0000;
+      }
+    }
+    .bnr-order {
+      width: 100%;
+      padding-top: 20px;
+    }
+  }
+
+  // 쿠폰/적립금
+
   // 결제수단
   .product-payment {
     .payment-table {
       table-layout: fixed;
-      border-top: 2px solid #6a3664;
-      line-height: 180%;
       width: 775px;
       box-sizing: border-box;
+      border-bottom: 0;
       tr {
         th {
           width: 190px;
           padding: 22px 0 0 20px;
           font-size: 14px;
-          font-weight: 700;
+          font-weight: 600;
+          text-align: left;
           color: #202020;
+          letter-spacing: -0.3px;
+        }
+        td {
+          font-size: 14px;
+          font-weight: 400;
+          .label-radio {
+            margin-right: 50px;
+            input {
+              margin: 0 5px 0 0;
+              line-height: 18px;
+            }
+            img {
+              height: 18px;
+              padding-top: 5px;
+            }
+          }
+          .list {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            select {
+              width: 190px;
+              height: 34px;
+              border: 1px solid #000;
+            }
+          }
+          .phone {
+            margin-left: 50px;
+          }
         }
       }
     }

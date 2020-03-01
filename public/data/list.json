@@ -1,0 +1,145 @@
+{
+  "list": [
+    {
+      "id": 1,
+      "cardName": "현대",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": "현대M 포인트 사용 신청",
+      "cardDescription": "무이자할부 유의사항↵은행계열/체크/기프트/선불/법인/개인사업자 기업카드는 제외"
+    },
+    {
+      "id": 2,
+      "cardName": "신한",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": "무이자할부 유의사항↵은행계열/체크/기프트/선불/법인/개인사업자 기업카드는 제외"
+    },
+    {
+      "id": 3,
+      "cardName": "비씨",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": "무이자할부 유의사항↵은행계열/체크/기프트/선불/법인/개인사업자 기업카드는 제외"
+    },
+    {
+      "id": 4,
+      "cardName": "KB국민",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": "무이자할부 유의사항↵은행계열/체크/기프트/선불/법인/개인사업자 기업카드는 제외"
+    },
+    {
+      "id": 5,
+      "cardName": "삼성",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": "무이자할부 유의사항↵은행계열/체크/기프트/선불/법인/개인사업자 기업카드는 제외"
+    },
+    {
+      "id": 6,
+
+      "cardName": "롯데",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": null
+    },
+    {
+      "id": 7,
+      "cardName": "하나(외환)",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": "무이자할부 유의사항↵은행계열/체크/기프트/선불/법인/개인사업자 기업카드는 제외"
+    },
+    {
+      "id": 8,
+      "cardName": "NH채움",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": "무이자할부 유의사항↵은행계열/체크/기프트/선불/법인/개인사업자 기업카드는 제외"
+    },
+    {
+      "id": 9,
+      "cardName": "우리",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": "무이자할부 유의사항↵은행계열/체크/기프트/선불/법인/개인사업자 기업카드는 제외"
+    },
+    {
+      "id": 10,
+      "cardName": "수협",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": null
+    },
+    {
+      "id": 11,
+      "cardName": "씨티",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": "무이자할부 유의사항↵은행계열/체크/기프트/선불/법인/개인사업자 기업카드는 제외"
+    },
+    {
+      "id": 12,
+      "cardName": "광주",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": null
+    },
+    {
+      "id": 13,
+      "cardName": "전북",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": "무이자할부 유의사항↵은행계열/체크/기프트/선불/법인/개인사업자 기업카드는 제외"
+    },
+    {
+      "id": 14,
+      "cardName": "제주",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": null
+    },
+    {
+      "id": 15,
+      "cardName": "신협체크",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": null
+    },
+    {
+      "id": 16,
+      "cardName": "MG새마을체크",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": null
+    },
+    {
+      "id": 17,
+      "cardName": "저축은행체크",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": null
+    },
+    {
+      "id": 18,
+      "cardName": "우체국카드",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": null
+    },
+    {
+      "id": 19,
+      "cardName": "KDB산업은행",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": null
+    },
+    {
+      "id": 20,
+      "cardName": "카카오뱅크",
+      "cardInstallmentMonth": ["7", "8", "9", "10", "11", "12"],
+      "cardPoint": null,
+      "cardDescription": null
+    }
+  ]
+}

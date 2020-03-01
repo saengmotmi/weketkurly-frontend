@@ -4,10 +4,12 @@ import DetailSlide from "../../Components/DetailSlide";
 import Count from "../../Components/Count";
 import TotalPrice from "../../Components/TotalPrice";
 import CartBtn from "../../Components/CartBtn";
+import RelatedProductSlide from "../../Components/RelatedProductSlide";
 import WhyKurlyTable from "../../Components/WhyKurlyTable";
 import WhyKurly from "../../Components/WhyKurly";
 import Table from "../../Components/Table";
 import PageBtn from "../../Components/PageBtn";
+import PopUp from "../../Components/PopUp";
 import "./ProductDetail.scss";
 
 export default class ProductDetail extends Component {
@@ -17,6 +19,8 @@ export default class ProductDetail extends Component {
       number: 1,
       price: 37000,
       point: 185,
+      save: false,
+      popUp: false,
       scroll: false,
       scrollTop: 0,
       display: false,
@@ -24,9 +28,6 @@ export default class ProductDetail extends Component {
       moreBtn: true,
       closeBtn: false,
       translate: 0,
-      writeButton: false,
-      allButton: false,
-      qaButton: false,
       data: [],
       info: []
     };
@@ -76,8 +77,8 @@ export default class ProductDetail extends Component {
   handleOnClickPlus = () => {
     this.setState({
       number: this.state.number + 1,
-      price: this.state.price + this.state.price,
-      point: this.state.point + this.state.point
+      price: this.state.price + 37000,
+      point: this.state.point + 185
     });
   };
 
@@ -93,6 +94,19 @@ export default class ProductDetail extends Component {
         number: this.state.number - 1
       });
     }
+  };
+
+  handleOnClickSave = () => {
+    this.setState({
+      save: true,
+      popUp: !this.state.popUp
+    });
+  };
+
+  togglePopUp = () => {
+    this.setState({
+      popUp: !this.state.popUp
+    });
   };
 
   handleOnClickNext = e => {
@@ -155,47 +169,13 @@ export default class ProductDetail extends Component {
     });
   };
 
-  handlerOverWrite = e => {
-    this.setState({
-      writeButton: true
-    });
-  };
-
-  handlerOutWrite = e => {
-    this.setState({
-      writeButton: false
-    });
-  };
-
-  handlerOverAll = e => {
-    this.setState({
-      allButton: true
-    });
-  };
-
-  handlerOutAll = e => {
-    this.setState({
-      allButton: false
-    });
-  };
-
-  handlerOverQa = e => {
-    this.setState({
-      qaButton: true
-    });
-  };
-
-  handlerOutQa = e => {
-    this.setState({
-      qaButton: false
-    });
-  };
-
   render() {
     const {
       number,
       price,
       point,
+      save,
+      popUp,
       scroll,
       display,
       more,
@@ -209,7 +189,7 @@ export default class ProductDetail extends Component {
       data
     } = this.state;
 
-    const originalImg = info.original_image_url;
+    const mainImg = info.original_image_url;
 
     const x = translate;
     const next = {
@@ -226,9 +206,10 @@ export default class ProductDetail extends Component {
     return (
       <div className="ProductDetail">
         <div className="product-top">
-          <div className="product-img">
-            <div style={{ backgroundImg: `url(${originalImg})` }} />
-          </div>
+          <div
+            className="product-img"
+            style={{ backgroundImage: `url(${mainImg})` }}
+          />
 
           {/* 상품 구매 정보 */}
           <ProductInfo
@@ -250,26 +231,25 @@ export default class ProductDetail extends Component {
         {/* 가격정보 */}
         <div className="total-price-cart">
           <TotalPrice price={this.numberWithCommas(price)} point={point} />
-          <CartBtn />
+          <CartBtn
+            handleOnClickSave={this.handleOnClickSave}
+            togglePopUp={this.togglePopUp}
+            save={save}
+          />
+          {popUp ? (
+            <PopUp
+              close={this.togglePopUp}
+              txt="늘 사는 리스트에 추가했습니다."
+            />
+          ) : null}
         </div>
 
-        <div className="slide">
-          <div className="related-product">
-            <div></div>
-            <h3>RELATED PRODUCT</h3>
-          </div>
-
-          <div className="slideBtn">
-            <button className="left-btn" onClick={this.handleOnClickBefore} />
-            <div className="slideBar">
-              <ul style={next}>{dataImg}</ul>
-            </div>
-            <button
-              className="right-btn"
-              onClick={this.handleOnClickNext}
-            ></button>
-          </div>
-        </div>
+        <RelatedProductSlide
+          next={next}
+          dataImg={dataImg}
+          handleOnClickBefore={this.handleOnClickBefore}
+          handleOnClickNext={this.handleOnClickNext}
+        />
 
         {/* tab */}
         <div className="tab">
@@ -613,13 +593,7 @@ export default class ProductDetail extends Component {
           {/* review */}
           <Table />
           <div className="write">
-            <button
-              className={writeButton ? "write-hover" : "write-btn"}
-              onMouseOver={this.handlerOverWrite}
-              onMouseOut={this.handlerOutWrite}
-            >
-              후기쓰기
-            </button>
+            <button className={"write-btn"}>후기쓰기</button>
           </div>
           <PageBtn />
         </div>
@@ -683,24 +657,10 @@ export default class ProductDetail extends Component {
           <Table />
           <div className="qa-btn">
             <div>
-              <button
-                className={
-                  allButton ? "write-all-view-hover" : "write-all-view"
-                }
-                onMouseOver={this.handlerOverAll}
-                onMouseOut={this.handlerOutAll}
-              >
-                전체보기
-              </button>
+              <button className="write-all-view">전체보기</button>
             </div>
             <div>
-              <button
-                className={qaButton ? "write-qa-hover" : "write-qa"}
-                onMouseOver={this.handlerOverQa}
-                onMouseOut={this.handlerOutQa}
-              >
-                상품문의
-              </button>
+              <button className="write-qa-hover">상품문의</button>
             </div>
           </div>
           <PageBtn />

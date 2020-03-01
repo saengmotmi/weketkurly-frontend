@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-sizing: border-box;
+  background-color: #fff;
 
   ul {
     list-style: none;
@@ -15,12 +17,11 @@
     flex-direction: row;
     align-items: flex-start;
     margin-top: 20px;
-  }
-
-  .product-img {
-    width: 430px;
-    height: 552px;
-    background-color: lightgray;
+    .product-img {
+      width: 430px;
+      height: 552px;
+      background-size: cover;
+    }
   }
 
   .product-info {
@@ -35,7 +36,7 @@
         align-items: center;
         margin: 10px 0 5px 0;
         p {
-          font-weight: 500;
+          font-weight: 600;
           font-size: 24px;
           color: #333;
           margin: 0;
@@ -49,11 +50,13 @@
       }
       span {
         font-size: 14px;
+        font-weight: 500;
+        letter-spacing: -0.5px;
         color: #999;
       }
     }
 
-    .priceBar {
+    .price-bar {
       margin: 30px 0 7px 0;
       color: #333;
       .price {
@@ -73,14 +76,15 @@
         color: #5f0080;
       }
       .after-login-point {
+        letter-spacing: -0.5px;
         .save-point {
           border: 1px solid #5f0080;
           color: #5f0080;
           border-radius: 12px;
           height: 22px;
-          padding: 0 8px;
+          padding: 1px 8px 2px;
           font-size: 12px;
-          font-weight: 700;
+          font-weight: 600;
         }
         .each {
           font-size: 14px;
@@ -96,11 +100,12 @@
       }
     }
 
-    .goodsInfo {
+    .goods-info {
       margin-top: 20px;
       border-top: 1px solid #f4f4f4;
       width: 560px;
       font-size: 14px;
+      letter-spacing: -0.5px;
       dl {
         padding-top: 18px;
         margin: 0;
@@ -109,6 +114,7 @@
       dt {
         float: left;
         width: 150px;
+        font-weight: 500;
         color: #666;
       }
 
@@ -131,7 +137,7 @@
 
         .delivery {
           padding-top: 4px;
-          font-weight: 400;
+          font-weight: 500;
           font-size: 12px;
           color: #666;
           margin: 0;
@@ -158,7 +164,7 @@
           .leftBtn {
             border-right: 1px solid #dddfe1;
             font-size: 24px;
-            line-height: 0;
+            line-height: 0px;
           }
 
           .rightBtn {
@@ -187,7 +193,6 @@
   .total-price-cart {
     display: flex;
     flex-direction: column;
-
     .total-price-point {
       box-sizing: border-box;
       padding: 30px 0 20px 0;
@@ -202,7 +207,9 @@
         .price {
           margin: 2px 3px -5px 8px;
           font-size: 32px;
+          font-weight: 700;
           padding: 0;
+          color: #333;
         }
         .won {
           padding-left: 2px;
@@ -223,7 +230,7 @@
           width: 38px;
           height: 20px;
           font-size: 11px;
-          font-weight: 500;
+          font-weight: 600;
           line-height: 18px;
           text-align: center;
           color: #fff;
@@ -256,14 +263,14 @@
       justify-content: flex-end;
       padding-bottom: 40px;
       width: 100%;
-      .cartBtn {
+      .cart-btn {
         width: 560px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         background: #fff;
         text-align: center;
-        .alarmOff {
+        .alarm-off {
           width: 128px;
           height: 54px;
           border: 1px solid #ddd;
@@ -273,7 +280,7 @@
           color: #ddd;
           cursor: pointer;
         }
-        .alarmOn {
+        .alarm-on {
           width: 128px;
           height: 54px;
           border: 1px solid #5f0080;
@@ -283,7 +290,7 @@
           color: #5f0080;
           cursor: pointer;
         }
-        .saveItem {
+        .save-item {
           width: 128px;
           height: 54px;
           border: 1px solid #5f0080;
@@ -293,7 +300,18 @@
           color: #5f0080;
           cursor: pointer;
         }
-        .goToCart {
+        .save-item-clicked {
+          width: 128px;
+          height: 54px;
+          border: 1px solid #5f0080;
+          border-radius: 3px;
+          background-color: #5f0080;
+          font-weight: 700;
+          font-size: 16px;
+          color: #fff;
+          cursor: pointer;
+        }
+        .go-to-cart {
           width: 278px;
           height: 54px;
           color: white;
@@ -320,8 +338,8 @@
       h3 {
         font-family: "Malgun Gothic", AppleGothic, dotum;
         font-size: 13px;
+        font-weight: 600;
         margin-top: 3px;
-        font-weight: 400;
         letter-spacing: -0.05em;
         color: #4c4c4c;
       }
@@ -941,18 +959,18 @@
         text-align: center;
         font-weight: 600;
         cursor: pointer;
-      }
-      .write-hover {
-        width: 130px;
-        padding: 10px 0;
-        float: right;
-        background-color: #fff;
-        border: 1px solid #5f0080;
-        color: #5f0080;
-        font-size: 13px;
-        text-align: center;
-        font-weight: 600;
-        cursor: pointer;
+        &:hover {
+          width: 130px;
+          padding: 10px 0;
+          float: right;
+          background-color: #fff;
+          border: 1px solid #5f0080;
+          color: #5f0080;
+          font-size: 13px;
+          text-align: center;
+          font-weight: 600;
+          cursor: pointer;
+        }
       }
     }
 
@@ -974,20 +992,19 @@
         font-weight: 600;
         margin-left: 5px;
         cursor: pointer;
-      }
-      .write-all-view-hover,
-      .write-qa-hover {
-        width: 130px;
-        padding: 7px 0;
-        float: right;
-        background-color: #fff;
-        border: 1px solid #5f0080;
-        color: #5f0080;
-        font-size: 13px;
-        text-align: center;
-        font-weight: 600;
-        margin-left: 5px;
-        cursor: pointer;
+        &:hover {
+          width: 130px;
+          padding: 7px 0;
+          float: right;
+          background-color: #fff;
+          border: 1px solid #5f0080;
+          color: #5f0080;
+          font-size: 13px;
+          text-align: center;
+          font-weight: 600;
+          margin-left: 5px;
+          cursor: pointer;
+        }
       }
     }
 
@@ -1312,6 +1329,71 @@
             padding: 0;
             cursor: pointer;
           }
+        }
+      }
+    }
+  }
+
+  // 팝업창
+  .PopUp {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000000;
+    .msg {
+      position: absolute;
+      width: 490px;
+      background-color: #fff;
+      text-align: center;
+      top: 30%;
+      left: 33%;
+      .msg-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #fff;
+        margin: 10px 25px 5px 25px;
+        border-bottom: 1px solid #b2b2b2;
+        h3 {
+          font-size: 14px;
+          font-weight: 500;
+          color: #5f0080;
+        }
+        .close {
+          width: 19px;
+          height: 19px;
+          cursor: pointer;
+          background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-close-button.png);
+        }
+      }
+      .contents {
+        font-size: 13px;
+        margin: 50px 0;
+        color: #4c4c4c;
+      }
+      .btn {
+        height: 105px;
+        background-color: #f5f5f5;
+        padding: 30px 0;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        button {
+          font-size: 13px;
+          width: 150px;
+          height: 45px;
+          outline: none;
+          background-color: #5f0080;
+          border: 1px solid #5f0080;
+          color: #fff;
+          cursor: pointer;
         }
       }
     }

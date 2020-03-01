@@ -86,7 +86,9 @@ class ItemCart extends Component {
               style={{ borderBottom: "2px solid #ddd" }}
             >
               <td>
-                <input type="checkbox" />
+                <lable>
+                  <input type="checkbox" />
+                </lable>
                 <img src={param["thumbnail_image_url"]} alt="" />
               </td>
               <td>
@@ -136,7 +138,9 @@ class ItemCart extends Component {
           <table className="item-table">
             <tr className="item-table-header">
               <td>
-                <input type="checkbox" />
+                <label>
+                  <input type="checkbox" />
+                </label>
                 <span>
                   전체선택({`${this.state.itemCount}/${this.state.itemCount}`})
                 </span>
@@ -158,7 +162,7 @@ class ItemCart extends Component {
                 전체선택({`${this.state.itemCount}/${this.state.itemCount}`})
               </span>
               <button>선택 삭제</button>
-              <button>품절 상품 삭제</button>
+              <button style={{ width: "120px" }}>품절 상품 삭제</button>
             </div>
           </table>
           <div className="item-price-result">
@@ -175,7 +179,7 @@ class ItemCart extends Component {
               <span>결제예정금액</span>
             </div>
           </div>
-          <button>주문하기</button>
+          <button className="order-btn btn-off">주문하기</button>
           <div className="item-bottom-desc">
             <p>
               ‘입금확인’ 상태일 때는 주문내역 상세 페이지에서 직접 주문취소가

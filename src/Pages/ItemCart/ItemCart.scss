@@ -4,6 +4,13 @@
   align-items: center;
   text-align: center;
 
+  input[type="checkbox"] {
+    // width: 16px;
+    // height: 16px;
+    // margin-right: 10px;
+    // padding: 0 21px 0 6px;
+  }
+
   &-title {
     height: 152px;
 
@@ -23,6 +30,17 @@
 
   &-table {
     border-top: 2px solid #5f0080;
+
+    button {
+      width: 88px;
+      height: 42px;
+      border: 1px solid #5f0080;
+      background-color: #fff;
+      color: #5f0080;
+      font-size: 12px;
+      letter-spacing: -0.3px;
+      margin-right: 10px;
+    }
 
     &-header {
       color: #666;
@@ -68,5 +86,21 @@
       color: #777;
       font-size: 12px;
     }
+  }
+
+  .order-btn {
+    border-style: none;
+    font-size: 16px;
+    color: #fff;
+    width: 200px;
+    height: 48px;
+    letter-spacing: -0.3px;
+  }
+
+  .btn-on {
+    background-color: #5f0080;
+  }
+  .btn-off {
+    background-color: #dddfe1;
   }
 }

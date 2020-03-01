@@ -196,27 +196,46 @@
     }
   }
 
+  // 결제 금액
+  .payment-price {
+    float: right;
+    table {
+      width: 255px;
+      border-top: 0;
+      border: 2px solid #5f0080;
+      background: #f7f5f8;
+      th {
+        width: 100px;
+        padding: 16px 0 10px 18px;
+      }
+      td {
+        text-align: right;
+        padding: 16px 20px 10px;
+      }
+      .line {
+        height: 1px;
+        border-top: 1px solid #ddd;
+      }
+    }
+  }
+
   // 쿠폰/적립금
+  .cupon {
+    table {
+      width: 775px;
+    }
+  }
 
   // 결제수단
   .product-payment {
-    .payment-table {
+    table {
+      border-bottom: 0;
       table-layout: fixed;
       width: 775px;
       box-sizing: border-box;
       border-bottom: 0;
       tr {
-        th {
-          width: 190px;
-          padding: 22px 0 0 20px;
-          font-size: 14px;
-          font-weight: 600;
-          text-align: left;
-          color: #202020;
-          letter-spacing: -0.3px;
-        }
         td {
-          font-size: 14px;
           font-weight: 400;
           .label-radio {
             margin-right: 50px;
@@ -245,5 +264,9 @@
         }
       }
     }
+  }
+
+  .unissued {
+    border: 0;
   }
 }

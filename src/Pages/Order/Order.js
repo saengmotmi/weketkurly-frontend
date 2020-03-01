@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import Nav from "../../Components/Nav";
 import CardList from "../../Components/CradList";
+import Footer from "../../Components/Footer";
 import "./Order.scss";
 
 export default class Order extends Component {
@@ -34,6 +36,7 @@ export default class Order extends Component {
     // });
     return (
       <div className="Order">
+        <Nav />
         <div className="title">
           <h1>주문서</h1>
           <h3>주문하실 상품명 및 수량을 정확하게 확인해 주세요.</h3>
@@ -257,6 +260,47 @@ export default class Order extends Component {
               className="bnr-order"
             />
 
+            {/* ---------- 결제 금액 ---------- */}
+            <div className="payment-price">
+              <h2>결제 금액</h2>
+              <table>
+                <tbody>
+                  <tr>
+                    <th>상품금액</th>
+                    <td>37,000원</td>
+                  </tr>
+                  <tr>
+                    <th className="line" />
+                    <td className="line" />
+                  </tr>
+                  <tr>
+                    <th>상품할인금액</th>
+                    <td>0원</td>
+                  </tr>
+                  <tr>
+                    <th>배송비</th>
+                    <td>0원</td>
+                  </tr>
+                  <tr>
+                    <th>쿠폰사용</th>
+                    <td>0원</td>
+                  </tr>
+                  <tr>
+                    <th>적립금사용</th>
+                    <td>0원</td>
+                  </tr>
+                  <tr className="tr-line">
+                    <th className="line" />
+                    <td className="line" />
+                  </tr>
+                  <tr>
+                    <th>최종결제금액</th>
+                    <td>37,000원</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
             {/* ---------- 쿠폰 / 적립금 ---------- */}
             <div className="cupon">
               <h2>쿠폰 / 적립금</h2>
@@ -289,7 +333,7 @@ export default class Order extends Component {
             {/* ---------- 결제 수단 ---------- */}
             <div className="product-payment">
               <h2>결제 수단</h2>
-              <div className="payment-table">
+              <div>
                 <table>
                   <tbody>
                     <tr>
@@ -385,22 +429,17 @@ export default class Order extends Component {
                 <div>
                   <span>
                     ※ 페이코, 네이버페이, 토스 결제는 결제 시 결제하신
-                    수단으로만 환불되는 점 양해부탁드립니다.
-                  </span>
-                  <span>
+                    수단으로만 환불되는 점 양해부탁드립니다. <br />
                     ※ 고객님은 안전거래를 위해 현금 등으로 결제시 저희
                     쇼핑몰에서 가입한 LG데이콤의 구매안전(에스크로) 서비스를
-                    이용하실 수 있습니다.
-                  </span>
-                  <span>
-                    ※ 보안강화로 Internet Explorer 8 미만 사용 시 결제창이 뜨지
-                    않을 수 있습니다.
+                    이용하실 수 있습니다. <br />※ 보안강화로 Internet Explorer 8
+                    미만 사용 시 결제창이 뜨지 않을 수 있습니다.
                   </span>
                 </div>
               </div>
             </div>
 
-            <table>
+            <table className="unissued">
               <tbody>
                 <tr>
                   <th>미출고 시 조치방법 *</th>
@@ -446,6 +485,7 @@ export default class Order extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

@@ -672,7 +672,7 @@
           color: #333;
           padding: 0;
           font-size: 16px;
-          font-weight: 300;
+          font-weight: 400;
           line-height: 1.56;
         }
       }
@@ -691,18 +691,18 @@
       margin: 30px 0 60px 0;
       h3 {
         font-size: 28px;
-        font-weight: 400;
+        font-weight: 500;
         color: #666;
       }
       .service {
         font-size: 18px;
-        font-weight: 400;
+        font-weight: 500;
         color: #666;
         margin-bottom: 5px;
       }
       .help {
         font-size: 16px;
-        font-weight: 300;
+        font-weight: 400;
         color: #666;
         margin-bottom: 40px;
       }
@@ -726,20 +726,20 @@
           }
           .mark-name {
             font-size: 18px;
-            font-weight: 400;
+            font-weight: 500;
             color: #5f0080;
           }
         }
         .mark-time {
           color: #333;
           font-size: 17px;
-          font-weight: 300;
+          font-weight: 400;
           margin-top: 9px;
         }
         .mark-contents {
           color: #666;
           font-size: 15px;
-          font-weight: 300;
+          font-weight: 400;
           margin-top: 13px;
         }
       }
@@ -762,12 +762,13 @@
       align-items: center;
       .refund-notice {
         font-size: 18px;
+        font-weight: 400;
         color: #5f0080;
       }
       .txt {
         font-size: 16px;
         color: #333;
-        font-weight: 200;
+        font-weight: 300;
         margin-left: 10px;
       }
     }
@@ -1280,14 +1281,14 @@
         padding-bottom: 10px;
         width: 900px;
 
-        .cartBtn {
+        .cart-btn {
           width: 900px;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
           background: #fff;
           text-align: center;
-          .alarmOff {
+          .alarm-off {
             width: 212px;
             height: 54px;
             border: 1px solid #ddd;
@@ -1297,7 +1298,7 @@
             color: #ddd;
             cursor: pointer;
           }
-          .alarmOn {
+          .alarm-on {
             width: 212px;
             height: 54px;
             border: 1px solid #5f0080;
@@ -1307,7 +1308,7 @@
             color: #5f0080;
             cursor: pointer;
           }
-          .saveItem {
+          .save-item {
             width: 212px;
             height: 54px;
             border: 1px solid #5f0080;
@@ -1317,7 +1318,18 @@
             color: #5f0080;
             cursor: pointer;
           }
-          .goToCart {
+          .save-item-clicked {
+            width: 212px;
+            height: 54px;
+            border: 1px solid #5f0080;
+            border-radius: 3px;
+            background-color: #5f0080;
+            font-weight: 700;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+          }
+          .go-to-cart {
             width: 450px;
             height: 54px;
             color: white;

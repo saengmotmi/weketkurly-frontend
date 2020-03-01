@@ -91,7 +91,9 @@ export default class ProductDetail extends Component {
       });
     } else {
       this.setState({
-        number: this.state.number - 1
+        number: this.state.number - 1,
+        price: this.state.price - 37000,
+        point: this.state.point - 185
       });
     }
   };
@@ -182,9 +184,6 @@ export default class ProductDetail extends Component {
       moreBtn,
       closeBtn,
       translate,
-      writeButton,
-      allButton,
-      qaButton,
       info,
       data
     } = this.state;
@@ -200,7 +199,14 @@ export default class ProductDetail extends Component {
       data.length === 0
         ? null
         : this.state.data.map(el => {
-            return <DetailSlide img={el.img} name={el.name} price={el.price} />;
+            return (
+              <DetailSlide
+                key={el.id}
+                img={el.img}
+                name={el.name}
+                price={el.price}
+              />
+            );
           });
 
     return (
@@ -331,14 +337,12 @@ export default class ProductDetail extends Component {
               <br />
               <b>・ 특징</b>
               <span>
-                {" "}
                 : 커다란 땅콩처럼 생긴 브라질너트를 PET 용기에 담아 보관이
                 편리해요.
-              </span>{" "}
+              </span>
               <br />
               <b>・ 테이스팅 노트</b>
               <span>
-                {" "}
                 : 건대추로 브라질너트를 감싼 뒤 작게 잘라 한 입에 먹기 좋아요.
                 바삭하면서도 오독오독한 식감과 함께 달콤하고 고소한 맛이에요.
               </span>
@@ -702,7 +706,11 @@ export default class ProductDetail extends Component {
                 />
               </div>
               <div className="btn">
-                <CartBtn />
+                <CartBtn
+                  handleOnClickSave={this.handleOnClickSave}
+                  togglePopUp={this.togglePopUp}
+                  save={save}
+                />
               </div>
             </div>
           </div>

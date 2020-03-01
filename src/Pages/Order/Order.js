@@ -64,7 +64,7 @@ export default class Order extends Component {
         {/* ---------- 주문자 정보 ---------- */}
         <div className="user-info">
           <h2>주문자 정보</h2>
-          <div className="user-info-table">
+          <div>
             <table>
               <tbody>
                 <tr>
@@ -77,9 +77,9 @@ export default class Order extends Component {
                   <th>휴대폰 *</th>
                   <td className="phone">
                     <input type="number" readOnly="readOnly" value="010" />
-                    <span />
+                    <span>-</span>
                     <input type="number" readOnly="readOnly" value="6203" />
-                    <span />
+                    <span>-</span>
                     <input type="number" readOnly="readOnly" value="2452" />
                   </td>
                 </tr>
@@ -119,9 +119,11 @@ export default class Order extends Component {
                   <th>배송지선택</th>
                   <td>
                     <label className="lebel-radio">
-                      <input type="radio" />
+                      <input type="radio" name="selectDelivery" checked />
                       최근 배송지
-                      <input type="radio" />
+                    </label>
+                    <label className="lebel-radio">
+                      <input type="radio" name="selectDelivery" />
                       새로운 배송지
                     </label>
                   </td>
@@ -233,18 +235,18 @@ export default class Order extends Component {
             </table>
 
             <div className="notice">
-              <div>
+              <div className="notice-title">
                 <div className="notice-ic" />
                 <span className="red">확인해주세요!</span>
               </div>
-              <div>
+              <div className="notice-order">
                 <span className="red">
                   새벽 출입이 어려운 경우, (비밀번호 오류가 있거나, 새벽 경비가
                   부재하는 경우 등) 부득이하게 1층 현관 앞, 경비실 앞에 배송을
                   드릴 수 있는 점 참고 부탁드립니다
                   <br />
                 </span>
-                <span className="notice-order">
+                <span>
                   - 최대한 출입 방법을 명확하게 기재해주시고, 경비실을 통해
                   출입해야하는 경우, 경비부재시에 대응방법을 배송메모에 기입해
                   주세요.
@@ -266,8 +268,8 @@ export default class Order extends Component {
               <table>
                 <tbody>
                   <tr>
-                    <th>상품금액</th>
-                    <td>37,000원</td>
+                    <th claaName="top-th">상품금액</th>
+                    <td className="top-td">37,000원</td>
                   </tr>
                   <tr>
                     <th className="line" />
@@ -294,8 +296,12 @@ export default class Order extends Component {
                     <td className="line" />
                   </tr>
                   <tr>
-                    <th>최종결제금액</th>
-                    <td>37,000원</td>
+                    <th className="total-th">최종결제금액</th>
+                    <td className="total-td">37,000원</td>
+                  </tr>
+                  <tr>
+                    <th className="small-th"></th>
+                    <td className="samll-td">구매 시 100원(0.5%) 적립예정</td>
                   </tr>
                 </tbody>
               </table>

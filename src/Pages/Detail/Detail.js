@@ -644,6 +644,7 @@ export default class Detail extends Component {
                 <CartBtn
                   handleOnClickSave={this.handleOnClickSave}
                   togglePopUp={this.togglePopUp}
+                  togglePopUpCart={this.togglePopUpCart}
                   save={save}
                 />
                 {popUp ? (

@@ -29,7 +29,7 @@ class MainItem extends Component {
             <div className="sale-box">
               <p style={{ fontSize: "13px" }}>SAVE</p>
               <p>
-                <span>{100 - (price / original_price) * 100}</span>%
+                <span>{Math.round(100 - (price / original_price) * 100)}</span>%
               </p>
             </div>
           ) : null}
@@ -37,9 +37,18 @@ class MainItem extends Component {
         </div>
         <div style={{ wordBreak: "break-all" }}>
           <p>{name}</p>
-          <p style={{ fontWeight: "bold" }}>{this.numberWithCommas(price)}원</p>
+          <p style={{ fontWeight: "700", paddingTop: "6px" }}>
+            {this.numberWithCommas(price)}원
+          </p>
           {price === original_price ? null : (
-            <p style={{ textDecoration: "line-through", color: "#ccc" }}>
+            <p
+              style={{
+                paddingTop: "4px",
+                textDecoration: "line-through",
+                color: "#ccc",
+                fontSize: "14px"
+              }}
+            >
               {this.numberWithCommas(original_price)}원
             </p>
           )}

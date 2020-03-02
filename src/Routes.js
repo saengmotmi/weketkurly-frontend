@@ -4,10 +4,12 @@ import JoinComplete from "./Pages/JoinComplete/JoinComplete";
 import Main from "./Pages/Main/Main";
 import Nav from "./Components/Nav";
 import Footer from "./Components/Footer";
-import ProductDetail from "./Pages/ProductDetail/ProductDetail.js";
+import ProductDetail from "./Pages/ProductDetail/ProductDetail";
+import EventMain from "./Pages/EventMain/EventMain";
 import Join from "./Pages/Join/Join";
 import Login from "./Pages/Login/Login";
 import CategoryView from "./Pages/CategoryView/CategoryView";
+import Order from "./Pages/Order/Order";
 
 class Routes extends React.Component {
   render() {
@@ -22,6 +24,9 @@ class Routes extends React.Component {
           <Route exact path="/join" component={Join} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/categoryView" component={CategoryView} />
+          <Route exact path="/detail" component={ProductDetail} />
+          <Route exact path="/eventmain" component={EventMain} />
+          <Route exact path="/order" component={Order} />
         </Switch>
       </Router>
     );

@@ -26,19 +26,28 @@
 
       ul {
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 10px;
+        left: 1px;
         z-index: 1;
         display: flex;
         flex-direction: column;
+        height: 24px;
+        border-top: 1px solid #e3e3e3;
+        border-bottom: 1px solid #e3e3e3;
+        color: black;
 
         li {
           width: 100px;
+          font-size: 12px;
+          padding: 5px 0;
+          padding-left: 10px;
+          border-left: 1px solid #e3e3e3;
+          border-right: 1px solid #e3e3e3;
           background-color: white;
 
-          &::after {
-            content: "";
-          }
+          // &::after {
+          //   content: "";
+          // }
         }
       }
     }
@@ -49,17 +58,17 @@
         letter-spacing: -0.3px;
       }
 
-      &::after {
-        content: " | ";
-        color: #d8d8d8;
-      }
+      // &::after {
+      //   content: " | ";
+      //   color: #d8d8d8;
+      // }
 
-      &:nth-child(3) {
-        &::before {
-          content: " ";
-          background: url(https://res.kurly.com/pc/ico/1908/ico_down_8x5.png);
-        }
-      }
+      // &:nth-child(3) {
+      //   &::before {
+      //     content: " ";
+      //     background: url(https://res.kurly.com/pc/ico/1908/ico_down_8x5.png);
+      //   }
+      // }
 
       &:last-child {
         &::after {
@@ -92,6 +101,7 @@
       margin: 0;
       padding: 0;
       background-color: white;
+      border: 1px solid #e3e3e3;
       width: 100%;
 
       li {
@@ -131,16 +141,16 @@
       font-weight: 500;
       color: #333333;
 
-      &::after {
-        content: " | ";
-        color: #d8d8d8;
-      }
+      // &::after {
+      //   content: " | ";
+      //   color: #d8d8d8;
+      // }
 
-      &:last-child {
-        &::after {
-          content: "";
-        }
-      }
+      // &:last-child {
+      //   &::after {
+      //     content: "";
+      //   }
+      // }
     }
 
     img {
@@ -188,8 +198,15 @@
 
   .category-listdown {
     display: flex;
-    align-items: center;
     position: relative;
+    align-items: flex-start;
+
+    span {
+      text-align: center;
+      letter-spacing: -0.3px;
+      font-weight: 500;
+      color: #333333;
+    }
 
     ul {
       position: absolute;
@@ -201,16 +218,18 @@
       font-weight: 700;
       line-height: 20px;
 
-      li {
-        &::after {
-          content: "";
-        }
-      }
+      // li {
+      //   &::after {
+      //     content: "";
+      //   }
+      // }
     }
 
     img {
       width: 16px;
       height: 14px;
+      padding: 5px 0;
+      margin-right: 14px;
     }
   }
 }

@@ -174,7 +174,7 @@ class Nav extends Component {
                 style={{ display: "inline-block" }}
                 src="https://res.kurly.com/pc/service/common/1908/ico_gnb_all_off.png"
               />
-              전체 카테고리
+              <span>전체 카테고리</span>
               <ul
                 style={{
                   display: this.state.visibleCategory ? "block" : "none"

@@ -40,29 +40,22 @@ class MainCategory extends Component {
   };
 
   _moveLeft = () => {
-    this.setState(
-      {
-        moveX: parseInt(this.state.moveX) - 175 + "px"
-      },
-      () => {
-        if (this.state.moveX === "-2625px") {
-          this.setState({ moveX: 0 });
-        }
-      }
-    );
+    if (this.state.moveX === "-1068px") {
+      this.setState({ moveX: 0 });
+    } else {
+      this.setState({
+        moveX: parseInt(this.state.moveX) - 267 + "px"
+      });
+    }
   };
 
   _moveRight = () => {
-    this.setState(
-      {
-        moveX: parseInt(this.state.moveX) + 175 + "px"
-      },
-      () => {
-        if (this.state.moveX === "+2625px") {
-          this.setState({ moveX: 0 });
-        }
-      }
-    );
+    if (this.state.moveX === "1068px") {
+      this.setState({ moveX: 0 });
+    }
+    this.setState({
+      moveX: parseInt(this.state.moveX) + 267 + "px"
+    });
   };
 
   componentDidMount() {
@@ -94,6 +87,7 @@ class MainCategory extends Component {
               original_price={param["original_price"]}
               thumbnail_image_url={param["thumbnail_image_url"]}
               sticker_image_url={param["sticker_image_url"]}
+              style={this.state.moveX}
             />
           );
         })
@@ -244,17 +238,22 @@ class MainCategory extends Component {
     return (
       <>
         <div className={section_id} style={{ width: "1050px" }}>
-          <p className="main-font">{title}</p>
-
           {title === "이 상품 어때요?" ? (
             <>
+              <p className="main-font">{title}</p>
               <div
                 style={{
                   position: "relative"
                 }}
               >
-                <button className="btn-scroll btn-scroll-left"></button>
-                <button className="btn-scroll btn-scroll-right"></button>
+                <button
+                  onClick={this._moveLeft}
+                  className="btn-scroll btn-scroll-left"
+                ></button>
+                <button
+                  onClick={this._moveRight}
+                  className="btn-scroll btn-scroll-right"
+                ></button>
               </div>
               <div style={{ overflow: "hidden" }} className="goods-item">
                 {productsArr}
@@ -263,15 +262,19 @@ class MainCategory extends Component {
           ) : null}
 
           {title === "이벤트 소식" ? (
-            <div
-              style={{ justifyContent: "center", overflow: "hidden" }}
-              className="goods-item"
-            >
-              {eventList}
-            </div>
+            <>
+              <p className="main-font">{title}</p>
+              <div
+                style={{ justifyContent: "center", overflow: "hidden" }}
+                className="goods-item"
+              >
+                {eventList}
+              </div>
+            </>
           ) : null}
           {title === "알뜰 상품" ? (
             <>
+              <p className="main-font">{title}</p>
               <div
                 style={{
                   position: "relative"
@@ -287,6 +290,7 @@ class MainCategory extends Component {
           ) : null}
           {title === "MD의 추천" ? (
             <div>
+              <p className="main-font">{title}</p>
               <div
                 style={{
                   position: "relative"
@@ -311,7 +315,9 @@ class MainCategory extends Component {
               >
                 {categoryList}
               </div>
-              <ul className="goods-item">{mdProductsArr}</ul>
+              <ul style={{ overflow: "hidden" }} className="goods-item">
+                {mdProductsArr}
+              </ul>
               <div
                 style={{
                   display: "flex",
@@ -346,6 +352,7 @@ class MainCategory extends Component {
 
           {title === "오늘의 신상품" ? (
             <>
+              <p className="main-font">{title}</p>
               <div
                 style={{
                   position: "relative"
@@ -362,6 +369,7 @@ class MainCategory extends Component {
 
           {title === "간편한 아침식사" ? (
             <>
+              <p className="main-font">{title}</p>
               <div
                 style={{
                   position: "relative"
@@ -378,6 +386,7 @@ class MainCategory extends Component {
 
           {title === "컬리의 레시피" ? (
             <>
+              <p className="main-font">{title}</p>
               <div
                 style={{
                   position: "relative"
@@ -394,6 +403,7 @@ class MainCategory extends Component {
 
           {title === "인스타그램 고객 후기" ? (
             <>
+              <p className="main-font">{title}</p>
               <div
                 style={{
                   position: "relative"
@@ -421,7 +431,8 @@ class MainCategory extends Component {
                   alignItems: "center",
                   flexDirection: "column",
                   fontSize: "16px",
-                  lineHeight: "29px"
+                  lineHeight: "29px",
+                  padding: "39px 100px"
                 }}
               >
                 <p style={{ color: "#999", display: "block" }}>

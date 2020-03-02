@@ -27,7 +27,7 @@ export default class ProductInfo extends Component {
           <span>{short_description}</span>
         </div>
 
-        <div className="priceBar">
+        <div className="price-bar">
           <span className="price">{price}</span>
           <span className="won">원</span>
         </div>
@@ -41,7 +41,7 @@ export default class ProductInfo extends Component {
           </div>
         </div>
 
-        <div className="goodsInfo">
+        <div className="goods-info">
           <dl>
             <dt>판매단위</dt>
             <dd>{unit_text}</dd>

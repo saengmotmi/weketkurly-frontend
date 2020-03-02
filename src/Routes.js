@@ -7,7 +7,6 @@ import Main from "./Pages/Main/Main";
 import Nav from "./Components/Nav";
 import Footer from "./Components/Footer";
 import EventMain from "./Pages/EventMain/EventMain";
-import Join from "./Pages/Join/Join";
 import Login from "./Pages/Login/Login";
 import Order from "./Pages/Order/Order";
 

@@ -1,0 +1,142 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+
+  li {
+    list-style: none;
+    display: inline-block;
+
+    &::after {
+      content: "  |  ";
+    }
+
+    &:last-child::after {
+      content: "";
+    }
+  }
+
+  .custom {
+    display: flex;
+    margin-top: 10px;
+
+    p {
+      font-size: 14px;
+    }
+
+    .time {
+      color: #999;
+    }
+
+    .ask {
+      border: 1px solid #e3e3e3;
+      height: 40px;
+      margin: 3px 16px 0 0;
+      border-radius: 3px;
+      width: 138px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        text-align: center;
+        letter-spacing: -0.2px;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 22px;
+      }
+    }
+  }
+
+  .foot {
+    flex-direction: column;
+
+    &-top {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+      padding: 28px 0 28px 0;
+      border-top: 1px solid #eee;
+
+      &-right {
+        line-height: 18px;
+      }
+    }
+
+    &-bottom {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #eee;
+      width: 1050px;
+      padding: 19px 0 60px 0;
+      margin: 0 auto;
+
+      div {
+        display: flex;
+        flex-direction: row;
+
+        img {
+          margin-right: 10px;
+        }
+
+        div {
+          display: flex;
+          flex-direction: row;
+
+          div {
+            display: flex;
+            flex-direction: column;
+
+            p {
+              padding-top: 1px;
+              color: #999;
+              font-size: 10px;
+              letter-spacing: -0.5px;
+            }
+          }
+        }
+      }
+
+      &-sns {
+        img {
+          width: 30px;
+          height: 30px;
+        }
+
+        li {
+          padding-right: 10px;
+
+          &::after {
+            content: "";
+          }
+        }
+      }
+    }
+  }
+
+  .ftr-1 {
+    font-size: 14px;
+    padding: 29px 0 29px 0;
+
+    li {
+      padding-right: 16px;
+      list-style: none;
+      display: inline-block;
+      letter-spacing: -0.2px;
+
+      &::after {
+        content: "";
+      }
+    }
+  }
+
+  .ftr-2 {
+    font-size: 12px;
+    color: #999;
+  }
+
+  .style-pup {
+    color: #5f0080;
+    letter-spacing: -0.2px;
+  }
+}

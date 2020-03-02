@@ -652,6 +652,12 @@ export default class Detail extends Component {
                     txt="늘 사는 리스트에 추가했습니다."
                   />
                 ) : null}
+                {popUpCart ? (
+                  <PopUp
+                    close={this.togglePopUpCart}
+                    txt="이미 동일한 상품이 장바구니에 존재합니다."
+                  />
+                ) : null}
               </div>
             </div>
           </div>

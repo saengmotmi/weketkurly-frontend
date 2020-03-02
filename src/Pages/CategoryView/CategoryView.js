@@ -1,56 +1,62 @@
 import React from "react";
-import "./CategoryView";
-
-class CategoryView extends React.Component {
+import "../CategoryView/CategoryView";
+import CategoryViewItem from "./CategoryViewItem";
+class categoryView extends React.Component {
   constructor() {
     super();
     this.state = {
-      cateArr: []
+      data: [],
+      name: "상품명",
+      thumbnail_image_url:
+        "https://img-cf.kurly.com/shop/data/goods/1542779969298l0.jpg",
+      price: "3000원",
+      shortdesc: "숏디스크립션"
+      //☞ state값 들어갈 자리
     };
   }
-  componentDidMount = () => {
+  componentDidMount() {
     fetch("https://api.kurly.com/v2/categories")
       .then(res => res.json())
       .then(res => {
-        this.setState({
-          cateArr: res.data.categories
-        });
-        console.log("data  is", res.data.categories);
+        this.setState({ data: res.data.categories });
       });
-  };
+  }
+
+  //☞ 함수 들어갈 자리
   render() {
-    const mapRendering = this.state.cateArr.map(x => {
+    const rendering = this.state.data.map(x => {
       return (
-        <div className="mapDiv">
-          <img src={x.icon_url} alt="" />
-          <div>category1: {x.name}</div>
-          <div>{x.categories[0].name}</div>
-          <div>{x.categories[1].name}</div>
+        <div key={x.id}>
+          <div>name: {x.name}</div>
+          <div>
+            <img src={x.icon_url} alt=""></img>
+          </div>
         </div>
+
+        //     <div>
+        //     <img src={this.thumbnail_image_url} alt="" />
+        //     <div>
+        //       <div>{this.name}</div>
+        //       <div>{this.price}</div>
+        //       <div>{this.shortdesc}</div>
+        //     </div>
+        //   </div>
       );
     });
+    //맵함수 들어갈 자리
     return (
       <div>
-        <div>{mapRendering}</div>
+        <p>categoryView</p>
+        {rendering}
+        <CategoryViewItem
+          thumbnail_image_url={this.state.thumbnail_image_url}
+          name={this.state.name}
+          price={this.state.price}
+          shortdesc={this.state.shortdesc}
+        />
       </div>
+      //구현할 화면 태그 들어갈 자리
     );
   }
 }
-
-export default CategoryView;
-
-/* 
-0. map함수 태그내에 삽입할 함수
-{기본채소/쌈/샐러드/간편채소...}
-cateArr -> res.data.categories
-
-15개 대카테고리
-소카테고리
-
-대카테고리 개수를 세서 arr.length만큼 턴을 진행하는데,
-    소카테고리 개수를 arr.length만큼 턴을 돌려 배열을 만들어 객체에 넣는다.
-        이렇게 되면 15개의 배열이 객체에 담긴다. 
-
-
-
-*/
+export default categoryView;

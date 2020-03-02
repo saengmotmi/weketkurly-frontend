@@ -1,0 +1,34 @@
+{
+  "event": [
+    {
+      "id": 1,
+      "img": "https://res.kurly.com/images/event/join/200226/pc/img_goods1.jpg",
+      "alt": "[허쉬] 초콜릿칩 쿠키 480g (대용량)"
+    },
+    {
+      "id": 2,
+      "img": "https://res.kurly.com/images/event/join/200226/pc/img_goods2.jpg",
+      "alt": "[퓨어스펙] 블랙라벨 오렌지 8입 1.5kg"
+    },
+    {
+      "id": 3,
+      "img": "https://res.kurly.com/images/event/join/200226/pc/img_goods3.jpg",
+      "alt": "토마토파스타 & 함박세트 2개 묶음"
+    },
+    {
+      "id": 4,
+      "img": "https://res.kurly.com/images/event/join/200226/pc/img_goods4.jpg",
+      "alt": "[치즈트랩] 더블프로마쥬 치즈케이크"
+    },
+    {
+      "id": 5,
+      "img": "https://res.kurly.com/images/event/join/200226/pc/img_goods5.jpg",
+      "alt": "[제주돼지] 1등급 삼겹살 300g"
+    },
+    {
+      "id": 6,
+      "img": "https://res.kurly.com/images/event/join/200226/pc/img_goods6.jpg",
+      "alt": "[빕스] 바베큐 폭립"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+.Order {
+  // 결제수단
+  .product-payment {
+    .payment-table {
+      table-layout: fixed;
+      border-top: 2px solid #6a3664;
+      line-height: 180%;
+      width: 775px;
+      box-sizing: border-box;
+      tr {
+        th {
+          width: 190px;
+          padding: 22px 0 0 20px;
+          font-size: 14px;
+          font-weight: 700;
+          color: #202020;
+        }
+      }
+    }
+  }
+}

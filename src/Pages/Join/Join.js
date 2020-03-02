@@ -384,7 +384,7 @@ class Join extends Component {
     }
   };
   joinFetch = () => {
-    fetch("http://125.187.7.16:8000/users/sign-up", {
+    fetch("http://10.58.5.27:8000/users/sign-up", {
       method: "POST",
       body: JSON.stringify({
         account: this.state.ID,
@@ -411,6 +411,11 @@ class Join extends Component {
           alert("500 error");
         }
       });
+    // if (response.status === 200) {
+    //   alert("정상 가입 되었습니다");
+    // } else {
+    //   alert("문제가 생겨 가입되지 않았습니다.");
+    // }
 
     console.log("account는", this.state.ID);
     console.log("password는", this.state.PW);
@@ -422,7 +427,7 @@ class Join extends Component {
     console.log("address는", this.state.address);
   };
   IDDuplication = () => {
-    fetch("http://125.187.7.16:8000/users/check-account", {
+    fetch("http://10.58.5.27:8000/users/check-account", {
       method: "POST",
       body: JSON.stringify({
         account: this.state.ID
@@ -431,7 +436,7 @@ class Join extends Component {
     console.log("account 중복확인 ", this.state.ID);
   };
   emailDuplication = () => {
-    fetch("http://125.187.7.16:8000/users/check-email", {
+    fetch("http://10.58.5.27:8000/users/check-email", {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email

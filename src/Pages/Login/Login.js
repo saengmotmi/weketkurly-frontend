@@ -24,7 +24,7 @@ class Login extends React.Component {
     console.log(e.target.value);
   };
   loginFetch = () => {
-    fetch("http://125.187.7.16:8000/users/sign-in", {
+    fetch("http://10.58.5.27:8000/users/sign-in", {
       method: "POST",
       headers: {
         "Content-type": "application/json"
@@ -36,6 +36,12 @@ class Login extends React.Component {
     })
       .then(response => {
         console.log(response);
+        console.log(response.status);
+        if (response.status === 200) {
+          alert("정상 로그인 되었습니다");
+        } else {
+          alert("문제가 생겨 로그인되지 않았습니다.");
+        }
         return response.json();
       })
       .then(response => {
@@ -53,6 +59,9 @@ class Login extends React.Component {
   };
   goJoin = () => {
     this.props.history.push("/join");
+  };
+  goHome = () => {
+    this.props.history.push("/");
   };
   //☞ 함수 들어갈 자리
   render() {
@@ -92,7 +101,10 @@ class Login extends React.Component {
               </div>
             </div>
             <div className="button">
-              <div className="login-button" onClick={this.loginFetch}>
+              <div
+                className="login-button"
+                onClick={(this.loginFetch, this.goHome)}
+              >
                 로그인
               </div>
             </div>

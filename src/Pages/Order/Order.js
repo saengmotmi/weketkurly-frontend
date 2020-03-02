@@ -8,6 +8,8 @@ export default class Order extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      month: ["일시불"],
+      description: "",
       list: []
     };
   }
@@ -21,19 +23,28 @@ export default class Order extends Component {
         });
       });
   };
+  // handleOnClick = e => {
+  //   if (e.target.value === "현대") {
+  //     this.setState({
+  //       month: this.state.month.concat()
+  //     });
+  //   }
+  // };
+
   render() {
-    const cardName = this.state.list.map(el => {
-      return <div>{el.cardName}</div>;
+    const cardList = this.state.list.map(el => {
+      return (
+        <CardList
+          key={el.id}
+          cardName={el.cardName}
+          cardInstallmentMonth={el.cardInstallmentMonth}
+          cardPoint={el.cardPoint}
+          cardDescription={el.cardDescription}
+          handleOnClick={this.handleOnClick}
+        />
+      );
     });
-    // const cardInstallmentMonth = this.state.list.map(el => {
-    //   return <div>{el.cardInstallmentMonth}</div>;
-    // });
-    // const cardPoint = this.state.list.map(el => {
-    //   return <div>{el.cardPoint}</div>;
-    // });
-    // const cardDescription = this.state.list.map(el => {
-    //   return <div>{el.cardDescription}</div>;
-    // });
+
     return (
       <div className="Order">
         <Nav />
@@ -170,10 +181,7 @@ export default class Order extends Component {
                       value="010"
                       className="first-number"
                     />
-                    <span
-                      className="hyphen
-"
-                    />
+                    <span className="hyphen" />
                     <input
                       type="number"
                       size="4"
@@ -233,262 +241,288 @@ export default class Order extends Component {
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
 
-            <div className="notice">
-              <div className="notice-title">
-                <div className="notice-ic" />
-                <span className="red">확인해주세요!</span>
-              </div>
-              <div className="notice-order">
-                <span className="red">
-                  새벽 출입이 어려운 경우, (비밀번호 오류가 있거나, 새벽 경비가
-                  부재하는 경우 등) 부득이하게 1층 현관 앞, 경비실 앞에 배송을
-                  드릴 수 있는 점 참고 부탁드립니다
-                  <br />
-                </span>
-                <span>
-                  - 최대한 출입 방법을 명확하게 기재해주시고, 경비실을 통해
-                  출입해야하는 경우, 경비부재시에 대응방법을 배송메모에 기입해
-                  주세요.
-                  <br />- 고객님 자택 현관 앞까지 안전하게 배송될 수 있도록
-                  최선을 다하겠습니다.
-                </span>
-              </div>
-            </div>
+        <div className="notice">
+          <div className="notice-title">
+            <div className="notice-ic" />
+            <span className="red">확인해주세요!</span>
+          </div>
+          <div className="notice-order">
+            <span className="red">
+              새벽 출입이 어려운 경우, (비밀번호 오류가 있거나, 새벽 경비가
+              부재하는 경우 등) 부득이하게 1층 현관 앞, 경비실 앞에 배송을 드릴
+              수 있는 점 참고 부탁드립니다
+              <br />
+            </span>
+            <span>
+              - 최대한 출입 방법을 명확하게 기재해주시고, 경비실을 통해
+              출입해야하는 경우, 경비부재시에 대응방법을 배송메모에 기입해
+              주세요.
+              <br />- 고객님 자택 현관 앞까지 안전하게 배송될 수 있도록 최선을
+              다하겠습니다.
+            </span>
+          </div>
+        </div>
 
-            <img
-              src="https://res.kurly.com/pc/service/order/1908/bnr_order_allpaper.png"
-              alt="지구를 위해 모든 포장지를 종이로!"
-              className="bnr-order"
-            />
+        <img
+          src="https://res.kurly.com/pc/service/order/1908/bnr_order_allpaper.png"
+          alt="지구를 위해 모든 포장지를 종이로!"
+          className="bnr-order"
+        />
 
-            {/* ---------- 결제 금액 ---------- */}
-            <div className="payment-price">
-              <h2>결제 금액</h2>
-              <table>
-                <tbody>
-                  <tr>
-                    <th claaName="top-th">상품금액</th>
-                    <td className="top-td">37,000원</td>
-                  </tr>
-                  <tr>
-                    <th className="line" />
-                    <td className="line" />
-                  </tr>
-                  <tr>
-                    <th>상품할인금액</th>
-                    <td>0원</td>
-                  </tr>
-                  <tr>
-                    <th>배송비</th>
-                    <td>0원</td>
-                  </tr>
-                  <tr>
-                    <th>쿠폰사용</th>
-                    <td>0원</td>
-                  </tr>
-                  <tr>
-                    <th>적립금사용</th>
-                    <td>0원</td>
-                  </tr>
-                  <tr className="tr-line">
-                    <th className="line" />
-                    <td className="line" />
-                  </tr>
-                  <tr>
-                    <th className="total-th">최종결제금액</th>
-                    <td className="total-td">37,000원</td>
-                  </tr>
-                  <tr>
-                    <th className="small-th"></th>
-                    <td className="samll-td">구매 시 100원(0.5%) 적립예정</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        {/* ---------- 결제 금액 ---------- */}
+        <div className="payment-price">
+          <h2>결제 금액</h2>
+          <table>
+            <tbody>
+              <tr>
+                <th claaName="top-th">상품금액</th>
+                <td className="top-td">37,000원</td>
+              </tr>
+              <tr>
+                <th className="line" />
+                <td className="line" />
+              </tr>
+              <tr>
+                <th>상품할인금액</th>
+                <td>0원</td>
+              </tr>
+              <tr>
+                <th>배송비</th>
+                <td>0원</td>
+              </tr>
+              <tr>
+                <th>쿠폰사용</th>
+                <td>0원</td>
+              </tr>
+              <tr>
+                <th>적립금사용</th>
+                <td>0원</td>
+              </tr>
+              <tr className="tr-line">
+                <th className="line" />
+                <td className="line" />
+              </tr>
+              <tr>
+                <th className="total-th">최종결제금액</th>
+                <td className="total-td">37,000원</td>
+              </tr>
+              <tr>
+                <th className="small-th"></th>
+                <td className="samll-td">구매 시 100원(0.5%) 적립예정</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-            {/* ---------- 쿠폰 / 적립금 ---------- */}
-            <div className="cupon">
-              <h2>쿠폰 / 적립금</h2>
-              <div className="cupon-table">
-                <table>
-                  <tbody>
-                    <tr>
-                      <th>쿠폰 적용</th>
-                      <td>
-                        사용 가능한 쿠폰이 없습니다.
-                        <br />
-                        쿠폰사용문의(카카오톡) >
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>적립금 적용</th>
-                      <td>
-                        <input type="text" />원
-                        <input type="checkbox" />
-                        모두사용
-                        <div>보유적립금: 456원</div>
-                        <span>*적립금 내역: 마이컬리 > 적립금</span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+        {/* ---------- 쿠폰 / 적립금 ---------- */}
+        <div className="cupon">
+          <h2>쿠폰 / 적립금</h2>
+          <div className="cupon-table">
+            <table>
+              <tbody>
+                <tr className="cupon-tr">
+                  <th className="cupon-th">쿠폰 적용</th>
+                  <td className="cupon-td">
+                    사용 가능한 쿠폰이 없습니다.
+                    <div className="cupon-kakao">쿠폰사용문의(카카오톡) ></div>
+                  </td>
+                </tr>
+                <tr className="point">
+                  <th>적립금 적용</th>
+                  <td>
+                    <input type="text" className="text-box" />원
+                    <input type="checkbox" className="check-box" />
+                    <span>모두사용</span>
+                    <div>보유적립금: 456원</div>
+                    <div className="emoney">
+                      *적립금 내역: 마이컬리 > 적립금
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-            {/* ---------- 결제 수단 ---------- */}
-            <div className="product-payment">
-              <h2>결제 수단</h2>
-              <div>
-                <table>
-                  <tbody>
-                    <tr>
-                      <th>일반결제</th>
-                      <td>
-                        <label className="label-radio">
-                          <input type="radio" className="card" />
-                          신용카드
-                        </label>
-                        <label className="label-radio">
-                          <input type="radio" className="phone" />
-                          휴대폰
-                        </label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th />
-                      <td>
-                        <CardList cardName={cardName} />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>에스크로결제</th>
-                      <td>
-                        <label className="label-radio">
-                          <input type="radio" className="escro" />
-                          계좌이체
-                        </label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>스마일페이 결제</th>
-                      <td>
-                        <label className="label-radio">
-                          <input type="radio" className="escro" />
-                          <img
-                            src="//res.kurly.com/pc/service/order/1712/ico_smilepay_v2.png"
-                            alt="스마일페이"
-                          />
-                        </label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Paynow 결제</th>
-                      <td>
-                        <label className="label-radio">
-                          <input type="radio" />
-                          <img
-                            src="https://res.kurly.com/pc/service/order/1801/logo_paynow.png"
-                            alt="페이나우"
-                          />
-                        </label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>PAYCO 결제</th>
-                      <td>
-                        <label className="label-radio">
-                          <input type="radio" />
-                          <img
-                            src="https://static-bill.nhnent.com/payco/checkout/img/v2/btn_checkout2.png"
-                            alt="페이코"
-                          />
-                        </label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>네이버페이 결제</th>
-                      <td>
-                        <label className="label-radio">
-                          <input type="radio" />
-                          <img
-                            src="//res.kurly.com/pc/service/order/1710/ico_naverpay_v3.png"
-                            alt="네이버 페이"
-                          />
-                        </label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>토스 결제</th>
-                      <td>
-                        <label className="label-radio">
-                          <input type="radio" />
-                          <img
-                            src="http://res.kurly.com/pc/service/order/1912/toss-logo-signature.svg"
-                            alt="토스"
-                          />
-                        </label>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div>
-                  <span>
-                    ※ 페이코, 네이버페이, 토스 결제는 결제 시 결제하신
-                    수단으로만 환불되는 점 양해부탁드립니다. <br />
-                    ※ 고객님은 안전거래를 위해 현금 등으로 결제시 저희
-                    쇼핑몰에서 가입한 LG데이콤의 구매안전(에스크로) 서비스를
-                    이용하실 수 있습니다. <br />※ 보안강화로 Internet Explorer 8
-                    미만 사용 시 결제창이 뜨지 않을 수 있습니다.
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <table className="unissued">
+        {/* ---------- 결제 수단 ---------- */}
+        <div className="product-payment">
+          <h2>결제 수단</h2>
+          <div>
+            <table>
               <tbody>
                 <tr>
-                  <th>미출고 시 조치방법 *</th>
+                  <th>일반결제</th>
+                  <td>
+                    <label className="label-radio">
+                      <input type="radio" className="card" />
+                      신용카드
+                    </label>
+                    <label className="label-radio">
+                      <input type="radio" className="phone" />
+                      휴대폰
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <th />
+                  <td>
+                    <div className="card-select">
+                      <div className="card">
+                        <div className="list">
+                          <div className="card-select">
+                            <select className="card-list">
+                              <option disabled>카드를 선택해주세요.</option>
+                              {cardList}
+                            </select>
+                          </div>
+                          <select className="card-install-list">
+                            <option disabled>할부기간을 선택해주세요.</option>
+                            <option>{this.state.month}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div>{this.state.cardPoint}</div>
+                      <div>{this.state.description}</div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>에스크로결제</th>
+                  <td>
+                    <label className="label-radio">
+                      <input type="radio" className="escro" />
+                      계좌이체
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <th>스마일페이 결제</th>
+                  <td>
+                    <label className="label-radio">
+                      <input type="radio" className="escro" />
+                      <img
+                        src="//res.kurly.com/pc/service/order/1712/ico_smilepay_v2.png"
+                        alt="스마일페이"
+                      />
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Paynow 결제</th>
                   <td>
                     <label className="label-radio">
                       <input type="radio" />
-                      결제수단으로 환불
+                      <img
+                        src="https://res.kurly.com/pc/service/order/1801/logo_paynow.png"
+                        alt="페이나우"
+                      />
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <th>PAYCO 결제</th>
+                  <td>
+                    <label className="label-radio">
                       <input type="radio" />
-                      상품 입고 시 배송
+                      <img
+                        src="https://static-bill.nhnent.com/payco/checkout/img/v2/btn_checkout2.png"
+                        alt="페이코"
+                      />
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <th>네이버페이 결제</th>
+                  <td>
+                    <label className="label-radio">
+                      <input type="radio" />
+                      <img
+                        src="//res.kurly.com/pc/service/order/1710/ico_naverpay_v3.png"
+                        alt="네이버 페이"
+                      />
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <th>토스 결제</th>
+                  <td>
+                    <label className="label-radio">
+                      <input type="radio" />
+                      <img
+                        src="http://res.kurly.com/pc/service/order/1912/toss-logo-signature.svg"
+                        alt="토스"
+                      />
                     </label>
                   </td>
                 </tr>
               </tbody>
             </table>
-
-            {/* ---------- 개인정보 수집 / 제공 ---------- */}
-            <div className="user-info-data">
-              <h2>개인정보 수집/제공 *</h2>
-              <div>
-                <table className="user-info-data-table">
-                  <tbody>
-                    <tr>
-                      <td>
-                        <input type="checkbox" />
-                        결제ㅍ진행 필수 동의
-                        <div>개인정보 수집 · 이용 동의 (필수) 약관확인 </div>
-                        <div>결제대행 서비스 약관 동의 (필수) 약관확인 </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            <div className="caution">
+              ※ 페이코, 네이버페이, 토스 결제는 결제 시 결제하신 수단으로만
+              환불되는 점 양해부탁드립니다. <br />
+              ※ 고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰에서
+              가입한 LG데이콤의 구매안전(에스크로) 서비스를 이용하실 수
+              있습니다. <br />※ 보안강화로 Internet Explorer 8 미만 사용 시
+              결제창이 뜨지 않을 수 있습니다.
             </div>
+          </div>
+        </div>
 
-            <div className="payment">
-              <button>결제하기</button>
-              <div>
-                * 직접 주문취소는 '입금확인' 상태일 경우에만 가능합니다.
-              </div>
-              <div>
-                * 미성년자가 결제시 법정대리인이 그 거래를 취소할 수 있습니다.
-              </div>
-            </div>
+        <table className="unissued">
+          <tbody>
+            <tr>
+              <th>미출고 시 조치방법 *</th>
+              <td>
+                <label className="label-radio">
+                  <input type="radio" />
+                  결제수단으로 환불
+                </label>
+                <label className="label-radio">
+                  <input type="radio" />
+                  상품 입고 시 배송
+                </label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        {/* ---------- 개인정보 수집 / 제공 ---------- */}
+        <div className="user-info-data">
+          <h2>개인정보 수집/제공 *</h2>
+          <div>
+            <table className="user-info-data-table">
+              <tbody>
+                <tr>
+                  <td>
+                    <input type="checkbox" />
+                    결제진행 필수 동의
+                    <div className="subject">
+                      개인정보 수집 · 이용 동의
+                      <span className="gray">(필수)</span>
+                      <span className="confirm">약관확인 ></span>
+                    </div>
+                    <div className="subject">
+                      결제대행 서비스 약관 동의
+                      <span className="gray">(필수)</span>
+                      <span className="confirm">약관확인 ></span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <button className="payment-btn">결제하기</button>
+          <div className="cancel-notice">
+            * 직접 주문취소는 '입금확인' 상태일 경우에만 가능합니다.
+          </div>
+          <div className="cancel-notice">
+            * 미성년자가 결제시 법정대리인이 그 거래를 취소할 수 있습니다.
           </div>
         </div>
         <Footer />

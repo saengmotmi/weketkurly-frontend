@@ -38,7 +38,6 @@
     font-size: 14px;
     font-weight: 500;
     letter-spacing: -0.2px;
-    padding-left: 10px;
     color: #000;
     vertical-align: middle;
   }
@@ -86,13 +85,10 @@
     .phone {
       input {
         width: 50px;
-        margin: 0 3px;
       }
       span {
         font-size: 25px;
         font-weight: 100;
-        margin-bottom: -30px;
-        padding: 5px 10px 0 0;
         color: lightgray;
       }
     }
@@ -119,6 +115,7 @@
   .delivery-info {
     table {
       border-bottom: 0;
+      margin-bottom: 0;
     }
     h2 {
       display: inline-block;
@@ -198,33 +195,40 @@
       height: 15px;
       border-top: 1px solid #ddd;
     }
-    .notice {
-      padding: 30px;
-      background: #fafafa;
-      border: 1px solid #e5e5e5;
-      .notice-ic {
-        width: 22px;
-        height: 19px;
-        vertical-align: middle;
-        margin-top: -3px;
-        display: inline-block;
-        background: url(https://res.kurly.com/images/common/old/common/ico_speaker.gif)
-          no-repeat;
-      }
-      .red {
-        padding: 5px;
-        margin-bottom: 10px;
-        color: #ff0000;
-      }
-      .notice-order {
-        margin-top: 10px;
-        font-size: 12px;
-      }
+  }
+
+  .notice {
+    padding: 30px;
+    background: #fafafa;
+    border: 1px solid #e5e5e5;
+    .notice-ic {
+      width: 22px;
+      height: 19px;
+      vertical-align: middle;
+      margin-top: -3px;
+      display: inline-block;
+      background: url(https://res.kurly.com/images/common/old/common/ico_speaker.gif)
+        no-repeat;
     }
-    .bnr-order {
-      width: 100%;
-      padding-top: 20px;
+    .red {
+      padding: 5px;
+      margin-bottom: 10px;
+      color: #ff0000;
     }
+    .notice-order {
+      margin-top: 10px;
+      font-size: 12px;
+    }
+  }
+  .bnr-order {
+    width: 100%;
+    padding-top: 20px;
+  }
+  .caution {
+    box-sizing: border-box;
+    padding: 23px 0 0 20px;
+    font-size: 12px;
+    color: #514859;
   }
 
   // 결제 금액
@@ -288,11 +292,55 @@
   .cupon {
     table {
       width: 775px;
+      border-bottom: 1px solid #ddd;
+      th {
+        width: 180px;
+      }
+      td {
+        width: 595px;
+      }
+      .cupon-th {
+        letter-spacing: -0.3px;
+      }
+      .cupon-td {
+        font-size: 12px;
+        letter-spacing: -0.3px;
+      }
+      .cupon-kakao {
+        font-size: 12px;
+        letter-spacing: -0.3px;
+        margin: 7px 0;
+        color: #795b8f;
+      }
+
+      .point {
+        td {
+          font-size: 12px;
+        }
+        .text-box {
+          width: 162px;
+          margin-bottom: 4px;
+          border: 1px solid #ddd;
+        }
+        .check-box {
+          padding: 6px;
+          margin-left: 10px;
+        }
+        .emoney {
+          padding: 15px 0 10px;
+          letter-spacing: -0.3px;
+          font-weight: 500;
+          color: #514859;
+        }
+      }
     }
   }
 
   // 결제수단
   .product-payment {
+    .label-radio {
+      margin-right: 50px;
+    }
     table {
       width: 775px;
       border-bottom: 0;
@@ -301,25 +349,30 @@
       tr {
         td {
           font-weight: 400;
-          .label-radio {
-            margin-right: 50px;
-            input {
-              margin: 0 5px 0 0;
-              line-height: 18px;
-            }
-            img {
-              height: 18px;
-              padding-top: 5px;
-            }
+          input {
+            margin: 0 5px 0 0;
+            line-height: 18px;
           }
+          img {
+            height: 18px;
+            padding-top: 5px;
+          }
+
           .list {
             display: flex;
             flex-direction: row;
             align-items: center;
             select {
-              width: 190px;
-              height: 34px;
+              width: 190px; /* 원하는 너비설정 */
+              padding: 0.8em 0.5em; /* 여백으로 높이 설정 */
+              font-family: inherit; /* 폰트 상속 */
+              // background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg)
+              //   no-repeat 95% 50%; /* 네이티브 화살표 대체 */
               border: 1px solid #000;
+              border-radius: 0px; /* iOS 둥근모서리 제거 */
+              -webkit-appearance: none; /* 네이티브 외형 감추기 */
+              -moz-appearance: none;
+              appearance: none;
             }
           }
           .phone {
@@ -332,5 +385,42 @@
 
   .unissued {
     border: 0;
+    .label-radio {
+      margin-right: 50px;
+    }
+  }
+
+  // 개인정보 수집/제공
+  .user-info-data {
+    .user-info-data-table {
+      .subject {
+        padding: 0 10px 0 24px;
+        font-size: 12px;
+        color: #000;
+        .gray {
+          color: #949296;
+        }
+        .confirm {
+          padding-left: 10px;
+          color: #5f0080;
+        }
+      }
+    }
+  }
+
+  .payment-btn {
+    width: 200px;
+    height: 48px;
+    font-size: 13px;
+    color: #fff;
+    background-color: #5f0080;
+  }
+  .cancel-notice {
+    padding-top: 10px;
+    font-size: 12px;
+    color: #514859;
+    line-height: 22px;
+    letter-spacing: -0.23px;
+    text-align: center;
   }
 }

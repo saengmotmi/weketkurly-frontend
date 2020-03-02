@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class CartBtn extends Component {
   render() {
-    const { save, handleOnClickSave, togglePopUp } = this.props;
+    const { save, handleOnClickSave, togglePopUpCart } = this.props;
     return (
       <div className="btn">
         <div className="cart-btn">
@@ -13,7 +13,7 @@ export default class CartBtn extends Component {
           >
             늘 사는것
           </button>
-          <button className="go-to-cart" onClick={togglePopUp}>
+          <button className="go-to-cart" onClick={togglePopUpCart}>
             장바구니 담기
           </button>
         </div>

@@ -85,21 +85,27 @@ class ItemCart extends Component {
               className="item-table-row"
               style={{ borderBottom: "2px solid #ddd" }}
             >
-              <td>
-                <lable>
+              <td align="left">
+                <label>
                   <input type="checkbox" />
-                </lable>
+                </label>
                 <img src={param["thumbnail_image_url"]} alt="" />
               </td>
-              <td>
+              <td align="left">
                 <p className="item-table-row-title">{param["name"]}</p>
                 <p className="item-table-row-price">
                   {this.numberWithCommas(param["price"])}원
                 </p>
               </td>
               <td className="item-table-row-count">
-                <p>{param["ea"]}</p>
+                <div>
+                  <button style={{ borderRight: "1px solid #ddd" }}>-</button>
+                  <span>{param["ea"]}</span>
+                  <button style={{ borderLeft: "1px solid #ddd" }}>+</button>
+                </div>
               </td>
+              <td></td>
+              <td>X</td>
             </tr>
           );
         })
@@ -137,7 +143,7 @@ class ItemCart extends Component {
         <div className="item-content">
           <table className="item-table">
             <tr className="item-table-header">
-              <td>
+              <td style={{ width: "375px" }}>
                 <label>
                   <input type="checkbox" />
                 </label>
@@ -145,38 +151,54 @@ class ItemCart extends Component {
                   전체선택({`${this.state.itemCount}/${this.state.itemCount}`})
                 </span>
               </td>
-              <td>
+              <td style={{ width: "432px" }}>
                 <span>상품 정보</span>
               </td>
-              <td>
+              <td style={{ width: "115px" }}>
                 <span>수량</span>
               </td>
-              <td>
+              <td style={{ width: "115px" }}>
                 <span>상품금액</span>
               </td>
             </tr>
             {itemProductArr}
-            <div className="item-wrapper-btn">
-              <input type="checkbox" />
-              <span>
-                전체선택({`${this.state.itemCount}/${this.state.itemCount}`})
-              </span>
-              <button>선택 삭제</button>
-              <button style={{ width: "120px" }}>품절 상품 삭제</button>
-            </div>
+            <tr>
+              <td align="left" colspan="4">
+                <div className="item-wrapper-btn">
+                  <label>
+                    <input type="checkbox" />
+                  </label>
+                  <span style={{ paddingRight: "15px" }}>
+                    전체선택({`${this.state.itemCount}/${this.state.itemCount}`}
+                    )
+                  </span>
+                  <button>선택 삭제</button>
+                  <button style={{ width: "120px" }}>품절 상품 삭제</button>
+                </div>
+              </td>
+            </tr>
           </table>
-          <div className="item-price-result">
+          <div className="item-price">
             <div>
-              <span>상품금액</span>
+              <span className="item-price-desc">상품금액</span>
+              <span className="item-price-price">원</span>
             </div>
+            <span className="item-price-oper">-</span>
             <div>
-              <span>상품할인금액</span>
+              <span className="item-price-desc">상품할인금액</span>
+              <span className="item-price-price">원</span>
             </div>
+            <span className="item-price-oper">+</span>
             <div>
-              <span>배송비</span>
+              <span className="item-price-desc">배송비</span>
+              <span className="item-price-price">
+                원<p>원 추가주문 시, 무료배송</p>
+              </span>
             </div>
-            <div>
-              <span>결제예정금액</span>
+            <span className="item-price-oper">=</span>
+            <div style={{ backgroundColor: "#f7f7f7" }}>
+              <span className="item-price-desc">결제예정금액</span>
+              <span className="item-price-price">원</span>
             </div>
           </div>
           <button className="order-btn btn-off">주문하기</button>

@@ -113,13 +113,13 @@ export default class Detail extends Component {
 
   handleOnClickNext = e => {
     this.setState({
-      translate: this.state.translate - 960
+      translate: this.state.translate === -960 ? 0 : this.state.translate - 960
     });
   };
 
   handleOnClickBefore = e => {
     this.setState({
-      translate: this.state.translate + 960
+      translate: this.state.translate === 0 ? -960 : this.state.translate + 960
     });
   };
 
@@ -183,14 +183,14 @@ export default class Detail extends Component {
       more,
       moreBtn,
       closeBtn,
-      translate,
       info,
       data
     } = this.state;
 
     const mainImg = info.original_image_url;
 
-    const x = translate;
+    const x = this.state.translate;
+    console.log(x);
     const next = {
       transform: `translateX(${x}px)`
     };

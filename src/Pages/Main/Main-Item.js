@@ -1,8 +1,4 @@
 import React, { Component, Fragment } from "react";
-import Slick from "react-slick";
-import Slider from "react-slick/lib/slider";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 class MainItem extends Component {
   constructor(props) {
@@ -28,15 +24,14 @@ class MainItem extends Component {
     } = this.props;
 
     return (
-      <Fragment>
-        <button className="btn-left">-</button>
-        <li style={style} className={cN}>
+      <>
+        <li className={cN}>
           <div
             style={{
               position: "relative",
-              overflow: "hidden",
               width: "249px",
-              height: "320px"
+              height: "320px",
+              overflow: "hidden"
             }}
           >
             {price !== original_price ? (
@@ -71,8 +66,7 @@ class MainItem extends Component {
             )}
           </div>
         </li>
-        <button className="btn-right">+</button>
-      </Fragment>
+      </>
     );
   }
 }

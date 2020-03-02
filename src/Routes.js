@@ -8,6 +8,7 @@ import Nav from "./Components/Nav";
 import Footer from "./Components/Footer";
 import EventMain from "./Pages/EventMain/EventMain";
 import Login from "./Pages/Login/Login";
+import CategoryView from "./Pages/CategoryView/CategoryView";
 import Order from "./Pages/Order/Order";
 
 class Routes extends React.Component {
@@ -16,14 +17,17 @@ class Routes extends React.Component {
       <Router>
         <Switch>
           <Route exact path="/" component={Main} />
+          <Route exact path="/joinComplete" component={JoinComplete} />
+          <Route exact path="/footer" component={Footer} />
+          <Route exact path="/nav" component={Nav} />
+          <Route exact path="/join" component={Join} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/categoryView" component={CategoryView} />
           <Route exact path="/detail" component={Detail} />
-          <Route exact path="/JoinComplete" component={JoinComplete} />
           <Route exact path="/footer" component={Footer} />
           <Route exact path="/nav" component={Nav} />
           <Route exact path="/eventmain" component={EventMain} />
-          <Route exact path="/Join" component={Join} />
           <Route exact path="/order" component={Order} />
-          <Route exact path="/Login" component={Login} />
         </Switch>
       </Router>
     );

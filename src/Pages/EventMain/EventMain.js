@@ -144,7 +144,7 @@ export default class EventMain extends Component {
 
     return (
       <div className="EventMain">
-        <Nav />
+        {/* <Nav /> */}
         <div className="event-view">
           {/* img */}
           <div className="event-img">
@@ -229,7 +229,7 @@ export default class EventMain extends Component {
             </button>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }

@@ -161,7 +161,7 @@ class MainCategory extends Component {
                       src={param["image_url"]}
                       alt="review"
                     />
-                    <p>{param["title"]}</p>
+                    <p style={{ marginTop: "12px" }}>{param["title"]}</p>
                   </a>
                 </li>
               </ul>
@@ -176,7 +176,10 @@ class MainCategory extends Component {
             <div style={{ textAlign: "center" }} className="product-item">
               <ul>
                 <li>
-                  <a style={{ overflow: "hidden" }} href={param["landing_url"]}>
+                  <a
+                    style={{ overflow: "hidden", display: "inline-block" }}
+                    href={param["landing_url"]}
+                  >
                     <img
                       className="zoom-in"
                       src={param["image_url"]}
@@ -247,7 +250,11 @@ class MainCategory extends Component {
             >
               {categoryList}
             </div>
-            <ul className="goods-item">{mdProductsArr}</ul>
+            <ul className="goods-item">
+              <button className="btn-left">-</button>
+              {mdProductsArr}
+              <button className="btn-right">+</button>
+            </ul>
             <div
               style={{
                 display: "flex",

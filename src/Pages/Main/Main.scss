@@ -43,6 +43,7 @@
   }
 
   .goods-item {
+    position: relative;
     display: flex;
     justify-content: right;
     overflow: hidden;
@@ -57,7 +58,21 @@
     img {
       width: 249px;
       height: 320px;
-      margin-bottom: 11px;
+    }
+
+    .btn {
+      &-left {
+        z-index: 1;
+        position: absolute;
+        top: 160px;
+        left: 0;
+      }
+      &-right {
+        z-index: 1;
+        position: absolute;
+        top: 160px;
+        right: 0;
+      }
     }
 
     .recipe-img {

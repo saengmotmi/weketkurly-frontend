@@ -9,6 +9,7 @@ import EventMain from "./Pages/EventMain/EventMain";
 import Join from "./Pages/Join/Join";
 import Login from "./Pages/Login/Login";
 import Order from "./Pages/Order/Order";
+import OrderList from "./Pages/OrderList/OrderList";
 
 class Routes extends React.Component {
   render() {
@@ -24,6 +25,7 @@ class Routes extends React.Component {
           <Route exact path="/Join" component={Join} />
           <Route exact path="/order" component={Order} />
           <Route exact path="/Login" component={Login} />
+          <Route exact path="/orderlist" component={OrderList} />
         </Switch>
       </Router>
     );

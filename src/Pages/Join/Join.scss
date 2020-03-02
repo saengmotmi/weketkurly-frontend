@@ -7,12 +7,15 @@
   div,
   span,
   p {
-    border: 0px solid #fff0ba;
+    border: 0.3px solid #fff0ba;
   }
   input {
     border-radius: 4px;
     border: 1px solid #ccc;
-
+    // text-indent: 20px;
+    &.typing {
+      text-indent: 20px;
+    }
     &[type="radio"],
     &[type="radio"]:checked {
       width: 16px;
@@ -20,7 +23,6 @@
     }
 
     &::placeholder {
-      padding-left: 10px;
       color: #ccc;
     }
 
@@ -114,6 +116,7 @@
 
   .birth-input {
     width: 80px;
+    text-align: center;
   }
   .birth-inputs {
     width: 300px;
@@ -307,5 +310,20 @@
     border-radius: 7px;
     border: 0px;
     cursor: pointer;
+  }
+  .guide-id-first1 {
+    font-size: 12px;
+    color: black;
+  }
+  .guide-id-first2 {
+    font-size: 12px;
+    color: #b8534a;
+  }
+  .guide-id-first3 {
+    font-size: 12px;
+    color: green;
+  }
+  .guide-id-second {
+    font-size: 12px;
   }
 }

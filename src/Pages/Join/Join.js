@@ -2,6 +2,61 @@ import React, { Component } from "react";
 import "./Join.scss";
 
 class Join extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      IDfocusMode: "false",
+      guideIDFirstClass: "guide-id-first1",
+      ID: "",
+      PW: "",
+      PWConfirm: "",
+      year: ""
+    };
+  }
+  idPopup = () => {
+    this.setState({
+      IDfocusMode: "true"
+    });
+  };
+
+  handleID = e => {
+    this.setState({
+      ID: e.target.value
+    });
+    // console.log(e.target.value);
+    // console.log(e.target.value.length);
+    if (e.target.value.length < 7) {
+      this.setState({
+        guideIDFirstClass: "guide-id-first2"
+      });
+    } else if (e.target.value.length >= 7) {
+      this.setState({
+        guideIDFirstClass: "guide-id-first3"
+      });
+    }
+  };
+  handlePW = e => {
+    this.setState({
+      PW: e.target.value
+    });
+    console.log(e.target.value);
+  };
+  handlePWConfirm = e => {
+    this.setState({
+      PWConfirm: e.target.value
+    });
+    console.log(e.target.value);
+  };
+  yearLimit = e => {
+    if (e.target.value > 0 && e.target.value <= 2020) {
+      this.setState({
+        year: e.target.value
+      });
+    }
+
+    console.log(e.target.value);
+  };
   render() {
     return (
       <div className="join-start">
@@ -12,7 +67,6 @@ class Join extends Component {
             <strong>회원가입</strong>
           </div>
 
-          {/* <div className="page-article"> */}
           <div className="page-article2">
             <div className="head-section">
               <h2 className="join-title">회원가입</h2>
@@ -32,11 +86,31 @@ class Join extends Component {
                       className="typing"
                       type="text"
                       placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"
+                      onFocus={this.idPopup}
+                      onChange={this.handleID}
+                      value={this.state.ID}
                     ></input>
                     <div className="normal-button colbutton">중복확인</div>
                   </div>
                 </td>
               </tr>
+              {/* 상황연산자 */}
+              {this.state.IDfocusMode === "true" ? (
+                <tr className="guide -tr">
+                  <td className="give-number col1"></td>
+                  <td className="give-number col2">
+                    <div className="col2-2">
+                      <div className="guide-box">
+                        <div className={this.state.guideIDFirstClass}>
+                          6자 이상의 영문 혹은 영문과 숫자를 조합
+                        </div>
+                        <div className="guide-id-second">아이디 중복확인</div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              ) : null}
+
               <tr>
                 <td className="pw-write col1">비밀번호*</td>
                 <td className="pw-write col2">
@@ -44,6 +118,7 @@ class Join extends Component {
                     className="typing"
                     type="password"
                     placeholder="비밀번호를 입력해주세요"
+                    onChange={this.handlePW}
                   ></input>
                 </td>
               </tr>
@@ -54,6 +129,7 @@ class Join extends Component {
                     className="typing"
                     type="password"
                     placeholder="비밀번호를 한번 더 입력해주세요"
+                    onChange={this.handlePWConfirm}
                   ></input>
                 </td>
               </tr>
@@ -64,6 +140,7 @@ class Join extends Component {
                     className="typing"
                     type="text"
                     placeholder="고객님의 이름을 입력해주세요"
+                    onChange={this.handleName}
                   ></input>
                 </td>
               </tr>
@@ -75,6 +152,7 @@ class Join extends Component {
                       className="typing"
                       type="text"
                       placeholder="예: marketkurly@kurly.com"
+                      onChange={this.handleEmail}
                     ></input>
                     <div className="normal-button colbutton">
                       이메일 중복확인
@@ -90,6 +168,7 @@ class Join extends Component {
                       className="typing"
                       type="number"
                       placeholder="숫자만 입력해주세요"
+                      onChange={this.handleCellphone}
                     ></input>
                     <div className="normal-button-gray colbutton">
                       인증번호받기
@@ -134,6 +213,7 @@ class Join extends Component {
                       className="sex-bullion"
                       type="radio"
                       name="sex-bullion"
+                      value="남자"
                     ></input>
                     <span>남자</span>
                   </label>
@@ -142,6 +222,7 @@ class Join extends Component {
                       className="sex-bullion"
                       type="radio"
                       name="sex-bullion"
+                      value="여자"
                     ></input>
                     <span>여자</span>
                   </label>
@@ -150,6 +231,7 @@ class Join extends Component {
                       className="sex-bullion"
                       type="radio"
                       name="sex-bullion"
+                      value="선택안함"
                     ></input>
                     <span>선택안함</span>
                   </label>
@@ -163,6 +245,10 @@ class Join extends Component {
                       <input
                         className="birth-input year"
                         placeholder="YYYY"
+                        type="number"
+                        maxlength="4"
+                        onChange={this.yearLimit}
+                        value={this.state.year}
                       ></input>
                       <span>/</span>
                       <input

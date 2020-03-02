@@ -51,6 +51,9 @@ class Login extends React.Component {
       this.state.PW
     );
   };
+  goJoin = () => {
+    this.props.history.push("/join");
+  };
   //☞ 함수 들어갈 자리
   render() {
     //☞ 맵함수 구현할 자리
@@ -94,7 +97,9 @@ class Login extends React.Component {
               </div>
             </div>
             <div className="button">
-              <div className="join-button">회원가입</div>
+              <div className="join-button" onClick={this.goJoin}>
+                회원가입
+              </div>
             </div>
           </div>
                     

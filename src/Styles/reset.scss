@@ -75,7 +75,7 @@ video {
   vertical-align: baseline;
   background: transparent;
   font-weight: normal;
-  letter-spacing: 1px;
+  letter-spacing: 0px;
 }
 ​ * {
   box-sizing: border-box;
@@ -168,4 +168,8 @@ select {
 }
 ​ textarea {
   resize: none;
+}
+
+button {
+  cursor: pointer;
 }

@@ -50,15 +50,45 @@
     },
     {
       "id": 9,
-      "img": "https:////img-cf.kurly.com/shop/data/goods/1531117639636m0.jpg",
+      "img": "https://img-cf.kurly.com/shop/data/goods/1531117639636m0.jpg",
       "name": "[청오] 국산 유기농 볶음 콩가루",
       "price": "6,900원"
     },
     {
       "id": 10,
-      "img": "https:////img-cf.kurly.com/shop/data/goods/1519104788172m0.jpg",
+      "img": "https://img-cf.kurly.com/shop/data/goods/1519104788172m0.jpg",
       "name": "레몬 그라스 150g",
       "price": "4,300원"
+    },
+    {
+      "id": 11,
+      "img": "https://img-cf.kurly.com/shop/data/goods/1470382293310m0.jpg",
+      "name": "무농약 미니밤호박 (보짱) 1개",
+      "price": "5,200원"
+    },
+    {
+      "id": 12,
+      "img": "https://img-cf.kurly.com/shop/data/goods/1491195959219m0.jpg",
+      "name": "유기농 깐밤 500g",
+      "price": "11,900원"
+    },
+    {
+      "id": 13,
+      "img": "https://img-cf.kurly.com/shop/data/goods/145214880353m0.jpg",
+      "name": "무농약 양상추 1통",
+      "price": "3,600원"
+    },
+    {
+      "id": 14,
+      "img": "https://img-cf.kurly.com/shop/data/goods/1544080299568m0.jpg",
+      "name": "칠레산 블루베리 2종",
+      "price": "4,500원"
+    },
+    {
+      "id": 15,
+      "img": "https://img-cf.kurly.com/shop/data/goods/1501813373424m0.jpg",
+      "name": "유기농 다진 양배추 60g (냉동)",
+      "price": "2,000원"
     }
   ]
 }

@@ -21,6 +21,7 @@ export default class Detail extends Component {
       point: 185,
       save: false,
       popUp: false,
+      popUpCart: false,
       scroll: false,
       scrollTop: 0,
       display: false,
@@ -111,15 +112,21 @@ export default class Detail extends Component {
     });
   };
 
+  togglePopUpCart = () => {
+    this.setState({
+      popUpCart: !this.state.popUpCart
+    });
+  };
+
   handleOnClickNext = e => {
     this.setState({
-      translate: this.state.translate - 960
+      translate: this.state.translate === -1920 ? 0 : this.state.translate - 960
     });
   };
 
   handleOnClickBefore = e => {
     this.setState({
-      translate: this.state.translate + 960
+      translate: this.state.translate === 0 ? -1920 : this.state.translate + 960
     });
   };
 
@@ -178,6 +185,7 @@ export default class Detail extends Component {
       point,
       save,
       popUp,
+      popUpCart,
       scroll,
       display,
       more,
@@ -191,6 +199,7 @@ export default class Detail extends Component {
     const mainImg = info.original_image_url;
 
     const x = translate;
+    // 슬라이드 기능 구현
     const next = {
       transform: `translateX(${x}px)`
     };
@@ -240,12 +249,19 @@ export default class Detail extends Component {
           <CartBtn
             handleOnClickSave={this.handleOnClickSave}
             togglePopUp={this.togglePopUp}
+            togglePopUpCart={this.togglePopUpCart}
             save={save}
           />
           {popUp ? (
             <PopUp
               close={this.togglePopUp}
               txt="늘 사는 리스트에 추가했습니다."
+            />
+          ) : null}
+          {popUpCart ? (
+            <PopUp
+              close={this.togglePopUpCart}
+              txt="이미 동일한 상품이 장바구니에 존재합니다."
             />
           ) : null}
         </div>
@@ -629,12 +645,19 @@ export default class Detail extends Component {
                 <CartBtn
                   handleOnClickSave={this.handleOnClickSave}
                   togglePopUp={this.togglePopUp}
+                  togglePopUpCart={this.togglePopUpCart}
                   save={save}
                 />
                 {popUp ? (
                   <PopUp
                     close={this.togglePopUp}
                     txt="늘 사는 리스트에 추가했습니다."
+                  />
+                ) : null}
+                {popUpCart ? (
+                  <PopUp
+                    close={this.togglePopUpCart}
+                    txt="이미 동일한 상품이 장바구니에 존재합니다."
                   />
                 ) : null}
               </div>

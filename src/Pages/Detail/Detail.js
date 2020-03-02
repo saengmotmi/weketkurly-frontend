@@ -191,14 +191,15 @@ export default class Detail extends Component {
       more,
       moreBtn,
       closeBtn,
+      translate,
       info,
       data
     } = this.state;
 
     const mainImg = info.original_image_url;
 
+    const x = translate;
     // 슬라이드 기능 구현
-    const x = this.state.translate;
     const next = {
       transform: `translateX(${x}px)`
     };

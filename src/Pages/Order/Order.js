@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Nav from "../../Components/Nav";
+import CurrentAddress from "../../Components/CurrentAddress";
+import NewAddress from "../../Components/NewAddress";
 import Footer from "../../Components/Footer";
 import "./Order.scss";
 
@@ -8,6 +10,8 @@ export default class Order extends Component {
     super(props);
     this.state = {
       detail: false,
+      current: true,
+      checked: true,
       value: "",
       list: []
     };
@@ -24,9 +28,22 @@ export default class Order extends Component {
   };
 
   handleChangeDetail = () => {
+    console.log("바껴라!");
     this.setState({
       detail: true
     });
+  };
+
+  onClickChangeAddress = () => {
+    this.setState(
+      {
+        current: !this.state.current,
+        checked: !this.state.checked
+      },
+      () => {
+        console.log(this.state.current);
+      }
+    );
   };
 
   handleChange = e => {
@@ -40,7 +57,7 @@ export default class Order extends Component {
   };
 
   render() {
-    const { detail } = this.state;
+    const { detail, current, checked } = this.state;
     const options = this.state.list.map(el => {
       return (
         <option key={el.cardName} value={el.cardName}>
@@ -128,10 +145,19 @@ export default class Order extends Component {
                 <tr>
                   <th>휴대폰 *</th>
                   <td className="phone">
-                    <input type="number" readOnly="readOnly" value="010" />
-                    <span>-</span>
+                    <input
+                      type="number"
+                      readOnly="readOnly"
+                      value="010"
+                      style={{ width: "45px" }}
+                    />
+                    <span className="bar">
+                      <span />
+                    </span>
                     <input type="number" readOnly="readOnly" value="6203" />
-                    <span>-</span>
+                    <span className="bar">
+                      <span />
+                    </span>
                     <input type="number" readOnly="readOnly" value="2452" />
                   </td>
                 </tr>
@@ -171,115 +197,29 @@ export default class Order extends Component {
                   <th>배송지선택</th>
                   <td>
                     <label className="lebel-radio">
-                      <input type="radio" name="selectDelivery" checked />
-                      최근 배송지
+                      <input
+                        type="radio"
+                        name="selectDelivery"
+                        checked={checked ? "checked" : null}
+                        onClick={this.onClickChangeAddress}
+                      />
+                      <span className="current">최근 배송지</span>
                     </label>
                     <label className="lebel-radio">
-                      <input type="radio" name="selectDelivery" />
+                      <input
+                        type="radio"
+                        name="selectDelivery"
+                        checked={checked ? null : "checked"}
+                        onClick={this.onClickChangeAddress}
+                      />
                       새로운 배송지
                     </label>
                   </td>
                 </tr>
-                <tr className="address">
-                  <th>주소</th>
-                  <td>
-                    <input value="서울 강서구 화곡동 504-162 (수정맨션)" />
-                    <input value="202호" />
-                    <span>29자 / 85자</span>
-                    <div className="road">
-                      서울 강서구 등촌로13나길 38 (수정맨션) [07733] 202호
-                    </div>
-                  </td>
-                </tr>
-                <tr className="deli">
-                  <th>배송 구분</th>
-                  <td>
-                    <span className="txt">샛별배송지역</span>
-                    <p>
-                      <span>
-                        샛별 배송 지역 중 아래 장소는 배송 불가 장소입니다.
-                        <br />
-                      </span>
-                      <span>
-                        ▶ 배송 불가 장소 : 관공서/ 학교/ 병원/ 시장/ 공단 지역/
-                        산간 지역/ 백화점 등
-                      </span>
-                    </p>
-                  </td>
-                </tr>
-                <tr className="receive-name">
-                  <th>수령인 이름 *</th>
-                  <td>
-                    <input type="text" value="이은지" />
-                  </td>
-                </tr>
-                <tr className="receive-phone">
-                  <th>휴대폰 *</th>
-                  <td>
-                    <input
-                      type="number"
-                      size="3"
-                      value="010"
-                      className="first-number"
-                    />
-                    <span className="hyphen" />
-                    <input
-                      type="number"
-                      size="4"
-                      value="6203"
-                      className="second-number"
-                    />
-                    <span />
-                    <input
-                      type="number"
-                      size="4"
-                      value="2452"
-                      className="second-number"
-                    />
-                  </td>
-                </tr>
-                <tr className="memo">
-                  <th>배송 요청사항</th>
-                  <td>
-                    <textarea maxLength="50" />
-                  </td>
-                </tr>
-                <tr className="gate">
-                  <th>공동현관 출입 방법 *</th>
-                  <td>
-                    <label className="lebel-radio">
-                      <input type="radio" />
-                      비밀번호
-                      <input type="radio" />
-                      경비실 호출
-                      <input type="radio" />
-                      자유출입가능
-                      <input type="radio" />
-                      기타사항
-                    </label>
-                  </td>
-                </tr>
-                <tr>
-                  <th>배송완료 메세지 전송시점 *</th>
-                  <td>
-                    <label className="lebel-radio">
-                      <input type="radio" />
-                      배송직후
-                      <input type="radio" />
-                      오전 7시
-                    </label>
-                  </td>
-                </tr>
-                <tr>
-                  <th>출입정보 저장</th>
-                  <td>
-                    <label className="label-checked">
-                      <input type="checkbox" />
-                      출입정보 저장
-                      <div>공동현관 출입방법, 배송완료메세지 전송시점 저장</div>
-                    </label>
-                  </td>
-                </tr>
+                <CurrentAddress
+                  style={{ display: current ? "block" : "none" }}
+                />
+                <NewAddress style={{ display: current ? "none" : "block" }} />
               </tbody>
             </table>
           </div>
@@ -319,7 +259,7 @@ export default class Order extends Component {
           <table>
             <tbody>
               <tr>
-                <th claaName="top-th">상품금액</th>
+                <th Name="top-th">상품금액</th>
                 <td className="top-td">37,000원</td>
               </tr>
               <tr>

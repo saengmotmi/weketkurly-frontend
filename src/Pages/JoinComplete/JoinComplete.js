@@ -4,6 +4,17 @@ import Footer from "../../Components/Footer";
 import "./JoinComplete.scss";
 
 class JoinComplete extends Component {
+  constructor() {
+    super();
+    this.state = {
+      ID: "",
+      PW: ""
+    };
+  }
+  goHome = () => {
+    this.props.history.push("/");
+  };
+
   render() {
     return (
       <div>
@@ -35,7 +46,7 @@ class JoinComplete extends Component {
                       </div>
                     </button>
                     <button className="right-button">
-                      <div>마이페이지로 이동</div>
+                      <div onClick={this.goHome}>홈으로 이동</div>
                     </button>
                   </div>
                 </div>

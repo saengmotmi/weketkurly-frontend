@@ -232,10 +232,18 @@ class Nav extends Component {
                   : null}
               </ul>
             </li>
-            <li>신상품</li>
-            <li>베스트</li>
-            <li>알뜰쇼핑</li>
-            <li>이벤트</li>
+            <li>
+              <span>신상품</span>
+            </li>
+            <li>
+              <span>베스트</span>
+            </li>
+            <li>
+              <span>알뜰쇼핑</span>
+            </li>
+            <li>
+              <span>이벤트</span>
+            </li>
             <div className="search-wrap">
               <input
                 onChange={this._inputChange}

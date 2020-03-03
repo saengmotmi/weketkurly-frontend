@@ -37,17 +37,13 @@
         color: black;
 
         li {
-          width: 100px;
+          width: 80px;
           font-size: 12px;
           padding: 5px 0;
           padding-left: 10px;
           border-left: 1px solid #e3e3e3;
           border-right: 1px solid #e3e3e3;
           background-color: white;
-
-          // &::after {
-          //   content: "";
-          // }
         }
       }
     }
@@ -57,18 +53,6 @@
         padding: 0 10px;
         letter-spacing: -0.3px;
       }
-
-      // &::after {
-      //   content: " | ";
-      //   color: #d8d8d8;
-      // }
-
-      // &:nth-child(3) {
-      //   &::before {
-      //     content: " ";
-      //     background: url(https://res.kurly.com/pc/ico/1908/ico_down_8x5.png);
-      //   }
-      // }
 
       &:last-child {
         &::after {
@@ -140,17 +124,6 @@
       letter-spacing: -0.3px;
       font-weight: 500;
       color: #333333;
-
-      // &::after {
-      //   content: " | ";
-      //   color: #d8d8d8;
-      // }
-
-      // &:last-child {
-      //   &::after {
-      //     content: "";
-      //   }
-      // }
     }
 
     img {
@@ -217,12 +190,6 @@
       margin-top: 40px;
       font-weight: 700;
       line-height: 20px;
-
-      // li {
-      //   &::after {
-      //     content: "";
-      //   }
-      // }
     }
 
     img {
@@ -231,5 +198,16 @@
       padding: 5px 0;
       margin-right: 14px;
     }
+  }
+
+  .disappear {
+    display: none;
+  }
+
+  .fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
 }

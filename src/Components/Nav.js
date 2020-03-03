@@ -9,7 +9,7 @@ class Nav extends Component {
       visibleProfile1: false,
       visibleProfile2: false,
       visibleCategory: false,
-      inputValue: "서울 맛집 로드 week.2",
+      inputSearchValue: "서울 맛집 로드 week.2",
       data: [],
       dataProfileList1: [
         "주문 내역",
@@ -37,22 +37,22 @@ class Nav extends Component {
   _inputChange = e => {
     console.log(e.target.value);
     this.setState({
-      inputValue: e.target.value
+      inputSearchValue: e.target.value
     });
   };
 
   _visible = name => {
-    if (name === "profile-listdown1") {
+    if (name === "profile1") {
       this.setState({
         visibleProfile1: !this.state.visibleProfile1,
         dataCategoryList1: this.state.data
       });
-    } else if (name === "profile-listdown2") {
+    } else if (name === "profile2") {
       this.setState({
         visibleProfile2: !this.state.visibleProfile2,
         dataCategoryList2: this.state.data
       });
-    } else if (name === "category-listdown") {
+    } else if (name === "category1") {
       this.setState({
         visibleCategory: !this.state.visibleCategory,
         liProfileListdown: []
@@ -70,32 +70,60 @@ class Nav extends Component {
           this.setState({
             data: res.data
           }),
-        console.log("data", this.state.data)
+        () => {
+          console.log("data", this.state.data);
+        }
       );
   };
+
+  _liProfileListdown = paramArr => {
+    const liProfileListdown = paramArr.map((param, idx) => {
+      return (
+        <li key={idx}>
+          <p>{param}</p>
+        </li>
+      );
+    });
+    return liProfileListdown;
+  };
+
+  _liCategoryListdown = paramArr => {
+    let liCateListdown = [];
+
+    if (paramArr != false) {
+      liCateListdown = paramArr.map((param, idx) => {
+        return (
+          <li key={idx} className="cate-list-0">
+            <p>
+              <img src={this.state.data.categories[idx].pc_icon_url} alt="" />
+              {param}
+            </p>
+          </li>
+        );
+      });
+    } else {
+      liCateListdown = null;
+    }
+    return liCateListdown;
+  };
+
+  onScroll = e => {
+    const scrollTop = ('scroll', e.srcElement.scrollingElement.scrollTop);
+    this.setState({ scrollTop });
+  };
+​
 
   componentDidMount = () => {
     this._getApi("categories");
+    window.addEventListener('scroll', this.onScroll);
   };
 
+
+
   render() {
-    const liProfileListdown1 = this.state.dataProfileList1.map((param, idx) => {
-      return (
-        <li key={idx}>
-          <p>{param}</p>
-        </li>
-      );
-    });
-
-    const liProfileListdown2 = this.state.dataProfileList2.map((param, idx) => {
-      return (
-        <li key={idx}>
-          <p>{param}</p>
-        </li>
-      );
-    });
-
     const itemCartCount = this.props.itemCartCount;
+
+    
 
     return (
       <div className="header">
@@ -109,8 +137,8 @@ class Nav extends Component {
             <ul>
               <li
                 className="profile-listdown"
-                onMouseOver={() => this._visible("profile-listdown1")}
-                onMouseOut={() => this._visible("profile-listdown1")}
+                onMouseOver={() => this._visible("profile1")}
+                onMouseOut={() => this._visible("profile2")}
               >
                 <span
                   style={{
@@ -130,13 +158,13 @@ class Nav extends Component {
                     display: this.state.visibleProfile1 ? "block" : "none"
                   }}
                 >
-                  {liProfileListdown1}
+                  {this._liProfileListdown(this.state.dataProfileList1)}
                 </ul>
               </li>
               <li
                 className="profile-listdown"
-                onMouseOver={() => this._visible("profile-listdown2")}
-                onMouseOut={() => this._visible("profile-listdown2")}
+                onMouseOver={() => this._visible("profile2")}
+                onMouseOut={() => this._visible("profile2")}
               >
                 <span>고객센터</span>
                 <ul
@@ -145,7 +173,7 @@ class Nav extends Component {
                     display: this.state.visibleProfile2 ? "block" : "none"
                   }}
                 >
-                  {liProfileListdown2}
+                  {this._liProfileListdown(this.state.dataProfileList2)}
                 </ul>
               </li>
               <li>
@@ -166,8 +194,8 @@ class Nav extends Component {
           <ul className="nav-bottom-bar">
             <li
               className="category-listdown"
-              onMouseOver={() => this._visible("category-listdown")}
-              onMouseOut={() => this._visible("category-listdown")}
+              onMouseOver={() => this._visible("category1")}
+              onMouseOut={() => this._visible("category1")}
             >
               <img
                 alt="카테고리"
@@ -180,17 +208,13 @@ class Nav extends Component {
                   display: this.state.visibleCategory ? "block" : "none"
                 }}
               >
-                <li>채소</li>
-                <li>
-                  과일·견과·쌀
-                  <ul style={{ padding: "0 0 0 10px" }}>
-                    <li>국산과일</li>
-                    <li>수입과일</li>
-                    <li>냉동·건과일</li>
-                    <li>견과류</li>
-                    <li>쌀·잡곡</li>
-                  </ul>
-                </li>
+                {this.state.data.categories
+                  ? this._liCategoryListdown(
+                      this.state.data.categories.map((param, _) => {
+                        return param["name"];
+                      })
+                    )
+                  : null}
               </ul>
             </li>
             <li>신상품</li>
@@ -201,7 +225,7 @@ class Nav extends Component {
               <input
                 onChange={this._inputChange}
                 type="text"
-                value={this.state.inputValue}
+                value={this.state.inputSearchValue}
                 required="required"
                 className="input-search"
               />

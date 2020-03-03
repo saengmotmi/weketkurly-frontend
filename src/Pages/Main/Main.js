@@ -9,7 +9,9 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      scrollY: 0,
+      sideFixed: false
     };
   }
 
@@ -25,9 +27,30 @@ class Main extends Component {
       );
   };
 
+  _onScroll = () => {
+    const sideScroll = window.scrollY;
+
+    if (sideScroll > 470) {
+      this.setState({
+        sideFixed: true,
+        scrollY: sideScroll
+      });
+    } else {
+      this.setState({
+        sideFixed: false,
+        scrollY: sideScroll
+      });
+    }
+  };
+
   componentDidMount = () => {
     this._getApi("recommendation");
+    window.addEventListener("scroll", this._onScroll);
   };
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._headerScroll);
+  }
 
   render() {
     const mainCateList =
@@ -51,11 +74,13 @@ class Main extends Component {
 
     return (
       <div>
-        {console.log(this.state.data)}
         <Nav />
         <ImgSlider />
         <div className="main">
-          <div className="quick-menu">
+          <div
+            className={this.state.sideFixed ? "quick-menu float" : "quick-menu"}
+            style={{ top: `${this.state.scrollY + 600}px` }}
+          >
             <img
               width="80"
               height="120"

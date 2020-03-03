@@ -6,9 +6,12 @@ class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visibleProfile1: false,
-      visibleProfile2: false,
-      visibleCategory: false,
+      // visibleProfile1: false,
+      // visibleProfile2: false,
+      // visibleCategory: false,
+      sideFloat: false,
+      headerFixed: false,
+      scrollY: 0,
       inputSearchValue: "서울 맛집 로드 week.2",
       data: [],
       dataProfileList1: [
@@ -39,25 +42,6 @@ class Nav extends Component {
     this.setState({
       inputSearchValue: e.target.value
     });
-  };
-
-  _visible = name => {
-    if (name === "profile1") {
-      this.setState({
-        visibleProfile1: !this.state.visibleProfile1,
-        dataCategoryList1: this.state.data
-      });
-    } else if (name === "profile2") {
-      this.setState({
-        visibleProfile2: !this.state.visibleProfile2,
-        dataCategoryList2: this.state.data
-      });
-    } else if (name === "category1") {
-      this.setState({
-        visibleCategory: !this.state.visibleCategory,
-        liProfileListdown: []
-      });
-    }
   };
 
   _getApi = url => {
@@ -107,26 +91,55 @@ class Nav extends Component {
     return liCateListdown;
   };
 
-  onScroll = e => {
-    const scrollTop = ('scroll', e.srcElement.scrollingElement.scrollTop);
-    this.setState({ scrollTop });
-  };
-​
+  _onScroll = () => {
+    const headScroll = window.scrollY;
+    const sideScroll = window.scrollY;
 
-  componentDidMount = () => {
+    console.log(headScroll);
+    if (headScroll > 116) {
+      this.setState({
+        headerFixed: true,
+        scrollY: headScroll
+      });
+    } else {
+      this.setState({
+        headerFixed: false,
+        scrollY: headScroll
+      });
+    }
+
+    if (sideScroll > 470) {
+      this.setState({
+        sideFixed: true
+      });
+    } else {
+      this.setState({
+        sideFixed: false
+      });
+    }
+  };
+
+  componentDidMount() {
     this._getApi("categories");
-    window.addEventListener('scroll', this.onScroll);
-  };
+    window.addEventListener("scroll", this._onScroll);
+  }
 
-
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._headerScroll);
+  }
 
   render() {
     const itemCartCount = this.props.itemCartCount;
 
-    
-
     return (
       <div className="header">
+        {/* <div
+          style={
+            this.state.headerFixed
+              ? { display: "block", height: `${this.state.scrollY}px` }
+              : { display: "none" }
+          }
+        /> */}
         <div className="nav-top">
           {/* 최상단 */}
           <img
@@ -137,8 +150,8 @@ class Nav extends Component {
             <ul>
               <li
                 className="profile-listdown"
-                onMouseOver={() => this._visible("profile1")}
-                onMouseOut={() => this._visible("profile2")}
+                // onMouseOver={() => this._visible("profile1")}
+                // onMouseOut={() => this._visible("profile2")}
               >
                 <span
                   style={{
@@ -163,8 +176,8 @@ class Nav extends Component {
               </li>
               <li
                 className="profile-listdown"
-                onMouseOver={() => this._visible("profile2")}
-                onMouseOut={() => this._visible("profile2")}
+                // onMouseOver={() => this._visible("profile2")}
+                // onMouseOut={() => this._visible("profile2")}
               >
                 <span>고객센터</span>
                 <ul
@@ -189,13 +202,15 @@ class Nav extends Component {
             src="https://res.kurly.com/images/marketkurly/logo/logo_x2.png"
           />
         </div>
-        <div className="nav-bottom">
+        <div
+          className={this.state.headerFixed ? "nav-bottom fixed" : "nav-bottom"}
+        >
           {/* 카테고리 & 검색 & 장바구니 */}
           <ul className="nav-bottom-bar">
             <li
               className="category-listdown"
-              onMouseOver={() => this._visible("category1")}
-              onMouseOut={() => this._visible("category1")}
+              // onMouseOver={() => this._visible("category1")}
+              // onMouseOut={() => this._visible("category1")}
             >
               <img
                 alt="카테고리"
@@ -244,5 +259,24 @@ class Nav extends Component {
     );
   }
 }
+
+// _visible = name => {
+//   if (name === "profile1") {
+//     this.setState({
+//       visibleProfile1: !this.state.visibleProfile1,
+//       dataCategoryList1: this.state.data
+//     });
+//   } else if (name === "profile2") {
+//     this.setState({
+//       visibleProfile2: !this.state.visibleProfile2,
+//       dataCategoryList2: this.state.data
+//     });
+//   } else if (name === "category1") {
+//     this.setState({
+//       visibleCategory: !this.state.visibleCategory,
+//       liProfileListdown: []
+//     });
+//   }
+// };
 
 export default Nav;

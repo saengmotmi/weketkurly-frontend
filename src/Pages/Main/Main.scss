@@ -6,10 +6,14 @@
   .quick-menu {
     position: absolute;
     float: right;
-    top: 700px;
     right: 20px;
     width: 80px;
     z-index: 1;
+    transition: top 0.2s;
+
+    .float {
+      position: absolute;
+    }
 
     .side-menu {
       border-left: 1px solid #ddd;

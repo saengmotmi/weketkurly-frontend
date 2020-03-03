@@ -4,8 +4,16 @@
   align-items: center;
   text-align: center;
 
+  input[type="checkbox"] {
+    display: none;
+  }
+
   label {
+    width: 16px;
+    height: 16px;
     padding: 0 30px 0 20px;
+    background: url("https://res.kurly.com/pc/service/order/1908/ico_checkbox_off.png")
+      no-repeat;
   }
 
   &-title {

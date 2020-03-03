@@ -117,6 +117,14 @@
     padding: 0;
     position: relative;
 
+    & li:hover {
+      font-weight: 700;
+      color: #5f0080;
+      // text-decoration: underline;
+      margin-bottom: 3px;
+      // border-bottom: 1px solid #5f0080;
+    }
+
     li {
       padding: 16px 50px 0 24px;
       height: 39px;

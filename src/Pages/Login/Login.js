@@ -24,7 +24,7 @@ class Login extends React.Component {
     console.log(e.target.value);
   };
   loginFetch = () => {
-    fetch("http://10.58.5.27:8000/users/sign-in", {
+    fetch("http://10.58.7.245:8000/users/sign-in", {
       method: "POST",
       headers: {
         "Content-type": "application/json"
@@ -35,20 +35,28 @@ class Login extends React.Component {
       })
     })
       .then(response => {
-        console.log(response);
-        console.log(response.status);
+        // console.log(response);
+        // console.log(response.status);
         if (response.status === 200) {
           alert("정상 로그인 되었습니다");
+          console.log(response);
+
+          this.props.history.push("/");
         } else {
-          alert("문제가 생겨 로그인되지 않았습니다.");
+          console.log(this.props);
+          alert("아이디 또는 비밀번호 오류입니다!");
+          console.log(response);
+          // this.props.history.push("/login");
         }
-        return response.json();
+        return response.json;
+        //response.json으로 하면 에러나서 json을 없애버림. 그런데 갑자기 붙여도 됨.
       })
       .then(response => {
         if (response.token) {
           localStorage.setItem("wetoken", response.token);
         }
       });
+    //토큰이 있으면 로컬에 저장하기
     console.log(
       "account는 ",
       this.state.ID,
@@ -101,10 +109,7 @@ class Login extends React.Component {
               </div>
             </div>
             <div className="button">
-              <div
-                className="login-button"
-                onClick={(this.loginFetch, this.goHome)}
-              >
+              <div className="login-button" onClick={this.loginFetch}>
                 로그인
               </div>
             </div>

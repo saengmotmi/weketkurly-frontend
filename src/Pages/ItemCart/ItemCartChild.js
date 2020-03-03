@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./ItemCart.scss";
 
-class ItemCart2 extends Component {
+class ItemCartChild extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,9 +15,12 @@ class ItemCart2 extends Component {
           return {
             name: param["name"],
             price: param["price"],
+            original_price: param["original_price"],
             ea: param["ea"],
             max_ea: param["max_ea"],
             min_ea: param["min_ea"],
+            thumbnail_image_url: param["thumbnail_image_url"],
+            name: param["name"],
             checked: true
           };
         })
@@ -121,16 +124,112 @@ class ItemCart2 extends Component {
   _priceCalc = () => {
     const tempArr = [...this.state.itemList]; // itemList 복사
 
-    let priceResult = 0;
+    let priceResult1 = 0;
+    let priceResult2 = 0;
+    let priceResult3 = 0;
+    let priceResult4 = 0;
+    let resultArr = [];
 
     for (let i of tempArr) {
       if (i.checked === true) {
-        priceResult += i.ea * i.price;
+        priceResult1 += i.ea * i.price;
+        priceResult2 += i.ea * i.original_price;
+        priceResult3 += i.ea * i.price;
+        priceResult4 += i.ea * i.price;
       }
-      // this.setState({ priceItemAll: priceResult });
     }
 
-    return this.numberWithCommas(priceResult);
+    priceResult2 = priceResult2 - priceResult1;
+    priceResult3 = 0;
+    priceResult4 = priceResult1 - priceResult2 + 3000;
+
+    for (let i of [priceResult1, priceResult2, priceResult3, priceResult4]) {
+      resultArr.push(this.numberWithCommas(i));
+    }
+
+    console.log();
+    return resultArr;
+  };
+
+  _deleteItem = e => {
+    const editTargetIdx = parseInt(e.target.id); // number
+
+    const tempArr = [...this.state.itemList]; // itemList 복사
+    const tempArrFilter = tempArr.filter((_, idx) => idx !== editTargetIdx);
+
+    if (this.state.itemCount === 1) {
+      this.setState({ chkChecked: false });
+    }
+
+    this.setState({
+      itemList: tempArrFilter,
+      itemCount: this.state.itemCount - 1,
+      checkedCount: this.state.checkedCount - 1
+    });
+  };
+
+  _itemProductArr = () => {
+    const itemProductArr = this.state.itemList.map((param, idx) => {
+      return (
+        <tr
+          key={idx}
+          className="item-table-row"
+          style={{ borderBottom: "2px solid #ddd" }}
+        >
+          <td align="left" style={{ display: "flex", alignItems: "center" }}>
+            <input
+              id={idx + "chk"}
+              onClick={this._itemCheck}
+              checked={this.state.itemList[idx].checked ? true : false}
+              type="checkbox"
+            />
+            <label for={idx + "chk"} />
+            <img src={param["thumbnail_image_url"]} alt="" />
+          </td>
+          <td align="left">
+            <p className="item-table-row-title">{param["name"]}</p>
+            <p className="item-table-row-price">
+              {this.numberWithCommas(param["price"])}원
+            </p>
+          </td>
+          <td className="item-table-row-count">
+            <div>
+              <button
+                id={`${idx}.${param["price"]}.${param["ea"]}`}
+                onClick={this._itemCount}
+                style={{ borderRight: "1px solid #ddd" }}
+              >
+                -
+              </button>
+              <span>
+                {this.state.itemList
+                  ? String(this.state.itemList[idx]["ea"])
+                  : null}
+              </span>
+              <button
+                id={`${idx}.${param["price"]}.${param["ea"]}`}
+                onClick={this._itemCount}
+                style={{ borderLeft: "1px solid #ddd" }}
+              >
+                +
+              </button>
+            </div>
+          </td>
+          <td>
+            {this.numberWithCommas(
+              this.state.itemList[idx]["ea"] * this.state.itemList[idx]["price"]
+            )}
+          </td>
+          <td
+            id={`${idx}.${param["price"]}.${param["ea"]}`}
+            onClick={this._deleteItem}
+          >
+            X
+          </td>
+        </tr>
+      );
+    });
+    return itemProductArr;
   };
 
   componentDidMount() {
@@ -141,75 +240,6 @@ class ItemCart2 extends Component {
   }
 
   render() {
-    const { data } = this.props;
-
-    const itemProductArr =
-      data.products !== 0 ? (
-        data.products.map((param, idx) => {
-          return (
-            <tr
-              key={idx}
-              className="item-table-row"
-              style={{ borderBottom: "2px solid #ddd" }}
-            >
-              <td
-                align="left"
-                style={{ display: "flex", alignItems: "center" }}
-              >
-                <input
-                  id={idx + "chk"}
-                  onClick={this._itemCheck}
-                  checked={this.state.itemList[idx].checked ? true : false}
-                  type="checkbox"
-                />
-                <label for={idx + "chk"} />
-                <img src={param["thumbnail_image_url"]} alt="" />
-              </td>
-              <td align="left">
-                <p className="item-table-row-title">{param["name"]}</p>
-                <p className="item-table-row-price">
-                  {this.numberWithCommas(param["price"])}원
-                </p>
-              </td>
-              <td className="item-table-row-count">
-                <div>
-                  <button
-                    id={`${idx}.${param["price"]}.${param["ea"]}`}
-                    onClick={this._itemCount}
-                    style={{ borderRight: "1px solid #ddd" }}
-                  >
-                    -
-                  </button>
-                  <span>
-                    {this.state.itemList
-                      ? String(this.state.itemList[idx]["ea"])
-                      : null}
-                  </span>
-                  <button
-                    id={`${idx}.${param["price"]}.${param["ea"]}`}
-                    onClick={this._itemCount}
-                    style={{ borderLeft: "1px solid #ddd" }}
-                  >
-                    +
-                  </button>
-                </div>
-              </td>
-              <td>
-                {this.numberWithCommas(
-                  this.state.itemList[idx]["ea"] *
-                    this.state.itemList[idx]["price"]
-                )}
-              </td>
-              <td>X</td>
-            </tr>
-          );
-        })
-      ) : (
-        <tr>
-          <td colspan="4">장바구니에 담긴 상품이 없습니다</td>
-        </tr>
-      );
-
     return (
       <div className="item">
         <div style={{ padding: "20px 40px 10px" }}></div>
@@ -249,7 +279,13 @@ class ItemCart2 extends Component {
                 <span>상품금액</span>
               </td>
             </tr>
-            {itemProductArr}
+            {this.state.itemList !== 0 ? (
+              this._itemProductArr()
+            ) : (
+              <tr>
+                <td colspan="4">장바구니에 담긴 상품이 없습니다</td>
+              </tr>
+            )}
             <tr>
               <td align="left" colspan="4">
                 <div className="item-wrapper-btn">
@@ -273,24 +309,26 @@ class ItemCart2 extends Component {
           <div className="item-price">
             <div>
               <span className="item-price-desc">상품금액</span>
-              <span className="item-price-price">{this._priceCalc()}원</span>
+              <span className="item-price-price">{this._priceCalc()[0]}원</span>
             </div>
             <span className="item-price-oper">-</span>
             <div>
               <span className="item-price-desc">상품할인금액</span>
-              <span className="item-price-price">원</span>
+              <span className="item-price-price">
+                {-this._priceCalc()[1]}원
+              </span>
             </div>
             <span className="item-price-oper">+</span>
             <div>
               <span className="item-price-desc">배송비</span>
               <span className="item-price-price">
-                원<p>원 추가주문 시, 무료배송</p>
+                3,000원<p>{this._priceCalc()[2]}원 추가주문 시, 무료배송</p>
               </span>
             </div>
             <span className="item-price-oper">=</span>
             <div style={{ backgroundColor: "#f7f7f7" }}>
               <span className="item-price-desc">결제예정금액</span>
-              <span className="item-price-price">원</span>
+              <span className="item-price-price">{this._priceCalc()[3]}원</span>
             </div>
           </div>
           <button className="order-btn btn-off">주문하기</button>
@@ -307,4 +345,4 @@ class ItemCart2 extends Component {
   }
 }
 
-export default ItemCart2;
+export default ItemCartChild;

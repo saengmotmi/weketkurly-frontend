@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ItemCart2 from "./ItemCart copy";
+import ItemCartChild from "./ItemCartChild";
 import "./ItemCart.scss";
 
 class ItemCart extends Component {
@@ -72,7 +72,7 @@ class ItemCart extends Component {
   render() {
     return (
       <>
-        <ItemCart2 data={this.state.data} />
+        <ItemCartChild data={this.state.data} />
       </>
     );
   }

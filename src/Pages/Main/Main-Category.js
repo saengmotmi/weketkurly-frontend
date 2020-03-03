@@ -40,29 +40,23 @@ class MainCategory extends Component {
   };
 
   _moveLeft = () => {
-    this.setState({
-      moveX: parseInt(this.state.moveX) - 267 + "px"
-    });
+    if (this.state.moveX === "-1068px") {
+      this.setState({ moveX: 0 });
+    } else {
+      this.setState({
+        moveX: parseInt(this.state.moveX) - 267 + "px"
+      });
+    }
   };
 
-  // if (this.state.moveX === "-1068px") {
-  //   this.setState({ moveX: 0 });
-  // } else {
-  //   this.setState({
-  //     moveX: parseInt(this.state.moveX) - 267 + "px"
-  //   });
-  // }
-
   _moveRight = () => {
+    if (this.state.moveX === "1068px") {
+      this.setState({ moveX: 0 });
+    }
     this.setState({
       moveX: parseInt(this.state.moveX) + 267 + "px"
     });
   };
-
-  // if (this.state.moveX === "0px") {
-  //   this.setState({ moveX: "-1068px" });
-  // } else {
-  // }
 
   componentDidMount() {
     this._getMdApi(907);

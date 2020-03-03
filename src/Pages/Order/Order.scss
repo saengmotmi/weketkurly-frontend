@@ -1,0 +1,426 @@
+.Order {
+  width: 1050px;
+  margin: 0 auto;
+  font-size: 14px;
+  text-align: left;
+  letter-spacing: -0.3px;
+  background-color: #fff;
+
+  h2 {
+    margin-top: 60px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #808080;
+  }
+  table {
+    width: 100%;
+    margin: 20px 0 20px;
+    border-top: 2px solid #512772;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+    th {
+      width: 190px;
+      font-weight: 600;
+      text-align: left;
+      padding: 22px 0 0 20px;
+      color: #202020;
+    }
+    td {
+      width: 860px;
+      text-align: left;
+      padding-top: 16px;
+    }
+  }
+  input {
+    box-sizing: border-box;
+    border: 0;
+    height: 33px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+    color: #000;
+    vertical-align: middle;
+  }
+
+  .title {
+    padding: 30px 0 80px;
+    text-align: center;
+    h1 {
+      font-size: 40px;
+      font-weight: 500;
+      color: #333;
+    }
+    h3 {
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: -0.023em;
+      margin-top: 10px;
+      color: #999;
+    }
+  }
+
+  // 상품 정보
+  .product-info {
+    margin-top: 50px;
+    .product-info-table {
+      padding: 20px 0;
+      text-align: center;
+      .name {
+        padding-bottom: 14px;
+      }
+      img {
+        width: 14px;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  // 주문자 정보
+  .user-info {
+    .name {
+      input {
+        font-size: 15px;
+      }
+    }
+    .phone {
+      input {
+        width: 50px;
+      }
+      span {
+        font-size: 25px;
+        font-weight: 100;
+        color: lightgray;
+      }
+    }
+    .email {
+      width: 360px;
+      input {
+        font-size: 15px;
+      }
+      p {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 21px;
+        padding: 13px 0 19px;
+        color: #514859;
+        .color {
+          font-weight: 500;
+          color: #000;
+        }
+      }
+    }
+  }
+
+  // 배송 정보
+  .delivery-info {
+    table {
+      border-bottom: 0;
+      margin-bottom: 0;
+    }
+    h2 {
+      display: inline-block;
+    }
+    .label-radio {
+      padding-right: 20px;
+      input {
+        border: 1px solid #ddd;
+        font-size: 12px;
+      }
+    }
+    .delivery-notice {
+      padding: 8px 0 0 18px;
+      font-weight: 500;
+      color: #000;
+      .red {
+        font-weight: 500;
+        color: #f00;
+      }
+    }
+    .field {
+      th,
+      td {
+        border-bottom: 2px solid #512772;
+        box-sizing: border-box;
+        padding: 7px 0 25px 22px;
+      }
+    }
+    .address {
+      input {
+        width: 600px;
+        margin-bottom: 8px;
+      }
+      span {
+        font-size: 12px;
+      }
+      .road {
+        font-size: 12px;
+        color: #777;
+      }
+    }
+    .deli {
+      .txt {
+        font-weight: 600;
+      }
+      p {
+        margin-top: 7px;
+        font-size: 12px;
+      }
+    }
+    .receive-name {
+      padding-top: 14px;
+    }
+    .receive-phone {
+      .first-number {
+        width: 43px;
+      }
+      .second-number {
+        width: 50px;
+      }
+      .hyphen {
+        width: 8px;
+        height: 1px;
+        background-color: #d8d8d8;
+      }
+    }
+    .memo {
+      textarea {
+        width: 600px;
+        height: 73px;
+        border: 1px solid #ddd;
+        padding: 16px 0 0 0;
+      }
+    }
+    .gate {
+      width: 100%;
+      height: 15px;
+      border-top: 1px solid #ddd;
+    }
+  }
+
+  .notice {
+    padding: 30px;
+    background: #fafafa;
+    border: 1px solid #e5e5e5;
+    .notice-ic {
+      width: 22px;
+      height: 19px;
+      vertical-align: middle;
+      margin-top: -3px;
+      display: inline-block;
+      background: url(https://res.kurly.com/images/common/old/common/ico_speaker.gif)
+        no-repeat;
+    }
+    .red {
+      padding: 5px;
+      margin-bottom: 10px;
+      color: #ff0000;
+    }
+    .notice-order {
+      margin-top: 10px;
+      font-size: 12px;
+    }
+  }
+  .bnr-order {
+    width: 100%;
+    padding-top: 20px;
+  }
+  .caution {
+    box-sizing: border-box;
+    padding: 23px 0 0 20px;
+    font-size: 12px;
+    color: #514859;
+  }
+
+  // 결제 금액
+  .payment-price {
+    float: right;
+    table {
+      width: 255px;
+      border-top: 0;
+      border: 2px solid #5f0080;
+      box-sizing: border-box;
+      background: #f7f5f8;
+      .top-th {
+        width: 100px;
+        padding: 16px 0 10px 18px;
+      }
+      .top-td {
+        width: 155px;
+        text-align: right;
+        padding: 16px 20px 10px 0;
+      }
+      .line {
+        height: 1px;
+        border-top: 1px solid #ddd;
+        padding: 0 20px;
+      }
+      th {
+        width: 100px;
+        padding: 10px 0 0 18px;
+      }
+      td {
+        width: 155px;
+        padding: 10px 20px 0 0;
+        text-align: right;
+      }
+      .total-th {
+        padding: 23px 0 0 18px;
+      }
+      .total-td {
+        padding: 17px 19px 0 0;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        text-align: right;
+        color: #572276;
+      }
+      .small-th {
+        width: 0;
+        padding: 0;
+      }
+      .samll-td {
+        font-size: 12px;
+        text-align: right;
+        letter-spacing: -0.2px;
+        padding: 2px 20px 16px 0;
+        color: #514859;
+      }
+    }
+  }
+
+  // 쿠폰/적립금
+  .cupon {
+    table {
+      width: 775px;
+      border-bottom: 1px solid #ddd;
+      th {
+        width: 180px;
+      }
+      td {
+        width: 595px;
+      }
+      .cupon-th {
+        letter-spacing: -0.3px;
+      }
+      .cupon-td {
+        font-size: 12px;
+        letter-spacing: -0.3px;
+      }
+      .cupon-kakao {
+        font-size: 12px;
+        letter-spacing: -0.3px;
+        margin: 7px 0;
+        color: #795b8f;
+      }
+
+      .point {
+        td {
+          font-size: 12px;
+        }
+        .text-box {
+          width: 162px;
+          margin-bottom: 4px;
+          border: 1px solid #ddd;
+        }
+        .check-box {
+          padding: 6px;
+          margin-left: 10px;
+        }
+        .emoney {
+          padding: 15px 0 10px;
+          letter-spacing: -0.3px;
+          font-weight: 500;
+          color: #514859;
+        }
+      }
+    }
+  }
+
+  // 결제수단
+  .product-payment {
+    .label-radio {
+      margin-right: 50px;
+    }
+    table {
+      width: 775px;
+      border-bottom: 0;
+      box-sizing: border-box;
+      border-bottom: 0;
+      tr {
+        td {
+          font-weight: 400;
+          input {
+            margin: 0 5px 0 0;
+            line-height: 18px;
+          }
+          img {
+            height: 18px;
+            padding-top: 5px;
+          }
+
+          .list {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            select {
+              width: 190px; /* 원하는 너비설정 */
+              padding: 0.8em 0.5em; /* 여백으로 높이 설정 */
+              font-family: inherit; /* 폰트 상속 */
+              // background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg)
+              //   no-repeat 95% 50%; /* 네이티브 화살표 대체 */
+              border: 1px solid #000;
+              border-radius: 0px; /* iOS 둥근모서리 제거 */
+              -webkit-appearance: none; /* 네이티브 외형 감추기 */
+              -moz-appearance: none;
+              appearance: none;
+            }
+          }
+          .phone {
+            margin-left: 50px;
+          }
+        }
+      }
+    }
+  }
+
+  .unissued {
+    border: 0;
+    .label-radio {
+      margin-right: 50px;
+    }
+  }
+
+  // 개인정보 수집/제공
+  .user-info-data {
+    .user-info-data-table {
+      .subject {
+        padding: 0 10px 0 24px;
+        font-size: 12px;
+        color: #000;
+        .gray {
+          color: #949296;
+        }
+        .confirm {
+          padding-left: 10px;
+          color: #5f0080;
+        }
+      }
+    }
+  }
+
+  .payment-btn {
+    width: 200px;
+    height: 48px;
+    font-size: 13px;
+    color: #fff;
+    background-color: #5f0080;
+  }
+  .cancel-notice {
+    padding-top: 10px;
+    font-size: 12px;
+    color: #514859;
+    line-height: 22px;
+    letter-spacing: -0.23px;
+    text-align: center;
+  }
+}

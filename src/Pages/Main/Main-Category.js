@@ -13,7 +13,7 @@ class MainCategory extends Component {
         color: "#fff"
       },
       data: [],
-      moveX: "0px"
+      moveX: 0
     };
   }
 
@@ -40,29 +40,27 @@ class MainCategory extends Component {
   };
 
   _moveLeft = () => {
-    this.setState({
-      moveX: parseInt(this.state.moveX) - 267 + "px"
-    });
+    if (this.state.moveX === -1068) {
+      this.setState({ moveX: 0 });
+    } else {
+      this.setState({
+        moveX: this.state.moveX - 267
+      });
+    }
   };
-
-  // if (this.state.moveX === "-1068px") {
-  //   this.setState({ moveX: 0 });
-  // } else {
-  //   this.setState({
-  //     moveX: parseInt(this.state.moveX) - 267 + "px"
-  //   });
-  // }
 
   _moveRight = () => {
-    this.setState({
-      moveX: parseInt(this.state.moveX) + 267 + "px"
-    });
+    if (this.state.moveX === 0) {
+      this.setState({ moveX: -1068 });
+    } else {
+      this.setState(
+        {
+          moveX: this.state.moveX + 267
+        },
+        console.log(this.state.moveX)
+      );
+    }
   };
-
-  // if (this.state.moveX === "0px") {
-  //   this.setState({ moveX: "-1068px" });
-  // } else {
-  // }
 
   componentDidMount() {
     this._getMdApi(907);
@@ -111,6 +109,7 @@ class MainCategory extends Component {
               original_price={param["original_price"]}
               thumbnail_image_url={param["thumbnail_image_url"]}
               sticker_image_url={param["sticker_image_url"]}
+              style={this.state.moveX}
             />
           );
         })
@@ -223,7 +222,7 @@ class MainCategory extends Component {
           return (
             <a
               style={{
-                transform: `translateX(${this.state.moveX})`,
+                transform: `translateX(${this.state.moveX}px)`,
                 display: "block",
                 width: "249px",
                 height: "320px"

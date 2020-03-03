@@ -25,7 +25,7 @@ class MainItem extends Component {
 
     return (
       <>
-        <li style={{ transform: "translateX(" + style + ")" }} className={cN}>
+        <li style={{ transform: `translateX(${style}px)` }} className={cN}>
           <div
             style={{
               position: "relative",

@@ -12,14 +12,19 @@ export default class Order extends Component {
       detail: false,
       current: true,
       checked: true,
+      top: 0,
+      scrollTop: 0,
       value: "",
       list: [],
       addr: "",
-      extraAddr: ""
+      extraAddr: "",
+      point: 0
     };
   }
 
   componentDidMount = () => {
+    window.addEventListener("scroll", this.onScroll);
+
     fetch("http://localhost:3000/data/list.json")
       .then(res => res.json())
       .then(res => {
@@ -27,6 +32,18 @@ export default class Order extends Component {
           list: res.list
         });
       });
+  };
+
+  onScroll = e => {
+    const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
+    // const top = ReactDOM.findDOMNode(this).getBoundingClientRect().top;
+    console.log(scrollTop);
+    if (scrollTop > 2487 && scrollTop < 3100) {
+      this.setState({
+        top: scrollTop - 2460,
+        scrollTop: scrollTop
+      });
+    }
   };
 
   handleChangeDetail = () => {
@@ -123,7 +140,15 @@ export default class Order extends Component {
   };
 
   render() {
-    const { detail, current, checked, addr, extraAddr } = this.state;
+    const {
+      detail,
+      current,
+      checked,
+      addr,
+      extraAddr,
+      point,
+      top
+    } = this.state;
     const options = this.state.list.map(el => {
       return (
         <option key={el.cardName} value={el.cardName}>
@@ -325,48 +350,43 @@ export default class Order extends Component {
         />
 
         {/* ---------- 결제 금액 ---------- */}
-        <div className="payment-price">
-          <h2>결제 금액</h2>
-          <table>
-            <tbody>
-              <tr>
-                <th Name="top-th">상품금액</th>
-                <td className="top-td">37,000원</td>
-              </tr>
-              <tr>
-                <th className="line" />
-                <td className="line" />
-              </tr>
-              <tr>
-                <th>상품할인금액</th>
-                <td>0원</td>
-              </tr>
-              <tr>
-                <th>배송비</th>
-                <td>0원</td>
-              </tr>
-              <tr>
-                <th>쿠폰사용</th>
-                <td>0원</td>
-              </tr>
-              <tr>
-                <th>적립금사용</th>
-                <td>0원</td>
-              </tr>
-              <tr className="tr-line">
-                <th className="line" />
-                <td className="line" />
-              </tr>
-              <tr>
-                <th className="total-th">최종결제금액</th>
-                <td className="total-td">37,000원</td>
-              </tr>
-              <tr>
-                <th className="small-th"></th>
-                <td className="samll-td">구매 시 100원(0.5%) 적립예정</td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="payment-price-wrap">
+          <div className="payment-price" style={{ top: `${top}px` }}>
+            <h2>결제 금액</h2>
+            <table>
+              <tbody>
+                <tr>
+                  <th className="top-th">상품금액</th>
+                  <td className="top-td">37,000원</td>
+                </tr>
+                <tr>
+                  <th>상품할인금액</th>
+                  <td>0원</td>
+                </tr>
+                <tr>
+                  <th>배송비</th>
+                  <td>0원</td>
+                </tr>
+                <tr>
+                  <th>쿠폰사용</th>
+                  <td>0원</td>
+                </tr>
+                <tr>
+                  <th className="use">적립금사용</th>
+                  <td className="point">0원</td>
+                </tr>
+                <tr>
+                  <th className="total-th">최종결제금액</th>
+                  <td className="total-td">37,000원</td>
+                </tr>
+                <tr>
+                  <td className="samll-td" colspan="2">
+                    구매 시 <b>100</b>원(0.5%) <b>적립예정</b>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* ---------- 쿠폰 / 적립금 ---------- */}
@@ -385,7 +405,7 @@ export default class Order extends Component {
                 <tr className="point">
                   <th>적립금 적용</th>
                   <td>
-                    <input type="text" className="text-box" />원
+                    <input type="text" className="text-box" value={point} />원
                     <input type="checkbox" className="check-box" />
                     <span>모두사용</span>
                     <div>보유적립금: 456원</div>
@@ -409,11 +429,11 @@ export default class Order extends Component {
                   <th>일반결제</th>
                   <td>
                     <label className="label-radio">
-                      <input type="radio" className="card" />
+                      <input type="radio" className="card" name="payment" />
                       신용카드
                     </label>
                     <label className="label-radio">
-                      <input type="radio" className="phone" />
+                      <input type="radio" className="phone" name="payment" />
                       휴대폰
                     </label>
                   </td>
@@ -532,11 +552,11 @@ export default class Order extends Component {
               <th>미출고 시 조치방법 *</th>
               <td>
                 <label className="label-radio">
-                  <input type="radio" />
+                  <input type="radio" name="refund" />
                   결제수단으로 환불
                 </label>
                 <label className="label-radio">
-                  <input type="radio" />
+                  <input type="radio" name="refund" />
                   상품 입고 시 배송
                 </label>
               </td>
@@ -553,7 +573,7 @@ export default class Order extends Component {
                 <tr>
                   <td>
                     <input type="checkbox" />
-                    결제진행 필수 동의
+                    결제 진행 필수 동의
                     <div className="subject">
                       개인정보 수집 · 이용 동의
                       <span className="gray">(필수)</span>
@@ -571,10 +591,10 @@ export default class Order extends Component {
           </div>
         </div>
 
-        <div>
-          <button className="payment-btn">결제하기</button>
+        <div className="payment-btn">
+          <button>결제하기</button>
           <div className="cancel-notice">
-            * 직접 주문취소는 '입금확인' 상태일 경우에만 가능합니다.
+            * 직접 주문취소는 <b>'입금확인'</b> 상태일 경우에만 가능합니다.
           </div>
           <div className="cancel-notice">
             * 미성년자가 결제시 법정대리인이 그 거래를 취소할 수 있습니다.

@@ -5,14 +5,20 @@ class ItemCart2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemCount: 0,
       dataProps: this.props.data,
+      priceItemAll: 0,
+      itemCount: 0,
+      checkedCount: 0,
+      chkChecked: true,
       itemList: [
         ...this.props.data.products.map(param => {
           return {
             name: param["name"],
             price: param["price"],
-            ea: param["ea"]
+            ea: param["ea"],
+            max_ea: param["max_ea"],
+            min_ea: param["min_ea"],
+            checked: true
           };
         })
       ]
@@ -24,48 +30,118 @@ class ItemCart2 extends Component {
   };
 
   _itemCount = e => {
-    if (e.target.textContent === "+") {
-      const editTargetIdx = e.target.id.split(".")[0]; // number
-      const editTarget = this.state.itemList[editTargetIdx]; // object
+    const editTargetIdx = e.target.id.split(".")[0]; // number
+    const editTarget = this.state.itemList[editTargetIdx]; // object
 
-      const tempArr = [...this.state.itemList];
-      const tempObj = { ...editTarget };
+    const tempArr = [...this.state.itemList];
+    const tempObj = { ...editTarget };
 
+    if (e.target.textContent === "+" && tempObj.ea < tempObj.max_ea) {
       tempObj.ea = tempObj.ea + 1;
       tempArr[editTargetIdx] = tempObj;
 
-      this.setState({ itemList: tempArr }, () => {
-        console.log(
-          "test: ",
-          editTargetIdx,
-          editTarget,
-          editTarget["ea"],
-          this.state.itemList
-        );
-      });
-    } else if (e.target.textContent === "-") {
-      this.setState({});
+      this.setState({ itemList: tempArr });
+    } else if (e.target.textContent === "-" && tempObj.ea > tempObj.min_ea) {
+      tempObj.ea = tempObj.ea - 1;
+      tempArr[editTargetIdx] = tempObj;
+
+      this.setState({ itemList: tempArr });
     }
-    // console.log(this.state.itemList);
+  };
+
+  _itemCheck = e => {
+    const editTargetIdx = parseInt(e.target.id); // number
+    const editTarget = this.state.itemList[editTargetIdx]; // object
+
+    const tempArr = [...this.state.itemList]; // itemList 복사
+    const tempObj = { ...editTarget }; // 접근할 객체 복사
+
+    let tempChkAll = [];
+    let tempAllBoolean = 1;
+    let tempCheckedCount = this.state.checkedCount;
+
+    // 개별 체크 상태 뒤집어줌
+    if (tempObj.checked === true) {
+      tempCheckedCount = tempCheckedCount - 1;
+    } else {
+      tempCheckedCount = tempCheckedCount + 1;
+    }
+    tempObj.checked = !tempObj.checked;
+    tempArr[editTargetIdx] = tempObj;
+
+    // 전부 체크 여부 레디 1
+    const isChkAll = tempArr.map(param => {
+      return tempChkAll.push(param.checked);
+    });
+
+    // 전부 체크 여부 레디 2
+    for (let i of tempChkAll) {
+      tempAllBoolean = Boolean(tempAllBoolean * i);
+    }
+
+    // 전부 체크 상태에서 -1 눌렸으면
+    if (editTargetIdx === -1) {
+      // 전체선택 체크박스인가?
+      if (this.state.chkChecked === true) {
+        for (let i = 0; i < tempArr.length; i++) {
+          tempArr[i].checked = false;
+        }
+        this.setState({
+          itemList: tempArr,
+          chkChecked: !this.state.chkChecked,
+          checkedCount: 0
+        });
+      } else {
+        for (let i = 0; i < tempArr.length; i++) {
+          tempArr[i].checked = true;
+        }
+        this.setState({
+          itemList: tempArr,
+          chkChecked: !this.state.chkChecked,
+          checkedCount: this.state.itemCount
+        });
+      }
+    } else if (editTargetIdx !== -1) {
+      if (tempAllBoolean === false) {
+        this.setState({
+          itemList: tempArr,
+          chkChecked: false,
+          checkedCount: tempCheckedCount
+        });
+      } else {
+        this.setState({
+          itemList: tempArr,
+          chkChecked: true,
+          checkedCount: tempCheckedCount
+        });
+      }
+    }
+  };
+
+  _priceCalc = () => {
+    const tempArr = [...this.state.itemList]; // itemList 복사
+
+    let priceResult = 0;
+
+    for (let i of tempArr) {
+      if (i.checked === true) {
+        priceResult += i.ea * i.price;
+      }
+      // this.setState({ priceItemAll: priceResult });
+    }
+
+    return this.numberWithCommas(priceResult);
   };
 
   componentDidMount() {
     this.setState({
-      itemCount: this.state.dataProps.products.length
-      // itemList: [...this.state.dataProps.products]
-      // itemList: {
-      //   ...this.state.itemList,
-      //   name: this.state.dataProps.products["name"],
-      //   price: this.state.dataProps.products["price"],
-      //   ea: this.state.dataProps.products["ea"]
-      // }
+      itemCount: this.state.dataProps.products.length,
+      checkedCount: this.state.dataProps.products.length
     });
   }
 
   render() {
     const { data } = this.props;
-
-    console.log(this.state.itemList);
 
     const itemProductArr =
       data.products !== 0 ? (
@@ -80,14 +156,13 @@ class ItemCart2 extends Component {
                 align="left"
                 style={{ display: "flex", alignItems: "center" }}
               >
-                <label for={"chk" + idx}>
-                  <input
-                    id={"chk" + idx}
-                    onClick={() => console.log(this.event)}
-                    checked="true"
-                    type="checkbox"
-                  />
-                </label>
+                <input
+                  id={idx + "chk"}
+                  onClick={this._itemCheck}
+                  checked={this.state.itemList[idx].checked ? true : false}
+                  type="checkbox"
+                />
+                <label for={idx + "chk"} />
                 <img src={param["thumbnail_image_url"]} alt="" />
               </td>
               <td align="left">
@@ -119,7 +194,12 @@ class ItemCart2 extends Component {
                   </button>
                 </div>
               </td>
-              <td></td>
+              <td>
+                {this.numberWithCommas(
+                  this.state.itemList[idx]["ea"] *
+                    this.state.itemList[idx]["price"]
+                )}
+              </td>
               <td>X</td>
             </tr>
           );
@@ -147,11 +227,16 @@ class ItemCart2 extends Component {
                   width: "375px"
                 }}
               >
-                <label>
-                  <input type="checkbox" />
-                </label>
+                <input
+                  id="-1chk"
+                  onClick={this._itemCheck}
+                  checked={this.state.chkChecked}
+                  type="checkbox"
+                />
+                <label for="-1chk" />
                 <span>
-                  전체선택({`${this.state.itemCount}/${this.state.itemCount}`})
+                  전체선택(
+                  {`${this.state.checkedCount}/${this.state.itemCount}`})
                 </span>
               </td>
               <td style={{ width: "432px" }}>
@@ -168,12 +253,16 @@ class ItemCart2 extends Component {
             <tr>
               <td align="left" colspan="4">
                 <div className="item-wrapper-btn">
-                  <label>
-                    <input type="checkbox" />
-                  </label>
+                  <input
+                    id="-1chk"
+                    onClick={this._itemCheck}
+                    checked={this.state.chkChecked}
+                    type="checkbox"
+                  />
+                  <label for="-1chk" />
                   <span style={{ paddingRight: "15px" }}>
-                    전체선택({`${this.state.itemCount}/${this.state.itemCount}`}
-                    )
+                    전체선택(
+                    {`${this.state.checkedCount}/${this.state.itemCount}`})
                   </span>
                   <button>선택 삭제</button>
                   <button style={{ width: "120px" }}>품절 상품 삭제</button>
@@ -184,7 +273,7 @@ class ItemCart2 extends Component {
           <div className="item-price">
             <div>
               <span className="item-price-desc">상품금액</span>
-              <span className="item-price-price">원</span>
+              <span className="item-price-price">{this._priceCalc()}원</span>
             </div>
             <span className="item-price-oper">-</span>
             <div>

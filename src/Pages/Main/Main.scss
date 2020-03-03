@@ -43,9 +43,9 @@
   }
 
   .goods-item {
+    position: relative;
     display: flex;
     justify-content: right;
-    overflow: auto;
 
     li {
       list-style: none;
@@ -57,7 +57,6 @@
     img {
       width: 249px;
       height: 320px;
-      margin-bottom: 11px;
     }
 
     .recipe-img {
@@ -119,5 +118,39 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+  }
+
+  .zoom-in {
+    &:hover {
+      transform: scale(1.02);
+      transition: all 0.3s ease-in-out;
+    }
+  }
+
+  .btn-scroll {
+    z-index: 10;
+    position: absolute;
+    top: 130px;
+
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+    &-left {
+      left: -30px;
+      background: url("https://res.kurly.com/pc/service/main/1908/btn_prev_default.png?v=1")
+        no-repeat;
+    }
+    &-right {
+      right: -30px;
+      border: none;
+      background: url("https://res.kurly.com/pc/service/main/1908/btn_next_default.png?v=1")
+        no-repeat;
+    }
   }
 }

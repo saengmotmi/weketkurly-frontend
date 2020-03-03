@@ -27,9 +27,10 @@ class Nav extends Component {
         "대량주문 문의",
         "상품 제안",
         "에코포장 피드백"
-      ]
+      ],
       // dataCategoryList1: [],
-      // dataCategoryList2: []
+      // dataCategoryList2: [],
+      itemCartCount: 0
     };
   }
 
@@ -94,6 +95,8 @@ class Nav extends Component {
       );
     });
 
+    const itemCartCount = this.props.itemCartCount;
+
     return (
       <div className="header">
         <div className="nav-top">
@@ -105,7 +108,7 @@ class Nav extends Component {
           <div>
             <ul>
               <li
-                className="profile-listdown1"
+                className="profile-listdown"
                 onMouseOver={() => this._visible("profile-listdown1")}
                 onMouseOut={() => this._visible("profile-listdown1")}
               >
@@ -131,7 +134,7 @@ class Nav extends Component {
                 </ul>
               </li>
               <li
-                className="profile-listdown2"
+                className="profile-listdown"
                 onMouseOver={() => this._visible("profile-listdown2")}
                 onMouseOut={() => this._visible("profile-listdown2")}
               >
@@ -171,7 +174,7 @@ class Nav extends Component {
                 style={{ display: "inline-block" }}
                 src="https://res.kurly.com/pc/service/common/1908/ico_gnb_all_off.png"
               />
-              전체 카테고리
+              <span>전체 카테고리</span>
               <ul
                 style={{
                   display: this.state.visibleCategory ? "block" : "none"

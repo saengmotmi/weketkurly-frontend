@@ -50,6 +50,7 @@
     background-color: #fff;
     border-radius: 100%;
     margin: -3px 5px 0 0;
+    cursor: pointer;
     &:checked {
       appearance: none;
       border: 5px solid #512772;
@@ -396,6 +397,30 @@
         font-weight: 500;
         border-radius: 4px;
         color: #fff;
+        display: block;
+      }
+      td {
+        padding-top: 22px;
+      }
+      input {
+        width: 600px;
+        height: 33px;
+        padding: 0 8px;
+        font-size: 12px;
+        margin-bottom: 8px;
+        border: 1px solid #ddd;
+      }
+      span {
+        font-size: 12px;
+        margin-left: 10px;
+      }
+      .address-main {
+        background: url(https://res.kurly.com/pc/service/order/1711/ico_selectbox_arrow_10x6.png)
+          no-repeat 579px 50%;
+      }
+      .road {
+        font-size: 12px;
+        color: #777;
       }
     }
   }

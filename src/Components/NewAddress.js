@@ -7,16 +7,20 @@ export default class CurrentAddress extends Component {
         <tr className="new-address">
           <th>주소</th>
           <td>
-            <button className="newbtn">새 배송지 추가</button>
-            {/* <input
-              value="서울 강서구 화곡동 504-162 (수정맨션) [157-894]"
+            <button className="newbtn" onClick={this.props.execPostCode}>
+              새 배송지 추가
+            </button>
+
+            <input
+              id="address"
+              value={this.props.addr}
               className="address-main"
             />
-            <input value="202호" />
+            <input id="detailAddress" value={this.props.extraAddr} />
             <span>29자 / 85자</span>
             <div className="road">
               서울 강서구 등촌로13나길 38 (수정맨션) [07733] 202호
-            </div> */}
+            </div>
           </td>
         </tr>
         <tr className="deli">

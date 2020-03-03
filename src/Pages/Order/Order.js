@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Nav from "../../Components/Nav";
-import CardList from "../../Components/CradList";
 import Footer from "../../Components/Footer";
 import "./Order.scss";
 
@@ -8,8 +7,8 @@ export default class Order extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      month: ["일시불"],
-      description: "",
+      detail: false,
+      value: "",
       list: []
     };
   }
@@ -23,25 +22,30 @@ export default class Order extends Component {
         });
       });
   };
-  // handleOnClick = e => {
-  //   if (e.target.value === "현대") {
-  //     this.setState({
-  //       month: this.state.month.concat()
-  //     });
-  //   }
-  // };
+
+  handleChangeDetail = () => {
+    this.setState({
+      detail: true
+    });
+  };
+
+  handleChange = e => {
+    const month = this.state.list.map(el => {
+      return <div>{el.cardDescription}</div>;
+    });
+    this.setState({
+      value: e.target.value,
+      description: month
+    });
+  };
 
   render() {
-    const cardList = this.state.list.map(el => {
+    const { detail } = this.state;
+    const options = this.state.list.map(el => {
       return (
-        <CardList
-          key={el.id}
-          cardName={el.cardName}
-          cardInstallmentMonth={el.cardInstallmentMonth}
-          cardPoint={el.cardPoint}
-          cardDescription={el.cardDescription}
-          handleOnClick={this.handleOnClick}
-        />
+        <option key={el.cardName} value={el.cardName}>
+          {el.cardName}
+        </option>
       );
     });
 
@@ -53,21 +57,58 @@ export default class Order extends Component {
           <h3>주문하실 상품명 및 수량을 정확하게 확인해 주세요.</h3>
         </div>
 
-        {/* ---------- 상품 정보 ---------- */}
-        <div className="product-info">
+        {/* ---------- 상품 정보 닫힘 ----------*/}
+        <div
+          className="product-info"
+          style={{ display: detail ? "none" : "block" }}
+        >
           <h2>상품정보</h2>
           <table className="product-info-table">
             <tbody>
               <div className="name">
-                [후디스] 그릭 요거트 딸기 & 코코포도 외 2개 상품을 주문합니다.
+                [후디스] 그릭 요거트 딸기 & 코코포도 외 1개 상품을 주문합니다.
               </div>
-              <div>
+              <div className="detail-btn" onClick={this.handleChangeDetail}>
                 상세보기
                 <img
                   src="https://res.kurly.com/pc/ico/1803/ico_arrow_open_28x16.png"
                   alt="ico"
                 />
               </div>
+            </tbody>
+          </table>
+        </div>
+
+        {/* ---------- 상품 정보 열림 ---------- */}
+        <div
+          className="product-info-open"
+          style={{ display: detail ? "block" : "none" }}
+        >
+          <h2>상품정보</h2>
+          <table className="product-info-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th className="info">상품정보</th>
+                <th>상품금액</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="each">
+                <td className="thumb">
+                  <img
+                    src="https://img-cf.kurly.com/shop/data/goods/1533198937448s0.jpg"
+                    alt="[선물세트] 유기샘 브라질너트 바삭대추 세트"
+                  />
+                </td>
+                <td className="info">
+                  <div className="name">
+                    [선물세트] 유기샘 브라질너트 바삭대추 세트
+                  </div>
+                  <div>1개/개당 37,000원</div>
+                </td>
+                <td className="price">37,000원</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -373,14 +414,17 @@ export default class Order extends Component {
                       <div className="card">
                         <div className="list">
                           <div className="card-select">
-                            <select className="card-list">
+                            <select
+                              className="card-list"
+                              value={this.state.value}
+                              onChange={this.handleChange}
+                            >
                               <option disabled>카드를 선택해주세요.</option>
-                              {cardList}
+                              {options}
                             </select>
                           </div>
                           <select className="card-install-list">
                             <option disabled>할부기간을 선택해주세요.</option>
-                            <option>{this.state.month}</option>
                           </select>
                         </div>
                       </div>

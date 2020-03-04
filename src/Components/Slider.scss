@@ -6,6 +6,7 @@
 
   &:hover {
     .btn-scroll {
+      top: 45%;
       &-left {
         display: block;
         background: url("https://res.kurly.com/pc/service/main/1908/ico_prev1_x1.png")
@@ -20,6 +21,7 @@
   }
 
   .btn-scroll {
+    top: 45%;
     z-index: 10;
     position: absolute;
     width: 52px;
@@ -30,7 +32,6 @@
     outline: none;
 
     &-left {
-      top: 50%;
       left: 15%;
       transition: opacity 0.5s;
 
@@ -41,7 +42,6 @@
     }
 
     &-right {
-      top: 50%;
       right: 15%;
       transition: opacity 0.5s;
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Nav from "../../Components/Nav";
-import Footer from "../../Components/Footer";
+import Nav from "../../Components/Layout/Nav";
+import Footer from "../../Components/Layout/Footer";
 import "./Join.scss";
 
 class Join extends Component {
@@ -8,8 +8,8 @@ class Join extends Component {
     super();
 
     this.state = {
-      IDFocusMode: "false",
-      PWFocusMode: "false",
+      IDFocusMode: false,
+      PWFocusMode: false,
       PWConfirmFocusMode: "flase",
       guideIDFirstClass: "guide-id-first1",
       guidePWFirstClass: "guide-pw-first1",
@@ -41,17 +41,17 @@ class Join extends Component {
   }
   IDPopup = () => {
     this.setState({
-      IDFocusMode: "true"
+      IDFocusMode: true
     });
   };
   PWPopup = () => {
     this.setState({
-      PWFocusMode: "true"
+      PWFocusMode: true
     });
   };
   PWConfirmPopup = () => {
     this.setState({
-      PWConfirmFocusMode: "true"
+      PWConfirmFocusMode: true
     });
   };
   handleID = e => {
@@ -60,11 +60,11 @@ class Join extends Component {
     });
     // console.log(e.target.value);
     // console.log(e.target.value.length);
-    if (e.target.value.length < 7) {
+    if (e.target.value.length < 6) {
       this.setState({
         guideIDFirstClass: "guide-id-first2"
       });
-    } else if (e.target.value.length >= 7) {
+    } else if (e.target.value.length >= 6) {
       this.setState({
         guideIDFirstClass: "guide-id-first3"
       });
@@ -226,7 +226,7 @@ class Join extends Component {
     if (nece1[0].checked === true) {
       this.setState(
         {
-          necessary1: "true"
+          necessary1: true
         },
         () => {
           console.log("필수약관동의1", this.state.necessary1);
@@ -235,7 +235,7 @@ class Join extends Component {
     } else {
       this.setState(
         {
-          necessary1: "false"
+          necessary1: false
         },
         () => {
           console.log("필수약관동의1", this.state.necessary1);
@@ -243,13 +243,13 @@ class Join extends Component {
       );
     }
     if (
-      this.state.necessary1 === "true" &&
-      this.state.necessary2 === "true" &&
-      this.state.necessary3 === "true"
+      this.state.necessary1 === true &&
+      this.state.necessary2 === true &&
+      this.state.necessary3 === true
     ) {
       this.setState(
         {
-          necessaryAll: "true"
+          necessaryAll: true
         },
         () => {
           console.log("necessaryAll은 ", this.state.necessaryAll);
@@ -258,7 +258,7 @@ class Join extends Component {
     } else {
       this.setState(
         {
-          necessaryAll: "false"
+          necessaryAll: false
         },
         () => {
           console.log("necessaryAll은 ", this.state.necessaryAll);
@@ -272,7 +272,7 @@ class Join extends Component {
     if (nece2[0].checked === true) {
       this.setState(
         {
-          necessary2: "true"
+          necessary2: true
         },
         () => {
           console.log("필수약관동의2", this.state.necessary2);
@@ -281,7 +281,7 @@ class Join extends Component {
     } else {
       this.setState(
         {
-          necessary2: "false"
+          necessary2: false
         },
         () => {
           console.log("필수약관동의2", this.state.necessary2);
@@ -289,13 +289,13 @@ class Join extends Component {
       );
     }
     if (
-      this.state.necessary1 === "true" &&
-      this.state.necessary2 === "true" &&
-      this.state.necessary3 === "true"
+      this.state.necessary1 === true &&
+      this.state.necessary2 === true &&
+      this.state.necessary3 === true
     ) {
       this.setState(
         {
-          necessaryAll: "true"
+          necessaryAll: true
         },
         () => {
           console.log("necessaryAll은 ", this.state.necessaryAll);
@@ -304,7 +304,7 @@ class Join extends Component {
     } else {
       this.setState(
         {
-          necessaryAll: "false"
+          necessaryAll: false
         },
         () => {
           console.log("necessaryAll은 ", this.state.necessaryAll);
@@ -318,7 +318,7 @@ class Join extends Component {
     if (nece3[0].checked === true) {
       this.setState(
         {
-          necessary3: "true"
+          necessary3: true
         },
         () => {
           console.log("필수약관동의3", this.state.necessary3);
@@ -327,7 +327,7 @@ class Join extends Component {
     } else {
       this.setState(
         {
-          necessary3: "false"
+          necessary3: false
         },
         () => {
           console.log("필수약관동의3", this.state.necessary3);
@@ -335,13 +335,13 @@ class Join extends Component {
       );
     }
     if (
-      this.state.necessary1 === "true" &&
-      this.state.necessary2 === "true" &&
-      this.state.necessary3 === "true"
+      this.state.necessary1 === true &&
+      this.state.necessary2 === true &&
+      this.state.necessary3 === true
     ) {
       this.setState(
         {
-          necessaryAll: "true"
+          necessaryAll: true
         },
         () => {
           console.log("necessaryAll은 ", this.state.necessaryAll);
@@ -350,7 +350,7 @@ class Join extends Component {
     } else {
       this.setState(
         {
-          necessaryAll: "false"
+          necessaryAll: false
         },
         () => {
           console.log("necessaryAll은 ", this.state.necessaryAll);
@@ -360,13 +360,13 @@ class Join extends Component {
   };
   neceAll = () => {
     if (
-      this.state.necessary1 === "true" &&
-      this.state.necessary2 === "true" &&
-      this.state.necessary3 === "true"
+      this.state.necessary1 === true &&
+      this.state.necessary2 === true &&
+      this.state.necessary3 === true
     ) {
       this.setState(
         {
-          necessaryAll: "true"
+          necessaryAll: true
         },
         () => {
           console.log("necessaryAll은 ", this.state.necessaryAll);
@@ -375,7 +375,7 @@ class Join extends Component {
     } else {
       this.setState(
         {
-          necessaryAll: "false"
+          necessaryAll: false
         },
         () => {
           console.log("necessaryAll은 ", this.state.necessaryAll);
@@ -384,7 +384,7 @@ class Join extends Component {
     }
   };
   joinFetch = () => {
-    fetch("http://10.58.5.27:8000/users/sign-up", {
+    fetch("http://10.58.7.245:8000/users/sign-up", {
       method: "POST",
       body: JSON.stringify({
         account: this.state.ID,
@@ -397,25 +397,18 @@ class Join extends Component {
         address: this.state.address
       })
     })
-      .then(response => response.json())
       .then(response => {
-        console.log("response 도착", response);
-        if (response.access) {
-          // response에 access가 있으면 홈으로 이동.
-          return this.goHome();
-        } else if ("400 error") {
-          console.log("무언가 잘못됨");
-          alert("400 error");
-          return this.setState({ again: true });
-        } else if ("500 error") {
-          alert("500 error");
+        console.log(response);
+        if (response.status === 200) {
+          alert("가입되었습니다!");
+          this.props.history.push("/joincomplete");
+        } else {
+          alert("문제가 생겼습니다");
         }
-      });
-    // if (response.status === 200) {
-    //   alert("정상 가입 되었습니다");
-    // } else {
-    //   alert("문제가 생겨 가입되지 않았습니다.");
-    // }
+        console.log(response.data);
+        return response;
+      })
+      .then(response => {});
 
     console.log("account는", this.state.ID);
     console.log("password는", this.state.PW);
@@ -427,21 +420,43 @@ class Join extends Component {
     console.log("address는", this.state.address);
   };
   IDDuplication = () => {
-    fetch("http://10.58.5.27:8000/users/check-account", {
+    fetch("http://10.58.7.245:8000/users/check-account", {
       method: "POST",
       body: JSON.stringify({
         account: this.state.ID
       })
-    });
-    console.log("account 중복확인 ", this.state.ID);
+    })
+      .then(response => {
+        console.log(response);
+        if (response.status === 200) {
+          alert("사용할수 있는 ID입니다!");
+        } else {
+          alert("사용할수 없는 ID입니다!");
+        }
+        console.log(response.data);
+        return response;
+      })
+      .then(response => {});
   };
+
   emailDuplication = () => {
-    fetch("http://10.58.5.27:8000/users/check-email", {
+    fetch("http://10.58.7.245:8000/users/check-email", {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email
       })
-    });
+    })
+      .then(response => {
+        console.log(response);
+        if (response.status === 200) {
+          alert("사용할수 있는 이메일입니다!");
+        } else {
+          alert("사용할수 없는 이메일입니다!");
+        }
+        console.log(response.data);
+        return response;
+      })
+      .then(response => {});
     console.log("email 중복확인 ", this.state.ID);
   };
   goHome = () => {
@@ -465,7 +480,7 @@ class Join extends Component {
   };
   render() {
     return (
-      <form>
+      <form action="#">
         <Nav />
         <div className="join-start">
           <div className="contents">
@@ -511,7 +526,7 @@ class Join extends Component {
                   </td>
                 </tr>
                 {/* 상황연산자1 */}
-                {this.state.IDFocusMode === "true" ? (
+                {this.state.IDFocusMode === true ? (
                   <tr className="guide-tr">
                     <td className="give-number col1"></td>
                     <td className="give-number col2">
@@ -542,7 +557,7 @@ class Join extends Component {
                   </td>
                 </tr>
 
-                {this.state.PWFocusMode === "true" ? (
+                {this.state.PWFocusMode === true ? (
                   <tr className="guide-tr">
                     <td className="give-number col1"></td>
                     <td className="give-number col2">
@@ -579,7 +594,7 @@ class Join extends Component {
                   </td>
                 </tr>
 
-                {this.state.PWConfirmFocusMode === "true" ? (
+                {this.state.PWConfirmFocusMode === true ? (
                   <tr className="guide-tr-pwc">
                     <td className="give-number col1"></td>
                     <td className="give-number col2-pwc">
@@ -880,7 +895,7 @@ class Join extends Component {
               </div>
               <div className="final-join">
                 <button
-                  type="submit"
+                  type="button"
                   className="final-button-join"
                   onClick={this.joinFetch}
                 >

@@ -42,7 +42,6 @@ export default class Order extends Component {
 
   onScroll = e => {
     const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
-    console.log(scrollTop);
     if (scrollTop < 2357) {
       this.setState({
         top: 0
@@ -66,7 +65,7 @@ export default class Order extends Component {
     let point = "";
     let description = "";
     for (let i in this.state.list) {
-      if (this.state.value === this.state.list[i]["cardName"]) {
+      if (e.target.value === this.state.list[i]["cardName"]) {
         monthArr = this.state.list[i]["cardInstallmentMonth"].map(element => {
           return <option key={element}>{element}</option>;
         });

@@ -160,7 +160,7 @@ export default class Order extends Component {
           }
 
           this.setState({
-            postcode: data.zonecode,
+            postcode: " [" + data.zonecode + "]",
             addr: this.state.addr
           });
 

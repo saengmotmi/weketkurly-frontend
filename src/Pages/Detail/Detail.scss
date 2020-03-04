@@ -1,3 +1,5 @@
+$default-color: #5f0080;
+
 .Detail {
   width: 1050px;
   margin: 0 auto;
@@ -74,7 +76,7 @@
     .accumulate {
       .befor-login-point {
         font-size: 14px;
-        color: #5f0080;
+        color: $default-color;
       }
       .after-login-point {
         letter-spacing: -0.5px;
@@ -269,7 +271,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        background: #fff;
+        background-color: #fff;
         text-align: center;
         .alarm-off {
           width: 128px;
@@ -279,6 +281,7 @@
           font-weight: 700;
           font-size: 16px;
           color: #ddd;
+          background-color: #fff;
           cursor: pointer;
         }
         .alarm-on {
@@ -289,6 +292,7 @@
           font-weight: 700;
           font-size: 16px;
           color: #5f0080;
+          background-color: #fff;
           cursor: pointer;
         }
         .save-item {
@@ -299,6 +303,7 @@
           font-weight: 700;
           font-size: 16px;
           color: #5f0080;
+          background-color: #fff;
           cursor: pointer;
         }
         .save-item-clicked {
@@ -331,6 +336,7 @@
   .slide {
     width: 1010px;
     .related-product {
+      margin-bottom: 20px;
       div {
         width: 20px;
         height: 5px;
@@ -1018,6 +1024,8 @@
       outline: none;
       border: 0;
       font-family: "Noto Sans";
+      background-color: #fff;
+      box-sizing: border-box;
       .first-page {
         width: 34px;
         height: 34px;
@@ -1372,7 +1380,8 @@
         align-items: center;
         justify-content: space-between;
         background-color: #fff;
-        margin: 10px 25px 5px 25px;
+        margin: 20px 25px 0 25px;
+        padding-bottom: 20px;
         border-bottom: 1px solid #b2b2b2;
         h3 {
           font-size: 14px;

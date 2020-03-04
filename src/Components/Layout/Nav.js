@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./Nav.scss";
-import "../Styles/reset.scss";
+import "../Nav.scss";
+import "../../Styles/reset.scss";
 
 class Nav extends Component {
   constructor(props) {

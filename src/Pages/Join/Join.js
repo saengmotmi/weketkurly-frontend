@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Nav from "../../Components/Nav";
-import Footer from "../../Components/Footer";
+import Nav from "../../Components/Layout/Nav";
+import Footer from "../../Components/Layout/Footer";
 import "./Join.scss";
 
 class Join extends Component {

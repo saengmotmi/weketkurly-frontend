@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Table from "./Table";
+import Table from "../Table";
 import PageBtn from "./PageBtn";
 
 export default class Qa extends Component {
@@ -42,7 +42,7 @@ export default class Qa extends Component {
             <button className="write-all-view">전체보기</button>
           </div>
           <div>
-            <button className="write-qa-hover">상품문의</button>
+            <button className="write-qa">상품문의</button>
           </div>
         </div>
         <PageBtn />

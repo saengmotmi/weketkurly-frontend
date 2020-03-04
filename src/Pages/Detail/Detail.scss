@@ -2,7 +2,7 @@ $default-color: #5f0080;
 
 .Detail {
   width: 1050px;
-  margin: 0 auto;
+  margin: 0 auto 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -661,27 +661,35 @@ $default-color: #5f0080;
       color: #666;
       margin: 70px 0 90px 0;
     }
-    .why-kurly-contents-1,
-    .why-kurly-contents-2 {
+    .why {
       display: flex;
       flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-around;
+      margin-bottom: 70px;
+    }
+    .why-kurly-contents {
+      display: flex;
+      flex-direction: column;
       justify-content: center;
       .why-kurly-info {
-        padding-bottom: 80px;
+        padding-bottom: 20px;
         margin: 0 30px;
-        .title {
-          color: #5f0080;
-          font-weight: 500;
-          font-size: 18px;
-          margin: 10px 0 20px 0;
-        }
-        .content {
-          color: #333;
-          padding: 0;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 1.56;
-        }
+      }
+      .title {
+        color: #5f0080;
+        font-weight: 500;
+        display: block;
+        font-size: 18px;
+        text-align: center;
+        margin-top: 10px;
+      }
+      .content {
+        color: #333;
+        padding: 0;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 25px;
       }
     }
   }
@@ -794,6 +802,7 @@ $default-color: #5f0080;
   .hide {
     width: 995px;
     .refund-info {
+      margin-top: 40px;
       display: flex;
       flex-direction: row;
       align-items: flex-start;
@@ -807,7 +816,7 @@ $default-color: #5f0080;
         font-weight: 500;
       }
       .contents {
-        padding: 0 0 30px 60px;
+        padding: 0 0 50px 60px;
         line-height: 150%;
         font-size: 15px;
         .hide-contents {
@@ -818,12 +827,12 @@ $default-color: #5f0080;
         .hide-title {
           color: #5f0080;
           margin: 0 0 6px 0;
-          font-weight: 400;
+          font-weight: 500;
         }
         .hide-extra {
           color: #333;
           font-weight: 300;
-          font-size: 14px;
+          font-size: 15px;
         }
       }
     }
@@ -983,7 +992,7 @@ $default-color: #5f0080;
     }
 
     .qa-btn {
-      margin: 30px 0 100px 0;
+      margin: 30px 0 70px 0;
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
@@ -1025,17 +1034,19 @@ $default-color: #5f0080;
       border: 0;
       font-family: "Noto Sans";
       background-color: #fff;
-      box-sizing: border-box;
       .first-page {
         width: 34px;
         height: 34px;
         border: 1px solid rgb(221, 221, 221);
-        background-position: 50% 50%;
-        background-size: cover;
         cursor: pointer;
         padding: 0;
+        box-sizing: border-box;
+        background-color: #fff;
         background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-first.png)
-          no-repeat;
+          no-repeat 50% 50%;
+        &:hover {
+          background-color: #f7f7f7;
+        }
       }
       .before {
         width: 34px;
@@ -1044,11 +1055,15 @@ $default-color: #5f0080;
         border-left: 0;
         cursor: pointer;
         padding: 0;
-        background-position: 50% 50%;
+        box-sizing: border-box;
+        background-color: #fff;
         background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-prev.png)
-          no-repeat;
+          no-repeat 50% 50%;
+        &:hover {
+          background-color: #f7f7f7;
+        }
       }
-      .num {
+      button {
         width: 34px;
         height: 34px;
         border: 1px solid rgb(221, 221, 221);
@@ -1057,7 +1072,12 @@ $default-color: #5f0080;
         padding: 0;
         font-weight: 500;
         color: #333;
+        box-sizing: border-box;
+        background-color: #fff;
         line-height: 34px;
+        &:hover {
+          background-color: #f7f7f7;
+        }
       }
       .next {
         width: 34px;
@@ -1065,9 +1085,13 @@ $default-color: #5f0080;
         border: 1px solid rgb(221, 221, 221);
         border-left: 0;
         cursor: pointer;
-        padding: 0;
+        background-color: #fff;
+        box-sizing: border-box;
         background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-next.png)
-          no-repeat;
+          no-repeat 50% 50%;
+        &:hover {
+          background-color: #f7f7f7;
+        }
       }
       .last-page {
         width: 34px;
@@ -1075,8 +1099,13 @@ $default-color: #5f0080;
         border: 1px solid rgb(221, 221, 221);
         border-left: 0;
         cursor: pointer;
+        background-color: #fff;
+        box-sizing: border-box;
         background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-last.png)
-          no-repeat;
+          no-repeat 50% 50%;
+        &:hover {
+          background-color: #f7f7f7;
+        }
       }
     }
   }
@@ -1236,6 +1265,7 @@ $default-color: #5f0080;
           .price {
             margin: 2px 3px -5px 8px;
             font-size: 28px;
+            font-weight: 600;
             padding-left: 8px;
           }
           .won {

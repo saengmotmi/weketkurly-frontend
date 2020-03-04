@@ -72,16 +72,17 @@ export default class Order extends Component {
     for (let i in this.state.list) {
       if (this.state.value === this.state.list[i]["cardName"]) {
         monthArr = this.state.list[i]["cardInstallmentMonth"].map(element => {
-          return <option>{element}</option>;
+          return <option key={element}>{element}</option>;
         });
         point = this.state.list[i]["cardPoint"];
         description = this.state.list[i]["cardDescription"];
       }
       this.setState({
         value: e.target.value,
-        monthArrData: monthArr,
+        monthData: monthArr,
         pointValue: point,
-        description: description
+        description: description,
+        monthValue: e.target.value
       });
     }
   };

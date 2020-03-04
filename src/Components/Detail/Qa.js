@@ -35,7 +35,6 @@ export default class Qa extends Component {
           </div>
         </div>
 
-        {/* review */}
         <Table />
         <div className="qa-btn">
           <div>

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import Nav from "../../Components/Nav";
-import Footer from "../../Components/Footer";
+import Nav from "../../Components/Layout/Nav";
+import Footer from "../../Components/Layout/Footer";
 import MainCategory from "./Main-Category";
 import "./Main.scss";
+import ImgSlider from "../../Components/Slider";
 
 class Main extends Component {
   constructor(props) {
@@ -52,6 +53,7 @@ class Main extends Component {
       <div>
         {console.log(this.state.data)}
         <Nav />
+        <ImgSlider />
         <div className="main">
           <div className="quick-menu">
             <img
@@ -67,10 +69,6 @@ class Main extends Component {
             </div>
             <div className="side-recent"></div>
           </div>
-          <img
-            src="https://img-cf.kurly.com/shop/data/main/1/pc_img_1582274479.jpg"
-            alt=""
-          />
           {mainCateList}
           <img
             className="img-bottom"

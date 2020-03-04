@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Count from "../Components/Count";
+import Count from "./Count";
 
 export default class ProductInfo extends Component {
   render() {

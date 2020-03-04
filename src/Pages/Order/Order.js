@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Nav from "../../Components/Nav";
-import CurrentAddress from "../../Components/CurrentAddress";
-import NewAddress from "../../Components/NewAddress";
-import Footer from "../../Components/Footer";
+import Nav from "../../Components/Layout/Nav";
+import CurrentAddress from "../../Components/Order/CurrentAddress";
+import NewAddress from "../../Components/Order/NewAddress";
+import Footer from "../../Components/Layout/Footer";
 import "./Order.scss";
 
 export default class Order extends Component {
@@ -16,12 +16,16 @@ export default class Order extends Component {
       value: "",
       key: "",
       list: [],
-      addr: "",
-      extraAddr: "",
       point: 0,
       name: "",
       monthArrData: [],
-      monthValue: ""
+      monthValue: "",
+      pointValue: "",
+      description: "",
+      addr: "",
+      extraAddr: "",
+      postcode: "",
+      targetValue: ""
     };
   }
 
@@ -59,27 +63,38 @@ export default class Order extends Component {
 
   onClickCheked = e => {
     this.setState({ checked: false });
-    console.log(this.state.checked);
   };
 
   handleChange = e => {
     let monthArr = [];
+    let point = "";
+    let description = "";
     for (let i in this.state.list) {
       if (this.state.value === this.state.list[i]["cardName"]) {
         monthArr = this.state.list[i]["cardInstallmentMonth"].map(element => {
           return <option>{element}</option>;
         });
+        point = this.state.list[i]["cardPoint"];
+        description = this.state.list[i]["cardDescription"];
       }
+      this.setState({
+        value: e.target.value,
+        monthArrData: monthArr,
+        pointValue: point,
+        description: description
+      });
     }
-    this.setState({
-      value: e.target.value,
-      monthArrData: monthArr
-    });
   };
 
   _handleChange = e => {
     this.setState({
       monthValue: e.target.value
+    });
+  };
+
+  onChangeValue = e => {
+    this.setState({
+      targetValue: e.target.value
     });
   };
 
@@ -112,15 +127,15 @@ export default class Order extends Component {
           // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
           if (data.bname !== "" && /[동|로|가]$/g.test(data.bname)) {
             this.setState({
-              extraAddr: (this.state.extraAddr += data.bname)
+              extraAddr: this.state.extraAddr + data.bname
             });
             // 건물명이 있고, 공동주택일 경우 추가한다.
             if (data.buildingName !== "" && data.apartment === "Y") {
               this.setState({
-                extraAddr: (this.state.extraAddr +=
-                  this.state.extraAddr !== ""
+                extraAddr:
+                  this.state.extraAddr + this.state.extraAddr !== ""
                     ? ", " + data.buildingName
-                    : data.buildingName)
+                    : data.buildingName
               });
             }
             // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
@@ -129,19 +144,30 @@ export default class Order extends Component {
                 setAddr: " (" + this.state.extraAddr + ")"
               });
             }
+            this.setState({
+              extraAddr: this.state.extraAddr
+            });
             // 조합된 참고항목을 해당 필드에 넣는다.
-            document.getElementById(
-              "extraAddress"
-            ).value = this.state.extraAddr;
+            // document.getElementById(
+            //   "extraAddress"
+            // ).value = this.state.extraAddr;
           } else {
-            document.getElementById("extraAddress").value = "";
+            // document.getElementById("extraAddress").value = "";
+            this.setState({
+              extraAddr: ""
+            });
           }
 
+          this.setState({
+            postcode: data.zonecode,
+            addr: this.state.addr
+          });
+
           // 우편번호와 주소 정보를 해당 필드에 넣는다.
-          document.getElementById("postcode").value = data.zonecode;
-          document.getElementById("address").value = this.state.addr;
+          // document.getElementById("postcode").value = data.zonecode;
+          // document.getElementById("address").value = this.state.addr;
           // 커서를 상세주소 필드로 이동한다.
-          document.getElementById("detailAddress").focus();
+          // document.getElementById("detailAddress").focus();
         }
       }
     }).open();
@@ -151,13 +177,17 @@ export default class Order extends Component {
     const {
       detail,
       checked,
-      addr,
-      extraAddr,
       point,
       top,
       value,
       monthArrData,
-      monthValue
+      monthValue,
+      pointValue,
+      description,
+      addr,
+      extraAddr,
+      postcode,
+      targetValue
     } = this.state;
 
     const options = this.state.list.map(el => {
@@ -298,7 +328,11 @@ export default class Order extends Component {
                 <tr className="field">
                   <th>배송지선택</th>
                   <td>
-                    <label className="lebel-radio">
+                    <label
+                      className={
+                        checked ? "label-radio-checked" : "lebel-radio"
+                      }
+                    >
                       <input
                         type="radio"
                         name="selectDelivery"
@@ -306,11 +340,7 @@ export default class Order extends Component {
                       />
                       <span className="current">최근 배송지</span>
                     </label>
-                    <label
-                      className={
-                        checked ? "label-radio-checked" : "lebel-radio"
-                      }
-                    >
+                    <label className="lebel-radio">
                       <input
                         type="radio"
                         name="selectDelivery"
@@ -328,7 +358,61 @@ export default class Order extends Component {
                   execPostCode={this.execPostCode}
                   addr={addr}
                   extraAddr={extraAddr}
+                  postcode={postcode}
+                  onChange={this.onChangeValue}
+                  targetValue={targetValue}
                 />
+                <tr className="memo">
+                  <th>배송 요청사항</th>
+                  <td>
+                    <textarea maxLength="50" />
+                    <div className="string">0자 / 50자</div>
+                  </td>
+                </tr>
+                <tr className="gate">
+                  <th>공동현관 출입 방법 *</th>
+                  <td>
+                    <label className="lebel-radio">
+                      <input type="radio" name="gate" />
+                      비밀번호
+                    </label>
+                    <label className="lebel-radio">
+                      <input type="radio" name="gate" />
+                      경비실 호출
+                    </label>
+                    <label className="lebel-radio">
+                      <input type="radio" name="gate" checked="checked" />
+                      자유출입가능
+                    </label>
+                    <label className="lebel-radio">
+                      <input type="radio" name="gate" />
+                      기타사항
+                    </label>
+                  </td>
+                </tr>
+                <tr className="msg">
+                  <th>배송완료 메세지 전송시점 *</th>
+                  <td>
+                    <label className="lebel-radio">
+                      <input type="radio" name="time" checked="checked" />
+                      배송직후
+                    </label>
+                    <label className="lebel-radio">
+                      <input type="radio" name="time" />
+                      오전 7시
+                    </label>
+                  </td>
+                </tr>
+                <tr className="save">
+                  <th checked>출입정보 저장</th>
+                  <td>
+                    <label className="label-checked">
+                      <input type="checkbox" checked="checked" />
+                      출입정보 저장
+                      <div>공동현관 출입방법, 배송완료메세지 전송시점 저장</div>
+                    </label>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -441,7 +525,11 @@ export default class Order extends Component {
                 <tr>
                   <th>일반결제</th>
                   <td>
-                    <label className="label-radio">
+                    <label
+                      className={
+                        checked ? "label-radio-checked" : "lebel-radio"
+                      }
+                    >
                       <input type="radio" className="card" name="payment" />
                       신용카드
                     </label>
@@ -477,8 +565,11 @@ export default class Order extends Component {
                           </select>
                         </div>
                       </div>
-                      <div>{this.state.cardPoint}</div>
-                      <div>{this.state.description}</div>
+                      <div className="point">
+                        <input type="checkbox" />
+                        {pointValue}
+                      </div>
+                      <div className="description">{description}</div>
                     </div>
                   </td>
                 </tr>
@@ -569,11 +660,13 @@ export default class Order extends Component {
             <tr>
               <th>미출고 시 조치방법 *</th>
               <td>
-                <label className="label-radio">
+                <label
+                  className={checked ? "label-radio-checked" : "lebel-radio"}
+                >
                   <input type="radio" name="refund" />
                   결제수단으로 환불
                 </label>
-                <label className="label-radio">
+                <label className="lebel-radio">
                   <input type="radio" name="refund" />
                   상품 입고 시 배송
                 </label>

@@ -399,6 +399,7 @@
         color: #fff;
         display: block;
         border: 0;
+        margin-bottom: 20px;
       }
       td {
         padding-top: 22px;
@@ -619,13 +620,14 @@
             flex-direction: row;
             align-items: center;
             select {
-              width: 190px; /* 원하는 너비설정 */
-              padding: 0.8em 0.5em; /* 여백으로 높이 설정 */
+              font-size: 12px;
+              box-sizing: border-box;
+              width: 190px;
+              padding: 7px 0 7px 5px;
+
               font-family: inherit; /* 폰트 상속 */
-              // background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg)
-              //   no-repeat 95% 50%; /* 네이티브 화살표 대체 */
               border: 1px solid #000;
-              border-radius: 0px; /* iOS 둥근모서리 제거 */
+              border-radius: 0px;
               -webkit-appearance: none; /* 네이티브 외형 감추기 */
               -moz-appearance: none;
               appearance: none;
@@ -642,6 +644,14 @@
       .card-install-list {
         margin-left: 10px;
       }
+    }
+    .point {
+      font-size: 14px;
+      vertical-align: center;
+    }
+    .description {
+      font-size: 12px;
+      margin: 10px 0 0;
     }
   }
 

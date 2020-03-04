@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Nav from "../../Components/Nav";
+import Nav from "../../Components/Layout/Nav";
 import SaleEventList from "../../Components/SaleEventList";
 import EventList from "../../Components/EventList";
-import Footer from "../../Components/Footer";
+import Footer from "../../Components/Layout/Footer";
 import "./EventMain.scss";
 
 export default class EventMain extends Component {
@@ -144,7 +144,7 @@ export default class EventMain extends Component {
 
     return (
       <div className="EventMain">
-        {/* <Nav /> */}
+        <Nav />
         <div className="event-view">
           {/* img */}
           <div className="event-img">
@@ -229,7 +229,7 @@ export default class EventMain extends Component {
             </button>
           </div>
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     );
   }

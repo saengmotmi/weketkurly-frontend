@@ -115,7 +115,9 @@ class Nav extends Component {
     return liCateListdown;
   };
 
-  _liCategoryListdown2 = arr => {
+  _liCategoryListdown2 = (e, arr) => {
+    console.log("e", e);
+
     let liCateListdown2 = [];
     liCateListdown2 = arr.map(param2 => (
       <li>

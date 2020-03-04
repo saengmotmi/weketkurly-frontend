@@ -397,8 +397,14 @@ class MainCategory extends Component {
                   position: "relative"
                 }}
               >
-                <button className="btn-scroll btn-scroll-left"></button>
-                <button className="btn-scroll btn-scroll-right"></button>
+                <button
+                  style={{ top: "97.5px" }}
+                  className="btn-scroll btn-scroll-left"
+                ></button>
+                <button
+                  style={{ top: "97.5px" }}
+                  className="btn-scroll btn-scroll-right"
+                ></button>
               </div>
               <div style={{ overflow: "hidden" }} className="goods-item">
                 {recipeList}

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Nav from "../../Components/Nav";
 import Footer from "../../Components/Footer";
 import MainCategory from "./Main-Category";
-import "./Main.scss";
 import ImgSlider from "../../Components/Slider";
+import "./Main.scss";
 
 class Main extends Component {
   constructor(props) {
@@ -43,16 +43,7 @@ class Main extends Component {
     }
   };
 
-  componentDidMount = () => {
-    this._getApi("recommendation");
-    window.addEventListener("scroll", this._onScroll);
-  };
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this._headerScroll);
-  }
-
-  render() {
+  _mainCateList = () => {
     const mainCateList =
       this.state.data.length === 0
         ? null
@@ -72,10 +63,25 @@ class Main extends Component {
             ); // 배열
           });
 
+    return mainCateList;
+  };
+
+  componentDidMount = () => {
+    this._getApi("recommendation");
+    window.addEventListener("scroll", this._onScroll);
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._headerScroll);
+  }
+
+  render() {
     return (
       <div>
         <Nav />
-        <ImgSlider />
+        <ImgSlider
+          src={this.state.data[0] ? this.state.data[0]["banners"] : null}
+        />
         <div className="main">
           <div
             className={this.state.sideFixed ? "quick-menu float" : "quick-menu"}
@@ -94,7 +100,7 @@ class Main extends Component {
             </div>
             <div className="side-recent"></div>
           </div>
-          {mainCateList}
+          {this._mainCateList()}
           <img
             className="img-bottom"
             src="https://img-cf.kurly.com/shop/data/main/15/pc_img_1568875999.png"

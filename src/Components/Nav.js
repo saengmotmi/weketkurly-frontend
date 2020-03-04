@@ -6,9 +6,6 @@ class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // visibleProfile1: false,
-      // visibleProfile2: false,
-      // visibleCategory: false,
       sideFloat: false,
       headerFixed: false,
       scrollY: 0,
@@ -31,8 +28,6 @@ class Nav extends Component {
         "상품 제안",
         "에코포장 피드백"
       ],
-      // dataCategoryList1: [],
-      // dataCategoryList2: [],
       itemCartCount: 0
     };
   }
@@ -60,6 +55,25 @@ class Nav extends Component {
       );
   };
 
+  _visible = name => {
+    if (name === "profile1") {
+      this.setState({
+        visibleProfile1: !this.state.visibleProfile1,
+        dataCategoryList1: this.state.data
+      });
+    } else if (name === "profile2") {
+      this.setState({
+        visibleProfile2: !this.state.visibleProfile2,
+        dataCategoryList2: this.state.data
+      });
+    } else if (name === "category1") {
+      this.setState({
+        visibleCategory: !this.state.visibleCategory,
+        liProfileListdown: []
+      });
+    }
+  };
+
   _liProfileListdown = paramArr => {
     const liProfileListdown = paramArr.map((param, idx) => {
       return (
@@ -81,6 +95,7 @@ class Nav extends Component {
             <p>
               <img src={this.state.data.categories[idx].pc_icon_url} alt="" />
               {param}
+              <ul>{param["categories"]}</ul>
             </p>
           </li>
         );
@@ -133,13 +148,6 @@ class Nav extends Component {
 
     return (
       <div className="header">
-        {/* <div
-          style={
-            this.state.headerFixed
-              ? { display: "block", height: `${this.state.scrollY}px` }
-              : { display: "none" }
-          }
-        /> */}
         <div className="nav-top">
           {/* 최상단 */}
           <img
@@ -148,22 +156,8 @@ class Nav extends Component {
           />
           <div>
             <ul>
-              <li
-                className="profile-listdown"
-                // onMouseOver={() => this._visible("profile1")}
-                // onMouseOut={() => this._visible("profile2")}
-              >
-                <span
-                  style={{
-                    border: "1px solid #949296",
-                    borderRadius: "30px",
-                    fontSize: "10px",
-                    backgroundColor: "#fff",
-                    color: "#949296"
-                  }}
-                >
-                  웰컴
-                </span>
+              <li className="profile-listdown">
+                <span id="prof-grade">웰컴</span>
                 <span>오종택님</span>
                 <ul
                   className="nav-prof-list"
@@ -174,11 +168,7 @@ class Nav extends Component {
                   {this._liProfileListdown(this.state.dataProfileList1)}
                 </ul>
               </li>
-              <li
-                className="profile-listdown"
-                // onMouseOver={() => this._visible("profile2")}
-                // onMouseOut={() => this._visible("profile2")}
-              >
+              <li className="profile-listdown">
                 <span>고객센터</span>
                 <ul
                   className="nav-prof-list"
@@ -209,12 +199,12 @@ class Nav extends Component {
           <ul className="nav-bottom-bar">
             <li
               className="category-listdown"
-              // onMouseOver={() => this._visible("category1")}
-              // onMouseOut={() => this._visible("category1")}
+              onMouseOver={() => this._visible("category1")}
+              onMouseOut={() => this._visible("category1")}
             >
               <img
+                id="cate-left-img"
                 alt="카테고리"
-                style={{ display: "inline-block" }}
                 src="https://res.kurly.com/pc/service/common/1908/ico_gnb_all_off.png"
               />
               <span>전체 카테고리</span>
@@ -267,24 +257,5 @@ class Nav extends Component {
     );
   }
 }
-
-// _visible = name => {
-//   if (name === "profile1") {
-//     this.setState({
-//       visibleProfile1: !this.state.visibleProfile1,
-//       dataCategoryList1: this.state.data
-//     });
-//   } else if (name === "profile2") {
-//     this.setState({
-//       visibleProfile2: !this.state.visibleProfile2,
-//       dataCategoryList2: this.state.data
-//     });
-//   } else if (name === "category1") {
-//     this.setState({
-//       visibleCategory: !this.state.visibleCategory,
-//       liProfileListdown: []
-//     });
-//   }
-// };
 
 export default Nav;

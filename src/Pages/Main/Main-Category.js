@@ -116,7 +116,7 @@ class MainCategory extends Component {
             <button
               key={idx}
               style={
-                idx === this.state.mdButtonSelect
+                this.state.mdButtonSelect === idx
                   ? this.state.buttonStyle
                   : null
               }

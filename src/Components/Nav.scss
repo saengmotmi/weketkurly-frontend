@@ -26,6 +26,7 @@
 
       ul {
         position: absolute;
+
         top: 10px;
         left: 1px;
         z-index: 1;
@@ -57,18 +58,6 @@
         padding: 0 10px;
         letter-spacing: -0.3px;
       }
-
-      // &::after {
-      //   content: " | ";
-      //   color: #d8d8d8;
-      // }
-
-      // &:nth-child(3) {
-      //   &::before {
-      //     content: " ";
-      //     background: url(https://res.kurly.com/pc/ico/1908/ico_down_8x5.png);
-      //   }
-      // }
 
       &:last-child {
         &::after {
@@ -140,17 +129,6 @@
       letter-spacing: -0.3px;
       font-weight: 500;
       color: #333333;
-
-      // &::after {
-      //   content: " | ";
-      //   color: #d8d8d8;
-      // }
-
-      // &:last-child {
-      //   &::after {
-      //     content: "";
-      //   }
-      // }
     }
 
     img {
@@ -161,6 +139,30 @@
     div {
       display: flex;
       align-items: center;
+    }
+  }
+
+  .search-wrap {
+    border-radius: 18px;
+    display: flex;
+    border: 1px solid #f7f7f6;
+    background-color: #f7f7f7;
+    position: relative;
+
+    input {
+      font-size: 12px;
+      color: #666;
+      border: none;
+      border-radius: 18px;
+      background-color: #f7f7f7;
+      width: 166px;
+      height: 36px;
+      padding: 0 50px 0 20px;
+
+      &:focus {
+        outline: none;
+        background-color: white;
+      }
     }
   }
 
@@ -207,6 +209,11 @@
       font-weight: 500;
       color: #333333;
     }
+  }
+
+  .category-listdown {
+    display: flex;
+    position: relative;
 
     ul {
       position: absolute;
@@ -217,12 +224,6 @@
       margin-top: 40px;
       font-weight: 700;
       line-height: 20px;
-
-      // li {
-      //   &::after {
-      //     content: "";
-      //   }
-      // }
     }
 
     img {

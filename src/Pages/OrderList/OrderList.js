@@ -123,7 +123,7 @@ export default class OrderList extends Component {
                           </dl>
                           <dl>
                             <dt>주문선택</dt>
-                            <dd>배송완료</dd>
+                            <dd className="complete">배송완료</dd>
                           </dl>
                         </div>
                       </div>

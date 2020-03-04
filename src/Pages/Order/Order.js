@@ -10,7 +10,6 @@ export default class Order extends Component {
     super(props);
     this.state = {
       detail: false,
-      checked: true,
       top: 0,
       scrollTop: 0,
       value: "",
@@ -43,13 +42,14 @@ export default class Order extends Component {
 
   onScroll = e => {
     const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
-    if (scrollTop < 2487) {
+    console.log(scrollTop);
+    if (scrollTop < 2357) {
       this.setState({
         top: 0
       });
-    } else if (scrollTop > 2487 && scrollTop < 3100) {
+    } else if (scrollTop > 2357 && scrollTop < 3050) {
       this.setState({
-        top: scrollTop - 2480,
+        top: scrollTop - 2357,
         scrollTop: scrollTop
       });
     }
@@ -59,10 +59,6 @@ export default class Order extends Component {
     this.setState({
       detail: true
     });
-  };
-
-  onClickCheked = e => {
-    this.setState({ checked: false });
   };
 
   handleChange = e => {
@@ -77,14 +73,14 @@ export default class Order extends Component {
         point = this.state.list[i]["cardPoint"];
         description = this.state.list[i]["cardDescription"];
       }
-      this.setState({
-        value: e.target.value,
-        monthData: monthArr,
-        pointValue: point,
-        description: description,
-        monthValue: e.target.value
-      });
     }
+    this.setState({
+      value: e.target.value,
+      monthArrData: monthArr,
+      pointValue: point,
+      description: description,
+      monthValue: e.target.value
+    });
   };
 
   _handleChange = e => {
@@ -177,7 +173,6 @@ export default class Order extends Component {
   render() {
     const {
       detail,
-      checked,
       point,
       top,
       value,
@@ -329,33 +324,18 @@ export default class Order extends Component {
                 <tr className="field">
                   <th>배송지선택</th>
                   <td>
-                    <label
-                      className={
-                        checked ? "label-radio-checked" : "lebel-radio"
-                      }
-                    >
-                      <input
-                        type="radio"
-                        name="selectDelivery"
-                        onClick={this.onClickCheked}
-                      />
+                    <label className="label-radio">
+                      <input type="radio" name="selectDelivery" checked />
                       <span className="current">최근 배송지</span>
                     </label>
                     <label className="lebel-radio">
-                      <input
-                        type="radio"
-                        name="selectDelivery"
-                        onClick={this.onClickCheked}
-                      />
+                      <input type="radio" name="selectDelivery" />
                       새로운 배송지
                     </label>
                   </td>
                 </tr>
-                <CurrentAddress
-                  style={{ display: checked ? "none" : "block" }}
-                />
+                <CurrentAddress />
                 <NewAddress
-                  style={{ display: checked ? "block" : "none" }}
                   execPostCode={this.execPostCode}
                   addr={addr}
                   extraAddr={extraAddr}
@@ -382,7 +362,7 @@ export default class Order extends Component {
                       경비실 호출
                     </label>
                     <label className="lebel-radio">
-                      <input type="radio" name="gate" checked="checked" />
+                      <input type="radio" name="gate" checked />
                       자유출입가능
                     </label>
                     <label className="lebel-radio">
@@ -395,7 +375,7 @@ export default class Order extends Component {
                   <th>배송완료 메세지 전송시점 *</th>
                   <td>
                     <label className="lebel-radio">
-                      <input type="radio" name="time" checked="checked" />
+                      <input type="radio" name="time" checked />
                       배송직후
                     </label>
                     <label className="lebel-radio">
@@ -408,7 +388,7 @@ export default class Order extends Component {
                   <th checked>출입정보 저장</th>
                   <td>
                     <label className="label-checked">
-                      <input type="checkbox" checked="checked" />
+                      <input type="checkbox" checked />
                       출입정보 저장
                       <div>공동현관 출입방법, 배송완료메세지 전송시점 저장</div>
                     </label>
@@ -526,12 +506,13 @@ export default class Order extends Component {
                 <tr>
                   <th>일반결제</th>
                   <td>
-                    <label
-                      className={
-                        checked ? "label-radio-checked" : "lebel-radio"
-                      }
-                    >
-                      <input type="radio" className="card" name="payment" />
+                    <label className="lebel-radio">
+                      <input
+                        type="radio"
+                        className="card"
+                        name="payment"
+                        checked
+                      />
                       신용카드
                     </label>
                     <label className="label-radio">
@@ -661,10 +642,8 @@ export default class Order extends Component {
             <tr>
               <th>미출고 시 조치방법 *</th>
               <td>
-                <label
-                  className={checked ? "label-radio-checked" : "lebel-radio"}
-                >
-                  <input type="radio" name="refund" />
+                <label className="label-radio">
+                  <input type="radio" name="refund" checked />
                   결제수단으로 환불
                 </label>
                 <label className="lebel-radio">
@@ -689,12 +668,12 @@ export default class Order extends Component {
                     <div className="subject">
                       개인정보 수집 · 이용 동의
                       <span className="gray">(필수)</span>
-                      <span className="confirm">약관확인 ></span>
+                      <span className="confirm">약관확인</span>
                     </div>
                     <div className="subject">
                       결제대행 서비스 약관 동의
                       <span className="gray">(필수)</span>
-                      <span className="confirm">약관확인 ></span>
+                      <span className="confirm">약관확인</span>
                     </div>
                   </td>
                 </tr>

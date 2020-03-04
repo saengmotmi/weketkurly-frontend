@@ -26,20 +26,32 @@ export default class OrderList extends Component {
             <li className="point">
               <h2>적립금</h2>
               <div className="won">
-                456원 <img src="#" alt="" />
+                456원
+                <img
+                  src="https://res.kurly.com/pc/service/common/1905/ico_arrow_56x56.png"
+                  alt="자세히 보기"
+                />
               </div>
               <div className="remove">소멸 예정 0원</div>
             </li>
             <li className="cupon">
               <h2>쿠폰</h2>
               <div>
-                0개 <img src="#" alt="" />
+                0개
+                <img
+                  src="https://res.kurly.com/pc/service/common/1905/ico_arrow_56x56.png"
+                  alt="자세히 보기"
+                />
               </div>
             </li>
             <li className="pass">
               <h2>컬리패스</h2>
               <div>
-                알아보기 <img src="#" alt="" />
+                알아보기
+                <img
+                  src="https://res.kurly.com/pc/service/common/1905/ico_arrow_56x56.png"
+                  alt="자세히 보기"
+                />
               </div>
             </li>
           </ul>

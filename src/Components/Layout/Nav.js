@@ -11,6 +11,7 @@ class Nav extends Component {
       scrollY: 0,
       inputSearchValue: "서울 맛집 로드 week.2",
       data: [],
+      dataDepth2: [],
       dataProfileList1: [
         "주문 내역",
         "늘 사는 것",
@@ -88,15 +89,23 @@ class Nav extends Component {
   _liCategoryListdown = paramArr => {
     let liCateListdown = [];
 
-    if (paramArr != false) {
-      liCateListdown = paramArr.map((param, idx) => {
+    if (paramArr != true) {
+      liCateListdown = paramArr.map((param1, idx) => {
+        console.log("map", param1);
         return (
-          <li key={idx} className="cate-list-0">
-            <p>
+          <li
+            key={idx}
+            className="cate-list-1"
+            onMouseOver={() => this._liCategoryListdown2(this.event, param1[1])}
+            onMouseOut={() => this._liCategoryListdown2(this.event, param1[1])}
+          >
+            <div>
               <img src={this.state.data.categories[idx].pc_icon_url} alt="" />
-              {param}
-              <ul>{param["categories"]}</ul>
-            </p>
+              <span>{param1[0]}</span>
+              <ul className="cate-list-2">
+                {idx !== 0 ? this.state.dataDepth2 : null}
+              </ul>
+            </div>
           </li>
         );
       });
@@ -104,6 +113,19 @@ class Nav extends Component {
       liCateListdown = null;
     }
     return liCateListdown;
+  };
+
+  _liCategoryListdown2 = (e, arr) => {
+    console.log("e", e);
+
+    let liCateListdown2 = [];
+    liCateListdown2 = arr.map(param2 => (
+      <li>
+        <span>{param2["name"]}</span>
+      </li>
+    ));
+    console.log("ya", liCateListdown2);
+    this.setState({ dataDepth2: liCateListdown2 });
   };
 
   _onScroll = () => {
@@ -203,7 +225,6 @@ class Nav extends Component {
               onMouseOut={() => this._visible("category1")}
             >
               <img
-                id="cate-left-img"
                 alt="카테고리"
                 src="https://res.kurly.com/pc/service/common/1908/ico_gnb_all_off.png"
               />
@@ -216,22 +237,22 @@ class Nav extends Component {
                 {this.state.data.categories
                   ? this._liCategoryListdown(
                       this.state.data.categories.map((param, _) => {
-                        return param["name"];
+                        return [param["name"], param["categories"]];
                       })
                     )
                   : null}
               </ul>
             </li>
-            <li>
+            <li className="nav-bottom-bar-item">
               <span>신상품</span>
             </li>
-            <li>
+            <li className="nav-bottom-bar-item">
               <span>베스트</span>
             </li>
-            <li>
+            <li className="nav-bottom-bar-item">
               <span>알뜰쇼핑</span>
             </li>
-            <li>
+            <li className="nav-bottom-bar-item">
               <span>이벤트</span>
             </li>
             <div className="search-wrap">

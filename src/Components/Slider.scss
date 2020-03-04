@@ -1,19 +1,21 @@
 .main-slide {
   position: relative;
   width: 100vw;
-  height: 370px;
   display: inline-block;
 
   &:hover {
     .btn-scroll {
-      top: 45%;
+      top: 43%;
+
       &-left {
-        display: block;
+        opacity: 1;
+        transition: opacity 0.5s ease-in;
         background: url("https://res.kurly.com/pc/service/main/1908/ico_prev1_x1.png")
           no-repeat 50% 50%;
       }
       &-right {
-        display: block;
+        opacity: 1;
+        transition: opacity 0.5s ease-in;
         background: url("https://res.kurly.com/pc/service/main/1908/ico_next1_x1.png")
           no-repeat 50% 50%;
       }
@@ -21,20 +23,18 @@
   }
 
   .btn-scroll {
-    top: 45%;
+    top: 43%;
     z-index: 10;
     position: absolute;
     width: 52px;
     height: 52px;
-    display: none;
+    opacity: 0;
 
     border: none;
     outline: none;
 
     &-left {
       left: 15%;
-      transition: opacity 0.5s;
-
       &:active {
         background: url("https://res.kurly.com/pc/service/main/1908/btn_prev_default.png?v=1")
           no-repeat 50% 50%;
@@ -43,8 +43,6 @@
 
     &-right {
       right: 15%;
-      transition: opacity 0.5s;
-
       &:active {
         background: url("https://res.kurly.com/pc/service/main/1908/btn_next_default.png?v=1")
           no-repeat 50% 50%;

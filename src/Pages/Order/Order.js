@@ -10,15 +10,18 @@ export default class Order extends Component {
     super(props);
     this.state = {
       detail: false,
-      current: true,
       checked: true,
       top: 0,
       scrollTop: 0,
       value: "",
+      key: "",
       list: [],
       addr: "",
       extraAddr: "",
-      point: 0
+      point: 0,
+      name: "",
+      monthArrData: [],
+      monthValue: ""
     };
   }
 
@@ -36,42 +39,47 @@ export default class Order extends Component {
 
   onScroll = e => {
     const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
-    // const top = ReactDOM.findDOMNode(this).getBoundingClientRect().top;
-    console.log(scrollTop);
-    if (scrollTop > 2487 && scrollTop < 3100) {
+    if (scrollTop < 2487) {
       this.setState({
-        top: scrollTop - 2460,
+        top: 0
+      });
+    } else if (scrollTop > 2487 && scrollTop < 3100) {
+      this.setState({
+        top: scrollTop - 2480,
         scrollTop: scrollTop
       });
     }
   };
 
   handleChangeDetail = () => {
-    console.log("바껴라!");
     this.setState({
       detail: true
     });
   };
 
-  onClickChangeAddress = () => {
-    this.setState(
-      {
-        current: !this.state.current,
-        checked: !this.state.checked
-      },
-      () => {
-        console.log(this.state.current);
-      }
-    );
+  onClickCheked = e => {
+    this.setState({ checked: false });
+    console.log(this.state.checked);
   };
 
   handleChange = e => {
-    const month = this.state.list.map(el => {
-      return <div>{el.cardDescription}</div>;
-    });
+    let monthArr = [];
+    for (let i in this.state.list) {
+      if (this.state.value === this.state.list[i]["cardName"]) {
+        monthArr = this.state.list[i]["cardInstallmentMonth"].map(element => {
+          return <option>{element}</option>;
+        });
+      }
+    }
     this.setState({
       value: e.target.value,
-      description: month
+      monthArrData: monthArr
+    });
+  };
+
+  _handleChange = e => {
+    this.setState({
+      monthValue: e.target.value
     });
   };
 
@@ -142,13 +150,16 @@ export default class Order extends Component {
   render() {
     const {
       detail,
-      current,
       checked,
       addr,
       extraAddr,
       point,
-      top
+      top,
+      value,
+      monthArrData,
+      monthValue
     } = this.state;
+
     const options = this.state.list.map(el => {
       return (
         <option key={el.cardName} value={el.cardName}>
@@ -213,7 +224,7 @@ export default class Order extends Component {
                   <div className="name">
                     [선물세트] 유기샘 브라질너트 바삭대추 세트
                   </div>
-                  <div>1개/개당 37,000원</div>
+                  <div>1개 / 개당 37,000원</div>
                 </td>
                 <td className="price">37,000원</td>
               </tr>
@@ -291,27 +302,29 @@ export default class Order extends Component {
                       <input
                         type="radio"
                         name="selectDelivery"
-                        checked={checked ? "checked" : null}
-                        onClick={this.onClickChangeAddress}
+                        onClick={this.onClickCheked}
                       />
                       <span className="current">최근 배송지</span>
                     </label>
-                    <label className="lebel-radio">
+                    <label
+                      className={
+                        checked ? "label-radio-checked" : "lebel-radio"
+                      }
+                    >
                       <input
                         type="radio"
                         name="selectDelivery"
-                        checked={checked ? null : "checked"}
-                        onClick={this.onClickChangeAddress}
+                        onClick={this.onClickCheked}
                       />
                       새로운 배송지
                     </label>
                   </td>
                 </tr>
                 <CurrentAddress
-                  style={{ display: current ? "block" : "none" }}
+                  style={{ display: checked ? "none" : "block" }}
                 />
                 <NewAddress
-                  style={{ display: current ? "none" : "block" }}
+                  style={{ display: checked ? "block" : "none" }}
                   execPostCode={this.execPostCode}
                   addr={addr}
                   extraAddr={extraAddr}
@@ -447,15 +460,20 @@ export default class Order extends Component {
                           <div className="card-select">
                             <select
                               className="card-list"
-                              value={this.state.value}
+                              value={value}
                               onChange={this.handleChange}
                             >
                               <option disabled>카드를 선택해주세요.</option>
                               {options}
                             </select>
                           </div>
-                          <select className="card-install-list">
+                          <select
+                            className="card-install-list"
+                            value={monthValue}
+                            onChange={this._handleChange}
+                          >
                             <option disabled>할부기간을 선택해주세요.</option>
+                            {monthArrData}
                           </select>
                         </div>
                       </div>

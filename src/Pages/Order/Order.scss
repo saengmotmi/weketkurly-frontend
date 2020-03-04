@@ -21,7 +21,6 @@
     border-collapse: collapse;
     border-spacing: 0;
     th {
-      width: 190px;
       font-weight: 600;
       text-align: left;
       padding: 22px 0 0 20px;
@@ -57,12 +56,11 @@
       background-color: #fff;
     }
   }
-  input[type="number"] {
-    &:-webkit-outer-spin-button,
-    &:-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
   input[type="checkbox"] {
     appearance: none;
@@ -159,7 +157,7 @@
           font-size: 12px;
           .name {
             padding-bottom: 23px;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 16px;
           }
         }
@@ -170,6 +168,7 @@
           font-weight: 600;
           text-align: right;
           letter-spacing: -0.3px;
+          box-sizing: border-box;
         }
       }
     }
@@ -399,6 +398,7 @@
         border-radius: 4px;
         color: #fff;
         display: block;
+        border: 0;
       }
       td {
         padding-top: 22px;
@@ -469,6 +469,7 @@
     float: right;
     .payment-price {
       position: absolute;
+
       table {
         width: 255px;
         border-top: 0;

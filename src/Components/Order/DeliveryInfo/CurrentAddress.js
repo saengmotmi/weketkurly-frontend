@@ -1,40 +1,29 @@
 import React, { Component } from "react";
+import "./CurrentAddress.scss";
 
 export default class CurrentAddress extends Component {
   render() {
-    const {
-      execPostCode,
-      addr,
-      extraAddr,
-      postcode,
-      onChange,
-      targetValue
-    } = this.props;
     return (
       <>
-        <tr className="new-address">
+        <tr className="address">
           <th>주소</th>
           <td>
-            <button className="newbtn" onClick={execPostCode}>
-              새 배송지 추가
-            </button>
-
             <input
-              value={addr + extraAddr + postcode}
+              value="서울 강서구 화곡동 504-162 (수정맨션) [157-894]"
               className="address-main"
+              readOnly="readOnly"
             />
-            <input value={targetValue} onChange={onChange} />
-            <span>{targetValue.length} / 85자</span>
+            <input value="202호" readOnly="readOnly" />
+            <span>29자 / 85자</span>
             <div className="road">
-              {addr + extraAddr} {postcode}
-              {targetValue}
+              서울 강서구 등촌로13나길 38 (수정맨션) [07733] 202호
             </div>
           </td>
         </tr>
         <tr className="deli">
           <th>배송 구분</th>
           <td>
-            {/* <span className="txt">샛별배송지역</span> */}
+            <span className="txt">샛별배송지역</span>
             <p>
               <span>
                 샛별 배송 지역 중 아래 장소는 <b>배송 불가 장소</b>

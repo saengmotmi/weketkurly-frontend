@@ -1,0 +1,38 @@
+@import "../../Styles/common";
+
+.EventMain {
+  .no3 {
+    width: 100%;
+    height: 922px;
+    background-color: #ebecee;
+    .img {
+      width: 1060px;
+      height: 922px;
+      margin: 0 auto;
+      position: relative;
+      background: #ebecee
+        url(https://res.kurly.com/images/event/join/191113/pc/img_benefit3.png)
+        no-repeat 50% 80px;
+      .discount {
+        position: absolute;
+        left: 460px;
+        top: 220px;
+        font-weight: 600;
+        color: #4a4748;
+        opacity: 0;
+      }
+      .discount-move {
+        position: absolute;
+        left: 460px;
+        top: 220px;
+        font-size: 20px;
+        font-weight: 600;
+        color: #4a4748;
+        opacity: 1;
+        transition: transform 0.6s;
+        transform-origin: bottom center;
+        transform: scale(2.4);
+      }
+    }
+  }
+}

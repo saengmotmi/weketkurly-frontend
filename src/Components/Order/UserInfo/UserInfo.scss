@@ -1,0 +1,49 @@
+@import "../../../Styles/common";
+
+.Order {
+  .user-info {
+    .name {
+      input {
+        font-size: 15px;
+        height: 33px;
+      }
+    }
+    .phone {
+      input {
+        width: 50px;
+        height: 33px;
+      }
+      .bar {
+        position: relative;
+        margin: 0 7px;
+        span {
+          position: absolute;
+          left: -10px;
+          top: 13px;
+          width: 8px;
+          height: 1px;
+          background-color: #d8d8d8;
+        }
+      }
+    }
+    .email {
+      width: 360px;
+      input {
+        font-size: 15px;
+        height: 33px;
+        letter-spacing: 0.02em;
+      }
+      p {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 21px;
+        padding: 13px 0 19px;
+        color: #514859;
+        .color {
+          font-weight: 500;
+          color: #000;
+        }
+      }
+    }
+  }
+}

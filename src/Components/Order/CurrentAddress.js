@@ -4,7 +4,10 @@ export default class CurrentAddress extends Component {
   render() {
     return (
       <>
-        <tr className="address">
+        <tr
+          className="address"
+          // style={{ display: this.props.checked ? "block" : "none" }}
+        >
           <th>주소</th>
           <td>
             <input

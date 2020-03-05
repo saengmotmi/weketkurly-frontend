@@ -13,7 +13,7 @@ export default class Order extends Component {
       top: 0,
       scrollTop: 0,
       value: "",
-      key: "",
+      checked: true,
       list: [],
       point: 0,
       name: "",
@@ -52,6 +52,12 @@ export default class Order extends Component {
         scrollTop: scrollTop
       });
     }
+  };
+
+  handleChangeAdr = e => {
+    this.setState({
+      checked: false
+    });
   };
 
   handleChangeDetail = () => {
@@ -174,6 +180,7 @@ export default class Order extends Component {
       detail,
       point,
       top,
+      checked,
       value,
       monthArrData,
       monthValue,
@@ -324,16 +331,25 @@ export default class Order extends Component {
                   <th>배송지선택</th>
                   <td>
                     <label className="label-radio">
-                      <input type="radio" name="selectDelivery" checked />
+                      <input
+                        type="radio"
+                        name="selectDelivery"
+                        onChange={this.handleChangeAdr}
+                        checked
+                      />
                       <span className="current">최근 배송지</span>
                     </label>
                     <label className="lebel-radio">
-                      <input type="radio" name="selectDelivery" />
+                      <input
+                        type="radio"
+                        name="selectDelivery"
+                        onChange={this.handleChangeAdr}
+                      />
                       새로운 배송지
                     </label>
                   </td>
                 </tr>
-                <CurrentAddress />
+                <CurrentAddress checked={checked} />
                 <NewAddress
                   execPostCode={this.execPostCode}
                   addr={addr}
@@ -341,6 +357,7 @@ export default class Order extends Component {
                   postcode={postcode}
                   onChange={this.onChangeValue}
                   targetValue={targetValue}
+                  checked={checked}
                 />
                 <tr className="memo">
                   <th>배송 요청사항</th>

@@ -54,7 +54,7 @@ export default class EventMain extends Component {
       });
     }
 
-    if (scrollTop > 2800 && scrollTop < 3900) {
+    if (scrollTop > 3000 && scrollTop < 3900) {
       this.setState({
         scrollValue: true,
         scrollTop: scrollTop
@@ -87,7 +87,7 @@ export default class EventMain extends Component {
       });
     }
 
-    if (scrollTop > 905 && scrollTop < 2600) {
+    if (scrollTop > 1000 && scrollTop < 2600) {
       this.setState({
         scrollSale: true,
         scrollTop: scrollTop
@@ -127,6 +127,7 @@ export default class EventMain extends Component {
         : this.state.event.map(el => {
             return (
               <SaleEventList
+                key={el.alt}
                 img={el.img}
                 alt={el.alt}
                 scrollArrow={scrollArrow}
@@ -139,7 +140,7 @@ export default class EventMain extends Component {
       best.length === 0
         ? null
         : this.state.best.map(el => {
-            return <EventList img={el.img} alt={el.alt} />;
+            return <EventList img={el.img} alt={el.alt} key={el.alt} />;
           });
 
     return (

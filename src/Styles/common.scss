@@ -41,3 +41,7 @@ input[type="checkbox"] {
     background-size: 16px 16px;
   }
 }
+
+@mixin none {
+  display: none;
+}

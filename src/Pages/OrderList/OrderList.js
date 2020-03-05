@@ -14,6 +14,7 @@ export default class OrderList extends Component {
       order: []
     };
   }
+
   componentDidMount = () => {
     fetch("http://localhost:3000/data/order.json")
       .then(res => res.json())
@@ -31,19 +32,20 @@ export default class OrderList extends Component {
         <MyPage />
         <div className="contents">
           <MyKurly />
-          <MyOrderList />
-          {this.state.order.map(el => {
-            return (
-              <List
-                key={el.no}
-                no={el.no}
-                product_name={el.product_name}
-                status={el.status}
-                thumb={el.thumb}
-                review_button_flag={el.review_button_flag}
-              />
-            );
-          })}
+          <MyOrderList
+            orderlist={this.state.order.map(el => {
+              return (
+                <List
+                  key={el.no}
+                  no={el.no}
+                  product_name={el.product_name}
+                  status={el.status}
+                  thumb={el.thumb}
+                  review_button_flag={el.review_button_flag}
+                />
+              );
+            })}
+          />
         </div>
         <Footer />
       </div>

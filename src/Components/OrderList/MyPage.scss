@@ -11,6 +11,7 @@
       font-size: 14px;
       color: #333;
     }
+
     h3 {
       font-weight: 700;
       font-size: 20px;
@@ -44,6 +45,9 @@
           border: 1px solid $color;
           border-radius: 5px;
           background-color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           text-align: center;
           color: $color;
         }
@@ -87,7 +91,14 @@
         .won {
           font-weight: 700;
           font-size: 20px;
+          cursor: pointer;
           color: $color;
+          img {
+            width: 28px;
+            height: 28px;
+            margin: 1px 0 0 4px;
+            vertical-align: top;
+          }
         }
         .remove {
           padding-top: 12px;
@@ -102,12 +113,18 @@
         margin-right: 4px;
         background-color: #fff;
         padding: 30px 30px 55px;
-
         box-sizing: border-box;
         div {
           font-weight: 700;
           font-size: 20px;
           color: $color;
+          cursor: pointer;
+          img {
+            width: 28px;
+            height: 28px;
+            margin: 1px 0 0 4px;
+            vertical-align: top;
+          }
         }
       }
       .pass {
@@ -121,6 +138,13 @@
           font-weight: 700;
           font-size: 20px;
           color: $color;
+          cursor: pointer;
+          img {
+            width: 28px;
+            height: 28px;
+            margin: 1px 0 0 4px;
+            vertical-align: top;
+          }
         }
       }
     }

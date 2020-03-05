@@ -30,8 +30,7 @@ export default class List extends Component {
             </div>
             <div className="button">
               <button
-                className="write"
-                style={{ display: review_button_flag === 1 ? "block" : "none" }}
+                className={review_button_flag === 1 ? "write" : "write-none"}
               >
                 후기쓰기
               </button>

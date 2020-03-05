@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PageBtn from "../Detail/ReviewQA/PageBtn";
 import "./MyOrderList.scss";
 
 export default class MyOrderList extends Component {
@@ -21,6 +22,8 @@ export default class MyOrderList extends Component {
             </select>
           </div>
         </div>
+        <ul className="list-detail">{this.props.orderlist}</ul>
+        <PageBtn />
       </article>
     );
   }

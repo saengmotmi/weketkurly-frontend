@@ -1,3 +1,5 @@
+@import "../../Styles/common";
+
 .OrderList {
   text-align: left;
   background-color: #fff;
@@ -41,13 +43,14 @@
         .user-grade {
           width: 60px;
           height: 60px;
-          border: 1px solid #5f0080;
+          border: 1px solid $color;
           border-radius: 5px;
           background-color: #fff;
-          color: #5f0080;
           display: flex;
           align-items: center;
           justify-content: center;
+          text-align: center;
+          color: $color;
         }
         .user-info {
           display: flex;
@@ -89,9 +92,9 @@
         .won {
           font-weight: 700;
           font-size: 20px;
-          color: #5f0080;
           cursor: pointer;
           img {
+            color: $color;
             width: 28px;
             height: 28px;
             margin: 1px 0 0 4px;
@@ -115,7 +118,7 @@
         div {
           font-weight: 700;
           font-size: 20px;
-          color: #5f0080;
+          color: $color;
           cursor: pointer;
           img {
             width: 28px;
@@ -135,7 +138,7 @@
         div {
           font-weight: 700;
           font-size: 20px;
-          color: #5f0080;
+          color: $color;
           cursor: pointer;
           img {
             width: 28px;
@@ -238,8 +241,8 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      padding: 5px 0 30px;
-      border-bottom: 2px solid #5f0080;
+      padding: 5px 0 24px;
+      border-bottom: 2px solid $color;
       margin-bottom: 10px;
       select {
         width: 140px;
@@ -324,39 +327,60 @@
               font-size: 12px;
               color: #000;
             }
-            dd {
-              float: left;
-              font-size: 14px;
-              font-weight: 500;
-              color: #000;
-            }
-            .complete {
-              color: #514859;
-            }
-          }
-          .button {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            .write {
-              width: 100px;
-              height: 34px;
-              font-size: 14px;
-              margin-bottom: 4px;
-              border: 1px solid #512771;
-              background-color: #5f0080;
-              color: #fff;
-            }
-            .question {
-              width: 100px;
-              height: 34px;
-              font-size: 12px;
-              border: 1px solid #5f0080;
-              background-color: #fff;
-              color: #5f0080;
-              line-height: 32px;
-              text-align: center;
-              cursor: pointer;
+            .product-info {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              padding: 20px 0;
+              .info {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                .thumb {
+                  width: 60px;
+                  height: 77px;
+                  margin-right: 20px;
+                  background-size: cover;
+                  background-image: url(https://img-cf.kurly.com/shop/data/goods/1552626754873s0.jpg);
+                }
+                dt {
+                  float: left;
+                  padding-right: 15px;
+                  font-size: 12px;
+                  color: #000;
+                }
+                dd {
+                  float: left;
+                  font-size: 14px;
+                  font-weight: 500;
+                  color: #000;
+                }
+              }
+              .button {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .write {
+                  width: 100px;
+                  height: 34px;
+                  font-size: 14px;
+                  margin-bottom: 4px;
+                  border: 1px solid #512771;
+                  background-color: $color;
+                  color: #fff;
+                }
+                .question {
+                  width: 100px;
+                  height: 34px;
+                  font-size: 12px;
+                  border: 1px solid $color;
+                  background-color: #fff;
+                  color: $color;
+                  line-height: 32px;
+                  text-align: center;
+                  cursor: pointer;
+                }
+              }
             }
           }
         }

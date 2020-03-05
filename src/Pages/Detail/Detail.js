@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import ProductInfo from "../../Components/ProductInfo";
-import DetailSlide from "../../Components/DetailSlide";
-import TotalPrice from "../../Components/TotalPrice";
-import Count from "../../Components/Count";
-import CartBtn from "../../Components/CartBtn";
+import Nav from "../../Components/Layout/Nav";
+import ProductInfo from "../../Components/Detail/ProductInfo";
+import DetailSlide from "../../Components/Detail/DetailSlide";
+import TotalPrice from "../../Components/Detail/TotalPrice";
+import Count from "../../Components/Detail/Count";
+import CartBtn from "../../Components/Detail/CartBtn";
 import RelatedProductSlide from "../../Components/RelatedProductSlide";
-import WhyKurlyTable from "../../Components/WhyKurlyTable";
-import WhyKurly from "../../Components/WhyKurly";
-import Review from "../../Components/Review";
-import Qa from "../../Components/Qa";
-import PopUp from "../../Components/PopUp";
+import Review from "../../Components/Detail/Review";
+import Qa from "../../Components/Detail/Qa";
+import PopUp from "../../Components/Popup/PopUp";
+import Footer from "../../Components/Layout/Footer";
 import "./Detail.scss";
 
 export default class Detail extends Component {
@@ -58,7 +58,6 @@ export default class Detail extends Component {
     // 스크롤 할때마다 state에 scroll한 만큼 scrollTop 값 증가하므로 이를 업데이트해줌,
     //따라서 스크롤 시점에 따라 특정액션을 추후에 state를 활용하여 구현 가능
     const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
-    // const top = ReactDOM.findDOMNode(this).getBoundingClientRect().top;
     if (scrollTop > 1270) {
       this.setState({
         scroll: true,
@@ -196,10 +195,11 @@ export default class Detail extends Component {
       data
     } = this.state;
 
+    // 상품 이미지
     const mainImg = info.original_image_url;
 
-    const x = translate;
     // 슬라이드 기능 구현
+    const x = translate;
     const next = {
       transform: `translateX(${x}px)`
     };
@@ -220,6 +220,7 @@ export default class Detail extends Component {
 
     return (
       <div className="Detail">
+        <Nav />
         <div className="product-top">
           <div
             className="product-img"
@@ -427,16 +428,104 @@ export default class Detail extends Component {
         </div>
 
         <div className="why-kurly">
-          <WhyKurlyTable />
+          <table>
+            <tbody>
+              <tr>
+                <th>포장단위별 용량(중량), 수량, 크기</th>
+                <td>상품설명 및 상품이미지 참조</td>
+                <th>관련법상 표시사항</th>
+                <td>
+                  농산물 - 농수산물품질관리법상 유전자변형농산물 표시, 지리적
+                  표시 <br />
+                  축산물 - 축산법에 따른 등급 표시, 쇠고기의 경우 이력관리에
+                  따른 표시 유무 <br />
+                  수산물 - 농수산물품질관리법상 유전자변형수산물 표시, 지리적
+                  표시 <br />
+                  수입식품에 해당하는 경우 “식품위생법에 따른 수입신고를 필함”의
+                  문구 <br />
+                </td>
+              </tr>
+              <tr>
+                <th>생산자, 수입품의 경우 수입자를 함께 표기</th>
+                <td>농업회사법인 유기샘 주식회사</td>
+                <th>상품구성</th>
+                <td>상품설명 및 상품이미지 참조</td>
+              </tr>
+              <tr>
+                <th>농수산물의 원산지 표시에 관한 법률에 따른 원산지</th>
+                <td>브라질 너트 - 페루산 / 대추 - 국내산</td>
+                <th>보관방법 또는 취급방법</th>
+                <td>상온 보관</td>
+              </tr>
+              <tr>
+                <th>
+                  제조연월일(포장일 또는 생산연도), 유통기한 또는 품질유지기한
+                </th>
+                <td>제품 별도 라벨 표기 참조</td>
+                <th>소비자상담 관련 전화번호</th>
+                <td>마켓컬리 고객행복센터(1644-1107)</td>
+              </tr>
+            </tbody>
+          </table>
           <h3>WHY KURLY</h3>
-          <div className="why-kurly-contents-1">
-            <WhyKurly />
-            <WhyKurly />
-            <WhyKurly />
-          </div>
-          <div className="why-kurly-contents-2">
-            <WhyKurly />
-            <WhyKurly />
+          <div className="why">
+            <div className="why-kurly-contents">
+              <div className="why-kurly-info">
+                <img
+                  src="https://res.kurly.com/pc/ico/1910/01_check.svg"
+                  alt=""
+                />
+                <div className="title">깐깐한 상품위원회</div>
+              </div>
+              <div className="content">
+                나와 내 가족이 먹고 쓸 상품을 고르는
+                <br />
+                마음으로 매주 상품을 직접 먹어보고, <br />
+                경험해보고 성분, 맛, 안정성 등 다각도의
+                <br />
+                기준을 통과한 상품만을 판매합니다.
+                <br />
+              </div>
+            </div>
+
+            <div className="why-kurly-contents">
+              <div className="why-kurly-info">
+                <img
+                  src="https://res.kurly.com/pc/ico/1910/01_check.svg"
+                  alt=""
+                />
+                <div className="title">차별화된 Kurly Only 상품</div>
+              </div>
+              <div className="content">
+                전국 각지와 해외의 훌륭한 생산자가
+                <br />
+                믿고 선택하는 파트너, 마켓컬리.
+                <br />
+                2천여 개가 넘는 컬리 단독 브랜드, 스펙의
+                <br />
+                Kurly Only 상품을 믿고 만나보세요.
+                <br />
+              </div>
+            </div>
+
+            <div className="why-kurly-contents">
+              <div className="why-kurly-info">
+                <img
+                  src="https://res.kurly.com/pc/ico/1910/01_check.svg"
+                  alt=""
+                />
+                <div className="title">신선한 풀콜드체인 배송</div>
+              </div>
+              <div className="content">
+                온라인 업계 최초로 산지에서 문 앞까지
+                <br />
+                상온, 냉장, 냉동 상품을 분리 포장 후<br />
+                최적의 온도를 유지하는 냉장 배송 시스템,
+                <br />
+                풀콜드체인으로 상품을 신선하게 전해드립니다.
+                <br />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -556,6 +645,45 @@ export default class Detail extends Component {
               </div>
             </div>
           </div>
+          <div className="refund-info">
+            <div className="title">02. 단순 변심, 주문 착오의 경우</div>
+            <div className="contents">
+              <div className="hide-title">신선 / 냉장 / 냉동 식품 </div>
+              <div className="hide-contents">
+                재판매가 불가한 상품의 특성상, 단순 변심, 주문 착오 시 교환 및
+                반품이 어려운 점 양해 부탁드립니다. <br />
+                상품에 따라 조금씩 맛이 다를 수 있으며, 개인의 기호에 따라 같은
+                상품도 다르게 느끼실 수 있습니다.
+              </div>
+              <div className="hide-title">
+                유통기한 30일 이상의 식품 (신선 / 냉장 / 냉동 제외) 및 기타 상품
+              </div>
+              <div className="hide-contents">
+                상품을 받은 날부터 7일 이내에 1:1 문의 게시판에 남겨주세요.
+              </div>
+              <div className="hide-extra">
+                ※ 단순 변심으로 인한 교환 또는 환불의 경우 고객님께서 배송비
+                6,000원을 부담하셔야 합니다. <br />
+                (주문 건 배송비를 결제하셨을 경우 3,000원)
+              </div>
+            </div>
+          </div>
+          <div className="refund-info">
+            <div className="title">03. 교환·반품이 불가한 경우</div>
+            <div className="contents">
+              <div className="hide-extra">
+                다음에 해당하는 교환·반품 신청은 처리가 어려울 수 있으니 양해
+                부탁드립니다. <br />
+                <br />- 소비자에게 책임 있는 사유로 상품이 멸실 또는 훼손된 경우{" "}
+                <br />
+                (포장지 훼손으로 인해 재판매가 불가능한 상품의 경우, 단순 변심에
+                의한 반품이 어렵습니다.) <br />- 일부 예약 상품은 배송 3~4일
+                전에만 취소하실 수 있습니다.
+                <br /> 소비자의 주문에 따라 개별적으로 생산되는 상품이 이미 제작
+                진행된 경우
+              </div>
+            </div>
+          </div>
           <div className="line" />
         </div>
 
@@ -664,6 +792,7 @@ export default class Detail extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

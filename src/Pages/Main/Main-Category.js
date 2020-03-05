@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import MainItem from "./Main-Item";
 
 class MainCategory extends Component {
@@ -12,7 +12,8 @@ class MainCategory extends Component {
         backgroundColor: "#5f0080",
         color: "#fff"
       },
-      data: []
+      data: [],
+      moveX: "0px"
     };
   }
 
@@ -36,6 +37,25 @@ class MainCategory extends Component {
           data: res.data["products"].filter(item => item !== undefined)
         })
       );
+  };
+
+  _moveLeft = () => {
+    if (this.state.moveX === "-1068px") {
+      this.setState({ moveX: 0 });
+    } else {
+      this.setState({
+        moveX: parseInt(this.state.moveX) - 267 + "px"
+      });
+    }
+  };
+
+  _moveRight = () => {
+    if (this.state.moveX === "1068px") {
+      this.setState({ moveX: 0 });
+    }
+    this.setState({
+      moveX: parseInt(this.state.moveX) + 267 + "px"
+    });
   };
 
   componentDidMount() {
@@ -67,6 +87,7 @@ class MainCategory extends Component {
               original_price={param["original_price"]}
               thumbnail_image_url={param["thumbnail_image_url"]}
               sticker_image_url={param["sticker_image_url"]}
+              style={this.state.moveX}
             />
           );
         })
@@ -95,7 +116,7 @@ class MainCategory extends Component {
             <button
               key={idx}
               style={
-                idx === this.state.mdButtonSelect
+                this.state.mdButtonSelect === idx
                   ? this.state.buttonStyle
                   : null
               }
@@ -112,29 +133,35 @@ class MainCategory extends Component {
     const recipeList = recipes
       ? recipes.map((param, idx) => {
           return (
-            <div className="product-item">
-              <ul>
-                <li>
-                  <a
-                    href={param["landing_url"]}
-                    style={{
-                      textDecoration: "none",
-                      color: "#333",
-                      fontSize: "16px",
-                      textAlign: "center"
-                    }}
-                  >
-                    <img
-                      className="recipe-img"
-                      key={idx}
-                      src={param["image_url"]}
-                      alt="review"
-                    />
-                    <p>{param["title"]}</p>
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <>
+              <div className="product-item">
+                <ul>
+                  <li>
+                    <a
+                      href={param["landing_url"]}
+                      style={{
+                        textDecoration: "none",
+                        color: "#333",
+                        fontSize: "16px",
+                        textAlign: "center",
+                        overflow: "hidden",
+                        display: "block",
+                        width: "249px",
+                        height: "320px"
+                      }}
+                    >
+                      <img
+                        className="recipe-img zoom-in"
+                        key={idx}
+                        src={param["image_url"]}
+                        alt="review"
+                      />
+                      <p style={{ marginTop: "12px" }}>{param["title"]}</p>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </>
           );
         })
       : null;
@@ -145,8 +172,16 @@ class MainCategory extends Component {
             <div style={{ textAlign: "center" }} className="product-item">
               <ul>
                 <li>
-                  <a href={param["landing_url"]}>
-                    <img src={param["image_url"]} key={idx} alt="" />
+                  <a
+                    style={{ overflow: "hidden", display: "inline-block" }}
+                    href={param["landing_url"]}
+                  >
+                    <img
+                      className="zoom-in"
+                      src={param["image_url"]}
+                      key={idx}
+                      alt=""
+                    />
                   </a>
                   <p
                     style={{
@@ -180,7 +215,15 @@ class MainCategory extends Component {
     const instaReviewList = reviews
       ? reviews.map((param, idx) => {
           return (
-            <a href={param["landing_url"]}>
+            <a
+              style={{
+                transform: `translateX(${this.state.moveX})`,
+                display: "block",
+                width: "249px",
+                height: "320px"
+              }}
+              href={param["landing_url"]}
+            >
               <img
                 className="insta-img"
                 key={idx}
@@ -193,65 +236,218 @@ class MainCategory extends Component {
       : null;
 
     return (
-      <div className={section_id} style={{ width: "1050px" }}>
-        <p className="main-font">{title}</p>
-        {title === "MD의 추천" ? (
-          <div>
-            <div
-              style={{ paddingBottom: "20px", margin: "0 auto" }}
-              className="md-cate-div"
-            >
-              {categoryList}
+      <>
+        <div className={section_id} style={{ width: "1050px" }}>
+          {title === "이 상품 어때요?" ? (
+            <>
+              <p className="main-font">{title}</p>
+              <div
+                style={{
+                  position: "relative"
+                }}
+              >
+                <button
+                  onClick={this._moveLeft}
+                  className="btn-scroll btn-scroll-left"
+                ></button>
+                <button
+                  onClick={this._moveRight}
+                  className="btn-scroll btn-scroll-right"
+                ></button>
+              </div>
+              <div style={{ overflow: "hidden" }} className="goods-item">
+                {productsArr}
+              </div>
+            </>
+          ) : null}
+
+          {title === "이벤트 소식" ? (
+            <>
+              <p className="main-font">{title}</p>
+              <div
+                style={{ justifyContent: "center", overflow: "hidden" }}
+                className="goods-item"
+              >
+                {eventList}
+              </div>
+            </>
+          ) : null}
+          {title === "알뜰 상품" ? (
+            <>
+              <p className="main-font">{title}</p>
+              <div
+                style={{
+                  position: "relative"
+                }}
+              >
+                <button className="btn-scroll btn-scroll-left"></button>
+                <button className="btn-scroll btn-scroll-right"></button>
+              </div>
+              <div style={{ overflow: "hidden" }} className="goods-item">
+                {productsArr}
+              </div>
+            </>
+          ) : null}
+          {title === "MD의 추천" ? (
+            <div>
+              <p className="main-font">{title}</p>
+              <div
+                style={{
+                  position: "relative"
+                }}
+              >
+                <button
+                  style={{ top: "260px" }}
+                  className="btn-scroll btn-scroll-left"
+                ></button>
+                <button
+                  style={{ top: "260px" }}
+                  className="btn-scroll btn-scroll-right"
+                ></button>
+              </div>
+              <div
+                style={{
+                  paddingBottom: "20px",
+                  margin: "0 auto",
+                  overflow: "hidden"
+                }}
+                className="md-cate-div"
+              >
+                {categoryList}
+              </div>
+              <ul style={{ overflow: "hidden" }} className="goods-item">
+                {mdProductsArr}
+              </ul>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "514px",
+                    height: "54px",
+                    borderRadius: "3px",
+                    border: "1px solid #e3e3e3",
+                    textAlign: "center"
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: "16px",
+                      verticalAlign: "middle"
+                    }}
+                  >
+                    {this.state.mdButtonValue + " 전체보기"}
+                  </span>
+                </div>
+              </div>
             </div>
-            <ul className="goods-item">{mdProductsArr}</ul>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
+          ) : null}
+
+          {title === "오늘의 신상품" ? (
+            <>
+              <p className="main-font">{title}</p>
+              <div
+                style={{
+                  position: "relative"
+                }}
+              >
+                <button className="btn-scroll btn-scroll-left"></button>
+                <button className="btn-scroll btn-scroll-right"></button>
+              </div>
+              <div style={{ overflow: "hidden" }} className="goods-item">
+                {productsArr}
+              </div>
+            </>
+          ) : null}
+
+          {title === "간편한 아침식사" ? (
+            <>
+              <p className="main-font">{title}</p>
+              <div
+                style={{
+                  position: "relative"
+                }}
+              >
+                <button className="btn-scroll btn-scroll-left"></button>
+                <button className="btn-scroll btn-scroll-right"></button>
+              </div>
+              <div style={{ overflow: "hidden" }} className="goods-item">
+                {productsArr}
+              </div>
+            </>
+          ) : null}
+
+          {title === "컬리의 레시피" ? (
+            <>
+              <p className="main-font">{title}</p>
+              <div
+                style={{
+                  position: "relative"
+                }}
+              >
+                <button className="btn-scroll btn-scroll-left"></button>
+                <button className="btn-scroll btn-scroll-right"></button>
+              </div>
+              <div style={{ overflow: "hidden" }} className="goods-item">
+                {recipeList}
+              </div>
+            </>
+          ) : null}
+
+          {title === "인스타그램 고객 후기" ? (
+            <>
+              <p className="main-font">{title}</p>
+              <div
+                style={{
+                  position: "relative"
+                }}
+              >
+                <button
+                  style={{ top: "57.5px" }}
+                  className="btn-scroll btn-scroll-left"
+                ></button>
+                <button
+                  style={{ top: "57.5px" }}
+                  className="btn-scroll btn-scroll-right"
+                ></button>
+              </div>
+              <ul className="goods-item" style={{ overflow: "hidden" }}>
+                {instaReviewList}
+              </ul>
+              {/* <button onClick={this._moveLeft}>-175px</button>
+            <button onClick={this._moveRight}>+175px</button> */}
+
               <div
                 style={{
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  width: "514px",
-                  height: "54px",
-                  borderRadius: "3px",
-                  border: "1px solid #e3e3e3",
-                  textAlign: "center"
+                  flexDirection: "column",
+                  fontSize: "16px",
+                  lineHeight: "29px",
+                  padding: "39px 100px"
                 }}
               >
-                <span
-                  style={{
-                    fontSize: "16px",
-                    verticalAlign: "middle"
-                  }}
-                >
-                  {this.state.mdButtonValue + " 전체보기"}
-                </span>
+                <p style={{ color: "#999", display: "block" }}>
+                  더 많은 고객 후기가 궁금하다면?
+                </p>
+                <p style={{ fontWeight: "700", display: "block" }}>
+                  @marketkuly_regram
+                </p>
               </div>
-            </div>
-          </div>
-        ) : null}
+            </>
+          ) : null}
 
-        {title === "이벤트 소식" ? (
-          <div style={{ justifyContent: "center" }} className="goods-item">
-            {eventList}
-          </div>
-        ) : null}
-
-        {title === "컬리의 레시피" ? (
-          <ul className="goods-item">{recipeList}</ul>
-        ) : null}
-
-        {title === "인스타그램 고객 후기" ? (
-          <div className="goods-item">{instaReviewList}</div>
-        ) : null}
-
-        <div className="goods-item">{productsArr}</div>
-      </div>
+          {/* <div className="goods-item">{productsArr}</div> */}
+        </div>
+      </>
     );
   }
 }

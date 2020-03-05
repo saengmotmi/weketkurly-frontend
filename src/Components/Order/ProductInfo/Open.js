@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Open.scss";
 
 export default class Open extends Component {
   render() {

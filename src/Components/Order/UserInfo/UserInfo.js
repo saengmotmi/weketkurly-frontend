@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./UserInfo.scss";
 
 export default class UserInfo extends Component {
   render() {

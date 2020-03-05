@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./PaymentBar.scss";
 
 export default class PaymentBar extends Component {
   render() {

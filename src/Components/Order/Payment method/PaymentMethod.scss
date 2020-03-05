@@ -1,0 +1,78 @@
+@import "../../../Styles/common";
+
+.Order {
+  .product-payment {
+    table {
+      width: 775px;
+      border-bottom: 0;
+      box-sizing: border-box;
+      border-bottom: 0;
+      th {
+        width: 190px;
+      }
+      tr {
+        td {
+          font-weight: 400;
+          padding-top: 23px;
+          input {
+            margin: 0 5px 0 0;
+            line-height: 18px;
+          }
+          img {
+            height: 18px;
+          }
+
+          .list {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            select {
+              font-size: 12px;
+              box-sizing: border-box;
+              width: 190px;
+              padding: 7px 0 7px 5px;
+
+              font-family: inherit; /* 폰트 상속 */
+              border: 1px solid #000;
+              border-radius: 0px;
+              -webkit-appearance: none; /* 네이티브 외형 감추기 */
+              -moz-appearance: none;
+              appearance: none;
+              background: #fff
+                url(https://res.kurly.com/pc/service/order/1711/ico_selectbox_arrow_10x6_active.png)
+                no-repeat 170px 50%;
+            }
+          }
+          .phone {
+            margin-left: 50px;
+          }
+        }
+      }
+      .card-install-list {
+        margin-left: 10px;
+      }
+    }
+    .point {
+      font-size: 14px;
+      vertical-align: center;
+    }
+    .description {
+      font-size: 12px;
+      margin: 10px 0 0;
+    }
+  }
+
+  .unissued {
+    border: 0;
+    margin-top: 50px;
+    .label-radio {
+      margin-right: 50px;
+    }
+  }
+  .caution {
+    box-sizing: border-box;
+    padding: 23px 0 0 20px;
+    font-size: 12px;
+    color: #514859;
+  }
+}

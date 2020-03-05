@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Notice.scss";
 
 export default class Notice extends Component {
   render() {

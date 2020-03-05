@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./PersonalInfo.scss";
 
 export default class PersonalInfo extends Component {
   render() {

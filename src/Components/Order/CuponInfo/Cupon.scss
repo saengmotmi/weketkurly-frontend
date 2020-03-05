@@ -1,0 +1,64 @@
+@import "../../../Styles/common";
+
+.Order {
+  .cupon {
+    table {
+      width: 775px;
+      margin: 20px 0 20px;
+      border-top: 2px solid #512772;
+      border-bottom: 1px solid #ddd;
+      box-sizing: border-box;
+      border-collapse: collapse;
+      border-spacing: 0;
+      th {
+        width: 180px;
+        font-weight: 600;
+        text-align: left;
+        padding: 22px 0 0 20px;
+        color: #202020;
+        border-bottom: 1px solid #ddd;
+      }
+      td {
+        width: 595px;
+        font-size: 12px;
+        text-align: left;
+        padding-top: 16px;
+        border-bottom: 1px solid #ddd;
+      }
+      .cupon-th {
+        letter-spacing: -0.3px;
+      }
+      .cupon-td {
+        font-size: 12px;
+        letter-spacing: -0.3px;
+      }
+      .cupon-kakao {
+        font-size: 12px;
+        letter-spacing: -0.3px;
+        margin: 7px 0 15px;
+        color: #795b8f;
+      }
+      .point {
+        .text-box {
+          width: 162px;
+          height: 33px;
+          margin: 0 3px 4px 0;
+          border: 1px solid #ddd;
+          text-align: right;
+          font-size: 12px;
+          padding-right: 5px;
+        }
+        .check-box {
+          padding: 6px;
+          margin-left: 10px;
+        }
+        .emoney {
+          padding: 15px 0 15px;
+          letter-spacing: -0.3px;
+          font-weight: 500;
+          color: #514859;
+        }
+      }
+    }
+  }
+}

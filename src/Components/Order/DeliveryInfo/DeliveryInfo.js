@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CurrentAddress from "./CurrentAddress";
 import NewAddress from "./NewAddress";
+import "./DeliveryInfo.scss";
 
 export default class DeliveryInfo extends Component {
   render() {

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Close.scss";
 
 export default class Close extends Component {
   render() {

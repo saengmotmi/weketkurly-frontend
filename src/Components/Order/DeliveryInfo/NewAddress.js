@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./NewAddress.scss";
 
 export default class CurrentAddress extends Component {
   render() {

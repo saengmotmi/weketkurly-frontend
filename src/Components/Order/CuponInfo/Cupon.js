@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Cupon.scss";
 
 export default class Cupon extends Component {
   render() {

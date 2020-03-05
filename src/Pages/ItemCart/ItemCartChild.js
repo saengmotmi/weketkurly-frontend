@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./ItemCart.scss";
 
 class ItemCartChild extends Component {
@@ -240,6 +241,10 @@ class ItemCartChild extends Component {
     });
   }
 
+  _goToOrder = () => {
+    this.props.history.push("/order");
+  };
+
   render() {
     return (
       <div className="item">
@@ -332,7 +337,14 @@ class ItemCartChild extends Component {
               <span className="item-price-price">{this._priceCalc()[3]}원</span>
             </div>
           </div>
-          <button className="order-btn btn-off">주문하기</button>
+          <button
+            onClick={this._goToOrder}
+            className={
+              this.state.checkedCount ? "order-btn btn-on" : "order-btn btn-off"
+            }
+          >
+            주문하기
+          </button>
           <div className="item-bottom-desc">
             <p>
               ‘입금확인’ 상태일 때는 주문내역 상세 페이지에서 직접 주문취소가
@@ -346,4 +358,4 @@ class ItemCartChild extends Component {
   }
 }
 
-export default ItemCartChild;
+export default withRouter(ItemCartChild);

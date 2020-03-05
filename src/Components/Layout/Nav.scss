@@ -87,6 +87,8 @@
   .nav-logo {
     display: flex;
     justify-content: center;
+    cursor: pointer;
+    margin: 0 auto;
 
     img {
       width: 103px;
@@ -157,7 +159,7 @@
         left: 0;
 
         background-color: #f7f7f7;
-        border: 1px solid #fff;
+        border: 1px solid #ddd;
         width: 219px;
         height: 585px;
 
@@ -259,99 +261,11 @@
                   font-weight: 700;
                   text-decoration: underline;
                 }
-
-                // background-color: pink;
-                // z-index: 100;
               }
             }
           }
         }
       }
-
-      // .cateHover {
-      //   z-index: 100;
-      //   background-color: #f7f7f7;
-      //   border: 1px solid #ddd;
-      //   top: 0px;
-      //   left: 0;
-      //   height: 600px;
-      //   font-weight: 500;
-      //   position: absolute;
-
-      //   // li {
-      //   //   display: flex;
-      //   //   flex-direction: column;
-      //   //   align-items: center;
-      //   // }
-
-      //   .cate-list-1 {
-      //     text-align: left;
-      //     // padding: 0 0 0 8px;
-      //     padding: 8px 0 0 14px;
-      //     font-size: 14px;
-      //     line-height: 22px;
-      //     background-color: white;
-
-      //     display: flex;
-      //     flex-direction: row;
-      //     align-items: center;
-      //     z-index: 1001;
-
-      //     position: absolute;
-      //     width: 300px;
-      //     height: 600px;
-      //   }
-      // }
-      //     .cate-list-2 {
-      //       position: absolute;
-      //       top: 0px;
-      //       left: 180px;
-      //       border: none;
-      //       z-index: -1;
-      //       height: 600px;
-
-      //       li {
-      //         background-color: yellow;
-      //         border: none;
-      //         padding: 8px 0 0 14px;
-      //         width: 219px;
-      //         height: 32px;
-
-      //         span {
-      //           background-color: transparent;
-      //           border: none;
-      //           text-align: left;
-
-      //           vertical-align: middle;
-      //           letter-spacing: -0.3px;
-      //           font-size: 14px;
-      //           font-weight: 400px;
-      //           padding: 0 4px 0 10px;
-      //           line-height: 22px;
-      //           color: #333;
-      //         }
-      //       }
-      //     }
-      //   }
-      // }
-
-      //     }
-
-      //     li {
-      //       // 1차 카테고리 글자
-      //       div {
-      //         vertical-align: middle;
-      //         letter-spacing: -0.3px;
-      //         font-size: 14px;
-      //         font-weight: 400px;
-      //         padding: 0 4px 0 10px;
-      //         line-height: 22px;
-      //         color: #333;
-      //       }
-      //     }
-      //   }
-
-      // }
 
       // nav bar 카테고리 가로 리스트 img
       img {
@@ -363,8 +277,7 @@
     }
   }
 
-  // 카테고리 가로 리스트 검색 창 1
-  // 카테고리 가로 리스트 검색 창 2
+  // 카테고리 가로 리스트 검색 창
   .search-wrap {
     border-radius: 18px;
     display: flex;
@@ -418,14 +331,25 @@
     }
   }
 
-  // // 카테고리 호버
-  // .cateHover {
-  //   width: 219px;
-  //   position: relative;
+  .itemcart {
+    position: relative;
+    cursor: pointer;
 
-  //   &:hover {
-  //     width: 500px;
-  //     transition: width 0.2s;
-  //   }
-  // }
+    &-count {
+      position: absolute;
+      left: 20px;
+      top: -1px;
+      width: 15px;
+      height: 15px;
+      border: 2px solid #fff;
+      background-color: #5f0080;
+      border-radius: 50%;
+      // line-height: 15px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 10px;
+      letter-spacing: -0.3px;
+      color: #fff;
+    }
+  }
 }

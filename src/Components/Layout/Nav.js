@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./Nav.scss";
 import "../../Styles/reset.scss";
 
@@ -8,7 +9,6 @@ class Nav extends Component {
     this.state = {
       visibleCategory0: false,
       visibleCategory1: false,
-      visibleCategory2: false,
       visibleProfile1: false,
       visibleProfile2: false,
       sideFloat: false,
@@ -16,7 +16,6 @@ class Nav extends Component {
       scrollY: 0,
       inputSearchValue: "서울 맛집 로드 week.2",
       data: [],
-      dataDepth1: [],
       dataDepth2: [],
       dataProfileList1: [
         "주문 내역",
@@ -35,7 +34,7 @@ class Nav extends Component {
         "상품 제안",
         "에코포장 피드백"
       ],
-      itemCartCount: 0
+      itemCartCount: 1
     };
   }
 
@@ -88,11 +87,6 @@ class Nav extends Component {
         case 1:
           this.setState({
             visibleCategory1: !this.state.visibleCategory1
-          });
-          break;
-        case 2:
-          this.setState({
-            visibleCategory2: !this.state.visibleCategory2
           });
           break;
         default:
@@ -176,6 +170,14 @@ class Nav extends Component {
     }
   };
 
+  _goToCart = () => {
+    this.props.history.push("/itemcart");
+  };
+
+  _goToMain = () => {
+    this.props.history.push("/");
+  };
+
   componentDidMount() {
     this._getApi("categories");
     window.addEventListener("scroll", this._onScroll);
@@ -186,22 +188,18 @@ class Nav extends Component {
   }
 
   render() {
-    // const itemCartCount = this.props.itemCartCount;
+    const itemCartCount = this.state.itemCartCount;
     const {
       visibleCategory0,
       visibleCategory1,
-      visibleCategory2,
       visibleProfile1,
       visibleProfile2,
-      // sideFloat,
       headerFixed,
-      // scrollY,
-      // inputSearchValue,
       data,
-      dataDepth1,
       dataDepth2,
       dataProfileList1,
-      dataProfileList2
+      dataProfileList2,
+      inputSearchValue
     } = this.state;
 
     return (
@@ -251,7 +249,7 @@ class Nav extends Component {
             </ul>
           </div>
         </div>
-        <div className="nav-logo">
+        <div onClick={this._goToMain} className="nav-logo">
           {/* 로고 */}
           <img
             alt="로고"
@@ -303,68 +301,6 @@ class Nav extends Component {
                   </ul>
                 </div>
               </div>
-
-              {/* 
-              <div
-                style={
-                  visibleCategory0
-                    ? { display: "block" }
-                    : { display: "none", border: "none" }
-                }
-              >
-                <div
-                  style={{
-                    backgroundColor: "white",
-                    top: "55px",
-                    left: "0",
-                    height: "600px",
-                    width: "300px"
-                  }}
-                >
-                  asdf
-                </div>
-                <ul className="cateHover">
-                  <li
-                    onMouseEnter={() => {
-                      console.log("in");
-                      this._visible("cate", 0);
-                    }}
-                    onMouseLeave={() => {
-                      console.log("out");
-                      this._visible("cate", 0);
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: visibleCategory0 ? "block" : "none"
-                      }}
-                    >
-                      {data.categories
-                        ? this._liCategoryListdown(
-                            data.categories.map((param, _) => {
-                              return [param["name"], param["categories"]];
-                            })
-                          )
-                        : null}
-                      <ul>
-                        <li>
-                          <div
-                            style={{
-                              display: visibleCategory2 ? "block" : "none"
-                            }}
-                          >
-                            <ul className="cate-list-2">
-                              {dataDepth2.map((param, idx) => (
-                                <li key={idx}>{param.name}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                </ul> 
-              </div>*/}
             </li>
             <li className="nav-bottom-bar-item">
               <span>신상품</span>
@@ -382,7 +318,7 @@ class Nav extends Component {
               <input
                 onChange={this._inputChange}
                 type="text"
-                value={this.state.inputSearchValue}
+                value={inputSearchValue}
                 required="required"
                 className="input-search"
               />
@@ -391,10 +327,18 @@ class Nav extends Component {
                 src="https://res.kurly.com/pc/service/common/1908/ico_search_x2.png"
               />
             </div>
-            <img
-              alt="장바구니"
-              src="https://res.kurly.com/pc/ico/1908/ico_cart_x2_v2.png"
-            />
+            <div onClick={this._goToCart} className="itemcart">
+              <img
+                alt="장바구니"
+                src="https://res.kurly.com/pc/ico/1908/ico_cart_x2_v2.png"
+              />
+              <span
+                className="itemcart-count"
+                style={{ display: !itemCartCount && "none" }}
+              >
+                {itemCartCount}
+              </span>
+            </div>
           </ul>
         </div>
       </div>
@@ -402,4 +346,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);

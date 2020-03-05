@@ -18,7 +18,7 @@ export default class MyOrderList extends Component {
           <div>
             <select>
               {year.map(year => (
-                <option>{year}</option>
+                <option key={year}>{year}</option>
               ))}
             </select>
           </div>

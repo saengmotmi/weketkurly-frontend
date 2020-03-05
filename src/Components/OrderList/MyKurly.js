@@ -17,7 +17,7 @@ export default class MyKurly extends Component {
         <h2>마이컬리</h2>
         <ul>
           {menu.map(menu => (
-            <li>{menu}</li>
+            <li key={menu}>{menu}</li>
           ))}
         </ul>
         <div className="help">

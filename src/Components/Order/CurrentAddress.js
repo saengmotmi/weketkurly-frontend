@@ -4,17 +4,15 @@ export default class CurrentAddress extends Component {
   render() {
     return (
       <>
-        <tr
-          className="address"
-          // style={{ display: this.props.checked ? "block" : "none" }}
-        >
+        <tr className="address">
           <th>주소</th>
           <td>
             <input
               value="서울 강서구 화곡동 504-162 (수정맨션) [157-894]"
               className="address-main"
+              readOnly="readOnly"
             />
-            <input value="202호" />
+            <input value="202호" readOnly="readOnly" />
             <span>29자 / 85자</span>
             <div className="road">
               서울 강서구 등촌로13나길 38 (수정맨션) [07733] 202호
@@ -39,21 +37,21 @@ export default class CurrentAddress extends Component {
         <tr className="receive-name">
           <th>수령인 이름 *</th>
           <td>
-            <input type="text" value="이은지" />
+            <input type="text" />
           </td>
         </tr>
         <tr className="receive-phone">
           <th>휴대폰 *</th>
           <td>
-            <input type="number" value="010" className="first-number" />
+            <input type="number" className="first-number" />
             <span className="bar">
               <span />
             </span>
-            <input type="number" value="6203" className="second-number" />
+            <input type="number" className="second-number" />
             <span className="bar">
               <span />
             </span>
-            <input type="number" value="2452" className="second-number" />
+            <input type="number" className="second-number" />
           </td>
         </tr>
       </>

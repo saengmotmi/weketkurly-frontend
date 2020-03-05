@@ -43,13 +43,13 @@ export default class Order extends Component {
 
   onScroll = e => {
     const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
-    if (scrollTop < 2357) {
+    if (scrollTop < 2000) {
       this.setState({
         top: 0
       });
-    } else if (scrollTop > 2357 && scrollTop < 3050) {
+    } else if (scrollTop > 2000 && scrollTop < 2650) {
       this.setState({
-        top: scrollTop - 2357,
+        top: scrollTop - 1990,
         scrollTop: scrollTop
       });
     }
@@ -83,12 +83,11 @@ export default class Order extends Component {
       }
     }
     this.setState({
-      value: e.target.value,
+      [e.target.name]: e.target.value,
       monthArrData: monthArr,
       pointValue: point,
       discount: discount,
-      description: description,
-      monthValue: e.target.value
+      description: description
     });
   };
 
@@ -340,6 +339,7 @@ export default class Order extends Component {
                         type="radio"
                         name="selectDelivery"
                         onChange={this.handleChangeAdr}
+                        defaultChecked
                       />
                       <span className="current">최근 배송지</span>
                     </label>
@@ -377,20 +377,20 @@ export default class Order extends Component {
                 <tr className="gate">
                   <th>공동현관 출입 방법 *</th>
                   <td>
-                    <label for="foo1" className="lebel-radio">
-                      <input id="foo1" type="radio" name="gate" />
+                    <label className="lebel-radio">
+                      <input type="radio" name="gate" />
                       비밀번호
                     </label>
-                    <label for="foo2" className="lebel-radio">
-                      <input id="foo2" type="radio" name="gate" />
+                    <label className="lebel-radio">
+                      <input type="radio" name="gate" />
                       경비실 호출
                     </label>
-                    <label for="foo3" className="lebel-radio">
-                      <input id="foo3" type="radio" name="gate" />
+                    <label className="lebel-radio">
+                      <input type="radio" name="gate" defaultChecked />
                       자유출입가능
                     </label>
-                    <label for="foo4" className="lebel-radio">
-                      <input id="foo4" type="radio" name="gate" />
+                    <label className="lebel-radio">
+                      <input type="radio" name="gate" />
                       기타사항
                     </label>
                   </td>
@@ -399,7 +399,7 @@ export default class Order extends Component {
                   <th>배송완료 메세지 전송시점 *</th>
                   <td>
                     <label className="lebel-radio">
-                      <input type="radio" name="time" checked />
+                      <input type="radio" name="time" defaultChecked />
                       배송직후
                     </label>
                     <label className="lebel-radio">
@@ -412,7 +412,7 @@ export default class Order extends Component {
                   <th checked>출입정보 저장</th>
                   <td>
                     <label className="label-checked">
-                      <input type="checkbox" checked />
+                      <input type="checkbox" />
                       출입정보 저장
                       <div>공동현관 출입방법, 배송완료메세지 전송시점 저장</div>
                     </label>
@@ -482,7 +482,7 @@ export default class Order extends Component {
                   <td className="total-td">37,000원</td>
                 </tr>
                 <tr>
-                  <td className="samll-td" colspan="2">
+                  <td className="samll-td" colSpan="2">
                     구매 시 <b>100</b>원(0.5%) <b>적립예정</b>
                   </td>
                 </tr>
@@ -535,7 +535,7 @@ export default class Order extends Component {
                         type="radio"
                         className="card"
                         name="payment"
-                        checked
+                        defaultChecked
                       />
                       신용카드
                     </label>
@@ -554,7 +554,7 @@ export default class Order extends Component {
                           <div className="card-select">
                             <select
                               className="card-list"
-                              value={value}
+                              name={value}
                               onChange={this.handleChange}
                             >
                               <option disabled>카드를 선택해주세요.</option>
@@ -563,7 +563,7 @@ export default class Order extends Component {
                           </div>
                           <select
                             className="card-install-list"
-                            value={monthValue}
+                            name={monthValue}
                             onChange={this._handleChange}
                           >
                             <option disabled>할부기간을 선택해주세요.</option>
@@ -668,7 +668,7 @@ export default class Order extends Component {
               <th>미출고 시 조치방법 *</th>
               <td>
                 <label className="label-radio">
-                  <input type="radio" name="refund" checked />
+                  <input type="radio" name="refund" defaultChecked />
                   결제수단으로 환불
                 </label>
                 <label className="lebel-radio">

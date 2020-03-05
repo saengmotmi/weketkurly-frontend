@@ -3,10 +3,8 @@ import Nav from "../../Components/Layout/Nav";
 import MyPage from "../../Components/OrderList/MyPage";
 import MyKurly from "../../Components/OrderList/MyKurly";
 import MyOrderList from "../../Components/OrderList/MyOrderList";
-import List from "../../Components/List/List";
-import PageBtn from "../../Components/PageBtn";
+import List from "../../Components/OrderList/List";
 import Footer from "../../Components/Layout/Footer";
-
 import "./OrderList.scss";
 
 export default class OrderList extends Component {
@@ -27,18 +25,6 @@ export default class OrderList extends Component {
   };
 
   render() {
-    const orderlist = this.state.order.map(el => {
-      return (
-        <List
-          key={el.no}
-          no={el.no}
-          product_name={el.product_name}
-          status={el.status}
-          thumb={el.thumb}
-          review_button_flag={el.review_button_flag}
-        />
-      );
-    });
     return (
       <div className="OrderList">
         <Nav />
@@ -46,6 +32,18 @@ export default class OrderList extends Component {
         <div className="contents">
           <MyKurly />
           <MyOrderList />
+          {this.state.order.map(el => {
+            return (
+              <List
+                key={el.no}
+                no={el.no}
+                product_name={el.product_name}
+                status={el.status}
+                thumb={el.thumb}
+                review_button_flag={el.review_button_flag}
+              />
+            );
+          })}
         </div>
         <Footer />
       </div>

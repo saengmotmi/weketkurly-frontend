@@ -38,12 +38,14 @@ class Nav extends Component {
     };
   }
 
-  _inputChange = e => {
-    console.log(e.target.value);
-    this.setState({
-      inputSearchValue: e.target.value
-    });
-  };
+  componentDidMount() {
+    this._getApi("categories");
+    window.addEventListener("scroll", this._onScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._headerScroll);
+  }
 
   _getApi = url => {
     fetch(`https://api.kurly.com/v2/${url}`) //API 주소
@@ -59,6 +61,13 @@ class Nav extends Component {
           console.log("data", this.state.data);
         }
       );
+  };
+
+  _inputChange = e => {
+    console.log(e.target.value);
+    this.setState({
+      inputSearchValue: e.target.value
+    });
   };
 
   _visible = (name, idx) => {
@@ -108,12 +117,12 @@ class Nav extends Component {
 
   _liCategoryListdown = paramArr => {
     let liCateListdown = [];
-    // let liCateListdown2 = [];
 
     console.log("paramArr", paramArr);
 
-    if (paramArr != true) {
-      liCateListdown = paramArr.map((param1, idx) => {
+    liCateListdown =
+      paramArr &&
+      paramArr.map((param1, idx) => {
         return (
           <li
             key={idx}
@@ -133,9 +142,6 @@ class Nav extends Component {
           </li>
         );
       });
-    } else {
-      liCateListdown = null;
-    }
     return liCateListdown;
   };
 
@@ -178,17 +184,7 @@ class Nav extends Component {
     this.props.history.push("/");
   };
 
-  componentDidMount() {
-    this._getApi("categories");
-    window.addEventListener("scroll", this._onScroll);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this._headerScroll);
-  }
-
   render() {
-    const itemCartCount = this.state.itemCartCount;
     const {
       visibleCategory0,
       visibleCategory1,
@@ -199,7 +195,8 @@ class Nav extends Component {
       dataDepth2,
       dataProfileList1,
       dataProfileList2,
-      inputSearchValue
+      inputSearchValue,
+      itemCartCount
     } = this.state;
 
     return (

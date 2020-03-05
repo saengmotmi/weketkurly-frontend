@@ -28,10 +28,6 @@ class ItemCartChild extends Component {
     };
   }
 
-  numberWithCommas = x => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
-
   _itemCount = e => {
     const editTargetIdx = e.target.id.split(".")[0]; // number
     const editTarget = this.state.itemList[editTargetIdx]; // object
@@ -146,7 +142,7 @@ class ItemCartChild extends Component {
     priceResult4 = priceResult1 - priceResult2 + 3000;
 
     for (let i of [priceResult1, priceResult2, priceResult3, priceResult4]) {
-      resultArr.push(this.numberWithCommas(i));
+      resultArr.push(i.toLocaleString());
     }
 
     console.log();
@@ -191,7 +187,7 @@ class ItemCartChild extends Component {
           <td align="left">
             <p className="item-table-row-title">{param["name"]}</p>
             <p className="item-table-row-price">
-              {this.numberWithCommas(param["price"])}원
+              {param["price"].toLocaleString()}원
             </p>
           </td>
           <td className="item-table-row-count">
@@ -218,15 +214,18 @@ class ItemCartChild extends Component {
             </div>
           </td>
           <td>
-            {this.numberWithCommas(
-              this.state.itemList[idx]["ea"] * this.state.itemList[idx]["price"]
-            )}
+            {this.state.itemList[idx]["ea"] *
+              this.state.itemList[idx]["price"].toLocaleString()}
           </td>
           <td
             id={`${idx}.${param["price"]}.${param["ea"]}`}
             onClick={this._deleteItem}
           >
-            X
+            <img
+              className="del-btn"
+              src="https://res.kurly.com/pc/ico/1801/btn_close_24x24_514859.png"
+              alt="삭제"
+            />
           </td>
         </tr>
       );

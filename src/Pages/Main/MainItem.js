@@ -6,10 +6,6 @@ class MainItem extends Component {
     this.state = {};
   }
 
-  numberWithCommas = x => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
-
   render() {
     const {
       style,
@@ -49,7 +45,7 @@ class MainItem extends Component {
           <div style={{ wordBreak: "break-all" }}>
             <p style={{ marginTop: "12px" }}>{name}</p>
             <p style={{ fontWeight: "700", paddingTop: "6px" }}>
-              {this.numberWithCommas(price)}원
+              {price.toLocaleString()}원
             </p>
             {price === original_price ? null : (
               <p
@@ -60,7 +56,7 @@ class MainItem extends Component {
                   fontSize: "14px"
                 }}
               >
-                {this.numberWithCommas(original_price)}원
+                {original_price.toLocaleString()}원
               </p>
             )}
           </div>

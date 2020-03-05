@@ -4,6 +4,8 @@ import "./MyOrderList.scss";
 
 export default class MyOrderList extends Component {
   render() {
+    const year = ["전체기간", "2020년", "2019년", "2018년"];
+
     return (
       <article>
         <div className="order-list">
@@ -15,10 +17,9 @@ export default class MyOrderList extends Component {
           </div>
           <div>
             <select>
-              <option>전체기간</option>
-              <option>2020년</option>
-              <option>2019년</option>
-              <option>2018년</option>
+              {year.map(year => (
+                <option>{year}</option>
+              ))}
             </select>
           </div>
         </div>

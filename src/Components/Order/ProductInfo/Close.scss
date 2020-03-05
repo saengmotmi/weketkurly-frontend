@@ -1,0 +1,23 @@
+@import "../../../Styles/common";
+
+.Order {
+  .product-info {
+    margin-top: 50px;
+    font-weight: 400;
+    .product-info-table {
+      text-align: center;
+      .name {
+        padding-bottom: 14px;
+        margin-top: 20px;
+      }
+      .detail-btn {
+        margin-bottom: 20px;
+        cursor: pointer;
+        img {
+          width: 14px;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}

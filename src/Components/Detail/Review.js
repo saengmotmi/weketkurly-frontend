@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import Table from "./Table";
+import Table from "../Table";
 import PageBtn from "./PageBtn";
 
-export default class Qa extends Component {
+export default class Review extends Component {
   render() {
     return (
-      <div className="qa">
+      <div className="review">
         <div className="product-review">
           <div className="">
-            <h2>PRODUCT Q&A</h2>
+            <h2>PRODUCT REVIEW</h2>
             <ul>
               <li>
                 <div className="ico" />
@@ -35,15 +35,9 @@ export default class Qa extends Component {
           </div>
         </div>
 
-        {/* review */}
         <Table />
-        <div className="qa-btn">
-          <div>
-            <button className="write-all-view">전체보기</button>
-          </div>
-          <div>
-            <button className="write-qa-hover">상품문의</button>
-          </div>
+        <div className="write">
+          <button className={"write-btn"}>후기쓰기</button>
         </div>
         <PageBtn />
       </div>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./CartBtn.scss";
 
 export default class CartBtn extends Component {
   render() {

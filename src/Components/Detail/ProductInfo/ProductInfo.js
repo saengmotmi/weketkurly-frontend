@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Count from "./Count";
+import "./ProductInfo.scss";
 
 export default class ProductInfo extends Component {
   render() {
@@ -17,6 +18,7 @@ export default class ProductInfo extends Component {
       handleOnClickPlus,
       handleOnClickMinus
     } = this.props;
+
     return (
       <div className="product-info">
         <div className="product-title">

@@ -1,0 +1,87 @@
+@import "../../../Styles/common";
+
+.Detail {
+  .page-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: 0;
+    font-family: "Noto Sans";
+    background-color: #fff;
+    .first-page {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgb(221, 221, 221);
+      cursor: pointer;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #fff;
+      background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-first.png)
+        no-repeat 50% 50%;
+      &:hover {
+        background-color: #f7f7f7;
+      }
+    }
+    .before {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgb(221, 221, 221);
+      border-left: 0;
+      cursor: pointer;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #fff;
+      background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-prev.png)
+        no-repeat 50% 50%;
+      &:hover {
+        background-color: #f7f7f7;
+      }
+    }
+    button {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgb(221, 221, 221);
+      border-left: 0;
+      cursor: pointer;
+      padding: 0;
+      font-weight: 500;
+      color: #333;
+      box-sizing: border-box;
+      background-color: #fff;
+      line-height: 34px;
+      &:hover {
+        background-color: #f7f7f7;
+      }
+    }
+    .next {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgb(221, 221, 221);
+      border-left: 0;
+      cursor: pointer;
+      background-color: #fff;
+      box-sizing: border-box;
+      background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-next.png)
+        no-repeat 50% 50%;
+      &:hover {
+        background-color: #f7f7f7;
+      }
+    }
+    .last-page {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgb(221, 221, 221);
+      border-left: 0;
+      cursor: pointer;
+      background-color: #fff;
+      box-sizing: border-box;
+      background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-last.png)
+        no-repeat 50% 50%;
+      &:hover {
+        background-color: #f7f7f7;
+      }
+    }
+  }
+}

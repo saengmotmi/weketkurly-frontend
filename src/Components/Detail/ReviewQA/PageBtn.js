@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./PageBtn.scss";
 
 export default class PageBtn extends Component {
   render() {

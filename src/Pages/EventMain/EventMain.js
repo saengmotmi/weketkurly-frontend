@@ -8,7 +8,7 @@ import Free from "../../Components/EventMain/Free";
 import Reserve from "../../Components/EventMain/Reserve";
 import Invite from "../../Components/EventMain/Invite";
 import Recommend from "../../Components/EventMain/ Recommend";
-import EventList from "../../Components/EventList";
+import EventList from "../../Components/EventMain/EventList";
 import Footer from "../../Components/Layout/Footer";
 import "./EventMain.scss";
 

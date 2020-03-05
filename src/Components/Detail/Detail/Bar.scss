@@ -1,0 +1,278 @@
+@import "../../../Styles/common";
+
+.Detail {
+  .bar {
+    z-index: 100;
+    width: auto;
+    display: none;
+    .bar-open {
+      width: 100%;
+      height: 22px;
+      border-top: 2px solid $color;
+      background-color: #fcfcfc;
+      display: flex;
+      align-items: flex-end;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      .btn-open {
+        overflow: hidden;
+        position: absolute;
+        left: 50%;
+        top: -50px;
+        width: 170px;
+        height: 48px;
+        margin-left: 280px;
+        border: 0 none;
+        border-radius: 3px 3px 0 0;
+        background-color: $color;
+        text-align: center;
+        font-size: 14px;
+        color: #fff;
+        line-height: 50px;
+        cursor: pointer;
+      }
+    }
+
+    .bar-close {
+      width: 100%;
+      border-top: 2px solid $color;
+      background-color: #fcfcfc;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      display: none;
+      .btn-close {
+        overflow: hidden;
+        position: absolute;
+        left: 50%;
+        top: -50px;
+        width: 170px;
+        height: 48px;
+        margin-left: 280px;
+        border: 0 none;
+        border-radius: 3px 3px 0 0;
+        background-color: $color;
+        text-align: center;
+        font-size: 14px;
+        color: #fff;
+        line-height: 50px;
+        cursor: pointer;
+      }
+      .bar-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+        ul {
+          width: 900px;
+          margin: 20px 0 0 0;
+          li {
+            overflow: hidden;
+            padding: 10px 15px 10px 20px;
+            background-color: #f7f7f7;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            .title {
+              width: 520px;
+              font-size: 12px;
+              line-height: 20px;
+            }
+            .count {
+              font-weight: 700;
+              font-size: 14px;
+              line-height: 20px;
+              .option {
+                display: flex;
+                flex-direction: row;
+                width: 86px;
+                border: 1px solid #dddfe1;
+                border-radius: 3px;
+                margin-right: 20px;
+                button {
+                  margin: 0;
+                  padding: 0;
+                  width: 22px;
+                  height: 22px;
+                  background: #f6f7f7;
+                  color: $color;
+                  outline: none;
+                  border: 0;
+                  cursor: pointer;
+                }
+
+                .leftBtn {
+                  border-right: 1px solid #dddfe1;
+                  font-size: 24px;
+                  line-height: 0;
+                }
+
+                .rightBtn {
+                  border-left: 1px solid #dddfe1;
+                  font-size: 20px;
+                  line-height: 0;
+                }
+
+                div {
+                  margin: 0;
+                  padding: 0;
+                  width: 42px;
+                  height: 22px;
+                  border: 0;
+                  background-color: #fff;
+                  color: #333;
+                  outline: none;
+                  border: 0;
+                  text-align: center;
+                  font-weight: 400;
+                }
+              }
+            }
+            .price {
+              margin: 0;
+              padding-right: 50px;
+              font-size: 14px;
+              font-weight: 500;
+              color: #333;
+            }
+          }
+        }
+      }
+      .total-price-point {
+        width: 900px;
+        box-sizing: border-box;
+        margin: 5px 0 10px;
+        color: #333;
+        .total-price {
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-end;
+          .total {
+            font-weight: 500;
+            font-size: 13px;
+          }
+          .price {
+            margin: 2px 3px -5px 8px;
+            font-size: 28px;
+            font-weight: 600;
+            padding-left: 8px;
+          }
+          .won {
+            padding-left: 2px;
+            font-size: 20px;
+            font-weight: 500;
+          }
+        }
+
+        .point {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: center;
+          padding-top: 8px;
+
+          .save-icon {
+            box-sizing: border-box;
+            width: 38px;
+            height: 20px;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 18px;
+            text-align: center;
+            color: #fff;
+            border: 1px solid #e8a828;
+            border-radius: 10px;
+            background-color: #ffbf00;
+            margin-right: 7px;
+          }
+
+          .point-after-login {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .each {
+              font-size: 14px;
+              color: #333;
+            }
+            .won-save {
+              font-size: 14px;
+              color: #333;
+              font-weight: 500;
+              margin-left: 3px;
+            }
+          }
+        }
+      }
+      .btn {
+        display: flex;
+        justify-content: flex-end;
+        padding-bottom: 10px;
+        width: 900px;
+
+        .cart-btn {
+          width: 900px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          background: #fff;
+          text-align: center;
+          .alarm-off {
+            width: 212px;
+            height: 54px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-weight: 700;
+            font-size: 16px;
+            color: #ddd;
+            cursor: pointer;
+          }
+          .alarm-on {
+            width: 212px;
+            height: 54px;
+            border: 1px solid $color;
+            border-radius: 3px;
+            font-weight: 700;
+            font-size: 16px;
+            color: $color;
+            cursor: pointer;
+          }
+          .save-item {
+            width: 212px;
+            height: 54px;
+            border: 1px solid $color;
+            border-radius: 3px;
+            font-weight: 700;
+            font-size: 16px;
+            color: $color;
+            cursor: pointer;
+          }
+          .save-item-clicked {
+            width: 212px;
+            height: 54px;
+            border: 1px solid $color;
+            border-radius: 3px;
+            background-color: $color;
+            font-weight: 700;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+          }
+          .go-to-cart {
+            width: 450px;
+            height: 54px;
+            color: white;
+            border-radius: 3px;
+            font-weight: 700;
+            font-size: 16px;
+            border: 1px solid $color;
+            background-color: $color;
+            padding: 0;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

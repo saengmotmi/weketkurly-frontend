@@ -74,32 +74,17 @@ class Nav extends Component {
       }
     } else if (name === "cate") {
       if (idx === 0) {
-        this.setState(
-          {
-            visibleCategory0: !this.state.visibleCategory0
-          },
-          () => {
-            console.log(this.state.visibleCategory0);
-          }
-        );
+        this.setState({
+          visibleCategory0: !this.state.visibleCategory0
+        });
       } else if (idx === 1) {
-        this.setState(
-          {
-            visibleCategory1: !this.state.visibleCategory1
-          },
-          () => {
-            console.log(this.state.visibleCategory1);
-          }
-        );
+        this.setState({
+          visibleCategory1: !this.state.visibleCategory1
+        });
       } else if (idx === 2) {
-        this.setState(
-          {
-            visibleCategory2: !this.state.visibleCategory2
-          },
-          () => {
-            console.log(this.state.visibleCategory2);
-          }
-        );
+        this.setState({
+          visibleCategory2: !this.state.visibleCategory2
+        });
       }
     }
   };
@@ -115,55 +100,58 @@ class Nav extends Component {
     return liProfileListdown;
   };
 
-  // _liCategoryListdown = paramArr => {
-  //   let liCateListdown = [];
-
-  //   if (paramArr != true) {
-  //     liCateListdown = paramArr.map((param1, idx) => {
-  //       console.log("map", param1);
-  //       return (
-  //         <li
-  //           key={idx}
-  //           className="cate-list-1"
-  //           onMouseEnter={() =>
-  //             this._liCategoryListdown2(this.event, param1[1])
-  //           }
-  //           // onMouseOut={() => this._liCategoryListdown2(this.event, param1[1])}
-  //         >
-  //           <div>
-  //             <img src={this.state.data.categories[idx].pc_icon_url} alt="" />
-  //             <span>
-  //               {param1[0]}
-  //               <ul className="cate-list-2">{this.state.dataDepth2}</ul>
-  //             </span>
-  //           </div>
-  //         </li>
-  //       );
-  //     });
-  //   } else {
-  //     liCateListdown = null;
-  //   }
-  //   return liCateListdown;
-  // };
-
-  _liCategoryListdown2 = (e, arr) => {
-    console.log("e", e);
-
+  _liCategoryListdown = paramArr => {
+    let liCateListdown = [];
     let liCateListdown2 = [];
-    liCateListdown2 = arr.map(param2 => (
-      <li>
-        {console.log("음", param2["name"])}
-        <span>{param2["name"]}</span>
-      </li>
-    ));
-    this.setState({ dataDepth2: liCateListdown2 });
+
+    if (paramArr != true) {
+      liCateListdown = paramArr.map((param1, idx) => {
+        liCateListdown2 = param1[1].map(param2 => {
+          return param2["name"];
+        });
+
+        return (
+          <li
+            key={idx}
+            id={"cate." + idx}
+            className="cate-list-1"
+            onMouseOverCapture={() => {
+              this._visible("cate", 2);
+              this._liCategoryListdown2(idx, liCateListdown2);
+            }}
+            onMouseOutCapture={() => {
+              this._visible("cate", 2);
+              this._liCategoryListdown2(idx, liCateListdown2);
+            }}
+          >
+            <div>
+              <img src={this.state.data.categories[idx].pc_icon_url} alt="" />
+              <span>
+                {param1[0]}
+                <ul className="cate-list-2">{this.state.dataDepth2}</ul>
+              </span>
+            </div>
+          </li>
+        );
+      });
+    } else {
+      liCateListdown = null;
+    }
+    return liCateListdown;
+  };
+
+  _liCategoryListdown2 = (idx, arr) => {
+    console.log(idx, arr);
+
+    console.log(this.state.data);
+
+    // this.setState({ dataDepth2: arr[idx] });
   };
 
   _onScroll = () => {
     const headScroll = window.scrollY;
     const sideScroll = window.scrollY;
 
-    console.log(headScroll);
     if (headScroll > 116) {
       this.setState({
         headerFixed: true,
@@ -208,8 +196,8 @@ class Nav extends Component {
       headerFixed,
       // scrollY,
       // inputSearchValue,
-      // data,
-      // dataDepth2,
+      data,
+      dataDepth2,
       dataProfileList1,
       dataProfileList2
     } = this.state;
@@ -282,24 +270,13 @@ class Nav extends Component {
               />
               <span>전체 카테고리</span>
               <ul
-                style={{
-                  display: visibleCategory0 ? "block" : "none"
-                }}
+                style={
+                  visibleCategory0
+                    ? { display: "block" }
+                    : { display: "none", border: "none" }
+                }
               >
-                {/* {data.categories
-                  ? this._liCategoryListdown(
-                      data.categories.map((param, _) => {
-                        return [param["name"], param["categories"]];
-                      })
-                    )
-                  : null} */}
                 <li
-                  className="cateHover"
-                  style={{
-                    width: "300px",
-                    height: "600px",
-                    backgroundColor: "yellow"
-                  }}
                   onMouseEnter={() => {
                     console.log("in");
                     this._visible("cate", 1);
@@ -309,33 +286,28 @@ class Nav extends Component {
                     this._visible("cate", 1);
                   }}
                 >
-                  depth1
+                  {/* depth1 */}
                   <div
                     style={{
-                      display: visibleCategory1 ? "block" : "none"
+                      display: visibleCategory0 ? "block" : "none"
                     }}
                   >
-                    depth1-1
+                    {data.categories
+                      ? this._liCategoryListdown(
+                          data.categories.map((param, _) => {
+                            return [param["name"], param["categories"]];
+                          })
+                        )
+                      : null}
                   </div>
                   <ul>
-                    <li
-                      style={{ display: "block", backgroundColor: "blue" }}
-                      onMouseOverCapture={() => {
-                        console.log("in-in");
-                        this._visible("cate", 2);
-                      }}
-                      onMouseOutCapture={() => {
-                        console.log("in-out");
-                        this._visible("cate", 2);
-                      }}
-                    >
-                      depth2
+                    <li className="cate-list-2">
                       <div
                         style={{
                           display: visibleCategory2 ? "block" : "none"
                         }}
                       >
-                        depth2-1
+                        <div>{dataDepth2}</div>
                       </div>
                     </li>
                   </ul>

@@ -1,6 +1,8 @@
 .main-slide {
   position: relative;
-  width: 100vw;
+  max-width: 100%;
+  min-width: 1750px;
+  height: 370px;
   display: inline-block;
 
   &:hover {

@@ -147,10 +147,6 @@
       font-weight: 500;
       color: #333333;
 
-      // &:hover {
-      //   color: #5f0080;
-      // }
-
       span {
         font-weight: inherit;
       }
@@ -168,46 +164,24 @@
         // line-height: 20px;
         // color: #333333;
 
-        // cate-list-1
-        // li {
-        //   background-color: white;
-        //   display: flex;
-        //   flex-direction: row;
-        //   align-items: center;
-        //   z-index: 1001;
+        // 2단 호버
+        &:hover {
+          width: 496px;
+          text-align: left;
 
-        //   &:hover {
-        //     background-color: transparent;
-        //     cursor: pointer;
-        //     color: #5f0080;
-        //     font-weight: 700;
-
-        //     // &:hover {
-        //     // width: 496px;
-        //     // transition: width 0.2s;
-        //     text-align: left;
-        //     background-color: pink;
-        //     // }
-        //   }
-        // }
-
-        // // 2단 호버
-        // &:hover {
-        //   width: 496px;
-        //   text-align: left;
-
-        //   transition: width 0.5s;
-        // }
+          transition: width 0.5s;
+        }
 
         // 1차 카테고리 (중복?)
         .cate-list-1 {
           text-align: left;
-          width: 219px;
+          width: 100%;
           height: 32px;
           // padding: 0 0 0 8px;
           padding: 8px 0 0 14px;
           font-size: 14px;
           line-height: 22px;
+          background-color: white;
 
           display: flex;
           flex-direction: row;
@@ -216,12 +190,12 @@
 
           // 2단 호버
           &:hover {
-            width: 496px;
+            // width: 496px;
             text-align: left;
             transition: width 0.2s;
             overflow: hidden;
 
-            background-color: blue;
+            background-color: transparent;
             z-index: 100000;
             cursor: pointer;
 
@@ -244,14 +218,13 @@
             .cate-list-2 {
               position: absolute;
               top: 0px;
-              left: 230px;
+              left: 290px;
               border: none;
-              background-color: yellow;
               z-index: -1;
               height: 600px;
 
               li {
-                background-color: transparent;
+                background-color: yellow;
                 border: none;
                 padding: 8px 0 0 14px;
                 width: 219px;
@@ -360,8 +333,7 @@
 
   // 카테고리 호버
   .cateHover {
-    width: 600px;
-
-    transition: width 0.2s;
+    // width: 219px;
+    // transition: width 0.2s;
   }
 }

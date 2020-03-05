@@ -146,19 +146,18 @@ class EventMain extends Component {
         />
         <Welcome
           eventList={
-            event.length === 0
-              ? null
-              : this.state.event.map(el => {
-                  return (
-                    <SaleEventList
-                      key={el.alt}
-                      img={el.img}
-                      alt={el.alt}
-                      scrollArrow={scrollArrow}
-                      scrollSale={scrollSale}
-                    />
-                  );
-                })
+            event &&
+            this.state.event.map(el => {
+              return (
+                <SaleEventList
+                  key={el.alt}
+                  img={el.img}
+                  alt={el.alt}
+                  scrollArrow={scrollArrow}
+                  scrollSale={scrollSale}
+                />
+              );
+            })
           }
         />
         <Free scroll={scroll} />
@@ -167,12 +166,12 @@ class EventMain extends Component {
         <div className="special" />
         <Recommend
           bestList={
-            best.length === 0
-              ? null
-              : this.state.best.map(el => {
-                  return <EventList img={el.img} alt={el.alt} key={el.alt} />;
-                })
+            best &&
+            this.state.best.map(el => {
+              return <EventList img={el.img} alt={el.alt} key={el.alt} />;
+            })
           }
+          goToJoin={this.goToJoin}
         />
         <Footer />
       </div>

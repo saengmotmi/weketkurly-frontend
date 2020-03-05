@@ -16,6 +16,7 @@ export default class Order extends Component {
       checked: false,
       list: [],
       point: 0,
+      discount: "",
       name: "",
       monthArrData: [],
       monthValue: "",
@@ -31,11 +32,11 @@ export default class Order extends Component {
   componentDidMount = () => {
     window.addEventListener("scroll", this.onScroll);
 
-    fetch("http://localhost:3000/data/list.json")
+    fetch("http://10.58.4.62:8000/creditcard")
       .then(res => res.json())
       .then(res => {
         this.setState({
-          list: res.list
+          list: res.data
         });
       });
   };
@@ -70,19 +71,22 @@ export default class Order extends Component {
     let monthArr = [];
     let point = "";
     let description = "";
+    let discount = "";
     for (let i in this.state.list) {
-      if (e.target.value === this.state.list[i]["cardName"]) {
-        monthArr = this.state.list[i]["cardInstallmentMonth"].map(element => {
+      if (e.target.value === this.state.list[i]["card_name"]) {
+        monthArr = this.state.list[i]["installment_perioid"].map(element => {
           return <option key={element}>{element}</option>;
         });
-        point = this.state.list[i]["cardPoint"];
-        description = this.state.list[i]["cardDescription"];
+        point = this.state.list[i]["card_point"];
+        description = this.state.list[i]["card_description"];
+        discount = this.state.list[i]["card_discount_event"];
       }
     }
     this.setState({
       value: e.target.value,
       monthArrData: monthArr,
       pointValue: point,
+      discount: discount,
       description: description,
       monthValue: e.target.value
     });
@@ -179,6 +183,7 @@ export default class Order extends Component {
     const {
       detail,
       point,
+      discount,
       top,
       checked,
       value,
@@ -194,8 +199,8 @@ export default class Order extends Component {
 
     const options = this.state.list.map(el => {
       return (
-        <option key={el.cardName} value={el.cardName}>
-          {el.cardName}
+        <option key={el.card_name} value={el.card_name}>
+          {el.card_name}
         </option>
       );
     });
@@ -570,6 +575,7 @@ export default class Order extends Component {
                         <input type="checkbox" />
                         {pointValue}
                       </div>
+                      {discount}
                       <div className="description">{description}</div>
                     </div>
                   </td>

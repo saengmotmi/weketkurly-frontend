@@ -46,7 +46,7 @@ class JoinComplete extends Component {
                       </div>
                     </button>
                     <button className="right-button">
-                      <div onClick={this.goHome}>홈으로 이동</div>
+                      <div onClick={this.goHome}>마이페이지로 이동</div>
                     </button>
                   </div>
                 </div>

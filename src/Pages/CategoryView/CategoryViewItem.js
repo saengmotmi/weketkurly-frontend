@@ -4,46 +4,41 @@ class CategoryViewItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      //state값 넣는곳
     };
   }
-  componentDidMount() {
-    fetch("https://api2.branch.io/v1/pageview")
-      .then(res => res.json())
-      .then(res => {
-        console.log(res.data);
-        this.setState({ data: res.data });
-      });
-  }
+
+  numberWithCommas = x => {
+    let comma = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    // console.log(comma);
+    return comma;
+  };
+  //가격에 3자리수 콤마 넣는 함수
   //함수들어갈자리
   render() {
-    // const { name, price, shortdesc, thumbnail_image_url } = this.props;
-    const rendering = this.state.data.map(x => {
-      return (
-        <div>
-          {console.log(this.state.data)}
-          <img src={this.props.thumbnail_image_url} alt="" />
-          <div>
-            <div>{this.props.name}</div>
-            <div>{this.props.price}</div>
-            <div>{this.props.shortdesc}</div>
+    // console.log("자식으로 넘어감", this.props.bridge2, this.props.bridge3);
+    const listRendering =
+      this.props.bridge3 !== undefined &&
+      this.props.bridge3.map(x => {
+        return (
+          <div className="product-box">
+            <div className="img-box">
+              <img
+                className="cate-image"
+                src={x.thumbnail_image_url}
+                alt=""
+              ></img>
+            </div>
+            <div className="pr-name">{x.name}</div>
+            <div className="pr-price">{this.numberWithCommas(x.price)}원</div>
+            <div className="pr-desc">{x.shortdesc}</div>
           </div>
-        </div>
-      );
-    });
-    return <div>{rendering}}</div>;
+          /* 함수에서 리턴해주고, 인라인에서는 this를 주어야 한다 */
+          /* Nav-본문6. map을 뿌려주는 부분에 props를 통해 바뀐 데이터를 적용 */
+        );
+      });
+    return <div className="compo-outer">{listRendering}</div>;
   }
 }
 
 export default CategoryViewItem;
-
-// const cateMapLists = cateMaplist.map((param, idx) => { return
-// <CategoryViewItem
-//     name={param["name"]}
-//     price={param["price"]}
-// />
-// });
-
-// <ul>
-//     {cateMapLists}
-// </ul>

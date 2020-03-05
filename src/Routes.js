@@ -17,12 +17,12 @@ class Routes extends React.Component {
       <Router>
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route exact path="/joinComplete" component={JoinComplete} />
+          <Route exact path="/joincomplete" component={JoinComplete} />
           <Route exact path="/footer" component={Footer} />
           <Route exact path="/nav" component={Nav} />
           <Route exact path="/join" component={Join} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/categoryView" component={CategoryView} />
+          <Route exact path="/categoryview" component={CategoryView} />
           <Route exact path="/detail" component={Detail} />
           <Route exact path="/footer" component={Footer} />
           <Route exact path="/nav" component={Nav} />

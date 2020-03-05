@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./NewAddress.scss";
 
-export default class CurrentAddress extends Component {
+export default class NewAddress extends Component {
   render() {
     const {
       execPostCode,
@@ -23,8 +23,9 @@ export default class CurrentAddress extends Component {
             <input
               value={addr + extraAddr + postcode}
               className="address-main"
+              readOnly
             />
-            <input name="targetValue" onChange={onChange} />
+            <input name="targetValue" value={targetValue} onChange={onChange} />
             <span>
               {addr.length + extraAddr.length + targetValue.length}/ 85자
             </span>

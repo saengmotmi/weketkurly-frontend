@@ -22,7 +22,7 @@ export default class PaymentMethod extends Component {
                 <tr>
                   <th>일반결제</th>
                   <td>
-                    <label className="lebel-radio">
+                    <label className="label-radio">
                       <input
                         type="radio"
                         className="card"
@@ -162,7 +162,7 @@ export default class PaymentMethod extends Component {
                   <input type="radio" name="refund" defaultChecked />
                   결제수단으로 환불
                 </label>
-                <label className="lebel-radio">
+                <label className="label-radio">
                   <input type="radio" name="refund" />
                   상품 입고 시 배송
                 </label>

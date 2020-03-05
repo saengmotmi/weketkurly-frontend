@@ -269,8 +269,13 @@
         }
       }
     }
+    .list-detail {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     .product {
-      position: absolute;
+      list-style: none;
       .date {
         padding-top: 20px;
         font-size: 16px;
@@ -283,85 +288,141 @@
         margin-top: 10px;
         padding: 0 20px;
         box-sizing: border-box;
-        ul {
-          list-style: none;
-          li {
-            .name {
-              font-size: 16px;
-              font-weight: 700;
-              color: #000;
-              cursor: pointer;
-              padding: 20px 0 13px;
-              border-bottom: 1px solid #dddfe1;
-              background: url(https://res.kurly.com/pc/ico/1806/ico_arrow_20x30.png)
-                no-repeat 100% 50%;
-              background-size: 10px 15px;
+        .name {
+          font-size: 16px;
+          font-weight: 700;
+          color: #000;
+          cursor: pointer;
+          padding: 20px 0 13px;
+          border-bottom: 1px solid #dddfe1;
+          background: url(https://res.kurly.com/pc/ico/1806/ico_arrow_20x30.png)
+            no-repeat 100% 50%;
+          background-size: 10px 15px;
+        }
+        .product-info {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 20px 0;
+          .info {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            .thumb {
+              width: 60px;
+              height: 77px;
+              margin-right: 20px;
             }
-            .product-info {
-              display: flex;
-              flex-direction: row;
-              justify-content: space-between;
-              padding: 20px 0;
-              .info {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                .thumb {
-                  width: 60px;
-                  height: 77px;
-                  margin-right: 20px;
-                  background-size: cover;
-                  background-image: url(https://img-cf.kurly.com/shop/data/goods/1552626754873s0.jpg);
-                }
-                dl {
-                  overflow: hidden;
-                  padding-top: 5px;
-                }
-                dt {
-                  float: left;
-                  padding-right: 15px;
-                  font-size: 12px;
-                  color: #000;
-                }
-                dd {
-                  float: left;
-                  font-size: 14px;
-                  font-weight: 500;
-                  color: #000;
-                }
-                .complete {
-                  color: #514859;
-                }
-              }
-              .button {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                .write {
-                  width: 100px;
-                  height: 34px;
-                  font-size: 14px;
-                  margin-bottom: 4px;
-                  border: 1px solid #512771;
-                  background-color: #5f0080;
-                  color: #fff;
-                }
-                .question {
-                  width: 100px;
-                  height: 34px;
-                  font-size: 12px;
-                  border: 1px solid #5f0080;
-                  background-color: #fff;
-                  color: #5f0080;
-                  line-height: 32px;
-                  text-align: center;
-                  cursor: pointer;
-                }
-              }
+            dl {
+              overflow: hidden;
+              padding-top: 5px;
+            }
+            dt {
+              float: left;
+              padding-right: 15px;
+              font-size: 12px;
+              color: #000;
+            }
+            dd {
+              float: left;
+              font-size: 14px;
+              font-weight: 500;
+              color: #000;
+            }
+            .complete {
+              color: #514859;
+            }
+          }
+          .button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .write {
+              width: 100px;
+              height: 34px;
+              font-size: 14px;
+              margin-bottom: 4px;
+              border: 1px solid #512771;
+              background-color: #5f0080;
+              color: #fff;
+            }
+            .question {
+              width: 100px;
+              height: 34px;
+              font-size: 12px;
+              border: 1px solid #5f0080;
+              background-color: #fff;
+              color: #5f0080;
+              line-height: 32px;
+              text-align: center;
+              cursor: pointer;
             }
           }
         }
+      }
+    }
+    .page-btn {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      border: 0;
+      font-family: "Noto Sans";
+      background-color: #fff;
+      box-sizing: border-box;
+      .first-page {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgb(221, 221, 221);
+        background-position: 50% 50%;
+        background-size: cover;
+        cursor: pointer;
+        padding: 0;
+        background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-first.png)
+          no-repeat;
+      }
+      .before {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgb(221, 221, 221);
+        border-left: 0;
+        cursor: pointer;
+        padding: 0;
+        background-position: 50% 50%;
+        background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-prev.png)
+          no-repeat;
+      }
+      .num {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgb(221, 221, 221);
+        border-left: 0;
+        cursor: pointer;
+        padding: 0;
+        font-weight: 500;
+        color: #333;
+        line-height: 34px;
+      }
+      .next {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgb(221, 221, 221);
+        border-left: 0;
+        cursor: pointer;
+        padding: 0;
+        background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-next.png)
+          no-repeat;
+      }
+      .last-page {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgb(221, 221, 221);
+        border-left: 0;
+        cursor: pointer;
+        background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-last.png)
+          no-repeat;
       }
     }
   }

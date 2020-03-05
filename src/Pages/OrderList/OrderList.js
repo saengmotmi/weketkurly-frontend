@@ -1,10 +1,40 @@
 import React, { Component } from "react";
 import Nav from "../../Components/Nav";
+import List from "../../Components/List/List";
+import PageBtn from "../../Components/PageBtn";
 import Footer from "../../Components/Footer";
 import "./OrderList.scss";
 
 export default class OrderList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      order: []
+    };
+  }
+  componentDidMount = () => {
+    fetch("http://localhost:3000/data/order.json")
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          order: res.order
+        });
+      });
+  };
+
   render() {
+    const orderlist = this.state.order.map(el => {
+      return (
+        <List
+          key={el.no}
+          no={el.no}
+          product_name={el.product_name}
+          status={el.status}
+          thumb={el.thumb}
+          review_button_flag={el.review_button_flag}
+        />
+      );
+    });
     return (
       <div className="OrderList">
         <Nav />
@@ -103,39 +133,8 @@ export default class OrderList extends Component {
               </div>
             </div>
             {/* 상품 컴포넌트 */}
-            <div className="product">
-              <div className="date">2020.02.08(19시 34분)</div>
-              <div className="table">
-                <ul>
-                  <li>
-                    <div className="name">[네떼] 파프리카샐러드 65g 외 5건</div>
-                    <div className="product-info">
-                      <div className="info">
-                        <div className="thumb" />
-                        <div>
-                          <dl>
-                            <dt>주문번호</dt>
-                            <dd>1581158003681</dd>
-                          </dl>
-                          <dl>
-                            <dt>걸제금액</dt>
-                            <dd>31,880원</dd>
-                          </dl>
-                          <dl>
-                            <dt>주문선택</dt>
-                            <dd className="complete">배송완료</dd>
-                          </dl>
-                        </div>
-                      </div>
-                      <div className="button">
-                        <button className="write">후기쓰기</button>
-                        <button className="question">1:1 문의</button>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <ul className="list-detail">{orderlist}</ul>
+            <PageBtn />
           </article>
         </div>
         <Footer />

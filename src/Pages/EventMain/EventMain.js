@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import Nav from "../../Components/Layout/Nav";
 import SaleEventList from "../../Components/SaleEventList";
 import EventList from "../../Components/EventList";
 import Footer from "../../Components/Layout/Footer";
 import "./EventMain.scss";
 
-export default class EventMain extends Component {
+class EventMain extends Component {
   constructor() {
     super();
     this.state = {
@@ -111,6 +112,11 @@ export default class EventMain extends Component {
     window.scrollTo(0, 3705, "smooth");
   };
 
+  goToJoin = () => {
+    this.props.history.push("/join");
+    window.scrollTo(0, 0);
+  };
+
   render() {
     const {
       scroll,
@@ -150,7 +156,9 @@ export default class EventMain extends Component {
           {/* img */}
           <div className="event-img">
             <div className="img">
-              <div className="button">가입하고 혜택받기 ></div>
+              <div className="button" onClick={this.goToJoin}>
+                가입하고 혜택받기 >
+              </div>
             </div>
           </div>
           {/* btn */}
@@ -224,7 +232,7 @@ export default class EventMain extends Component {
             <div className="arrow" />
           </div>
           <div className="join">
-            <button>
+            <button onClick={this.goToJoin}>
               회원가입 <span className="bold">하러가기</span>
               <span className="arrow" />
             </button>
@@ -235,3 +243,5 @@ export default class EventMain extends Component {
     );
   }
 }
+
+export default withRouter(EventMain);

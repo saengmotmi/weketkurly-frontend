@@ -13,7 +13,7 @@ export default class Order extends Component {
       top: 0,
       scrollTop: 0,
       value: "",
-      checked: true,
+      checked: false,
       list: [],
       point: 0,
       name: "",
@@ -56,7 +56,7 @@ export default class Order extends Component {
 
   handleChangeAdr = e => {
     this.setState({
-      checked: false
+      checked: !this.state.checked
     });
   };
 
@@ -335,7 +335,6 @@ export default class Order extends Component {
                         type="radio"
                         name="selectDelivery"
                         onChange={this.handleChangeAdr}
-                        checked
                       />
                       <span className="current">최근 배송지</span>
                     </label>
@@ -349,16 +348,20 @@ export default class Order extends Component {
                     </label>
                   </td>
                 </tr>
-                <CurrentAddress checked={checked} />
-                <NewAddress
-                  execPostCode={this.execPostCode}
-                  addr={addr}
-                  extraAddr={extraAddr}
-                  postcode={postcode}
-                  onChange={this.onChangeValue}
-                  targetValue={targetValue}
-                  checked={checked}
-                />
+
+                {checked ? (
+                  <NewAddress
+                    execPostCode={this.execPostCode}
+                    addr={addr}
+                    extraAddr={extraAddr}
+                    postcode={postcode}
+                    onChange={this.onChangeValue}
+                    targetValue={targetValue}
+                  />
+                ) : (
+                  <CurrentAddress />
+                )}
+
                 <tr className="memo">
                   <th>배송 요청사항</th>
                   <td>
@@ -369,20 +372,20 @@ export default class Order extends Component {
                 <tr className="gate">
                   <th>공동현관 출입 방법 *</th>
                   <td>
-                    <label className="lebel-radio">
-                      <input type="radio" name="gate" />
+                    <label for="foo1" className="lebel-radio">
+                      <input id="foo1" type="radio" name="gate" />
                       비밀번호
                     </label>
-                    <label className="lebel-radio">
-                      <input type="radio" name="gate" />
+                    <label for="foo2" className="lebel-radio">
+                      <input id="foo2" type="radio" name="gate" />
                       경비실 호출
                     </label>
-                    <label className="lebel-radio">
-                      <input type="radio" name="gate" checked />
+                    <label for="foo3" className="lebel-radio">
+                      <input id="foo3" type="radio" name="gate" />
                       자유출입가능
                     </label>
-                    <label className="lebel-radio">
-                      <input type="radio" name="gate" />
+                    <label for="foo4" className="lebel-radio">
+                      <input id="foo4" type="radio" name="gate" />
                       기타사항
                     </label>
                   </td>

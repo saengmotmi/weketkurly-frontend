@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PageBtn from "../Detail/ReviewQA/PageBtn";
+import PageBtn from "../../Detail/ReviewQA/PageBtn";
 import "./MyOrderList.scss";
 
 export default class MyOrderList extends Component {

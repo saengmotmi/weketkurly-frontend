@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Nav from "../../Components/Layout/Nav";
 import EventView from "../../Components/EventMain/EventView";
-import SaleEventList from "../../Components/SaleEventList";
 import Welcome from "../../Components/EventMain/Welcome";
+import SaleEventList from "../../Components/SaleEventList";
 import Free from "../../Components/EventMain/Free";
 import Reserve from "../../Components/EventMain/Reserve";
 import Invite from "../../Components/EventMain/Invite";
@@ -48,7 +48,9 @@ class EventMain extends Component {
   };
 
   onScroll = e => {
+    // 특정위치에 왔을 때, 애니메이션 시작
     const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
+
     if (scrollTop > 2100 && scrollTop < 3112) {
       this.setState({
         scroll: true,
@@ -118,7 +120,7 @@ class EventMain extends Component {
     window.scrollTo(0, 3705, "smooth");
   };
 
-  // 회원가입 페이지로 이동 (Router)
+  // Router : 회원가입 페이지로 이동
   goToJoin = () => {
     this.props.history.push("/join");
     window.scrollTo(0, 0);

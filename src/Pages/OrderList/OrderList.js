@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Nav from "../../Components/Layout/Nav";
 import MyPage from "../../Components/OrderList/MyPage";
 import MyKurly from "../../Components/OrderList/MyKurly";
-import MyOrderList from "../../Components/OrderList/MyOrderList";
-import List from "../../Components/OrderList/List";
+import MyOrderList from "../../Components/OrderList/MyOrderList/MyOrderList";
+import List from "../../Components/OrderList/MyOrderList/List";
 import Footer from "../../Components/Layout/Footer";
 import "./OrderList.scss";
 

@@ -1,0 +1,83 @@
+@import "../../../Styles/common";
+
+.Order {
+  .address {
+    td {
+      padding-top: 22px;
+    }
+    input {
+      width: 600px;
+      height: 33px;
+      padding: 0 8px;
+      font-size: 12px;
+      margin-bottom: 8px;
+      border: 1px solid #ddd;
+    }
+    span {
+      font-size: 12px;
+      margin-left: 10px;
+    }
+    .address-main {
+      background: url(https://res.kurly.com/pc/service/order/1711/ico_selectbox_arrow_10x6.png)
+        no-repeat 579px 50%;
+    }
+    .road {
+      font-size: 12px;
+      color: #777;
+    }
+  }
+  .deli {
+    .txt {
+      font-weight: 500;
+    }
+    p {
+      margin-top: 7px;
+      font-size: 12px;
+      span {
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        color: #514859;
+      }
+      b {
+        color: #000;
+        font-weight: 500;
+      }
+    }
+  }
+  .receive-name {
+    padding-top: 14px;
+    input {
+      height: 33px;
+      border: 1px solid #ddd;
+      padding: 0 8px;
+      font-size: 12px;
+    }
+  }
+  .receive-phone {
+    input {
+      width: 50px;
+      height: 33px;
+      border: 1px solid #ddd;
+      padding: 0 8px;
+      font-size: 12px;
+    }
+    .first-number {
+      width: 43px;
+    }
+    .second-number {
+      width: 50px;
+    }
+    .bar {
+      position: relative;
+      margin: 0 8px;
+      span {
+        position: absolute;
+        left: -4px;
+        top: 13px;
+        width: 8px;
+        height: 1px;
+        background-color: #d8d8d8;
+      }
+    }
+  }
+}

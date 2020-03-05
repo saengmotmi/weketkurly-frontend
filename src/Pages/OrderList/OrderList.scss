@@ -1,3 +1,5 @@
+@import "../../Styles/common";
+
 .OrderList {
   text-align: left;
   background-color: #fff;
@@ -41,11 +43,14 @@
         .user-grade {
           width: 60px;
           height: 60px;
-          border: 1px solid #5f0080;
+          border: 1px solid $color;
           border-radius: 5px;
           background-color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           text-align: center;
-          color: #5f0080;
+          color: $color;
         }
         .user-info {
           display: flex;
@@ -87,7 +92,14 @@
         .won {
           font-weight: 700;
           font-size: 20px;
-          color: #5f0080;
+          cursor: pointer;
+          img {
+            color: $color;
+            width: 28px;
+            height: 28px;
+            margin: 1px 0 0 4px;
+            vertical-align: top;
+          }
         }
         .remove {
           padding-top: 12px;
@@ -102,12 +114,18 @@
         margin-right: 4px;
         background-color: #fff;
         padding: 30px 30px 55px;
-
         box-sizing: border-box;
         div {
           font-weight: 700;
           font-size: 20px;
-          color: #5f0080;
+          color: $color;
+          cursor: pointer;
+          img {
+            width: 28px;
+            height: 28px;
+            margin: 1px 0 0 4px;
+            vertical-align: top;
+          }
         }
       }
       .pass {
@@ -120,21 +138,29 @@
         div {
           font-weight: 700;
           font-size: 20px;
-          color: #5f0080;
+          color: $color;
+          cursor: pointer;
+          img {
+            width: 28px;
+            height: 28px;
+            margin: 1px 0 0 4px;
+            vertical-align: top;
+          }
         }
       }
     }
   }
   .contents {
+    width: 1050px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: center;
-    margin-top: 70px;
+    justify-content: space-between;
+    margin: 70px auto;
 
     .my-kurly {
       h2 {
-        padding: 0 0 30px 2px;
+        padding: 0 0 20px 2px;
         font-weight: 700;
         font-size: 28px;
         color: #4a4a4a;
@@ -145,29 +171,42 @@
         border-bottom: 0;
         font-size: 12px;
         list-style: none;
-        li {
+        .list {
           width: 100%;
           height: 50px;
           box-sizing: border-box;
           border-bottom: 1px solid #dcdbde;
-          background-color: #fff;
+          padding: 16px 19px 16px 19px;
+          color: #5f0080;
+          display: flex;
+          background: #f7f7f7
+            url(https://res.kurly.com/pc/ico/1803/ico_arrow_on_12x22.png)
+            no-repeat 174px 50%;
+          background-size: 6px 10px;
+          cursor: pointer;
+        }
+        ._list {
+          width: 100%;
+          height: 50px;
+          box-sizing: border-box;
+          border-bottom: 1px solid #dcdbde;
           padding: 16px 19px 16px 19px;
           color: #666;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
           align-items: center;
-          .arrow {
-            width: 6px;
-            height: 10px;
-            background-size: cover;
-            background-image: url(https://res.kurly.com/pc/ico/1803/ico_arrow_12x22.png);
-          }
-          .arrow-clicked {
-            width: 6px;
-            height: 10px;
-            background-size: cover;
-            background-image: url(https://res.kurly.com/pc/ico/1803/ico_arrow_on_12x22.png);
+          background: #fff
+            url(https://res.kurly.com/pc/ico/1803/ico_arrow_12x22.png) no-repeat
+            174px 50%;
+          background-size: 6px 10px;
+          &:hover {
+            color: #5f0080;
+            cursor: pointer;
+            background: #f7f7f7
+              url(https://res.kurly.com/pc/ico/1803/ico_arrow_on_12x22.png)
+              no-repeat 174px 50%;
+            background-size: 6px 10px;
           }
         }
       }
@@ -185,6 +224,7 @@
         font-size: 12px;
         color: #666;
         line-height: 20px;
+        box-sizing: border-box;
         span {
           font-size: 14px;
           font-weight: 600;
@@ -202,8 +242,21 @@
       justify-content: space-between;
       align-items: center;
       padding: 5px 0 24px;
-      border-bottom: 2px solid #5f0080;
+      border-bottom: 2px solid $color;
       margin-bottom: 10px;
+      select {
+        width: 140px;
+        padding: 0.8em 0.5em;
+        font-family: inherit;
+        background: url(https://res.kurly.com/pc/ico/1806/ico_arrow_down_16x12.png)
+          no-repeat 121px 14px;
+        background-size: 8px 6px;
+        border: 1px solid #5f0080;
+        border-radius: 0px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
       .title-bar {
         position: relative;
         h2 {
@@ -219,8 +272,13 @@
         }
       }
     }
+    .list-detail {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     .product {
-      position: absolute;
+      list-style: none;
       .date {
         padding-top: 20px;
         font-size: 16px;
@@ -232,16 +290,42 @@
         border: 1px solid #dddfe1;
         margin-top: 10px;
         padding: 0 20px;
-        ul {
-          list-style: none;
-          li {
-            .name {
-              font-size: 16px;
-              font-weight: 700;
+        box-sizing: border-box;
+        .name {
+          font-size: 16px;
+          font-weight: 700;
+          color: #000;
+          cursor: pointer;
+          padding: 20px 0 13px;
+          border-bottom: 1px solid #dddfe1;
+          background: url(https://res.kurly.com/pc/ico/1806/ico_arrow_20x30.png)
+            no-repeat 100% 50%;
+          background-size: 10px 15px;
+        }
+        .product-info {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 20px 0;
+          .info {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            .thumb {
+              width: 60px;
+              height: 77px;
+              margin-right: 20px;
+            }
+            dl {
+              overflow: hidden;
+              padding-top: 5px;
+            }
+            dt {
+              float: left;
+              padding-right: 15px;
+              font-size: 12px;
               color: #000;
-              cursor: pointer;
-              padding: 20px 0 13px;
-              border-bottom: 1px solid #dddfe1;
             }
             .product-info {
               display: flex;
@@ -282,16 +366,16 @@
                   font-size: 14px;
                   margin-bottom: 4px;
                   border: 1px solid #512771;
-                  background-color: #5f0080;
+                  background-color: $color;
                   color: #fff;
                 }
                 .question {
                   width: 100px;
                   height: 34px;
                   font-size: 12px;
-                  border: 1px solid #5f0080;
+                  border: 1px solid $color;
                   background-color: #fff;
-                  color: #5f0080;
+                  color: $color;
                   line-height: 32px;
                   text-align: center;
                   cursor: pointer;
@@ -299,6 +383,90 @@
               }
             }
           }
+        }
+      }
+    }
+    .page-btn {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      border: 0;
+      font-family: "Noto Sans";
+      background-color: #fff;
+      margin-top: 50px;
+      .first-page {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgb(221, 221, 221);
+        cursor: pointer;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #fff;
+        background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-first.png)
+          no-repeat 50% 50%;
+        &:hover {
+          background-color: #f7f7f7;
+        }
+      }
+      .before {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgb(221, 221, 221);
+        border-left: 0;
+        cursor: pointer;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #fff;
+        background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-prev.png)
+          no-repeat 50% 50%;
+        &:hover {
+          background-color: #f7f7f7;
+        }
+      }
+      button {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgb(221, 221, 221);
+        border-left: 0;
+        cursor: pointer;
+        padding: 0;
+        font-weight: 500;
+        color: #333;
+        box-sizing: border-box;
+        background-color: #fff;
+        line-height: 34px;
+        &:hover {
+          background-color: #f7f7f7;
+        }
+      }
+      .next {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgb(221, 221, 221);
+        border-left: 0;
+        cursor: pointer;
+        background-color: #fff;
+        box-sizing: border-box;
+        background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-next.png)
+          no-repeat 50% 50%;
+        &:hover {
+          background-color: #f7f7f7;
+        }
+      }
+      .last-page {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgb(221, 221, 221);
+        border-left: 0;
+        cursor: pointer;
+        background-color: #fff;
+        box-sizing: border-box;
+        background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-last.png)
+          no-repeat 50% 50%;
+        &:hover {
+          background-color: #f7f7f7;
         }
       }
     }

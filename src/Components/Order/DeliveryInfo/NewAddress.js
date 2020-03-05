@@ -1,27 +1,41 @@
 import React, { Component } from "react";
+import "./NewAddress.scss";
 
 export default class CurrentAddress extends Component {
   render() {
+    const {
+      execPostCode,
+      addr,
+      extraAddr,
+      postcode,
+      onChange,
+      targetValue
+    } = this.props;
     return (
       <>
-        <tr className="address">
+        <tr className="new-address">
           <th>주소</th>
           <td>
+            <button className="newbtn" onClick={execPostCode}>
+              새 배송지 추가
+            </button>
+
             <input
-              value="서울 강서구 화곡동 504-162 (수정맨션) [157-894]"
+              value={addr + extraAddr + postcode}
               className="address-main"
             />
-            <input value="202호" />
-            <span>29자 / 85자</span>
+            <input name={targetValue} onChange={onChange} />
+            <span>{targetValue.length} / 85자</span>
             <div className="road">
-              서울 강서구 등촌로13나길 38 (수정맨션) [07733] 202호
+              {addr + extraAddr} {postcode}
+              {targetValue}
             </div>
           </td>
         </tr>
         <tr className="deli">
           <th>배송 구분</th>
           <td>
-            <span className="txt">샛별배송지역</span>
+            {/* <span className="txt">샛별배송지역</span> */}
             <p>
               <span>
                 샛별 배송 지역 중 아래 장소는 <b>배송 불가 장소</b>
@@ -36,21 +50,21 @@ export default class CurrentAddress extends Component {
         <tr className="receive-name">
           <th>수령인 이름 *</th>
           <td>
-            <input type="text" value="이은지" />
+            <input type="text" />
           </td>
         </tr>
         <tr className="receive-phone">
           <th>휴대폰 *</th>
           <td>
-            <input type="number" value="010" className="first-number" />
+            <input type="number" className="first-number" />
             <span className="bar">
               <span />
             </span>
-            <input type="number" value="6203" className="second-number" />
+            <input type="number" className="second-number" />
             <span className="bar">
               <span />
             </span>
-            <input type="number" value="2452" className="second-number" />
+            <input type="number" className="second-number" />
           </td>
         </tr>
       </>

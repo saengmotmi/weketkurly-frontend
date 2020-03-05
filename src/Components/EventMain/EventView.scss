@@ -1,0 +1,93 @@
+@import "../../Styles/common";
+
+.EventMain {
+  .event-view {
+    .event-img {
+      width: 100%;
+      height: 484px;
+      background: url(https://res.kurly.com/images/event/join/200115/pc/img_main.jpg)
+        no-repeat 50% 0;
+      .img {
+        width: 1100px;
+        height: 484px;
+        margin: 0 auto;
+        position: relative;
+        .button {
+          width: 300px;
+          height: 71px;
+          left: 30px;
+          top: 58%;
+          position: absolute;
+          cursor: pointer;
+          background-color: $color;
+          color: #fff;
+          font-family: "Malgun Gothic";
+          font-weight: 500;
+          font-size: 24px;
+          letter-spacing: -0.02em;
+          border-radius: 50px;
+          text-align: center;
+          line-height: 75px;
+          box-shadow: 4px 10px 20px #999;
+          &:hover {
+            background-color: #fff;
+            border: 2px solid $color;
+            color: $color;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+    .join-btn {
+      text-align: center;
+      .bg {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        width: 100%;
+        height: 100px;
+        background: url(https://res.kurly.com/images/event/join/200115/pc/bg_tab.jpg)
+          no-repeat 50% 0;
+        .welcome-gift {
+          width: 348px;
+          height: 100px;
+          background-image: url(https://res.kurly.com/images/event/join/200115/pc/tab_menu.jpg);
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          outline: none;
+          border: 0;
+          cursor: pointer;
+          &:hover {
+            background-position: 0 -100px;
+          }
+        }
+        .free-delivery {
+          width: 349px;
+          height: 100px;
+          background-image: url(https://res.kurly.com/images/event/join/200115/pc/tab_menu.jpg);
+          background-position: -348px 0;
+          outline: none;
+          border: 0;
+          cursor: pointer;
+          &:hover {
+            background-position: -348px -100px;
+          }
+        }
+        .point {
+          width: 348px;
+          height: 100px;
+          background-image: url(https://res.kurly.com/images/event/join/200115/pc/tab_menu.jpg);
+          background-position: -697px 0;
+          outline: none;
+          border: 0;
+          cursor: pointer;
+          &:hover {
+            background-position: -697px -100px;
+          }
+        }
+      }
+    }
+  }
+}

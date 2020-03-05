@@ -197,14 +197,6 @@ export default class Order extends Component {
       targetValue
     } = this.state;
 
-    const options = this.state.list.map(el => {
-      return (
-        <option key={el.card_name} value={el.card_name}>
-          {el.card_name}
-        </option>
-      );
-    });
-
     return (
       <div className="Order">
         <Nav />
@@ -234,7 +226,13 @@ export default class Order extends Component {
         <PaymentBar top={top} />
         <Cupon point={point} onChangeValue={this.onChangeValue} />
         <PaymentMethod
-          options={options}
+          options={this.state.list.map(el => {
+            return (
+              <option key={el.card_name} value={el.card_name}>
+                {el.card_name}
+              </option>
+            );
+          })}
           monthArrData={monthArrData}
           pointValue={pointValue}
           discount={discount}

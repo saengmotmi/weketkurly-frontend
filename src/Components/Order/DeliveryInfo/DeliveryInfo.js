@@ -13,7 +13,8 @@ export default class DeliveryInfo extends Component {
       execPostCode,
       onChange,
       onChangeAdr,
-      targetValue
+      targetValue,
+      text
     } = this.props;
     return (
       <div className="delivery-info">
@@ -64,8 +65,8 @@ export default class DeliveryInfo extends Component {
               <tr className="memo">
                 <th>배송 요청사항</th>
                 <td>
-                  <textarea maxLength="50" />
-                  <div className="string">0자 / 50자</div>
+                  <textarea maxLength="50" name="text" onChange={onchange} />
+                  <div className="string">{text.length}자 / 50자</div>
                 </td>
               </tr>
               <tr className="gate">

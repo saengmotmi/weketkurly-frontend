@@ -3,6 +3,7 @@ import "./Cupon.scss";
 
 export default class Cupon extends Component {
   render() {
+    const { point, usePoint, onChangeValue, onChangePoint } = this.props;
     return (
       <div className="cupon">
         <h2>쿠폰 / 적립금</h2>
@@ -23,12 +24,17 @@ export default class Cupon extends Component {
                     type="number"
                     name="point"
                     className="text-box"
-                    onChange={this.props.onChangeValue}
+                    onChange={onChangeValue}
+                    value={usePoint ? point : 0}
                   />
                   원
-                  <input type="checkbox" className="check-box" />
+                  <input
+                    type="checkbox"
+                    className="check-box"
+                    onChange={onChangePoint}
+                  />
                   <span>모두사용</span>
-                  <div>보유적립금: 456원</div>
+                  <div>보유적립금: {point}원</div>
                   <div className="emoney">*적립금 내역: 마이컬리 > 적립금</div>
                 </td>
               </tr>

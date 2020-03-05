@@ -23,7 +23,7 @@ export default class CurrentAddress extends Component {
               value={addr + extraAddr + postcode}
               className="address-main"
             />
-            <input value={targetValue} onChange={onChange} />
+            <input name={targetValue} onChange={onChange} />
             <span>{targetValue.length} / 85자</span>
             <div className="road">
               {addr + extraAddr} {postcode}

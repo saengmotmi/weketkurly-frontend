@@ -1,3 +1,5 @@
+@import "../../Styles/common";
+
 .Detail {
   width: 1050px;
   margin: 0 auto 50px;
@@ -74,13 +76,13 @@
     .accumulate {
       .befor-login-point {
         font-size: 14px;
-        color: #5f0080;
+        color: $color;
       }
       .after-login-point {
         letter-spacing: -0.5px;
         .save-point {
-          border: 1px solid #5f0080;
-          color: #5f0080;
+          border: 1px solid $color;
+          color: $color;
           border-radius: 12px;
           height: 22px;
           padding: 1px 8px 2px;
@@ -156,7 +158,7 @@
             width: 22px;
             height: 22px;
             background: #f6f7f7;
-            color: #5f0080;
+            color: $color;
             outline: none;
             border: 0;
             cursor: pointer;
@@ -285,31 +287,31 @@
         .alarm-on {
           width: 128px;
           height: 54px;
-          border: 1px solid #5f0080;
+          border: 1px solid $color;
           border-radius: 3px;
           font-weight: 700;
           font-size: 16px;
-          color: #5f0080;
+          color: $color;
           background-color: #fff;
           cursor: pointer;
         }
         .save-item {
           width: 128px;
           height: 54px;
-          border: 1px solid #5f0080;
+          border: 1px solid $color;
           border-radius: 3px;
           font-weight: 700;
           font-size: 16px;
-          color: #5f0080;
+          color: $color;
           background-color: #fff;
           cursor: pointer;
         }
         .save-item-clicked {
           width: 128px;
           height: 54px;
-          border: 1px solid #5f0080;
+          border: 1px solid $color;
           border-radius: 3px;
-          background-color: #5f0080;
+          background-color: $color;
           font-weight: 700;
           font-size: 16px;
           color: #fff;
@@ -322,8 +324,8 @@
           border-radius: 3px;
           font-weight: 700;
           font-size: 16px;
-          border: 1px solid #5f0080;
-          background-color: #5f0080;
+          border: 1px solid $color;
+          background-color: $color;
           padding: 0;
           cursor: pointer;
         }
@@ -675,7 +677,7 @@
         margin: 0 30px;
       }
       .title {
-        color: #5f0080;
+        color: $color;
         font-weight: 500;
         display: block;
         font-size: 18px;
@@ -732,7 +734,7 @@
           flex-direction: row;
           align-items: center;
           .mark {
-            background-color: #5f0080;
+            background-color: $color;
             width: 3px;
             height: 20px;
             margin-right: 10px;
@@ -740,7 +742,7 @@
           .mark-name {
             font-size: 18px;
             font-weight: 500;
-            color: #5f0080;
+            color: $color;
           }
         }
         .mark-time {
@@ -776,7 +778,7 @@
       .refund-notice {
         font-size: 18px;
         font-weight: 400;
-        color: #5f0080;
+        color: $color;
       }
       .txt {
         font-size: 16px;
@@ -788,7 +790,7 @@
     .more-btn,
     .close-btn {
       outline: none;
-      color: #5f0080;
+      color: $color;
       cursor: pointer;
       img {
         width: 14px;
@@ -823,7 +825,7 @@
           font-weight: 300;
         }
         .hide-title {
-          color: #5f0080;
+          color: $color;
           margin: 0 0 6px 0;
           font-weight: 500;
         }
@@ -968,7 +970,7 @@
         padding: 7px 0;
         float: right;
         background-color: #795b8f;
-        border: 1px solid #5f0080;
+        border: 1px solid $color;
         color: #fff;
         font-size: 13px;
         text-align: center;
@@ -979,8 +981,8 @@
           padding: 10px 0;
           float: right;
           background-color: #fff;
-          border: 1px solid #5f0080;
-          color: #5f0080;
+          border: 1px solid $color;
+          color: $color;
           font-size: 13px;
           text-align: center;
           font-weight: 600;
@@ -1000,7 +1002,7 @@
         padding: 7px 0;
         float: right;
         background-color: #795b8f;
-        border: 1px solid #5f0080;
+        border: 1px solid $color;
         color: #fff;
         font-size: 13px;
         text-align: center;
@@ -1012,8 +1014,8 @@
           padding: 7px 0;
           float: right;
           background-color: #fff;
-          border: 1px solid #5f0080;
-          color: #5f0080;
+          border: 1px solid $color;
+          color: $color;
           font-size: 13px;
           text-align: center;
           font-weight: 600;
@@ -1115,7 +1117,7 @@
     .bar-open {
       width: 100%;
       height: 22px;
-      border-top: 2px solid #5f0080;
+      border-top: 2px solid $color;
       background-color: #fcfcfc;
       display: flex;
       align-items: flex-end;
@@ -1132,7 +1134,7 @@
         margin-left: 280px;
         border: 0 none;
         border-radius: 3px 3px 0 0;
-        background-color: #5f0080;
+        background-color: $color;
         text-align: center;
         font-size: 14px;
         color: #fff;
@@ -1143,7 +1145,7 @@
 
     .bar-close {
       width: 100%;
-      border-top: 2px solid #5f0080;
+      border-top: 2px solid $color;
       background-color: #fcfcfc;
       position: fixed;
       bottom: 0;
@@ -1159,7 +1161,7 @@
         margin-left: 280px;
         border: 0 none;
         border-radius: 3px 3px 0 0;
-        background-color: #5f0080;
+        background-color: $color;
         text-align: center;
         font-size: 14px;
         color: #fff;
@@ -1204,7 +1206,7 @@
                   width: 22px;
                   height: 22px;
                   background: #f6f7f7;
-                  color: #5f0080;
+                  color: $color;
                   outline: none;
                   border: 0;
                   cursor: pointer;
@@ -1338,29 +1340,29 @@
           .alarm-on {
             width: 212px;
             height: 54px;
-            border: 1px solid #5f0080;
+            border: 1px solid $color;
             border-radius: 3px;
             font-weight: 700;
             font-size: 16px;
-            color: #5f0080;
+            color: $color;
             cursor: pointer;
           }
           .save-item {
             width: 212px;
             height: 54px;
-            border: 1px solid #5f0080;
+            border: 1px solid $color;
             border-radius: 3px;
             font-weight: 700;
             font-size: 16px;
-            color: #5f0080;
+            color: $color;
             cursor: pointer;
           }
           .save-item-clicked {
             width: 212px;
             height: 54px;
-            border: 1px solid #5f0080;
+            border: 1px solid $color;
             border-radius: 3px;
-            background-color: #5f0080;
+            background-color: $color;
             font-weight: 700;
             font-size: 16px;
             color: #fff;
@@ -1373,8 +1375,8 @@
             border-radius: 3px;
             font-weight: 700;
             font-size: 16px;
-            border: 1px solid #5f0080;
-            background-color: #5f0080;
+            border: 1px solid $color;
+            background-color: $color;
             padding: 0;
             cursor: pointer;
           }
@@ -1414,7 +1416,7 @@
         h3 {
           font-size: 14px;
           font-weight: 500;
-          color: #5f0080;
+          color: $color;
         }
         .close {
           width: 19px;
@@ -1440,8 +1442,8 @@
           width: 150px;
           height: 45px;
           outline: none;
-          background-color: #5f0080;
-          border: 1px solid #5f0080;
+          background-color: $color;
+          border: 1px solid $color;
           color: #fff;
           cursor: pointer;
         }

@@ -1,3 +1,5 @@
+@import "../../Styles/common";
+
 .EventMain {
   .event-view {
     .event-img {
@@ -17,7 +19,7 @@
           top: 58%;
           position: absolute;
           cursor: pointer;
-          background-color: #5f0080;
+          background-color: $color;
           color: #fff;
           font-family: "Malgun Gothic";
           font-weight: 500;
@@ -29,8 +31,8 @@
           box-shadow: 4px 10px 20px #999;
           &:hover {
             background-color: #fff;
-            border: 2px solid #5f0080;
-            color: #5f0080;
+            border: 2px solid $color;
+            color: $color;
             font-weight: 600;
           }
         }
@@ -302,7 +304,7 @@
       padding: 80px 0 36px;
       text-align: center;
       box-sizing: border-box;
-      color: #5f0080;
+      color: $color;
       font-size: 46px;
       letter-spacing: -0.07em;
       word-spacing: 0.1em;
@@ -337,13 +339,13 @@
         width: 400px;
         height: 80px;
         background-position: 18px 7px;
-        border: 2px solid #5f0080;
+        border: 2px solid $color;
         border-radius: 50px;
         background-color: #fff;
         outline: none;
         font-size: 30px;
         font-weight: 700;
-        color: #5f0080;
+        color: $color;
         letter-spacing: -0.06em;
         margin: 0 15px;
         cursor: pointer;
@@ -366,9 +368,9 @@
         width: 400px;
         height: 80px;
         background-position: 18px 7px;
-        border: 2px solid #5f0080;
+        border: 2px solid $color;
         border-radius: 50px;
-        background-color: #5f0080;
+        background-color: $color;
         outline: none;
         font-size: 30px;
         font-weight: 700;

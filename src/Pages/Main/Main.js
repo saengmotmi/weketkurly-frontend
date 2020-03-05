@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Nav from "../../Components/Layout/Nav";
 import Footer from "../../Components/Layout/Footer";
-import MainCategory from "./Main-Category";
-import ImgSlider from "../../Components/Slider";
+import MainCategory from "./MainCategory";
+import ImgSlider from "./Slider";
 import "./Main.scss";
 
 class Main extends Component {

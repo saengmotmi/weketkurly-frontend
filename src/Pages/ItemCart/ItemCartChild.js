@@ -20,7 +20,6 @@ class ItemCartChild extends Component {
             max_ea: param["max_ea"],
             min_ea: param["min_ea"],
             thumbnail_image_url: param["thumbnail_image_url"],
-            name: param["name"],
             checked: true
           };
         })
@@ -76,6 +75,8 @@ class ItemCartChild extends Component {
     const isChkAll = tempArr.map(param => {
       return tempChkAll.push(param.checked);
     });
+
+    console.log(isChkAll);
 
     // 전부 체크 여부 레디 2
     for (let i of tempChkAll) {

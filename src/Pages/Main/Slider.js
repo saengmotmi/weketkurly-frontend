@@ -43,12 +43,12 @@ class ImgSlider extends Component {
         <button
           onClick={this.previous}
           type="button"
-          class="btn-scroll btn-scroll-left"
+          className="btn-scroll btn-scroll-left"
         />
         <button
           onClick={this.next}
           type="button"
-          class="btn-scroll btn-scroll-right"
+          className="btn-scroll btn-scroll-right"
         />
         <Slider ref={c => (this.slider = c)} {...settings}>
           {imgSliderList}

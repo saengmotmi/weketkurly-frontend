@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from "react";
-import MainItem from "./Main-Item";
+import React, { Component } from "react";
+import MainItem from "./MainItem";
 
 class MainCategory extends Component {
   constructor(props) {
@@ -68,9 +68,8 @@ class MainCategory extends Component {
 
   render() {
     const {
-      key,
       section_id,
-      section_type,
+      // section_type,
       title,
       events,
       products,
@@ -83,7 +82,7 @@ class MainCategory extends Component {
       ? products.map((param, idx) => {
           return (
             <MainItem
-              key={idx}
+              key={"prod" + idx}
               cN="products-item"
               no={param["no"]}
               name={param["name"]}
@@ -101,7 +100,7 @@ class MainCategory extends Component {
       ? this.state.data.map((param, idx) => {
           return (
             <MainItem
-              key={idx}
+              key={"md" + idx}
               cN="products-item"
               no={param["no"]}
               name={param["name"]}
@@ -119,7 +118,7 @@ class MainCategory extends Component {
       ? categories.map((param, idx) => {
           return (
             <button
-              key={idx}
+              key={"mdcate" + idx}
               style={
                 this.state.mdButtonSelect === idx
                   ? this.state.buttonStyle
@@ -139,7 +138,7 @@ class MainCategory extends Component {
       ? recipes.map((param, idx) => {
           return (
             <>
-              <div className="product-item">
+              <div key={"rcpe" + idx} className="product-item">
                 <ul>
                   <li>
                     <a
@@ -174,7 +173,11 @@ class MainCategory extends Component {
     const eventList = events
       ? events.map((param, idx) => {
           return (
-            <div style={{ textAlign: "center" }} className="product-item">
+            <div
+              key={"evt" + idx}
+              style={{ textAlign: "center" }}
+              className="product-item"
+            >
               <ul>
                 <li>
                   <a
@@ -221,6 +224,7 @@ class MainCategory extends Component {
       ? reviews.map((param, idx) => {
           return (
             <a
+              key={"revw" + idx}
               style={{
                 transform: `translateX(${this.state.moveX}px)`,
                 display: "block",

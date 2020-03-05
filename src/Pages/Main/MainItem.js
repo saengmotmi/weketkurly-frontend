@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 
 class MainItem extends Component {
   constructor(props) {
@@ -12,14 +12,13 @@ class MainItem extends Component {
 
   render() {
     const {
-      key,
       style,
-      no,
+      // no,
       name,
       price,
       original_price,
       thumbnail_image_url,
-      sticker_image_url,
+      // sticker_image_url,
       cN
     } = this.props;
 

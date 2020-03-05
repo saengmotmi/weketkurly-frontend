@@ -1,10 +1,41 @@
 import React, { Component } from "react";
-import Nav from "../../Components/Layout/Nav";
-import Footer from "../../Components/Layout/Footer";
+import Nav from "../../Components/Nav";
+import List from "../../Components/List/List";
+import PageBtn from "../../Components/PageBtn";
+import Footer from "../../Components/Footer";
+
 import "./OrderList.scss";
 
 export default class OrderList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      order: []
+    };
+  }
+  componentDidMount = () => {
+    fetch("http://localhost:3000/data/order.json")
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          order: res.order
+        });
+      });
+  };
+
   render() {
+    const orderlist = this.state.order.map(el => {
+      return (
+        <List
+          key={el.no}
+          no={el.no}
+          product_name={el.product_name}
+          status={el.status}
+          thumb={el.thumb}
+          review_button_flag={el.review_button_flag}
+        />
+      );
+    });
     return (
       <div className="OrderList">
         <Nav />
@@ -26,20 +57,32 @@ export default class OrderList extends Component {
             <li className="point">
               <h2>적립금</h2>
               <div className="won">
-                456원 <img src="#" alt="" />
+                456원
+                <img
+                  src="https://res.kurly.com/pc/service/common/1905/ico_arrow_56x56.png"
+                  alt="자세히 보기"
+                />
               </div>
               <div className="remove">소멸 예정 0원</div>
             </li>
             <li className="cupon">
               <h2>쿠폰</h2>
               <div>
-                0개 <img src="#" alt="" />
+                0개
+                <img
+                  src="https://res.kurly.com/pc/service/common/1905/ico_arrow_56x56.png"
+                  alt="자세히 보기"
+                />
               </div>
             </li>
             <li className="pass">
               <h2>컬리패스</h2>
               <div>
-                알아보기 <img src="#" alt="" />
+                알아보기
+                <img
+                  src="https://res.kurly.com/pc/service/common/1905/ico_arrow_56x56.png"
+                  alt="자세히 보기"
+                />
               </div>
             </li>
           </ul>
@@ -49,29 +92,23 @@ export default class OrderList extends Component {
           <aside className="my-kurly">
             <h2>마이컬리</h2>
             <ul>
-              <li>
+              <li className="list">
                 <span>주문내역</span>
-                <div className="arrow" />
               </li>
-              <li>
+              <li className="_list">
                 <span>늘 사는 것</span>
-                <div className="arrow" />
               </li>
-              <li>
+              <li className="_list">
                 <span>상품후기</span>
-                <div className="arrow" />
               </li>
-              <li>
+              <li className="_list">
                 <span>적립금</span>
-                <div className="arrow" />
               </li>
-              <li>
+              <li className="_list">
                 <span>쿠폰</span>
-                <div className="arrow" />
               </li>
-              <li>
+              <li className="_list">
                 <span>개인정보수정</span>
-                <div className="arrow" />
               </li>
             </ul>
             <div className="help">
@@ -97,39 +134,8 @@ export default class OrderList extends Component {
               </div>
             </div>
             {/* 상품 컴포넌트 */}
-            <div className="product">
-              <div className="date">2020.02.08(19시 34분)</div>
-              <div className="table">
-                <ul>
-                  <li>
-                    <div className="name">[네떼] 파프리카샐러드 65g 외 5건</div>
-                    <div className="product-info">
-                      <div className="info">
-                        <div className="thumb" />
-                        <div>
-                          <dl>
-                            <dt>주문번호</dt>
-                            <dd>1581158003681</dd>
-                          </dl>
-                          <dl>
-                            <dt>걸제금액</dt>
-                            <dd>31,880원</dd>
-                          </dl>
-                          <dl>
-                            <dt>주문선택</dt>
-                            <dd>배송완료</dd>
-                          </dl>
-                        </div>
-                      </div>
-                      <div className="button">
-                        <button className="write">후기쓰기</button>
-                        <button className="question">1:1 문의</button>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <ul className="list-detail">{orderlist}</ul>
+            <PageBtn />
           </article>
         </div>
         <Footer />

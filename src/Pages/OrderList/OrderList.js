@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Nav from "../../Components/Nav";
+import Nav from "../../Components/Layout/Nav";
 import List from "../../Components/List/List";
-import PageBtn from "../../Components/PageBtn";
-import Footer from "../../Components/Footer";
+import PageBtn from "../../Components/Detail/PageBtn";
+import Footer from "../../Components/Layout/Footer";
 
 import "./OrderList.scss";
 

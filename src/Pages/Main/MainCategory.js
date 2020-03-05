@@ -18,11 +18,16 @@ class MainCategory extends Component {
   }
 
   _mdClick = e => {
-    this.setState({
-      mdButtonSelect: Number(e.target.id.split(".")[1]),
-      mdButtonValue: e.target.textContent
-    });
-    this._getMdApi(Number(e.target.id.split(".")[0]));
+    const clickParam = e.target.id.split(".");
+    this.setState(
+      {
+        mdButtonSelect: Number(clickParam[1]),
+        mdButtonValue: e.target.textContent
+      },
+      () => {
+        this._getMdApi(Number(clickParam[0]));
+      }
+    );
   };
 
   _getMdApi = num => {

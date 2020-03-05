@@ -103,7 +103,6 @@
 
     margin: 0 auto;
     padding: 0;
-    position: relative;
 
     // nav bar 카테고리 가로 리스트 아이템
     &-item {
@@ -151,87 +150,58 @@
         font-weight: inherit;
       }
 
-      ul {
+      &-depth0 {
+        z-index: 100;
         position: absolute;
-        // top: 0;
-        left: 0;
-        z-index: 999;
-        background-color: #f7f7f7;
-        border: 1px solid #ddd;
         top: 55px;
-        // margin-top: 55px;
-        font-weight: 500;
-        // line-height: 20px;
-        // color: #333333;
+        left: 0;
 
-        // 2단 호버
-        &:hover {
-          width: 496px;
-          text-align: left;
+        background-color: #f7f7f7;
+        border: 1px solid #fff;
+        width: 219px;
+        height: 585px;
 
-          transition: width 0.5s;
-        }
-
-        // 1차 카테고리 (중복?)
-        .cate-list-1 {
-          text-align: left;
+        div {
+          // background-color: blue;
           width: 100%;
-          height: 32px;
-          // padding: 0 0 0 8px;
-          padding: 8px 0 0 14px;
-          font-size: 14px;
-          line-height: 22px;
-          background-color: white;
+          text-align: left;
+          position: relative;
 
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          z-index: 1001;
-
-          // 2단 호버
-          &:hover {
-            // width: 496px;
-            text-align: left;
-            transition: width 0.2s;
-            overflow: hidden;
-
-            background-color: transparent;
-            z-index: 100000;
-            cursor: pointer;
-
-            color: #5f0080;
-            font-weight: 700;
-          }
-
-          div {
-            // 1차 카테고리 이미지
+          .category-listdown-depth1 {
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            position: absolute;
+            top: 0;
+            left: 0;
 
-            img {
-              padding: 0 14px 0 0;
-              margin: 0;
-              width: 24px;
-              height: 24px;
-            }
+            li {
+              display: inline-block;
+              width: 219px;
+              height: 39px;
+              background-color: white;
 
-            .cate-list-2 {
-              position: absolute;
-              top: 0px;
-              left: 290px;
-              border: none;
-              z-index: -1;
-              height: 600px;
+              &:hover {
+                background-color: transparent;
+                cursor: pointer;
+              }
 
-              li {
-                background-color: yellow;
-                border: none;
-                padding: 8px 0 0 14px;
-                width: 219px;
-                height: 32px;
+              div {
+                // 1차 카테고리 이미지 & 카테고리명
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+
+                padding: 0 0 0 8px;
+
+                img {
+                  width: 24px;
+                  height: 24px;
+                }
 
                 span {
-                  // background-color: transparent;
                   border: none;
                   text-align: left;
 
@@ -242,29 +212,146 @@
                   padding: 0 4px 0 10px;
                   line-height: 22px;
                   color: #333;
+
+                  &:hover {
+                    color: #5f0080;
+                    font-weight: 700;
+                  }
                 }
               }
             }
           }
-          // // 1차 카테고리 이미지 호버
-          // &:hover {
-          //   background: url("");
-          // }
 
-          li {
-            // 1차 카테고리 글자
-            div {
-              vertical-align: middle;
-              letter-spacing: -0.3px;
-              font-size: 14px;
-              font-weight: 400px;
-              padding: 0 4px 0 10px;
-              line-height: 22px;
-              color: #333;
+          .category-listdown-depth2 {
+            display: flex;
+            flex-direction: column;
+            display: none;
+
+            position: absolute;
+            left: 219px;
+            height: 450px;
+            padding: 0 0 0 8px;
+
+            li {
+              display: inline-block;
+              width: 300px;
+              height: 39px;
+              cursor: pointer;
+
+              display: flex;
+              align-items: center;
+
+              span {
+                // background-color: transparent;
+                border: none;
+                text-align: left;
+
+                vertical-align: middle;
+                letter-spacing: -0.3px;
+                font-size: 14px;
+                font-weight: 400px;
+                padding: 0 4px 0 10px;
+                line-height: 22px;
+                color: #333;
+
+                &:hover {
+                  color: #5f0080;
+                  font-weight: 700;
+                  text-decoration: underline;
+                }
+
+                // background-color: pink;
+                // z-index: 100;
+              }
             }
           }
         }
       }
+
+      // .cateHover {
+      //   z-index: 100;
+      //   background-color: #f7f7f7;
+      //   border: 1px solid #ddd;
+      //   top: 0px;
+      //   left: 0;
+      //   height: 600px;
+      //   font-weight: 500;
+      //   position: absolute;
+
+      //   // li {
+      //   //   display: flex;
+      //   //   flex-direction: column;
+      //   //   align-items: center;
+      //   // }
+
+      //   .cate-list-1 {
+      //     text-align: left;
+      //     // padding: 0 0 0 8px;
+      //     padding: 8px 0 0 14px;
+      //     font-size: 14px;
+      //     line-height: 22px;
+      //     background-color: white;
+
+      //     display: flex;
+      //     flex-direction: row;
+      //     align-items: center;
+      //     z-index: 1001;
+
+      //     position: absolute;
+      //     width: 300px;
+      //     height: 600px;
+      //   }
+      // }
+      //     .cate-list-2 {
+      //       position: absolute;
+      //       top: 0px;
+      //       left: 180px;
+      //       border: none;
+      //       z-index: -1;
+      //       height: 600px;
+
+      //       li {
+      //         background-color: yellow;
+      //         border: none;
+      //         padding: 8px 0 0 14px;
+      //         width: 219px;
+      //         height: 32px;
+
+      //         span {
+      //           background-color: transparent;
+      //           border: none;
+      //           text-align: left;
+
+      //           vertical-align: middle;
+      //           letter-spacing: -0.3px;
+      //           font-size: 14px;
+      //           font-weight: 400px;
+      //           padding: 0 4px 0 10px;
+      //           line-height: 22px;
+      //           color: #333;
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
+
+      //     }
+
+      //     li {
+      //       // 1차 카테고리 글자
+      //       div {
+      //         vertical-align: middle;
+      //         letter-spacing: -0.3px;
+      //         font-size: 14px;
+      //         font-weight: 400px;
+      //         padding: 0 4px 0 10px;
+      //         line-height: 22px;
+      //         color: #333;
+      //       }
+      //     }
+      //   }
+
+      // }
 
       // nav bar 카테고리 가로 리스트 img
       img {
@@ -318,7 +405,7 @@
     left: 0;
     width: 100%;
     background-color: white;
-    z-index: 100;
+    z-index: 50;
 
     &::after {
       content: "";
@@ -331,9 +418,14 @@
     }
   }
 
-  // 카테고리 호버
-  .cateHover {
-    // width: 219px;
-    // transition: width 0.2s;
-  }
+  // // 카테고리 호버
+  // .cateHover {
+  //   width: 219px;
+  //   position: relative;
+
+  //   &:hover {
+  //     width: 500px;
+  //     transition: width 0.2s;
+  //   }
+  // }
 }

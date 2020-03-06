@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./PopUp.scss";
+import "./CartPop.scss";
 
 export default class PopUp extends Component {
   render() {

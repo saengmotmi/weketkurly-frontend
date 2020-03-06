@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Count from "../ProductInfo/Count";
-import PopUp from "../../PopUp/PopUp";
+import PopUp from "../../CartPop/CartPop";
 import CartBtn from "../ProductInfo/CartBtn";
 import TotalPrice from "../ProductInfo/TotalPrice";
 import "./Bar.scss";

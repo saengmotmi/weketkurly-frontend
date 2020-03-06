@@ -11,7 +11,7 @@ import Customer from "../../Components/Detail/Detail/Customer";
 import ProductDetail from "../../Components/Detail/Detail/ProductDetail";
 import Review from "../../Components/Detail/ReviewQA/Review";
 import Qa from "../../Components/Detail/ReviewQA/Qa";
-import PopUp from "../../Components/PopUp/PopUp";
+import PopUp from "../../Components/CartPop/CartPop";
 import Bar from "../../Components/Detail/Detail/Bar";
 import Footer from "../../Components/Layout/Footer";
 import "./Detail.scss";

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import Nav from "../../Components/Layout/Nav";
 import Footer from "../../Components/Layout/Footer";
 import "./JoinComplete.scss";
@@ -11,10 +12,12 @@ class JoinComplete extends Component {
       PW: ""
     };
   }
-  goHome = () => {
-    this.props.history.push("/");
+  goEvent = () => {
+    this.props.history.push("/eventmain");
   };
-
+  goHome = () => {
+    this.props.history.push("/orderlist");
+  };
   render() {
     return (
       <div>
@@ -41,12 +44,12 @@ class JoinComplete extends Component {
                   </div>
                   <div className="bottom-button-box">
                     <button className="left-button">
-                      <div className="benefit">
+                      <div className="benefit" onClick={this.goEvent}>
                         신규 혜택 100원 상품 보러가기
                       </div>
                     </button>
                     <button className="right-button">
-                      <div onClick={this.goHome}>홈으로 이동</div>
+                      <div onClick={this.goHome}>마이페이지로 이동</div>
                     </button>
                   </div>
                 </div>
@@ -60,4 +63,4 @@ class JoinComplete extends Component {
   }
 }
 
-export default JoinComplete;
+export default withRouter(JoinComplete);

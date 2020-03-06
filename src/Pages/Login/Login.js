@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import Nav from "../../Components/Layout/Nav";
 import Footer from "../../Components/Layout/Footer";
 import "./Login.scss";
@@ -24,7 +25,7 @@ class Login extends React.Component {
     console.log(e.target.value);
   };
   loginFetch = () => {
-    fetch("http://10.58.7.245:8000/users/sign-in", {
+    fetch("http://10.58.2.245:8000/users/sign-in", {
       method: "POST",
       headers: {
         "Content-type": "application/json"
@@ -127,4 +128,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

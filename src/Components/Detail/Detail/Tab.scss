@@ -12,9 +12,9 @@
       .tabOn {
         box-sizing: border-box;
         background-color: white;
-        border-left: 1px solid #bfbfbf;
-        border-top: 1px solid #bfbfbf;
-        border-right: 1px solid #f0eef1;
+        border: 1px solid #bfbfbf;
+        border-left: 0;
+        border-bottom: 0;
         width: 170px;
         height: 46px;
         text-align: center;
@@ -26,22 +26,9 @@
       }
       .tabOff {
         box-sizing: border-box;
-        border-left: 1px solid #bfbfbf;
-        border-right: 1px solid #f0eef1;
+        border-right: 1px solid #bfbfbf;
         border-top: 1px solid #bfbfbf;
         border-bottom: 1px solid #bfbfbf;
-        background-color: #f0eef1;
-        width: 170px;
-        height: 46px;
-        text-align: center;
-        line-height: 46px;
-        color: #4c4c4c;
-        font-size: 14px;
-        cursor: pointer;
-      }
-      .tabLast {
-        box-sizing: border-box;
-        border: 1px solid #bfbfbf;
         background-color: #f0eef1;
         width: 170px;
         height: 46px;

@@ -43,7 +43,7 @@ export default class Order extends Component {
   componentDidMount = () => {
     window.addEventListener("scroll", this.onScroll);
 
-    fetch("http://10.58.4.62:8000/creditcard")
+    fetch("http://10.58.1.118:8000/orders/card")
       .then(res => res.json())
       .then(res => {
         this.setState({

@@ -1,7 +1,7 @@
 @import "../../../Styles/common";
 
 .Detail {
-  .why-kurly {
+  .why-kurly-table {
     width: 1010px;
     text-align: center;
     table {
@@ -40,42 +40,43 @@
         }
       }
     }
-    h3 {
-      font-size: 33px;
+  }
+  h3 {
+    font-size: 33px;
+    font-weight: 400;
+    color: #666;
+    margin: 70px 0 90px 0;
+  }
+  .why-kurly {
+    @include center;
+    margin-bottom: 70px;
+  }
+  .contents-box {
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 50px;
+    .contents {
+      padding-bottom: 20px;
+      margin: 0 30px;
+    }
+    .title {
+      color: $color;
+      font-weight: 500;
+      display: block;
+      font-size: 18px;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .content {
+      color: #333;
+      padding: 0;
+      font-size: 16px;
       font-weight: 400;
-      color: #666;
-      margin: 70px 0 90px 0;
-    }
-    .why {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-around;
-      margin-bottom: 70px;
-    }
-    .why-kurly-contents {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      .why-kurly-info {
-        padding-bottom: 20px;
-        margin: 0 30px;
-      }
-      .title {
-        color: $color;
-        font-weight: 500;
-        display: block;
-        font-size: 18px;
-        text-align: center;
-        margin-top: 10px;
-      }
-      .content {
-        color: #333;
-        padding: 0;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 25px;
-      }
+      line-height: 25px;
+      margin-top: 22px;
+      letter-spacing: -0.02em;
     }
   }
 }

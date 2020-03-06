@@ -143,7 +143,7 @@ export default class Customer extends Component {
               </div>
             </div>
           </div>
-          <div className="refund-info">
+          <div className="refund-info" style={{ borderBottom: 0 }}>
             <div className="title">03. 교환·반품이 불가한 경우</div>
             <div className="contents">
               <div className="hide-extra">

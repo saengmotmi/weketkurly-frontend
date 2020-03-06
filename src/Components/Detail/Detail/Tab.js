@@ -5,6 +5,11 @@ export default class Tab extends Component {
   render() {
     const {
       info,
+      tabInfo,
+      tabImg,
+      tabDetail,
+      tabReview,
+      tabQA,
       MoveToProduct,
       MoveToImg,
       MoveToInfo,
@@ -14,20 +19,20 @@ export default class Tab extends Component {
     return (
       <div className="tab">
         <ul>
-          <li className="tabOn" onClick={MoveToProduct}>
+          <li className={tabInfo ? "tabOn" : "tabOff"} onClick={MoveToProduct}>
             상품설명
           </li>
-          <li className="tabOff" onClick={MoveToImg}>
+          <li className={tabImg ? "tabOn" : "tabOff"} onClick={MoveToImg}>
             상품이미지
           </li>
-          <li className="tabOff" onClick={MoveToInfo}>
+          <li className={tabDetail ? "tabOn" : "tabOff"} onClick={MoveToInfo}>
             상세정보
           </li>
-          <li className="tabOff" onClick={MoveToReview}>
+          <li className={tabReview ? "tabOn" : "tabOff"} onClick={MoveToReview}>
             고객후기({info.review_count})
           </li>
-          <li className="tabLast" onClick={MoveToQA}>
-            상품문의(2)
+          <li className={tabQA ? "tabOn" : "tabOff"} onClick={MoveToQA}>
+            상품문의(3)
           </li>
           <div className="line" />
         </ul>

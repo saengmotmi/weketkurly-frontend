@@ -32,7 +32,18 @@ export default class Detail extends Component {
       moreBtn: false,
       translate: 0,
       data: [],
-      info: []
+      info: [],
+
+      //tab
+      tabInfo: false,
+      tabImg: false,
+      tabDetail: false,
+      tabReview: false,
+      tabQA: false,
+
+      // 장바구니로 Go!
+      thumb: "",
+      productName: ""
     };
   }
 
@@ -129,23 +140,38 @@ export default class Detail extends Component {
 
   // 탭 클릭 시 해당 영역 이동
   MoveToProduct = () => {
-    window.scrollTo(0, 1250, "smooth");
+    window.scrollTo(0, 1500, "smooth");
+    // this.setState({
+    //   tabInfo: true
+    // });
   };
 
   MoveToImg = () => {
-    window.scrollTo(0, 3650, "smooth");
+    window.scrollTo(0, 4050, "smooth");
+    // this.setState({
+    //   tabImg: true
+    // });
   };
 
   MoveToInfo = () => {
-    window.scrollTo(0, 6300, "smooth");
+    window.scrollTo(0, 5100, "smooth");
+    // this.setState({
+    //   tabDetail: true
+    // });
   };
 
   MoveToReview = () => {
-    window.scrollTo(0, 8050, "smooth");
+    window.scrollTo(0, 6950, "smooth");
+    // this.setState({
+    //   tabReview: true
+    // });
   };
 
   MoveToQA = () => {
-    window.scrollTo(0, 9100, "smooth");
+    window.scrollTo(0, 7600, "smooth");
+    // this.setState({
+    //   tabQA: true
+    // });
   };
 
   onClickBarOpen = () => {
@@ -163,6 +189,14 @@ export default class Detail extends Component {
   onClickMore = () => {
     this.setState({
       moreBtn: !this.state.moreBtn
+    });
+  };
+
+  // 장바구니 버튼 클릭 시, 정보 넘겨주기
+  onChangeCart = () => {
+    this.setState({
+      thumb: this.info.list_image_url,
+      productName: this.info.name
     });
   };
 
@@ -224,7 +258,7 @@ export default class Detail extends Component {
           <CartBtn
             handleOnClickSave={this.handleOnClickSave}
             togglePopUp={this.togglePopUp}
-            togglePopUpCart={this.togglePopUpCart}
+            onChangeCart={this.onChangeCart}
             save={save}
           />
           {popUp ? (
@@ -260,30 +294,151 @@ export default class Detail extends Component {
           handleOnClickNext={this.handleOnClickNext}
         />
 
-        <Tab
+        {/* <Tab
           info={info}
+          tabInfo={tabInfo}
+          tabImg={tabImg}
+          tabDetail={tabDetail}
+          tabReview={tabReview}
+          tabQA={tabQA}
           MoveToProduct={this.MoveToProduct}
           MoveToImg={this.MoveToImg}
           MoveToInfo={this.MoveToInfo}
           MoveToReview={this.MoveToReview}
           MoveToQA={this.MoveToQA}
-        />
+        /> */}
+        <div className="tab">
+          <ul>
+            <li
+              className="tabOn"
+              onClick={this.MoveToProduct}
+              style={{ borderLeft: "1px solid #bfbfbf" }}
+            >
+              상품설명
+            </li>
+            <li className="tabOff" onClick={this.MoveToImg}>
+              상품이미지
+            </li>
+            <li className="tabOff" onClick={this.MoveToInfo}>
+              상세정보
+            </li>
+            <li className="tabOff" onClick={this.MoveToReview}>
+              고객후기({info.review_count})
+            </li>
+            <li className="tabOff" onClick={this.MoveToQA}>
+              상품문의(3)
+            </li>
+            <div className="line" />
+          </ul>
+        </div>
         <ProductDetail />
-        <Tab info={info} />
+        <div className="tab">
+          <ul>
+            <li
+              className="tabOff"
+              onClick={this.MoveToProduct}
+              style={{ borderLeft: "1px solid #bfbfbf" }}
+            >
+              상품설명
+            </li>
+            <li className="tabOn" onClick={this.MoveToImg}>
+              상품이미지
+            </li>
+            <li className="tabOff" onClick={this.MoveToInfo}>
+              상세정보
+            </li>
+            <li className="tabOff" onClick={this.MoveToReview}>
+              고객후기({info.review_count})
+            </li>
+            <li className="tabOff" onClick={this.MoveToQA}>
+              상품문의(3)
+            </li>
+            <div className="line" />
+          </ul>
+        </div>
 
         <img
           className="detail-info"
           src="//img-cf.kurly.com/shop/data/goodsview/20200304/gv00000083982_1.jpg"
           alt="detail-info"
         />
-        <Tab info={info} />
+        <div className="tab">
+          <ul>
+            <li
+              className="tabOff"
+              onClick={this.MoveToProduct}
+              style={{ borderLeft: "1px solid #bfbfbf" }}
+            >
+              상품설명
+            </li>
+            <li className="tabOff" onClick={this.MoveToImg}>
+              상품이미지
+            </li>
+            <li className="tabOn" onClick={this.MoveToInfo}>
+              상세정보
+            </li>
+            <li className="tabOff" onClick={this.MoveToReview}>
+              고객후기({info.review_count})
+            </li>
+            <li className="tabOff" onClick={this.MoveToQA}>
+              상품문의(3)
+            </li>
+            <div className="line" />
+          </ul>
+        </div>
         <WhyKurly />
 
         <div className="full-line" />
         <Customer moreBtn={moreBtn} onClickMore={this.onClickMore} />
-        <Tab info={info} />
+        <div className="tab">
+          <ul>
+            <li
+              className="tabOff"
+              onClick={this.MoveToProduct}
+              style={{ borderLeft: "1px solid #bfbfbf" }}
+            >
+              상품설명
+            </li>
+            <li className="tabOff" onClick={this.MoveToImg}>
+              상품이미지
+            </li>
+            <li className="tabOff" onClick={this.MoveToInfo}>
+              상세정보
+            </li>
+            <li className="tabOn" onClick={this.MoveToReview}>
+              고객후기({info.review_count})
+            </li>
+            <li className="tabOff" onClick={this.MoveToQA}>
+              상품문의(3)
+            </li>
+            <div className="line" />
+          </ul>
+        </div>
         <Review />
-        <Tab info={info} />
+        <div className="tab">
+          <ul>
+            <li
+              className="tabOff"
+              onClick={this.MoveToProduct}
+              style={{ borderLeft: "1px solid #bfbfbf" }}
+            >
+              상품설명
+            </li>
+            <li className="tabOff" onClick={this.MoveToImg}>
+              상품이미지
+            </li>
+            <li className="tabOff" onClick={this.MoveToInfo}>
+              상세정보
+            </li>
+            <li className="tabOff" onClick={this.MoveToReview}>
+              고객후기({info.review_count})
+            </li>
+            <li className="tabOn" onClick={this.MoveToQA}>
+              상품문의(3)
+            </li>
+            <div className="line" />
+          </ul>
+        </div>
 
         <Qa />
         <Bar

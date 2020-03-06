@@ -6,7 +6,7 @@ class CategoryTitle extends Component {
     super(props);
     this.state = {
       data: [],
-      cateNum1: this.props.cateNum1,
+      cateNum1: this.props.cateNum1.split("00", 1),
       sortOrder: "0"
       //0~14번까지 대카테고리: 카테고리 클릭시 주는 정보를 받아서 번호로 치환
       /* 
@@ -23,67 +23,68 @@ class CategoryTitle extends Component {
   componentDidMount() {
     fetch("https://api.kurly.com/v2/categories")
       .then(res => {
-        if (this.state.cateNum1 === "907") {
+        if (this.state.cateNum1[0] === "907") {
           this.setState({
             sortOrder: "0"
           });
-        } else if (this.state.cateNum1 === "908") {
+        } else if (this.state.cateNum1[0] === "908") {
           this.setState({
             sortOrder: "1"
           });
-        } else if (this.state.cateNum1 === "909") {
+        } else if (this.state.cateNum1[0] === "909") {
           this.setState({
             sortOrder: "2"
           });
-        } else if (this.state.cateNum1 === "910") {
+        } else if (this.state.cateNum1[0] === "910") {
           this.setState({
             sortOrder: "3"
           });
-        } else if (this.state.cateNum1 === "911") {
+        } else if (this.state.cateNum1[0] === "911") {
           this.setState({
             sortOrder: "4"
           });
-        } else if (this.state.cateNum1 === "912") {
+        } else if (this.state.cateNum1[0] === "912") {
           this.setState({
             sortOrder: "5"
           });
-        } else if (this.state.cateNum1 === "913") {
+        } else if (this.state.cateNum1[0] === "913") {
           this.setState({
             sortOrder: "6"
           });
-        } else if (this.state.cateNum1 === "914") {
+        } else if (this.state.cateNum1[0] === "914") {
           this.setState({
             sortOrder: "7"
           });
-        } else if (this.state.cateNum1 === "915") {
+        } else if (this.state.cateNum1[0] === "915") {
           this.setState({
             sortOrder: "8"
           });
-        } else if (this.state.cateNum1 === "032") {
+        } else if (this.state.cateNum1[0] === "032") {
           this.setState({
             sortOrder: "9"
           });
-        } else if (this.state.cateNum1 === "918") {
+        } else if (this.state.cateNum1[0] === "918") {
           this.setState({
             sortOrder: "10"
           });
-        } else if (this.state.cateNum1 === "916") {
+        } else if (this.state.cateNum1[0] === "916") {
           this.setState({
             sortOrder: "11"
           });
-        } else if (this.state.cateNum1 === "085") {
+        } else if (this.state.cateNum1[0] === "085") {
           this.setState({
             sortOrder: "12"
           });
-        } else if (this.state.cateNum1 === "919") {
+        } else if (this.state.cateNum1[0] === "919") {
           this.setState({
             sortOrder: "13"
           });
-        } else if (this.state.cateNum1 === "991") {
+        } else if (this.state.cateNum1[0] === "991") {
           this.setState({
             sortOrder: "14"
           });
         }
+        console.log("cateNum1", this.state.cateNum1);
         return res.json();
       })
       .then(res => {

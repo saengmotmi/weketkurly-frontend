@@ -37,7 +37,8 @@ class Join extends Component {
       necessary3: "",
       necessaryAll: "",
       again: false,
-      infoChecked: false
+      infoChecked: false,
+      allAgree: false
     };
   }
   IDPopup = () => {
@@ -401,10 +402,10 @@ class Join extends Component {
       .then(response => {
         console.log(response);
         if (response.status === 200) {
-          alert("회원가입을 축하드립니다! 당신의 일상에 컬리를 더해보세요");
+          alert("회원가입을 축하드립니다! \n당신의 일상에 컬리를 더해보세요");
           this.props.history.push("/joincomplete");
         } else {
-          alert("다시 시도하여 주십시오!");
+          alert("올바를 가입정보를 기입하여, \n다시 시도하여 주십시오!");
         }
         console.log(response.data);
         return response;
@@ -481,6 +482,12 @@ class Join extends Component {
   };
   goSorry = () => {
     alert("기술상의 이유로 접속되지 않았습니다. \n다음주에 시도하여 주십시오.");
+  };
+
+  allAgree = () => {
+    this.setState({
+      allAgree: true
+    });
   };
   render() {
     return (
@@ -855,7 +862,11 @@ class Join extends Component {
                 <div className="agree-neck">
                   <label>
                     <input type="checkbox"></input>
-                    <span className="agree-explanation" onClick={this.allAgree}>
+                    <span
+                      className="agree-explanation"
+                      onClick={this.allAgree}
+                      id="checkAll"
+                    >
                       전체동의
                     </span>
                   </label>
@@ -867,6 +878,7 @@ class Join extends Component {
                         className="nece1"
                         type="checkbox"
                         onChange={this.necessary1}
+                        name="checkRow"
                         required
                       ></input>
                       <span className="agree-explanation">
@@ -882,6 +894,7 @@ class Join extends Component {
                         className="nece2"
                         type="checkbox"
                         onChange={this.necessary2}
+                        name="checkRow"
                         required
                       ></input>
                       <span className="agree-explanation">
@@ -893,7 +906,7 @@ class Join extends Component {
                   </div>
                   <div className="agree-body-line">
                     <label>
-                      <input type="checkbox"></input>
+                      <input type="checkbox" name="checkRow"></input>
                       <span className="agree-explanation">
                         개인정보처리방침
                         <span className="agree-gray-guide">(선택)</span>
@@ -907,6 +920,7 @@ class Join extends Component {
                         type="checkbox"
                         className="info-share"
                         onClick={this.infoCheck}
+                        name="checkRow"
                       ></input>
                       <span className="agree-explanation">
                         무료배송, 할인쿠폰 등 혜택/정보 수신
@@ -920,6 +934,7 @@ class Join extends Component {
                           <input
                             type="checkbox"
                             className="info-share"
+                            name="checkRow"
                             // checked={this.state.infoChecked}
                           ></input>
                           <span className="agree-explanation">SMS</span>
@@ -929,6 +944,7 @@ class Join extends Component {
                           <input
                             type="checkbox"
                             className="info-share"
+                            name="checkRow"
                             // checked={this.state.infoChecked}
                           ></input>
                           <span className="agree-explanation">이메일</span>
@@ -949,6 +965,7 @@ class Join extends Component {
                         className="nece3"
                         type="checkbox"
                         onChange={this.necessary3}
+                        name="checkRow"
                         required
                       ></input>
                       <span className="agree-explanation">

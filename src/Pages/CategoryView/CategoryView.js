@@ -16,7 +16,7 @@ class categoryView extends React.Component {
       data: [],
       data2: [],
       cateNum2: "",
-      cateNum1: "907001"
+      cateNum1: "907"
 
       /* cateNum1 -> CategoryViewItem 화면이 바뀐다  */
       /* cateNum1 -> CategoryTitle, CatergorySort의 주요변수를 바꾸도록한다 */

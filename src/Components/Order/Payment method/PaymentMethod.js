@@ -64,8 +64,12 @@ export default class PaymentMethod extends Component {
                         </div>
                       </div>
                       <div className="point">
-                        <input type="checkbox" />
-                        {pointValue}
+                        {/* <input type="checkbox" /> */}
+                        {pointValue ? (
+                          <div>
+                            <input type="checkbox" /> {pointValue}
+                          </div>
+                        ) : null}
                       </div>
                       {discount}
                       <div className="description">{description}</div>

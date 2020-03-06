@@ -21,8 +21,8 @@ export default class Detail extends Component {
     super(props);
     this.state = {
       number: 1,
-      price: 37000,
-      point: 185,
+      price: 1350,
+      point: 7,
       save: false,
       popUp: false,
       popUpCart: false,
@@ -47,7 +47,7 @@ export default class Detail extends Component {
         });
       });
 
-    fetch("https://api.kurly.com/v3/home/products/27422?&ver=1582712067853")
+    fetch("https://api.kurly.com/v3/home/products/49635?&ver=1583460405278")
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -75,8 +75,8 @@ export default class Detail extends Component {
   handleOnClickPlus = () => {
     this.setState({
       number: this.state.number + 1,
-      price: this.state.price + 37000,
-      point: this.state.point + 185
+      price: this.state.price + 1350,
+      point: this.state.point + 7
     });
   };
 
@@ -90,8 +90,8 @@ export default class Detail extends Component {
     } else {
       this.setState({
         number: this.state.number - 1,
-        price: this.state.price - 37000,
-        point: this.state.point - 185
+        price: this.state.price - 1350,
+        point: this.state.point - 7
       });
     }
   };
@@ -211,7 +211,8 @@ export default class Detail extends Component {
             weight={info.weight}
             delivery_time_type_text={info.delivery_time_type_text}
             number={number}
-            contactant={info.contactant}
+            expiration_date={info.expiration_date}
+            guides={info.guides}
             handleOnClickPlus={this.handleOnClickPlus}
             handleOnClickMinus={this.handleOnClickMinus}
           />
@@ -272,7 +273,7 @@ export default class Detail extends Component {
 
         <img
           className="detail-info"
-          src="https://img-cf.kurly.com/shop/data/goodsview/20190730/gv30000057970_1.jpg"
+          src="//img-cf.kurly.com/shop/data/goodsview/20200304/gv00000083982_1.jpg"
           alt="detail-info"
         />
         <Tab info={info} />

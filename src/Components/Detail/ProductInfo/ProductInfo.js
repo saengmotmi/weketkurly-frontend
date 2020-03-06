@@ -14,7 +14,8 @@ export default class ProductInfo extends Component {
       weight,
       delivery_time_type_text,
       number,
-      contactant,
+      expiration_date,
+      guides,
       handleOnClickPlus,
       handleOnClickMinus
     } = this.props;
@@ -63,15 +64,19 @@ export default class ProductInfo extends Component {
           <dl className="list">
             <dt>포장타입</dt>
             <dd>
-              <div>상온/종이포장</div>
+              <div>냉장/종이포장</div>
               <div className="delivery">
                 택배배송은 에코포장이 스티로폼으로 대체됩니다.
               </div>
             </dd>
           </dl>
           <dl className="list">
-            <dt>알레르기정보</dt>
-            <dd>{contactant}</dd>
+            <dt>유통기한</dt>
+            <dd>{expiration_date}</dd>
+          </dl>
+          <dl className="list">
+            <dt>안내사항</dt>
+            <dd>{guides}</dd>
           </dl>
           <dl className="list">
             <dt>구매수량</dt>

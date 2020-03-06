@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 
 class MainItem extends Component {
   constructor(props) {
@@ -6,26 +6,19 @@ class MainItem extends Component {
     this.state = {};
   }
 
-  numberWithCommas = x => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
-
   render() {
     const {
-      key,
       style,
-      no,
       name,
       price,
       original_price,
       thumbnail_image_url,
-      sticker_image_url,
       cN
     } = this.props;
 
     return (
       <>
-        <li style={{ transform: "translateX(" + style + ")" }} className={cN}>
+        <li style={{ transform: `translateX(${style}px)` }} className={cN}>
           <div
             style={{
               position: "relative",
@@ -50,7 +43,7 @@ class MainItem extends Component {
           <div style={{ wordBreak: "break-all" }}>
             <p style={{ marginTop: "12px" }}>{name}</p>
             <p style={{ fontWeight: "700", paddingTop: "6px" }}>
-              {this.numberWithCommas(price)}원
+              {price.toLocaleString()}원
             </p>
             {price === original_price ? null : (
               <p
@@ -61,7 +54,7 @@ class MainItem extends Component {
                   fontSize: "14px"
                 }}
               >
-                {this.numberWithCommas(original_price)}원
+                {original_price.toLocaleString()}원
               </p>
             )}
           </div>

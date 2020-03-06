@@ -43,7 +43,8 @@ export default class Detail extends Component {
 
       // 장바구니로 Go!
       thumb: "",
-      productName: ""
+      productName: "",
+      popPrice: 0
     };
   }
 
@@ -193,10 +194,11 @@ export default class Detail extends Component {
   };
 
   // 장바구니 버튼 클릭 시, 정보 넘겨주기
-  onChangeCart = () => {
+  onChangeCart = (url, name, price) => {
     this.setState({
-      thumb: this.info.list_image_url,
-      productName: this.info.name
+      thumb: url,
+      productName: name,
+      popPrice: price
     });
   };
 
@@ -227,7 +229,11 @@ export default class Detail extends Component {
 
     return (
       <div className="Detail">
-        <Nav />
+        <Nav
+          popPrice={this.state.popPrice}
+          url={this.state.thumb}
+          productName={this.state.productName}
+        />
         <div className="product-top">
           <div
             className="product-img"
@@ -258,7 +264,13 @@ export default class Detail extends Component {
           <CartBtn
             handleOnClickSave={this.handleOnClickSave}
             togglePopUp={this.togglePopUp}
-            onChangeCart={this.onChangeCart}
+            onChangeCart={() =>
+              this.onChangeCart(
+                "https://img-cf.kurly.com/shop/data/goods/1583297303173l0.jpg",
+                "조각무 2조각",
+                1350
+              )
+            }
             save={save}
           />
           {popUp ? (

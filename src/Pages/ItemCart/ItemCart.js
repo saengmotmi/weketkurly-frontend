@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import ItemCartChild from "./ItemCartChild";
+import Nav from "../../Components/Layout/Nav";
+import Footer from "../../Components/Layout/Footer";
 import "./ItemCart.scss";
 
 class ItemCart extends Component {
@@ -72,7 +74,9 @@ class ItemCart extends Component {
   render() {
     return (
       <>
+        <Nav />
         <ItemCartChild data={this.state.data} />
+        <Footer />
       </>
     );
   }

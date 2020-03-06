@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./ItemCart.scss";
 
 class ItemCartChild extends Component {
@@ -20,17 +21,12 @@ class ItemCartChild extends Component {
             max_ea: param["max_ea"],
             min_ea: param["min_ea"],
             thumbnail_image_url: param["thumbnail_image_url"],
-            name: param["name"],
             checked: true
           };
         })
       ]
     };
   }
-
-  numberWithCommas = x => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
 
   _itemCount = e => {
     const editTargetIdx = e.target.id.split(".")[0]; // number
@@ -64,7 +60,7 @@ class ItemCartChild extends Component {
     let tempCheckedCount = this.state.checkedCount;
 
     // 개별 체크 상태 뒤집어줌
-    if (tempObj.checked === true) {
+    if (tempObj.checked) {
       tempCheckedCount = tempCheckedCount - 1;
     } else {
       tempCheckedCount = tempCheckedCount + 1;
@@ -77,6 +73,8 @@ class ItemCartChild extends Component {
       return tempChkAll.push(param.checked);
     });
 
+    console.log(isChkAll);
+
     // 전부 체크 여부 레디 2
     for (let i of tempChkAll) {
       tempAllBoolean = Boolean(tempAllBoolean * i);
@@ -85,7 +83,7 @@ class ItemCartChild extends Component {
     // 전부 체크 상태에서 -1 눌렸으면
     if (editTargetIdx === -1) {
       // 전체선택 체크박스인가?
-      if (this.state.chkChecked === true) {
+      if (this.state.chkChecked) {
         for (let i = 0; i < tempArr.length; i++) {
           tempArr[i].checked = false;
         }
@@ -105,7 +103,7 @@ class ItemCartChild extends Component {
         });
       }
     } else if (editTargetIdx !== -1) {
-      if (tempAllBoolean === false) {
+      if (!tempAllBoolean) {
         this.setState({
           itemList: tempArr,
           chkChecked: false,
@@ -144,15 +142,18 @@ class ItemCartChild extends Component {
     priceResult4 = priceResult1 - priceResult2 + 3000;
 
     for (let i of [priceResult1, priceResult2, priceResult3, priceResult4]) {
-      resultArr.push(this.numberWithCommas(i));
+      resultArr.push(i.toLocaleString());
     }
 
-    console.log();
     return resultArr;
   };
 
-  _deleteItem = e => {
-    const editTargetIdx = parseInt(e.target.id); // number
+  _deleteItem = row => {
+    // const editTargetIdx = parseInt(e.target.id); // number
+    // console.log(e.target.id);
+
+    const editTargetIdx = row;
+    console.log(row);
 
     const tempArr = [...this.state.itemList]; // itemList 복사
     const tempArrFilter = tempArr.filter((_, idx) => idx !== editTargetIdx);
@@ -183,13 +184,13 @@ class ItemCartChild extends Component {
               checked={this.state.itemList[idx].checked ? true : false}
               type="checkbox"
             />
-            <label for={idx + "chk"} />
+            <label htmlFor={idx + "chk"} />
             <img src={param["thumbnail_image_url"]} alt="" />
           </td>
           <td align="left">
             <p className="item-table-row-title">{param["name"]}</p>
             <p className="item-table-row-price">
-              {this.numberWithCommas(param["price"])}원
+              {param["price"].toLocaleString()}원
             </p>
           </td>
           <td className="item-table-row-count">
@@ -202,9 +203,7 @@ class ItemCartChild extends Component {
                 -
               </button>
               <span>
-                {this.state.itemList
-                  ? String(this.state.itemList[idx]["ea"])
-                  : null}
+                {this.state.itemList && String(this.state.itemList[idx]["ea"])}
               </span>
               <button
                 id={`${idx}.${param["price"]}.${param["ea"]}`}
@@ -216,15 +215,19 @@ class ItemCartChild extends Component {
             </div>
           </td>
           <td>
-            {this.numberWithCommas(
+            {(
               this.state.itemList[idx]["ea"] * this.state.itemList[idx]["price"]
-            )}
+            ).toLocaleString()}
           </td>
           <td
-            id={`${idx}.${param["price"]}.${param["ea"]}`}
-            onClick={this._deleteItem}
+            onClick={() => this._deleteItem(idx)}
+            // id={`${idx}.${param["price"]}.${param["ea"]}`}
           >
-            X
+            <img
+              className="del-btn"
+              src="https://res.kurly.com/pc/ico/1801/btn_close_24x24_514859.png"
+              alt="삭제"
+            />
           </td>
         </tr>
       );
@@ -239,7 +242,13 @@ class ItemCartChild extends Component {
     });
   }
 
+  _goToOrder = () => {
+    this.props.history.push("/order");
+  };
+
   render() {
+    const { itemCount, chkChecked, checkedCount } = this.state;
+
     return (
       <div className="item">
         <div style={{ padding: "20px 40px 10px" }}></div>
@@ -251,60 +260,64 @@ class ItemCartChild extends Component {
         </div>
         <div className="item-content">
           <table className="item-table">
-            <tr className="item-table-header">
-              <td
-                style={{
-                  width: "375px"
-                }}
-              >
-                <input
-                  id="-1chk"
-                  onClick={this._itemCheck}
-                  checked={this.state.chkChecked}
-                  type="checkbox"
-                />
-                <label for="-1chk" />
-                <span>
-                  전체선택(
-                  {`${this.state.checkedCount}/${this.state.itemCount}`})
-                </span>
-              </td>
-              <td style={{ width: "432px" }}>
-                <span>상품 정보</span>
-              </td>
-              <td style={{ width: "115px" }}>
-                <span>수량</span>
-              </td>
-              <td style={{ width: "115px" }}>
-                <span>상품금액</span>
-              </td>
-            </tr>
-            {this.state.itemList !== 0 ? (
-              this._itemProductArr()
-            ) : (
-              <tr>
-                <td colspan="4">장바구니에 담긴 상품이 없습니다</td>
-              </tr>
-            )}
-            <tr>
-              <td align="left" colspan="4">
-                <div className="item-wrapper-btn">
+            <tbody>
+              <tr className="item-table-header">
+                <td
+                  style={{
+                    width: "375px"
+                  }}
+                >
                   <input
                     id="-1chk"
                     onClick={this._itemCheck}
-                    checked={this.state.chkChecked}
+                    checked={chkChecked}
                     type="checkbox"
                   />
-                  <label for="-1chk" />
-                  <span style={{ paddingRight: "15px" }}>
+                  <label htmlFor="-1chk" />
+                  <span>
                     전체선택(
-                    {`${this.state.checkedCount}/${this.state.itemCount}`})
+                    {`${itemCount}/${itemCount}`})
                   </span>
-                  <button>선택 삭제</button>
-                  <button style={{ width: "120px" }}>품절 상품 삭제</button>
-                </div>
-              </td>
-            </tr>
+                </td>
+                <td style={{ width: "432px" }}>
+                  <span>상품 정보</span>
+                </td>
+                <td style={{ width: "115px" }}>
+                  <span>수량</span>
+                </td>
+                <td style={{ width: "115px" }}>
+                  <span>상품금액</span>
+                </td>
+              </tr>
+              {itemCount !== 0 ? (
+                this._itemProductArr()
+              ) : (
+                <tr>
+                  <td className="no-item" colSpan="4">
+                    장바구니에 담긴 상품이 없습니다
+                  </td>
+                </tr>
+              )}
+              <tr>
+                <td align="left" colSpan="4">
+                  <div className="item-wrapper-btn">
+                    <input
+                      id="-1chk"
+                      onClick={this._itemCheck}
+                      checked={chkChecked}
+                      type="checkbox"
+                    />
+                    <label htmlFor="-1chk" />
+                    <span style={{ paddingRight: "15px" }}>
+                      전체선택(
+                      {`${checkedCount}/${itemCount}`})
+                    </span>
+                    <button>선택 삭제</button>
+                    <button style={{ width: "120px" }}>품절 상품 삭제</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
           </table>
           <div className="item-price">
             <div>
@@ -331,7 +344,12 @@ class ItemCartChild extends Component {
               <span className="item-price-price">{this._priceCalc()[3]}원</span>
             </div>
           </div>
-          <button className="order-btn btn-off">주문하기</button>
+          <button
+            onClick={this._goToOrder}
+            className={checkedCount ? "order-btn btn-on" : "order-btn btn-off"}
+          >
+            주문하기
+          </button>
           <div className="item-bottom-desc">
             <p>
               ‘입금확인’ 상태일 때는 주문내역 상세 페이지에서 직접 주문취소가
@@ -345,4 +363,4 @@ class ItemCartChild extends Component {
   }
 }
 
-export default ItemCartChild;
+export default withRouter(ItemCartChild);

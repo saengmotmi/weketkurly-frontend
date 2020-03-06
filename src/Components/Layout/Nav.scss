@@ -1,0 +1,431 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 16px;
+  letter-spacing: -0.3px;
+
+  li {
+    list-style: none;
+    display: inline-block;
+    word-break: break-all;
+  }
+
+  //최상단 바
+  .nav-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1050px;
+    height: 37px;
+    margin: 0 auto;
+    font-size: 12px;
+
+    // 프로필 우측 상단 리스트
+    .profile-listdown {
+      color: #333;
+      position: relative;
+
+      // 회원 등급
+      #prof-grade {
+        border: 1px solid #949296;
+        border-radius: 30px;
+        font-size: 10px;
+        background-color: #fff;
+        color: #949296;
+      }
+
+      // 프로필 리스트
+      ul {
+        position: absolute;
+
+        top: 18px;
+        left: 1px;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        height: 24px;
+        // border-top: 1px solid #e3e3e3;
+        color: black;
+
+        // 프로필 리스트 아이템
+        li {
+          width: 90px;
+          font-size: 12px;
+          padding: 5px 0;
+          padding-left: 10px;
+          border-left: 1px solid #e3e3e3;
+          border-right: 1px solid #e3e3e3;
+          background-color: white;
+
+          &::after {
+            content: "";
+            background-color: transparent;
+          }
+          &:last-child {
+            border-bottom: 1px solid #e3e3e3;
+          }
+        }
+      }
+    }
+
+    // 프로필 리스트 가로
+    li {
+      span {
+        padding: 0 10px;
+        letter-spacing: -0.3px;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        float: right;
+        width: 1px;
+        height: 13px;
+        margin-top: 2px;
+        background-color: #d8d8d8;
+      }
+
+      &:last-child {
+        &::after {
+          content: "";
+          background-color: transparent;
+        }
+      }
+    }
+
+    // 좌측 상단 gif
+    img {
+      width: 163px;
+      height: 22px;
+    }
+  }
+
+  // nav 중간 컬리 로고
+  .nav-logo {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0 auto;
+
+    img {
+      width: 103px;
+      height: 79px;
+    }
+  }
+
+  // nav bar 카테고리 가로 리스트
+  .nav-bottom-bar {
+    width: 1050px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    margin: 0 auto;
+    padding: 0;
+
+    // nav bar 카테고리 가로 리스트 아이템
+    &-item {
+      padding: 16px 50px 0 24px;
+      height: 39px;
+      text-align: center;
+      letter-spacing: -0.3px;
+      font-weight: 500;
+      color: #333333;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 21px;
+        left: -20px;
+        float: right;
+        width: 1px;
+        height: 13px;
+        margin-top: 2px;
+        background-color: #d8d8d8;
+      }
+
+      &:last-child {
+        &::after {
+          content: "";
+          background-color: transparent;
+        }
+      }
+
+      // nav bar 카테고리 가로 리스트 아이템 글자
+      span {
+        font-weight: inherit;
+      }
+
+      // nav bar 카테고리 가로 리스트 hover
+      &:hover {
+        span {
+          color: #5f0080;
+          border-bottom: 1px solid #5f0080;
+          cursor: pointer;
+        }
+      }
+    }
+
+    // 장바구니 이미지
+    img {
+      width: 36px;
+      height: 36px;
+    }
+
+    // 카테고리 1차 분류
+    .category-listdown {
+      display: flex;
+      position: relative;
+      align-items: flex-start;
+
+      padding: 16px 50px 0 24px;
+      height: 39px;
+      text-align: center;
+      letter-spacing: -0.3px;
+      font-weight: 500;
+      color: #333333;
+
+      &:hover {
+        color: #5f0080;
+        cursor: pointer;
+      }
+
+      span {
+        font-weight: inherit;
+      }
+
+      &-depth0 {
+        z-index: 100;
+        position: absolute;
+        top: 55px;
+        left: 0;
+
+        background-color: #f7f7f7;
+        border: 1px solid #ddd;
+        width: 219px;
+        height: 585px;
+
+        div {
+          // background-color: blue;
+          width: 100%;
+          text-align: left;
+          position: relative;
+
+          .category-listdown-depth1 {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            li {
+              display: inline-block;
+              width: 219px;
+              height: 39px;
+              background-color: white;
+
+              &:hover {
+                background-color: transparent;
+                cursor: pointer;
+              }
+
+              div {
+                // 1차 카테고리 이미지 & 카테고리명
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+
+                padding: 0 0 0 8px;
+
+                img {
+                  width: 24px;
+                  height: 24px;
+                }
+
+                span {
+                  border: none;
+                  text-align: left;
+
+                  vertical-align: middle;
+                  letter-spacing: -0.3px;
+                  font-size: 14px;
+                  font-weight: 400px;
+                  padding: 0 4px 0 10px;
+                  line-height: 22px;
+                  color: #333;
+
+                  &:hover {
+                    color: #5f0080;
+                    font-weight: 700;
+                  }
+                }
+              }
+            }
+          }
+
+          .category-listdown-depth2 {
+            display: flex;
+            flex-direction: column;
+            display: none;
+
+            position: absolute;
+            left: 219px;
+            height: 450px;
+            padding: 0 0 0 8px;
+
+            li {
+              display: inline-block;
+              width: 300px;
+              height: 39px;
+              cursor: pointer;
+
+              display: flex;
+              align-items: center;
+
+              span {
+                // background-color: transparent;
+                border: none;
+                text-align: left;
+
+                vertical-align: middle;
+                letter-spacing: -0.3px;
+                font-size: 14px;
+                font-weight: 400px;
+                padding: 0 4px 0 10px;
+                line-height: 22px;
+                color: #333;
+
+                &:hover {
+                  color: #5f0080;
+                  font-weight: 700;
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      // nav bar 카테고리 가로 리스트 img
+      img {
+        width: 16px;
+        height: 14px;
+        padding: 5px 0;
+        margin-right: 14px;
+      }
+    }
+  }
+
+  // 카테고리 가로 리스트 검색 창
+  .search-wrap {
+    border-radius: 18px;
+    display: flex;
+    border: 1px solid #f7f7f6;
+    background-color: #f7f7f7;
+    position: relative;
+
+    input {
+      font-size: 12px;
+      color: #666;
+      border: none;
+      border-radius: 18px;
+      background-color: #f7f7f7;
+      width: 166px;
+      height: 36px;
+      padding: 0 50px 0 20px;
+
+      &:focus {
+        outline: none;
+        background-color: white;
+      }
+    }
+
+    // 검색 창 돋보기 이미지
+    img {
+      position: absolute;
+      right: 10px;
+      top: 3px;
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  // 사이드 바
+  .fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 50;
+
+    &::after {
+      content: "";
+      background: url("https://res.kurly.com/pc/service/common/1902/bg_1x9.png")
+        repeat-x 0 100%;
+      width: 100vw;
+      height: 9px;
+      position: absolute;
+      z-index: 101;
+    }
+  }
+
+  .itemcart {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    border: none;
+
+    &-popup {
+      position: absolute;
+      top: 60px;
+      left: -300px;
+      width: 340px;
+      height: 100px;
+      background-color: white;
+      border: 1px solid #e3e3e3;
+      z-index: 1000;
+
+      padding: 0 0 0 20px;
+
+      display: flex;
+      align-items: center;
+
+      transition: opacity 1s;
+
+      img {
+        width: 60px;
+        height: auto;
+      }
+
+      div {
+        padding-left: 20px;
+      }
+    }
+
+    &-count {
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      left: 20px;
+      top: -1px;
+      width: 15px;
+      height: 15px;
+      border: 2px solid #fff;
+      background-color: #5f0080;
+      border-radius: 50%;
+      // line-height: 15px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 10px;
+      letter-spacing: -0.3px;
+      color: #fff;
+    }
+  }
+}

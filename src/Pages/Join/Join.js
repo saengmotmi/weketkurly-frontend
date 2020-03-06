@@ -405,7 +405,7 @@ class Join extends Component {
           alert("회원가입을 축하드립니다! \n당신의 일상에 컬리를 더해보세요");
           this.props.history.push("/joincomplete");
         } else {
-          alert("올바를 가입정보를 기입하여, \n다시 시도하여 주십시오!");
+          alert("올바른 가입정보를 기입하여, \n다시 시도하여 주십시오!");
         }
         console.log(response.data);
         return response;

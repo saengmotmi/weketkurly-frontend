@@ -106,7 +106,13 @@ class Nav extends Component {
 
   _liProfileListdown = paramArr => {
     const liProfileListdown = paramArr.map((param, idx) => {
-      return (
+      return param === "주문 내역" ? (
+        <li key={idx}>
+          <p style={{ cursor: "pointer" }} onClick={this._goToOrderlist}>
+            {param}
+          </p>
+        </li>
+      ) : (
         <li key={idx}>
           <p>{param}</p>
         </li>
@@ -184,6 +190,10 @@ class Nav extends Component {
     this.props.history.push("/");
   };
 
+  _goToOrderlist = () => {
+    this.props.history.push("/orderlist");
+  };
+
   render() {
     const {
       visibleCategory0,
@@ -215,7 +225,7 @@ class Nav extends Component {
                 onMouseLeave={() => this._visible("prof", 1)}
               >
                 <span id="prof-grade">웰컴</span>
-                <span>오종택님</span>
+                <span style={{ color: "#5f0080" }}>오종택님</span>
                 <ul
                   className="nav-prof-list"
                   style={{

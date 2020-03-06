@@ -9,12 +9,10 @@ class MainItem extends Component {
   render() {
     const {
       style,
-      // no,
       name,
       price,
       original_price,
       thumbnail_image_url,
-      // sticker_image_url,
       cN
     } = this.props;
 

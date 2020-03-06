@@ -10,6 +10,7 @@
     width: 80px;
     z-index: 1;
     transition: top 0.2s;
+    z-index: 100;
 
     .float {
       position: absolute;
@@ -155,6 +156,32 @@
       border: none;
       background: url("https://res.kurly.com/pc/service/main/1908/btn_next_default.png?v=1")
         no-repeat;
+    }
+  }
+
+  .banner {
+    margin: 0 auto;
+    width: 1050px;
+    display: flex;
+    justify-content: left;
+    margin-top: 100px;
+
+    &-title {
+      color: rgb(52, 75, 87);
+      padding: 35px 50px 0;
+      font-size: 28px;
+      line-height: 28px;
+      padding: 35px 50px 0 50px;
+      font-weight: 500;
+    }
+
+    &-subtitle {
+      padding: 5px 50px 0 50px;
+      font-size: 16px;
+      line-height: 24px;
+      color: rgb(52, 75, 87);
+      padding-bottom: 38px;
+      font-weight: 500;
     }
   }
 }

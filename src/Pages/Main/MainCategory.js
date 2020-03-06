@@ -44,6 +44,10 @@ class MainCategory extends Component {
       );
   };
 
+  // _ = () => {
+
+  // }
+
   _moveLeft = () => {
     if (this.state.moveX === -1068) {
       this.setState({ moveX: 0 });
@@ -74,185 +78,185 @@ class MainCategory extends Component {
   render() {
     const {
       section_id,
-      // section_type,
       title,
       events,
       products,
       categories,
       recipes,
-      reviews
+      reviews,
+      background,
+      text,
+      moveX
     } = this.props;
 
-    const productsArr = products
-      ? products.map((param, idx) => {
-          return (
-            <MainItem
-              key={"prod" + idx}
-              cN="products-item"
-              no={param["no"]}
-              name={param["name"]}
-              price={param["price"]}
-              original_price={param["original_price"]}
-              thumbnail_image_url={param["thumbnail_image_url"]}
-              sticker_image_url={param["sticker_image_url"]}
-              style={this.state.moveX}
-            />
-          );
-        })
-      : null;
+    const productsArr =
+      products &&
+      products.map((param, idx) => {
+        return (
+          <MainItem
+            key={"prod" + idx}
+            cN="products-item"
+            no={param["no"]}
+            name={param["name"]}
+            price={param["price"]}
+            original_price={param["original_price"]}
+            thumbnail_image_url={param["thumbnail_image_url"]}
+            sticker_image_url={param["sticker_image_url"]}
+            style={this.state.moveX}
+          />
+        );
+      });
 
-    const mdProductsArr = this.state.data
-      ? this.state.data.map((param, idx) => {
-          return (
-            <MainItem
-              key={"md" + idx}
-              cN="products-item"
-              no={param["no"]}
-              name={param["name"]}
-              price={param["price"]}
-              original_price={param["original_price"]}
-              thumbnail_image_url={param["thumbnail_image_url"]}
-              sticker_image_url={param["sticker_image_url"]}
-              style={this.state.moveX}
-            />
-          );
-        })
-      : null;
+    const mdProductsArr =
+      this.state.data &&
+      this.state.data.map((param, idx) => {
+        return (
+          <MainItem
+            key={"md" + idx}
+            cN="products-item"
+            no={param["no"]}
+            name={param["name"]}
+            price={param["price"]}
+            original_price={param["original_price"]}
+            thumbnail_image_url={param["thumbnail_image_url"]}
+            sticker_image_url={param["sticker_image_url"]}
+            style={this.state.moveX}
+          />
+        );
+      });
 
-    const categoryList = categories
-      ? categories.map((param, idx) => {
-          return (
-            <button
-              key={"mdcate" + idx}
-              style={
-                this.state.mdButtonSelect === idx
-                  ? this.state.buttonStyle
-                  : null
-              }
-              className="md-cate-button"
-              id={param["no"] + "." + idx}
-              onClick={this._mdClick}
-            >
-              {param["name"]}
-            </button>
-          );
-        })
-      : null;
+    const categoryList =
+      categories &&
+      categories.map((param, idx) => {
+        return (
+          <button
+            key={"mdcate" + idx}
+            style={
+              this.state.mdButtonSelect === idx ? this.state.buttonStyle : null
+            }
+            className="md-cate-button"
+            id={param["no"] + "." + idx}
+            onClick={this._mdClick}
+          >
+            {param["name"]}
+          </button>
+        );
+      });
 
-    const recipeList = recipes
-      ? recipes.map((param, idx) => {
-          return (
-            <>
-              <div key={"rcpe" + idx} className="product-item">
-                <ul>
-                  <li>
-                    <a
-                      href={param["landing_url"]}
-                      style={{
-                        textDecoration: "none",
-                        color: "#333",
-                        fontSize: "16px",
-                        textAlign: "center",
-                        overflow: "hidden",
-                        display: "block",
-                        width: "249px",
-                        height: "320px"
-                      }}
-                    >
-                      <img
-                        className="recipe-img zoom-in"
-                        key={idx}
-                        src={param["image_url"]}
-                        alt="review"
-                      />
-                      <p style={{ marginTop: "12px" }}>{param["title"]}</p>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </>
-          );
-        })
-      : null;
-
-    const eventList = events
-      ? events.map((param, idx) => {
-          return (
-            <div
-              key={"evt" + idx}
-              style={{ textAlign: "center" }}
-              className="product-item"
-            >
+    const recipeList =
+      recipes &&
+      recipes.map((param, idx) => {
+        return (
+          <>
+            <div key={"rcpe" + idx} className="product-item">
               <ul>
                 <li>
                   <a
-                    style={{ overflow: "hidden", display: "inline-block" }}
                     href={param["landing_url"]}
+                    style={{
+                      textDecoration: "none",
+                      color: "#333",
+                      fontSize: "16px",
+                      textAlign: "center",
+                      overflow: "hidden",
+                      display: "block",
+                      width: "249px",
+                      height: "320px"
+                    }}
                   >
                     <img
-                      className="zoom-in"
-                      src={param["image_url"]}
+                      className="recipe-img zoom-in"
                       key={idx}
-                      alt=""
+                      src={param["image_url"]}
+                      alt="review"
                     />
+                    <p style={{ marginTop: "12px" }}>{param["title"]}</p>
                   </a>
-                  <p
-                    style={{
-                      marginTop: "17px",
-                      fontWeight: "700",
-                      color: "#333",
-                      fontSize: "18px",
-                      lineHeight: "28px",
-                      letterSpacing: "-0.3px"
-                    }}
-                  >
-                    {param["title"]}
-                  </p>
-                  <p
-                    style={{
-                      paddingTop: "8px",
-                      color: "#999",
-                      fontSize: "16px",
-                      lineHeight: "20px"
-                    }}
-                  >
-                    {param["subtitle"]}
-                  </p>
                 </li>
               </ul>
             </div>
-          );
-        })
-      : null;
+          </>
+        );
+      });
 
-    const instaReviewList = reviews
-      ? reviews.map((param, idx) => {
-          return (
-            <a
-              key={"revw" + idx}
-              style={{
-                transform: `translateX(${this.state.moveX}px)`,
-                display: "block",
-                width: "249px",
-                height: "320px"
-              }}
-              href={param["landing_url"]}
-            >
-              <img
-                className="insta-img"
-                key={idx}
-                src={param["thumbnail_image_url"]}
-                alt="review"
-              />
-            </a>
-          );
-        })
-      : null;
+    const eventList =
+      events &&
+      events.map((param, idx) => {
+        return (
+          <div
+            key={"evt" + idx}
+            style={{ textAlign: "center" }}
+            className="product-item"
+          >
+            <ul>
+              <li>
+                <a
+                  style={{ overflow: "hidden", display: "inline-block" }}
+                  href={param["landing_url"]}
+                >
+                  <img
+                    className="zoom-in"
+                    src={param["image_url"]}
+                    key={idx}
+                    alt=""
+                  />
+                </a>
+                <p
+                  style={{
+                    marginTop: "17px",
+                    fontWeight: "700",
+                    color: "#333",
+                    fontSize: "18px",
+                    lineHeight: "28px",
+                    letterSpacing: "-0.3px"
+                  }}
+                >
+                  {param["title"]}
+                </p>
+                <p
+                  style={{
+                    paddingTop: "8px",
+                    color: "#999",
+                    fontSize: "16px",
+                    lineHeight: "20px"
+                  }}
+                >
+                  {param["subtitle"]}
+                </p>
+              </li>
+            </ul>
+          </div>
+        );
+      });
+
+    const instaReviewList =
+      reviews &&
+      reviews.map((param, idx) => {
+        return (
+          <a
+            key={"revw" + idx}
+            style={{
+              transform: `translateX(${this.state.moveX}px)`,
+              display: "block",
+              width: "249px",
+              height: "320px"
+            }}
+            href={param["landing_url"]}
+          >
+            <img
+              className="insta-img"
+              key={idx}
+              src={param["thumbnail_image_url"]}
+              alt="review"
+            />
+          </a>
+        );
+      });
 
     return (
       <>
-        <div className={section_id} style={{ width: "1050px" }}>
-          {title === "이 상품 어때요?" ? (
+        <div className={section_id}>
+          {title === "이 상품 어때요?" && (
             <>
               <p className="main-font">{title}</p>
               <div
@@ -269,14 +273,17 @@ class MainCategory extends Component {
                   className="btn-scroll btn-scroll-right"
                 ></button>
               </div>
-              <div style={{ overflow: "hidden" }} className="goods-item">
+              <div
+                style={{ overflow: "hidden", width: "1050px" }}
+                className="goods-item"
+              >
                 {productsArr}
               </div>
             </>
-          ) : null}
+          )}
 
-          {title === "이벤트 소식" ? (
-            <>
+          {title === "이벤트 소식" && (
+            <div style={{ backgroundColor: "#f7f7f7", width: "100vw" }}>
               <p className="main-font">{title}</p>
               <div
                 style={{ justifyContent: "center", overflow: "hidden" }}
@@ -284,9 +291,10 @@ class MainCategory extends Component {
               >
                 {eventList}
               </div>
-            </>
-          ) : null}
-          {title === "알뜰 상품" ? (
+            </div>
+          )}
+
+          {title === "알뜰 상품" && (
             <>
               <p className="main-font">{title}</p>
               <div
@@ -297,12 +305,16 @@ class MainCategory extends Component {
                 <button className="btn-scroll btn-scroll-left"></button>
                 <button className="btn-scroll btn-scroll-right"></button>
               </div>
-              <div style={{ overflow: "hidden" }} className="goods-item">
+              <div
+                style={{ overflow: "hidden", width: "1050px" }}
+                className="goods-item"
+              >
                 {productsArr}
               </div>
             </>
-          ) : null}
-          {title === "MD의 추천" ? (
+          )}
+
+          {title === "MD의 추천" && (
             <div>
               <p className="main-font">{title}</p>
               <div
@@ -323,13 +335,17 @@ class MainCategory extends Component {
                 style={{
                   paddingBottom: "20px",
                   margin: "0 auto",
-                  overflow: "hidden"
+                  overflow: "hidden",
+                  width: "1050px"
                 }}
                 className="md-cate-div"
               >
                 {categoryList}
               </div>
-              <ul style={{ overflow: "hidden" }} className="goods-item">
+              <ul
+                style={{ overflow: "hidden", width: "1050px" }}
+                className="goods-item"
+              >
                 {mdProductsArr}
               </ul>
               <div
@@ -362,9 +378,21 @@ class MainCategory extends Component {
                 </div>
               </div>
             </div>
-          ) : null}
+          )}
 
-          {title === "오늘의 신상품" ? (
+          {section_id === "banner_static_7" && (
+            <div
+              className="banner"
+              style={{ backgroundColor: `${background.color}` }}
+            >
+              <div>
+                <p className="banner-title">{text.title}</p>
+                <p className="banner-subtitle">{text.subtitle}</p>
+              </div>
+            </div>
+          )}
+
+          {title === "오늘의 신상품" && (
             <>
               <p className="main-font">{title}</p>
               <div
@@ -375,30 +403,35 @@ class MainCategory extends Component {
                 <button className="btn-scroll btn-scroll-left"></button>
                 <button className="btn-scroll btn-scroll-right"></button>
               </div>
-              <div style={{ overflow: "hidden" }} className="goods-item">
+              <div
+                style={{ overflow: "hidden", width: "1050px" }}
+                className="goods-item"
+              >
                 {productsArr}
               </div>
             </>
-          ) : null}
+          )}
 
-          {title === "간편한 아침식사" ? (
-            <>
+          {title === "간편한 아침식사" && (
+            <div style={{ backgroundColor: "#f7f7f7", width: "100vw" }}>
               <p className="main-font">{title}</p>
               <div
                 style={{
-                  position: "relative"
+                  position: "relative",
+                  width: "1050px",
+                  margin: "0 auto"
                 }}
               >
                 <button className="btn-scroll btn-scroll-left"></button>
                 <button className="btn-scroll btn-scroll-right"></button>
+                <div style={{ overflow: "hidden" }} className="goods-item">
+                  {productsArr}
+                </div>
               </div>
-              <div style={{ overflow: "hidden" }} className="goods-item">
-                {productsArr}
-              </div>
-            </>
-          ) : null}
+            </div>
+          )}
 
-          {title === "컬리의 레시피" ? (
+          {title === "컬리의 레시피" && (
             <>
               <p className="main-font">{title}</p>
               <div
@@ -415,13 +448,16 @@ class MainCategory extends Component {
                   className="btn-scroll btn-scroll-right"
                 ></button>
               </div>
-              <div style={{ overflow: "hidden" }} className="goods-item">
+              <div
+                style={{ overflow: "hidden", width: "1050px" }}
+                className="goods-item"
+              >
                 {recipeList}
               </div>
             </>
-          ) : null}
+          )}
 
-          {title === "인스타그램 고객 후기" ? (
+          {title === "인스타그램 고객 후기" && (
             <>
               <p className="main-font">{title}</p>
               <div
@@ -438,7 +474,10 @@ class MainCategory extends Component {
                   className="btn-scroll btn-scroll-right"
                 ></button>
               </div>
-              <ul className="goods-item" style={{ overflow: "hidden" }}>
+              <ul
+                className="goods-item"
+                style={{ overflow: "hidden", width: "1050px" }}
+              >
                 {instaReviewList}
               </ul>
               {/* <button onClick={this._moveLeft}>-175px</button>
@@ -463,7 +502,7 @@ class MainCategory extends Component {
                 </p>
               </div>
             </>
-          ) : null}
+          )}
 
           {/* <div className="goods-item">{productsArr}</div> */}
         </div>

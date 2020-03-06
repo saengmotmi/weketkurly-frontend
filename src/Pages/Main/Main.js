@@ -59,6 +59,8 @@ class Main extends Component {
                 categories={param["categories"]}
                 recipes={param["recipes"]}
                 reviews={param["reviews"]}
+                background={param["background"]}
+                text={param["text"]}
               />
             ); // 배열
           });

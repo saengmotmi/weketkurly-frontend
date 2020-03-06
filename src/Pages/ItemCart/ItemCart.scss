@@ -4,6 +4,10 @@
   align-items: center;
   text-align: center;
 
+  &-content {
+    padding-bottom: 170px;
+  }
+
   input[type="checkbox"] {
     display: none;
 
@@ -43,6 +47,7 @@
   &-table {
     border-top: 2px solid #5f0080;
     border-bottom: 2px solid #ddd;
+    border-spacing: 0;
 
     .item-wrapper-btn button {
       width: 88px;
@@ -59,16 +64,21 @@
       color: #666;
       letter-spacing: -0.3px;
       text-align: left;
-      border-bottom: 2px solid #ddd;
 
       td {
         padding: 20px 0;
         font-size: 14px;
+        border-bottom: 2px solid #ddd;
       }
     }
 
     &-row {
-      border-bottom: 2px solid #ddd;
+      padding: 14px 0 13px 0;
+
+      td {
+        border-bottom: 1px solid #ddd;
+        height: 106px;
+      }
 
       &-count {
         div {
@@ -203,5 +213,11 @@
     height: 12px;
     padding: 0;
     margin: 0;
+  }
+
+  .no-item {
+    padding: 100px;
+    // border-top: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
   }
 }

@@ -39,25 +39,32 @@
       ul {
         position: absolute;
 
-        top: 20px;
+        top: 18px;
         left: 1px;
         z-index: 1;
         display: flex;
         flex-direction: column;
         height: 24px;
         // border-top: 1px solid #e3e3e3;
-        // border-bottom: 1px solid #e3e3e3;
         color: black;
 
         // 프로필 리스트 아이템
         li {
-          width: 80px;
+          width: 90px;
           font-size: 12px;
           padding: 5px 0;
           padding-left: 10px;
           border-left: 1px solid #e3e3e3;
           border-right: 1px solid #e3e3e3;
           background-color: white;
+
+          &::after {
+            content: "";
+            background-color: transparent;
+          }
+          &:last-child {
+            border-bottom: 1px solid #e3e3e3;
+          }
         }
       }
     }
@@ -69,9 +76,20 @@
         letter-spacing: -0.3px;
       }
 
+      &::after {
+        content: "";
+        position: absolute;
+        float: right;
+        width: 1px;
+        height: 13px;
+        margin-top: 2px;
+        background-color: #d8d8d8;
+      }
+
       &:last-child {
         &::after {
           content: "";
+          background-color: transparent;
         }
       }
     }
@@ -114,6 +132,26 @@
       letter-spacing: -0.3px;
       font-weight: 500;
       color: #333333;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 21px;
+        left: -20px;
+        float: right;
+        width: 1px;
+        height: 13px;
+        margin-top: 2px;
+        background-color: #d8d8d8;
+      }
+
+      &:last-child {
+        &::after {
+          content: "";
+          background-color: transparent;
+        }
+      }
 
       // nav bar 카테고리 가로 리스트 아이템 글자
       span {
@@ -125,6 +163,7 @@
         span {
           color: #5f0080;
           border-bottom: 1px solid #5f0080;
+          cursor: pointer;
         }
       }
     }
@@ -147,6 +186,11 @@
       letter-spacing: -0.3px;
       font-weight: 500;
       color: #333333;
+
+      &:hover {
+        color: #5f0080;
+        cursor: pointer;
+      }
 
       span {
         font-weight: inherit;

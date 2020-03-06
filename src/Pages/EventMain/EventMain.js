@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Nav from "../../Components/Layout/Nav";
 import EventView from "../../Components/EventMain/EventView";
-import SaleEventList from "../../Components/SaleEventList";
 import Welcome from "../../Components/EventMain/Welcome";
+import SaleEventList from "../../Components/SaleEventList";
 import Free from "../../Components/EventMain/Free";
 import Reserve from "../../Components/EventMain/Reserve";
 import Invite from "../../Components/EventMain/Invite";
 import Recommend from "../../Components/EventMain/ Recommend";
-import EventList from "../../Components/EventList";
+import EventList from "../../Components/EventMain/EventList";
 import Footer from "../../Components/Layout/Footer";
 import "./EventMain.scss";
 
@@ -48,7 +48,9 @@ class EventMain extends Component {
   };
 
   onScroll = e => {
+    // 특정위치에 왔을 때, 애니메이션 시작
     const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
+
     if (scrollTop > 2100 && scrollTop < 3112) {
       this.setState({
         scroll: true,
@@ -118,7 +120,7 @@ class EventMain extends Component {
     window.scrollTo(0, 3705, "smooth");
   };
 
-  // 회원가입 페이지로 이동 (Router)
+  // Router : 회원가입 페이지로 이동
   goToJoin = () => {
     this.props.history.push("/join");
     window.scrollTo(0, 0);
@@ -146,19 +148,18 @@ class EventMain extends Component {
         />
         <Welcome
           eventList={
-            event.length === 0
-              ? null
-              : this.state.event.map(el => {
-                  return (
-                    <SaleEventList
-                      key={el.alt}
-                      img={el.img}
-                      alt={el.alt}
-                      scrollArrow={scrollArrow}
-                      scrollSale={scrollSale}
-                    />
-                  );
-                })
+            event &&
+            this.state.event.map(el => {
+              return (
+                <SaleEventList
+                  key={el.alt}
+                  img={el.img}
+                  alt={el.alt}
+                  scrollArrow={scrollArrow}
+                  scrollSale={scrollSale}
+                />
+              );
+            })
           }
         />
         <Free scroll={scroll} />
@@ -167,12 +168,12 @@ class EventMain extends Component {
         <div className="special" />
         <Recommend
           bestList={
-            best.length === 0
-              ? null
-              : this.state.best.map(el => {
-                  return <EventList img={el.img} alt={el.alt} key={el.alt} />;
-                })
+            best &&
+            this.state.best.map(el => {
+              return <EventList img={el.img} alt={el.alt} key={el.alt} />;
+            })
           }
+          goToJoin={this.goToJoin}
         />
         <Footer />
       </div>

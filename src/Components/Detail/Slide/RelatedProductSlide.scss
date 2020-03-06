@@ -1,0 +1,92 @@
+@import "../../../Styles/common";
+
+.Detail {
+  .slide {
+    width: 1010px;
+    .related-product {
+      margin-bottom: 20px;
+      div {
+        width: 20px;
+        height: 5px;
+        background-color: #000;
+      }
+      h3 {
+        font-family: "Malgun Gothic", AppleGothic, dotum;
+        font-size: 13px;
+        font-weight: 600;
+        margin-top: 3px;
+        letter-spacing: -0.05em;
+        color: #4c4c4c;
+      }
+    }
+
+    .slideBtn {
+      width: 1010px;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      position: relative;
+      .left-btn {
+        cursor: pointer;
+        margin-right: 5px;
+        padding: 0;
+        width: 19px;
+        height: 230px;
+        border: 0;
+        outline: none;
+        background: url(https://res.kurly.com/pc/etc/old/images/common/slide-sub-left-button-black.png)
+          center no-repeat;
+      }
+      .right-btn {
+        cursor: pointer;
+        margin-left: 5px;
+        width: 19px;
+        padding: 0;
+        height: 230px;
+        border: 0;
+        outline: none;
+        background: url(https://res.kurly.com/pc/etc/old/images/common/slide-sub-right-button-black.png)
+          center no-repeat;
+      }
+      .slideBar {
+        width: 100%;
+        height: 330px;
+        overflow: hidden;
+        position: relative;
+        padding: 0;
+        margin: 0;
+      }
+      ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: absolute;
+        li {
+          border: 1px solid #ddd;
+          margin: 0 5px;
+          .relatedImg {
+            width: 180px;
+            height: 230px;
+            box-sizing: border-box;
+            background-size: cover;
+          }
+          .relatedInfo {
+            font-family: malgun gothic, AppleGothic;
+            border-top: 1px solid #ddd;
+            box-sizing: border-box;
+            width: 180px;
+            height: 80px;
+            color: #4c4c4c;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            .name {
+              height: 35px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

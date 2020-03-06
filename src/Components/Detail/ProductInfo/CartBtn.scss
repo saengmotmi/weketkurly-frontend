@@ -1,0 +1,74 @@
+@import "../../../Styles/common";
+
+.Detail {
+  .btn {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 40px;
+    width: 100%;
+    .cart-btn {
+      width: 560px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      background-color: #fff;
+      text-align: center;
+      .alarm-off {
+        width: 128px;
+        height: 54px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        font-weight: 700;
+        font-size: 16px;
+        color: #ddd;
+        background-color: #fff;
+        cursor: pointer;
+      }
+      .alarm-on {
+        width: 128px;
+        height: 54px;
+        border: 1px solid $color;
+        border-radius: 3px;
+        font-weight: 700;
+        font-size: 16px;
+        color: $color;
+        background-color: #fff;
+        cursor: pointer;
+      }
+      .save-item {
+        width: 128px;
+        height: 54px;
+        border: 1px solid $color;
+        border-radius: 3px;
+        font-weight: 700;
+        font-size: 16px;
+        color: $color;
+        background-color: #fff;
+        cursor: pointer;
+      }
+      .save-item-clicked {
+        width: 128px;
+        height: 54px;
+        border: 1px solid $color;
+        border-radius: 3px;
+        background-color: $color;
+        font-weight: 700;
+        font-size: 16px;
+        color: #fff;
+        cursor: pointer;
+      }
+      .go-to-cart {
+        width: 278px;
+        height: 54px;
+        color: white;
+        border-radius: 3px;
+        font-weight: 700;
+        font-size: 16px;
+        border: 1px solid $color;
+        background-color: $color;
+        padding: 0;
+        cursor: pointer;
+      }
+    }
+  }
+}

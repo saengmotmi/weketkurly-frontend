@@ -1,0 +1,38 @@
+{
+  "data": {
+    "category_no": "907",
+    "category_name": "\ucc44\uc18c",
+    "root_category": {
+      "no": "907",
+      "name": "\ucc44\uc18c",
+      "show_all_flag": true,
+      "categories": [
+        { "no": "907001", "name": "\uae30\ubcf8\ucc44\uc18c" },
+        {
+          "no": "907002",
+          "name": "\uc308\u00b7\uc0d0\ub7ec\ub4dc\u00b7\uac04\ud3b8\ucc44\uc18c"
+        },
+        {
+          "no": "907003",
+          "name": "\ube0c\ub85c\ucf5c\ub9ac\u00b7\ud2b9\uc218\ucc44\uc18c"
+        },
+        {
+          "no": "907005",
+          "name": "\ucf69\ub098\ubb3c\u00b7\ubc84\uc12f\ub958"
+        },
+        {
+          "no": "907007",
+          "name": "\uc591\ud30c\u00b7\ub9c8\ub298\u00b7\uc0dd\uac15\u00b7\ud30c"
+        },
+        {
+          "no": "907004",
+          "name": "\uc2dc\uae08\uce58\u00b7\ubd80\ucd94\u00b7\ub098\ubb3c"
+        },
+        {
+          "no": "907006",
+          "name": "\ud30c\ud504\ub9ac\uce74\u00b7\ud53c\ub9dd\u00b7\uace0\ucd94"
+        }
+      ]
+    }
+  }
+}

@@ -36,13 +36,29 @@ class Nav extends Component {
         "에코포장 피드백"
       ],
       itemCartCount: 2,
-      isSameCartCount: 2
+      isSameCartCount: 2,
+      isSameProps: ""
     };
   }
+
+  _movePath = menu => {
+    // console.log(e.target);
+    if (menu === "기본 채소") {
+      this.props.history.push("/categoryview");
+    }
+  };
 
   componentDidMount() {
     this._getApi("categories");
     window.addEventListener("scroll", this._onScroll);
+  }
+
+  componentDidUpdate(prevState) {
+    if (prevState.isSameProps !== this.state.isSameProps) {
+      if (this.props.productName === "조각무 2조각") {
+        this._isSameCount();
+      }
+    }
   }
 
   componentWillUnmount() {
@@ -73,11 +89,16 @@ class Nav extends Component {
   };
 
   _isSameCount = () => {
-    console.log("애니메이션 실행");
-    this.setState({ visibleCartPopup: !this.state.visibleCartPopup });
-    setTimeout(() => {
-      this.setState({ visibleCartPopup: !this.state.visibleCartPopup });
-    }, 3000);
+    if (this.props.productName !== this.state.isSameProps) {
+      console.log("애니메이션 실행");
+      this.setState({
+        visibleCartPopup: !this.state.visibleCartPopup,
+        isSameProps: this.props.productName
+      });
+      setTimeout(() => {
+        this.setState({ visibleCartPopup: !this.state.visibleCartPopup });
+      }, 3000);
+    }
   };
 
   _visible = (name, idx) => {
@@ -203,6 +224,8 @@ class Nav extends Component {
   };
 
   render() {
+    const { popPrice, url, productName } = this.props;
+
     const {
       visibleCategory0,
       visibleCategory1,
@@ -220,7 +243,7 @@ class Nav extends Component {
     return (
       <div className="header">
         <div className="nav-top">
-          <button
+          {/* <button
             style={{ position: "absolute", left: "100px" }}
             onClick={() => {
               this.setState(
@@ -230,8 +253,9 @@ class Nav extends Component {
             }}
           >
             장바구니
-          </button>
+          </button> */}
           {/* 최상단 */}
+          {/* {console.log(productName)} */}
           <img
             alt="좌상단 배너"
             src="https://res.kurly.com/pc/service/common/1908/delivery_190819.gif"
@@ -320,7 +344,12 @@ class Nav extends Component {
                     className="category-listdown-depth2"
                   >
                     {dataDepth2.map((param, idx) => (
-                      <li key={idx}>
+                      <li
+                        onClick={() => {
+                          this._movePath("기본 채소");
+                        }}
+                        key={idx}
+                      >
                         <span>{param.name}</span>
                       </li>
                     ))}
@@ -362,19 +391,18 @@ class Nav extends Component {
                 type="text"
                 value={itemCartCount}
                 className="itemcart-count"
-                onChange={this._isSameCount}
                 style={{ display: !itemCartCount && "none" }}
               />
               <div
-                style={{ opacity: this.state.visibleCartPopup ? "1" : "0" }}
+                style={{
+                  opacity: this.state.visibleCartPopup ? "1" : "0",
+                  display: this.state.visibleCartPopup ? "flex" : "none"
+                }}
                 className="itemcart-popup"
               >
-                <img
-                  src="https://img-cf.kurly.com/shop/data/goods/1582077878844i0.jpg"
-                  alt=""
-                />
+                <img src={url} alt="" />
                 <div>
-                  <p>타이틀</p>
+                  <p>{productName}</p>
                   <p>장바구니에 담겼습니다.</p>
                 </div>
               </div>

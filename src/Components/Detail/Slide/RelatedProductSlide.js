@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./RelatedProductSlide.scss";
 
 export default class RelatedProductSlide extends Component {
   render() {

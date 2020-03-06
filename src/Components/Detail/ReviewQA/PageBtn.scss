@@ -1,0 +1,56 @@
+@import "../../../Styles/common";
+
+.page-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: 0;
+  background-color: #fff;
+  margin-top: 60px; //fixed
+  button {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgb(221, 221, 221);
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f7f7f7;
+    }
+
+    &:first-child {
+      border-right: 0;
+      background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-first.png)
+        no-repeat 50% 50%;
+    }
+
+    &:last-child {
+      border-left: 0;
+      background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-last.png)
+        no-repeat 50% 50%;
+    }
+  }
+
+  .before {
+    border-right: 0;
+    background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-prev.png)
+      no-repeat 50% 50%;
+  }
+
+  .num {
+    font-weight: 600;
+    color: $color;
+    line-height: 34px;
+    background-color: #f7f7f7;
+  }
+
+  .next {
+    border-left: 0;
+    background: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-next.png)
+      no-repeat 50% 50%;
+  }
+}

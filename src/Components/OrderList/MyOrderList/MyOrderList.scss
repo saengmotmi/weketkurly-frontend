@@ -1,0 +1,46 @@
+@import "../../../Styles/common";
+
+.OrderList {
+  .list-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .order-list {
+    width: 820px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0 24px;
+    border-bottom: 2px solid $color;
+    margin-bottom: 10px;
+    select {
+      width: 140px;
+      padding: 0.8em 0.5em;
+      font-family: inherit;
+      background: url(https://res.kurly.com/pc/ico/1806/ico_arrow_down_16x12.png)
+        no-repeat 121px 14px;
+      background-size: 8px 6px;
+      border: 1px solid $color;
+      border-radius: 0px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+    .title-bar {
+      position: relative;
+      h2 {
+        font-weight: 600;
+        font-size: 24px;
+        display: inline-block;
+        color: #333;
+      }
+      .sub {
+        padding-left: 8px;
+        font-size: 12px;
+        letter-spacing: -0.02em;
+      }
+    }
+  }
+}

@@ -1,0 +1,191 @@
+@import "../../../Styles/common";
+
+.Detail {
+  .review,
+  .qa {
+    width: 1010px;
+    margin-bottom: 20px;
+    .product-review {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      align-items: flex-end;
+      h2 {
+        font-size: 13px;
+        font-weight: 500;
+        margin: 0;
+        color: #4c4c4c;
+      }
+      ul {
+        margin: 5px 0 15px 0;
+      }
+
+      li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .ico {
+          width: 4px;
+          height: 4px;
+          background-color: #514859;
+          margin: 0;
+        }
+
+        div {
+          margin-left: 7px;
+          font-size: 12px;
+          color: #666;
+          strong {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: 1px solid #bfbfbf;
+        outline: none;
+        padding: 7px 12px 7px 4px;
+        font-size: 12px;
+        margin-bottom: 15px;
+      }
+
+      select::-ms-expand {
+        display: none;
+      }
+    }
+    .form {
+      width: 1010px;
+      border-top: 2px solid rgb(82, 39, 114);
+      border-bottom: 1px solid #522772;
+    }
+
+    .table-header {
+      color: #353535;
+      font-size: 12px;
+      padding: 25px 0;
+      th {
+        font-weight: 400;
+      }
+      .number {
+        width: 70px;
+      }
+      .title {
+        width: 640px;
+      }
+      .userName {
+        width: 77px;
+      }
+      .date {
+        width: 100px;
+      }
+      .help {
+        width: 40px;
+      }
+      .watch {
+        width: 80px;
+      }
+    }
+
+    .table-body {
+      width: 100%;
+      color: #353535;
+      font-size: 12px;
+      border-top: 1px solid #e3e3e3;
+      padding: 25px 0;
+      td {
+        font-weight: 400;
+      }
+      .number {
+        text-align: center;
+        width: 70px;
+      }
+      .title {
+        text-align: left;
+        width: 640px;
+        padding-left: 40px;
+      }
+      .userName {
+        text-align: center;
+        width: 77px;
+      }
+      .date {
+        text-align: center;
+        width: 100px;
+        color: #939393;
+      }
+      .help {
+        text-align: center;
+        width: 40px;
+      }
+      .watch {
+        text-align: center;
+        width: 80px;
+      }
+    }
+
+    .write {
+      margin: 30px 0 100px 0;
+      .write-btn {
+        width: 130px;
+        padding: 7px 0;
+        float: right;
+        background-color: #795b8f;
+        border: 1px solid $color;
+        color: #fff;
+        font-size: 13px;
+        text-align: center;
+        font-weight: 600;
+        cursor: pointer;
+        &:hover {
+          width: 130px;
+          padding: 10px 0;
+          float: right;
+          background-color: #fff;
+          border: 1px solid $color;
+          color: $color;
+          font-size: 13px;
+          text-align: center;
+          font-weight: 600;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .qa-btn {
+      margin: 30px 0 70px 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      .write-all-view,
+      .write-qa {
+        width: 130px;
+        padding: 7px 0;
+        float: right;
+        background-color: #795b8f;
+        border: 1px solid $color;
+        color: #fff;
+        font-size: 13px;
+        text-align: center;
+        font-weight: 600;
+        margin-left: 5px;
+        cursor: pointer;
+        &:hover {
+          width: 130px;
+          padding: 7px 0;
+          float: right;
+          background-color: #fff;
+          border: 1px solid $color;
+          color: $color;
+          font-size: 13px;
+          text-align: center;
+          font-weight: 600;
+          margin-left: 5px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

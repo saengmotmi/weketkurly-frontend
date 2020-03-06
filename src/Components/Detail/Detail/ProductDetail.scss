@@ -1,0 +1,140 @@
+@import "../../../Styles/common";
+
+.Detail {
+  .detail {
+    width: 1010px;
+    text-align: center;
+    color: #666;
+    .detail-main-img {
+      width: 100%;
+      margin: 60px 0 50px 0;
+    }
+
+    h3 {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: 38px;
+      font-weight: 500;
+      line-height: 50px;
+      margin: 0 0 30px 0;
+    }
+    .line {
+      width: 100%;
+      border-bottom: 1px solid #c1c1c1;
+    }
+    p {
+      margin: 30px 0 180px 0;
+      text-align: left;
+      font-size: 18px;
+      line-height: 32px;
+      color: #373737;
+      font-weight: 300;
+    }
+
+    .kurly-check-point {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 50px;
+      .line-left,
+      .line-right {
+        width: 25%;
+        border: 1px solid #c1c1c1;
+      }
+      h3 {
+        margin: 0;
+        font-size: 50px;
+      }
+    }
+
+    .check-point-img {
+      max-width: 100%;
+      margin-bottom: 180px;
+    }
+
+    .pick-img {
+      margin-bottom: 60px;
+    }
+
+    .kurly-pick {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 50px;
+      .line-left,
+      .line-right {
+        width: 35%;
+        border: 1px solid #c1c1c1;
+      }
+      h3 {
+        margin: 0;
+        font-size: 50px;
+      }
+    }
+
+    .txt {
+      color: #373737;
+      margin: 100px 0;
+      text-align: left;
+
+      .txtTitle {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 20px;
+      }
+
+      .txtContents {
+        font-size: 18px;
+        line-height: 32px;
+        b {
+          font-weight: 500;
+        }
+        span {
+          font-weight: 200;
+        }
+      }
+    }
+
+    .kurly-tip {
+      box-sizing: border-box;
+      width: 1010px;
+      margin: 150px 0 300px 0;
+      text-align: left;
+      display: inline-block;
+      h3 {
+        width: 190px;
+        background-color: #fff;
+        font-size: 36px;
+        padding: 0 10px;
+        position: relative;
+        z-index: 10;
+        margin: 0 0 0 60px;
+      }
+      .contents {
+        width: 1010px;
+        padding: 60px 0 60px 60px;
+        border: 1px solid #b9b9b9;
+        position: absolute;
+        color: #373737;
+        z-index: 1;
+        margin-top: -25px;
+        .check {
+          font-size: 25px;
+          line-height: 38px;
+          font-weight: 500;
+          margin-bottom: 10px;
+        }
+        .content {
+          font-size: 18px;
+          font-weight: 300;
+          line-height: 32px;
+        }
+      }
+    }
+  }
+}

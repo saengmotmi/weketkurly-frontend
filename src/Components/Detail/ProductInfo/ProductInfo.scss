@@ -1,0 +1,118 @@
+@import "../../../Styles/common";
+@import "./Count.scss";
+
+.Detail {
+  .product-info {
+    margin-left: 50px;
+    width: 560px;
+
+    .product-title {
+      .title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0 5px 0;
+        p {
+          font-weight: 600;
+          font-size: 24px;
+          color: #333;
+          margin: 0;
+        }
+        div {
+          width: 40px;
+          height: 40px;
+          background-size: cover;
+          background-image: url(https://res.kurly.com/mobile/service/goodsview/1910/ico_view_sns_x2.png);
+        }
+      }
+      span {
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: -0.5px;
+        color: #999;
+      }
+    }
+
+    .price-bar {
+      margin: 30px 0 7px 0;
+      color: #333;
+      .price {
+        font-weight: 500;
+        font-size: 28px;
+        letter-spacing: -0.5px;
+      }
+      .won {
+        padding: 0 7px 0 2px;
+        font-weight: 500;
+        font-size: 18px;
+      }
+    }
+
+    .accumulate {
+      .befor-login-point {
+        font-size: 14px;
+        color: $color;
+      }
+      .after-login-point {
+        letter-spacing: -0.5px;
+        .save-point {
+          border: 1px solid $color;
+          color: $color;
+          border-radius: 12px;
+          height: 22px;
+          padding: 1px 8px 2px;
+          font-size: 12px;
+          font-weight: 600;
+        }
+        .each {
+          font-size: 14px;
+          color: #333;
+          margin-left: 5px;
+        }
+        .won-save {
+          font-size: 14px;
+          color: #333;
+          font-weight: 500;
+          margin-left: 3px;
+        }
+      }
+    }
+
+    .goods-info {
+      margin-top: 20px;
+      border-top: 1px solid #f4f4f4;
+      width: 560px;
+      font-size: 14px;
+      letter-spacing: -0.5px;
+      dl {
+        padding-top: 18px;
+        margin: 0;
+      }
+      dt {
+        float: left;
+        width: 150px;
+        font-weight: 500;
+        color: #666;
+      }
+      dd {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .list {
+        padding: 18px 0;
+        border-bottom: 1px solid #f4f4f4;
+        margin: 0;
+
+        .delivery {
+          padding-top: 4px;
+          font-weight: 500;
+          font-size: 12px;
+          color: #666;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

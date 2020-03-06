@@ -16,15 +16,14 @@
         box-sizing: border-box;
         background: #f7f5f8;
         .top-th {
-          width: 100px;
           padding: 16px 0 10px 18px;
-          border-bottom: 1px solid #ddd;
         }
         .top-td {
-          width: 155px;
-          text-align: right;
           padding: 16px 20px 10px 0;
+        }
+        .line {
           border-bottom: 1px solid #ddd;
+          padding: 0 10px;
         }
         th {
           width: 100px;

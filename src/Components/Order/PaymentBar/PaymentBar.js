@@ -14,6 +14,10 @@ export default class PaymentBar extends Component {
                 <td className="top-td">37,000원</td>
               </tr>
               <tr>
+                <th className="line" />
+                <td className="line" />
+              </tr>
+              <tr>
                 <th>상품할인금액</th>
                 <td>0원</td>
               </tr>

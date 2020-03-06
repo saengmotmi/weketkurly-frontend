@@ -5,8 +5,9 @@ class CategorySort extends Component {
     super(props);
     this.state = {
       data: [],
-      cateNum2: "907"
+      cateNum2: this.props.cateNum2
       /* 채907~베915, 건032, 생918, 주916, 가085, 베919, 반991 */
+      /* 앞에 세자리번호를 잘라서 cateNum2로 부여 */
     };
   }
   componentDidMount() {

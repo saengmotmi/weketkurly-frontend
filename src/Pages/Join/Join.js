@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import Nav from "../../Components/Layout/Nav";
 import Footer from "../../Components/Layout/Footer";
 import "./Join.scss";
@@ -384,7 +385,7 @@ class Join extends Component {
     }
   };
   joinFetch = () => {
-    fetch("http://10.58.7.245:8000/users/sign-up", {
+    fetch("http://10.58.2.245:8000/users/sign-up", {
       method: "POST",
       body: JSON.stringify({
         account: this.state.ID,
@@ -400,7 +401,7 @@ class Join extends Component {
       .then(response => {
         console.log(response);
         if (response.status === 200) {
-          alert("가입되었습니다!");
+          alert("회원가입을 축하드립니다! 당신의 일상에 컬리를 더해보세요");
           this.props.history.push("/joincomplete");
         } else {
           alert("다시 시도하여 주십시오!");
@@ -420,7 +421,7 @@ class Join extends Component {
     console.log("address는", this.state.address);
   };
   IDDuplication = () => {
-    fetch("http://10.58.7.245:8000/users/check-account", {
+    fetch("http://10.58.2.245:8000/users/check-account", {
       method: "POST",
       body: JSON.stringify({
         account: this.state.ID
@@ -440,7 +441,7 @@ class Join extends Component {
   };
 
   emailDuplication = () => {
-    fetch("http://10.58.7.245:8000/users/check-email", {
+    fetch("http://10.58.2.245:8000/users/check-email", {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email
@@ -478,7 +479,9 @@ class Join extends Component {
       });
     }
   };
-
+  goSorry = () => {
+    alert("기술상의 이유로 접속되지 않았습니다. \n다음주에 시도하여 주십시오.");
+  };
   render() {
     return (
       <form action="#">
@@ -686,7 +689,10 @@ class Join extends Component {
                             onChange={this.handleCellPhone}
                             required
                           ></input>
-                          <div className="normal-button-gray colbutton">
+                          <div
+                            className="normal-button-gray colbutton"
+                            onClick={this.goSorry}
+                          >
                             인증번호받기
                           </div>
                         </div>
@@ -725,7 +731,7 @@ class Join extends Component {
                               src="http://drive.google.com/uc?export=view&id=15ckyyBIcZTccgf0DppAKqaj3idKyCoya"
                               alt=""
                             />
-                            <span>주소 검색</span>
+                            <span onClick={this.goSorry}>주소 검색</span>
                           </div>
                         </div>
                         <p className="address-hint">
@@ -972,4 +978,4 @@ class Join extends Component {
     );
   }
 }
-export default Join;
+export default withRouter(Join);

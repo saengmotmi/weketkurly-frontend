@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 class CategoryViewItem extends Component {
   constructor(props) {
@@ -15,13 +16,16 @@ class CategoryViewItem extends Component {
   };
   //가격에 3자리수 콤마 넣는 함수
   //함수들어갈자리
+  goDetail = () => {
+    this.props.history.push("/detail");
+  };
   render() {
     // console.log("자식으로 넘어감", this.props.bridge2, this.props.bridge3);
     const listRendering =
       this.props.bridge3 !== undefined &&
       this.props.bridge3.map(x => {
         return (
-          <div className="product-box">
+          <div className="product-box" onClick={this.goDetail}>
             <div className="img-box">
               <img
                 className="cate-image"
@@ -41,4 +45,4 @@ class CategoryViewItem extends Component {
   }
 }
 
-export default CategoryViewItem;
+export default withRouter(CategoryViewItem);

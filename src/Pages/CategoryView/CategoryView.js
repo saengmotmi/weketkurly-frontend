@@ -1,8 +1,9 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import "../CategoryView/CategoryView";
 import "./CategoryView";
-import Nav from "../../Components/Nav";
-import Footer from "../../Components/Footer";
+import Nav from "../../Components/Layout/Nav";
+import Footer from "../../Components/Layout/Footer";
 import CategoryViewItem from "./CategoryViewItem";
 import CategorySort from "./CategorySort";
 import CategoryTitle from "./CategoryTitle";
@@ -15,7 +16,7 @@ class categoryView extends React.Component {
       data: [],
       data2: [],
       cateNum2: "",
-      cateNum1: 907
+      cateNum1: "907001"
 
       /* cateNum1 -> CategoryViewItem 화면이 바뀐다  */
       /* cateNum1 -> CategoryTitle, CatergorySort의 주요변수를 바꾸도록한다 */
@@ -87,8 +88,11 @@ class categoryView extends React.Component {
         <Nav />
         <div className="cate-outer">
           <div className="cate-nav">
-            <CategoryTitle />
-            <CategorySort bridge1={this.miniNavNum} />
+            <CategoryTitle cateNum1={this.state.cateNum1} />
+            <CategorySort
+              bridge1={this.miniNavNum}
+              cateNum2={this.state.cateNum1}
+            />
           </div>
           <CategoryViewItem
             bridge2={this.state.cateNum}
@@ -109,4 +113,4 @@ class categoryView extends React.Component {
     );
   }
 }
-export default categoryView;
+export default withRouter(categoryView);

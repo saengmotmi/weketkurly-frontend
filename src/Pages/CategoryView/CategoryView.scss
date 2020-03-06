@@ -1,5 +1,152 @@
-.categoryView {
-  div {
-    border: 0.3px solid gray;
+.cate-outer {
+  * {
+    border: 0px solid #fff0ba;
+    box-sizing: border-box;
+  }
+  /* 전체설정//////////////////////////////// */
+
+  .cate-image {
+    width: 306px;
+    height: 396px;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.03);
+      -webkit-transform: scale(1.03);
+      -moz-transform: scale(1.03);
+      -ms-transform: scale(1.03);
+      -o-transform: scale(1.03);
+      transition: all 0.3s ease-in-out;
+    }
+  }
+  .pr-name {
+    width: 290px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #333333;
+    margin: 2px 0 2px 8px;
+  }
+  .pr-price {
+    width: 288px;
+    color: #5f00a1;
+    font-size: 17px;
+    font-weight: 700;
+    margin: 2px 0 2px 8px;
+  }
+  .pr-desc {
+    width: 288px;
+    font-size: 13px;
+    color: #747774;
+    margin: 2px 0 2px 8px;
+  }
+  .img-box {
+    width: 306px;
+    height: 396px;
+    overflow: hidden;
+  }
+  .product-box {
+    width: 336px;
+    height: 611px;
+  }
+
+  .compo-outer {
+    width: 1050px;
+
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding-left: 40px;
+  }
+
+  .sort-title-box {
+    width: 1050px;
+    height: 70px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .sort-icon {
+    width: 40px;
+    height: 40px;
+    color: #5f00a1;
+  }
+
+  .sort-box {
+    margin: 0 12px;
+    font-size: 12px;
+    color: gray;
+    cursor: pointer;
+    &:hover {
+      color: #5f00a1;
+      font-weight: 800;
+    }
+  }
+  .sort-title-outer {
+    // display: flex;
+    // justify-content: center;
+    margin: 0 auto;
+  }
+  .sort-title-box {
+    width: 1050px;
+    padding-left: 40px;
+    margin: 0 auto;
+  }
+  .sort-outer {
+    width: 1050px;
+    margin: 10px auto 25px auto;
+    padding-left: 40px;
+  }
+  .cate-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .sort-title-outer {
+    width: 1050px;
+  }
+  .cate-outer {
+    margin-left: 20px;
+  }
+  .sort-nav-line {
+    border-bottom: 1px solid #dddddd;
+    margin-bottom: 50px;
+    padding-bottom: 8px;
+  }
+  .all-view {
+    font-size: 12px;
+    margin: 0 12px;
+    color: gray;
+    cursor: pointer;
+    &:hover {
+      color: #5f00a1;
+    }
+  }
+  .sort-title-image {
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  .pr-name {
+    cursor: pointer;
+  }
+  .pr-price {
+    cursor: pointer;
+  }
+  .pr-desc {
+    cursor: pointer;
+  }
+  .pageDiv {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .page-move-button {
+    border: 1px solid black;
+    font-size: 6px;
+    width: 26px;
+    margin: 0 auto;
   }
 }

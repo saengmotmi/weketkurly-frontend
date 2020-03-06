@@ -11,6 +11,7 @@ class Nav extends Component {
       visibleCategory1: false,
       visibleProfile1: false,
       visibleProfile2: false,
+      visibleCartPopup: false,
       sideFloat: false,
       headerFixed: false,
       scrollY: 0,
@@ -73,6 +74,10 @@ class Nav extends Component {
 
   _isSameCount = () => {
     console.log("애니메이션 실행");
+    this.setState({ visibleCartPopup: !this.state.visibleCartPopup });
+    setTimeout(() => {
+      this.setState({ visibleCartPopup: !this.state.visibleCartPopup });
+    }, 3000);
   };
 
   _visible = (name, idx) => {
@@ -215,7 +220,8 @@ class Nav extends Component {
     return (
       <div className="header">
         <div className="nav-top">
-          {/* <button
+          <button
+            style={{ position: "absolute", left: "100px" }}
             onClick={() => {
               this.setState(
                 { itemCartCount: itemCartCount + 1 },
@@ -224,7 +230,7 @@ class Nav extends Component {
             }}
           >
             장바구니
-          </button> */}
+          </button>
           {/* 최상단 */}
           <img
             alt="좌상단 배너"
@@ -359,6 +365,19 @@ class Nav extends Component {
                 onChange={this._isSameCount}
                 style={{ display: !itemCartCount && "none" }}
               />
+              <div
+                style={{ opacity: this.state.visibleCartPopup ? "1" : "0" }}
+                className="itemcart-popup"
+              >
+                <img
+                  src="https://img-cf.kurly.com/shop/data/goods/1582077878844i0.jpg"
+                  alt=""
+                />
+                <div>
+                  <p>타이틀</p>
+                  <p>장바구니에 담겼습니다.</p>
+                </div>
+              </div>
             </div>
           </ul>
         </div>

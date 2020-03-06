@@ -89,30 +89,21 @@
         padding-top: 18px;
         margin: 0;
       }
-
       dt {
         float: left;
         width: 150px;
         font-weight: 500;
         color: #666;
       }
-
+      dd {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
       .list {
         padding: 18px 0;
         border-bottom: 1px solid #f4f4f4;
         margin: 0;
-
-        dt {
-          float: left;
-          width: 150px;
-          color: #666;
-        }
-
-        dd {
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-        }
 
         .delivery {
           padding-top: 4px;
@@ -120,19 +111,6 @@
           font-size: 12px;
           color: #666;
           margin: 0;
-        }
-
-        div {
-          margin: 0;
-          padding: 0;
-          width: 42px;
-          height: 22px;
-          border: 0;
-          background-color: #fff;
-          color: #333;
-          outline: none;
-          border: 0;
-          text-align: center;
         }
       }
     }

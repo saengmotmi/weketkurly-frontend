@@ -29,9 +29,7 @@ export default class Detail extends Component {
       scroll: false,
       scrollTop: 0,
       display: false,
-      more: false,
-      moreBtn: true,
-      closeBtn: false,
+      moreBtn: false,
       translate: 0,
       data: [],
       info: []
@@ -162,19 +160,9 @@ export default class Detail extends Component {
     });
   };
 
-  onClickMoreOpen = () => {
+  onClickMore = () => {
     this.setState({
-      more: true,
-      moreBtn: false,
-      closeBtn: true
-    });
-  };
-
-  onClickMoreClose = () => {
-    this.setState({
-      more: false,
-      moreBtn: true,
-      closeBtn: false
+      moreBtn: !this.state.moreBtn
     });
   };
 
@@ -188,9 +176,7 @@ export default class Detail extends Component {
       popUpCart,
       scroll,
       display,
-      more,
       moreBtn,
-      closeBtn,
       translate,
       info,
       data
@@ -273,7 +259,14 @@ export default class Detail extends Component {
           handleOnClickNext={this.handleOnClickNext}
         />
 
-        <Tab info={info} />
+        <Tab
+          info={info}
+          MoveToProduct={this.MoveToProduct}
+          MoveToImg={this.MoveToImg}
+          MoveToInfo={this.MoveToInfo}
+          MoveToReview={this.MoveToReview}
+          MoveToQA={this.MoveToQA}
+        />
         <ProductDetail />
         <Tab info={info} />
 
@@ -286,7 +279,7 @@ export default class Detail extends Component {
         <WhyKurly />
 
         <div className="full-line" />
-        <Customer closeBtn={closeBtn} moreBtn={moreBtn} more={more} />
+        <Customer moreBtn={moreBtn} onClickMore={this.onClickMore} />
         <Tab info={info} />
         <Review />
         <Tab info={info} />
@@ -302,6 +295,10 @@ export default class Detail extends Component {
           save={save}
           popUp={popUp}
           popUpCart={popUpCart}
+          onClickBarOpen={this.onClickBarOpen}
+          onClickBarClose={this.onClickBarClose}
+          handleOnClickPlus={this.handleOnClickPlus}
+          handleOnClickMinus={this.handleOnClickMinus}
         />
         <Footer />
       </div>

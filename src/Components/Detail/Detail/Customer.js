@@ -3,7 +3,7 @@ import "./Customer.scss";
 
 export default class Customer extends Component {
   render() {
-    const { closeBtn, moreBtn, more } = this.props;
+    const { moreBtn, onClickMore } = this.props;
     return (
       <>
         <div className="customer-center">
@@ -70,8 +70,8 @@ export default class Customer extends Component {
           </div>
           <div
             className="more-btn"
-            onClick={this.onClickMoreOpen}
-            style={{ display: moreBtn ? "block" : "none" }}
+            onClick={onClickMore}
+            style={{ display: moreBtn ? "none" : "block" }}
           >
             <span>자세히 보기</span>
             <img
@@ -81,8 +81,8 @@ export default class Customer extends Component {
           </div>
           <div
             className="close-btn"
-            onClick={this.onClickMoreClose}
-            style={{ display: closeBtn ? "block" : "none" }}
+            onClick={onClickMore}
+            style={{ display: moreBtn ? "block" : "none" }}
           >
             <span>닫기</span>
             <img
@@ -92,7 +92,7 @@ export default class Customer extends Component {
           </div>
         </div>
 
-        <div className="hide" style={{ display: more ? "block" : "none" }}>
+        <div className="hide" style={{ display: moreBtn ? "block" : "none" }}>
           <div className="refund-info">
             <div className="title">01. 받으신 상품에 문제가 있는 경우</div>
             <div className="contents">

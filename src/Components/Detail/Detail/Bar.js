@@ -16,12 +16,16 @@ export default class Bar extends Component {
       point,
       save,
       popUp,
-      popUpCart
+      popUpCart,
+      onClickBarOpen,
+      onClickBarClose,
+      handleOnClickPlus,
+      handleOnClickMinus
     } = this.props;
     return (
       <div className="bar" style={{ display: scroll ? "block" : "none" }}>
         <div className="bar-open">
-          <div className="btn-open" onClick={this.onClickBarOpen}>
+          <div className="btn-open" onClick={onClickBarOpen}>
             상품 선택
           </div>
         </div>
@@ -29,7 +33,7 @@ export default class Bar extends Component {
           className="bar-close"
           style={{ display: display ? "block" : "none" }}
         >
-          <div className="btn-close" onClick={this.onClickBarClose}>
+          <div className="btn-close" onClick={onClickBarClose}>
             상품 선택
           </div>
           <div className="bar-info">
@@ -39,8 +43,8 @@ export default class Bar extends Component {
                 <span className="count">
                   <Count
                     number={number}
-                    handleOnClickPlus={this.handleOnClickPlus}
-                    handleOnClickMinus={this.handleOnClickMinus}
+                    handleOnClickPlus={handleOnClickPlus}
+                    handleOnClickMinus={handleOnClickMinus}
                   />
                 </span>
                 <span className="price">{price.toLocaleString()}원</span>

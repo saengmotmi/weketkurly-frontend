@@ -71,17 +71,17 @@ export default class ProductInfo extends Component {
           </dl>
           <dl className="list">
             <dt>알레르기정보</dt>
-            <dd>
-              <div>{contactant}</div>
-            </dd>
+            <dd>{contactant}</dd>
           </dl>
           <dl className="list">
             <dt>구매수량</dt>
-            <Count
-              number={number}
-              handleOnClickPlus={handleOnClickPlus}
-              handleOnClickMinus={handleOnClickMinus}
-            />
+            <dd>
+              <Count
+                number={number}
+                handleOnClickPlus={handleOnClickPlus}
+                handleOnClickMinus={handleOnClickMinus}
+              />
+            </dd>
           </dl>
         </div>
       </div>

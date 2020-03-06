@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./ProductDetail";
+import "./ProductDetail.scss";
 
 export default class ProductDetail extends Component {
   render() {

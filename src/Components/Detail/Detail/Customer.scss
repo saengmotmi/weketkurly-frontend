@@ -1,0 +1,143 @@
+@import "../../../Styles/common";
+
+.Detail {
+  h3 {
+    margin: 70px 0 30px 0;
+  }
+  .customer-center {
+    width: 995px;
+    margin-top: 40px;
+    .customer-center-title {
+      margin: 30px 0 60px 0;
+      h3 {
+        font-size: 28px;
+        font-weight: 500;
+        color: #666;
+      }
+      .service {
+        font-size: 18px;
+        font-weight: 500;
+        color: #666;
+        margin-bottom: 5px;
+      }
+      .help {
+        font-size: 16px;
+        font-weight: 400;
+        color: #666;
+        margin-bottom: 40px;
+      }
+    }
+    .contents {
+      display: flex;
+      flex-direction: row;
+      .call,
+      .kakao,
+      .homepage {
+        padding-right: 120px;
+        .mark-title {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          .mark {
+            background-color: $color;
+            width: 3px;
+            height: 20px;
+            margin-right: 10px;
+          }
+          .mark-name {
+            font-size: 18px;
+            font-weight: 500;
+            color: $color;
+          }
+        }
+        .mark-time {
+          color: #333;
+          font-size: 17px;
+          font-weight: 400;
+          margin-top: 9px;
+        }
+        .mark-contents {
+          color: #666;
+          font-size: 15px;
+          font-weight: 400;
+          margin-top: 13px;
+        }
+      }
+    }
+  }
+  .refund {
+    width: 995px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    margin: 80px 0 50px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 30px;
+    .refund-left {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .refund-notice {
+        font-size: 18px;
+        font-weight: 400;
+        color: $color;
+      }
+      .txt {
+        font-size: 16px;
+        color: #333;
+        font-weight: 300;
+        margin-left: 10px;
+      }
+    }
+    .more-btn,
+    .close-btn {
+      outline: none;
+      color: $color;
+      cursor: pointer;
+      img {
+        width: 14px;
+        margin-left: 10px;
+      }
+    }
+  }
+  .hide {
+    width: 995px;
+    .refund-info {
+      margin: 40px 0;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      border-bottom: 1px solid #f4f4f4;
+      .title {
+        width: 257px;
+        font-family: "NotoSansCJKkr";
+        font-size: 17px;
+        vertical-align: top;
+        padding-left: 30px;
+        font-weight: 500;
+      }
+      .contents {
+        padding: 0 0 50px 60px;
+        line-height: 150%;
+        font-size: 15px;
+        .hide-contents {
+          color: #333;
+          margin: 0 0 30px 0;
+          font-weight: 300;
+        }
+        .hide-title {
+          color: $color;
+          margin: 0 0 6px 0;
+          font-weight: 500;
+        }
+        .hide-extra {
+          color: #333;
+          font-weight: 300;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}

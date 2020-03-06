@@ -165,10 +165,20 @@ hr {
 ​ input,
 select {
   vertical-align: middle;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
 }
 ​ textarea {
   resize: none;
+  &:focus {
+    outline: none;
+  }
 }
 button {
   cursor: pointer;
+  &:focus {
+    outline: none;
+  }
 }

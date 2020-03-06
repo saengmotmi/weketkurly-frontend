@@ -21,7 +21,7 @@ export default class Recommend extends Component {
             <div className="arrow" />
           </div>
           <div className="join">
-            <button onClick={this.goToJoin}>
+            <button onClick={this.props.goToJoin}>
               회원가입 <span className="bold">하러가기</span>
               <span className="arrow" />
             </button>

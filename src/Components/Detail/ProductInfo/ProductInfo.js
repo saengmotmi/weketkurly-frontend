@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Count from "./Count";
+import "./ProductInfo.scss";
 
 export default class ProductInfo extends Component {
   render() {
@@ -13,10 +14,12 @@ export default class ProductInfo extends Component {
       weight,
       delivery_time_type_text,
       number,
-      contactant,
+      expiration_date,
+      guides,
       handleOnClickPlus,
       handleOnClickMinus
     } = this.props;
+
     return (
       <div className="product-info">
         <div className="product-title">
@@ -61,25 +64,29 @@ export default class ProductInfo extends Component {
           <dl className="list">
             <dt>포장타입</dt>
             <dd>
-              <div>상온/종이포장</div>
+              <div>냉장/종이포장</div>
               <div className="delivery">
                 택배배송은 에코포장이 스티로폼으로 대체됩니다.
               </div>
             </dd>
           </dl>
           <dl className="list">
-            <dt>알레르기정보</dt>
-            <dd>
-              <div>{contactant}</div>
-            </dd>
+            <dt>유통기한</dt>
+            <dd>{expiration_date}</dd>
+          </dl>
+          <dl className="list">
+            <dt>안내사항</dt>
+            <dd>{guides}</dd>
           </dl>
           <dl className="list">
             <dt>구매수량</dt>
-            <Count
-              number={number}
-              handleOnClickPlus={handleOnClickPlus}
-              handleOnClickMinus={handleOnClickMinus}
-            />
+            <dd>
+              <Count
+                number={number}
+                handleOnClickPlus={handleOnClickPlus}
+                handleOnClickMinus={handleOnClickMinus}
+              />
+            </dd>
           </dl>
         </div>
       </div>

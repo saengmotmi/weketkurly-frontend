@@ -13,7 +13,8 @@ export default class DeliveryInfo extends Component {
       execPostCode,
       onChange,
       onChangeAdr,
-      targetValue
+      targetValue,
+      text
     } = this.props;
     return (
       <div className="delivery-info">
@@ -37,7 +38,7 @@ export default class DeliveryInfo extends Component {
                     />
                     <span className="current">최근 배송지</span>
                   </label>
-                  <label className="lebel-radio">
+                  <label className="label-radio">
                     <input
                       type="radio"
                       name="selectDelivery"
@@ -64,26 +65,26 @@ export default class DeliveryInfo extends Component {
               <tr className="memo">
                 <th>배송 요청사항</th>
                 <td>
-                  <textarea maxLength="50" />
-                  <div className="string">0자 / 50자</div>
+                  <textarea maxLength="50" name="text" onChange={onchange} />
+                  <div className="string">{text.length}자 / 50자</div>
                 </td>
               </tr>
               <tr className="gate">
                 <th>공동현관 출입 방법 *</th>
                 <td>
-                  <label className="lebel-radio">
+                  <label className="label-radio">
                     <input type="radio" name="gate" />
                     비밀번호
                   </label>
-                  <label className="lebel-radio">
+                  <label className="label-radio">
                     <input type="radio" name="gate" />
                     경비실 호출
                   </label>
-                  <label className="lebel-radio">
+                  <label className="label-radio">
                     <input type="radio" name="gate" defaultChecked />
                     자유출입가능
                   </label>
-                  <label className="lebel-radio">
+                  <label className="label-radio">
                     <input type="radio" name="gate" />
                     기타사항
                   </label>
@@ -92,11 +93,11 @@ export default class DeliveryInfo extends Component {
               <tr className="msg">
                 <th>배송완료 메세지 전송시점 *</th>
                 <td>
-                  <label className="lebel-radio">
+                  <label className="label-radio">
                     <input type="radio" name="time" defaultChecked />
                     배송직후
                   </label>
-                  <label className="lebel-radio">
+                  <label className="label-radio">
                     <input type="radio" name="time" />
                     오전 7시
                   </label>
@@ -106,7 +107,7 @@ export default class DeliveryInfo extends Component {
                 <th checked>출입정보 저장</th>
                 <td>
                   <label className="label-checked">
-                    <input type="checkbox" />
+                    <input type="checkbox" defaultChecked />
                     출입정보 저장
                     <div>공동현관 출입방법, 배송완료메세지 전송시점 저장</div>
                   </label>

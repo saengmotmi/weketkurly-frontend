@@ -21,9 +21,10 @@ export default class Order extends Component {
       scrollTop: 0,
       isChecked: false,
       list: [],
-      point: 0,
+      point: 456,
       discount: "",
       name: "",
+      usePoint: false,
 
       // 카드결제
       monthArrData: [],
@@ -34,14 +35,15 @@ export default class Order extends Component {
       addr: "",
       extraAddr: "",
       postcode: "",
-      targetValue: ""
+      targetValue: "",
+      text: ""
     };
   }
 
   componentDidMount = () => {
     window.addEventListener("scroll", this.onScroll);
 
-    fetch("http://10.58.4.62:8000/creditcard")
+    fetch("http://10.58.1.118:8000/orders/card")
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -103,6 +105,12 @@ export default class Order extends Component {
   onChangeValue = e => {
     this.setState({
       [e.target.name]: e.target.value
+    });
+  };
+
+  onChangePoint = () => {
+    this.setState({
+      usePoint: !this.state.usePoint
     });
   };
 
@@ -170,12 +178,6 @@ export default class Order extends Component {
             postcode: " [" + data.zonecode + "]",
             addr: this.state.addr
           });
-
-          // 우편번호와 주소 정보를 해당 필드에 넣는다.
-          // document.getElementById("postcode").value = data.zonecode;
-          // document.getElementById("address").value = this.state.addr;
-          // 커서를 상세주소 필드로 이동한다.
-          // document.getElementById("detailAddress").focus();
         }
       }
     }).open();
@@ -186,6 +188,7 @@ export default class Order extends Component {
       detail,
       point,
       discount,
+      usePoint,
       top,
       isChecked,
       monthArrData,
@@ -194,7 +197,8 @@ export default class Order extends Component {
       addr,
       extraAddr,
       postcode,
-      targetValue
+      targetValue,
+      text
     } = this.state;
 
     return (
@@ -221,10 +225,16 @@ export default class Order extends Component {
           onChange={this.onChangeValue}
           onChangeAdr={this.handleChangeAdr}
           targetValue={targetValue}
+          text={text}
         />
         <Notice />
         <PaymentBar top={top} />
-        <Cupon point={point} onChangeValue={this.onChangeValue} />
+        <Cupon
+          point={point}
+          usePoint={usePoint}
+          onChangeValue={this.onChangeValue}
+          onChangePoint={this.onChangePoint}
+        />
         <PaymentMethod
           options={this.state.list.map(el => {
             return (

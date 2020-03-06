@@ -378,8 +378,13 @@
   .itemcart {
     position: relative;
     cursor: pointer;
+    padding: 0;
+    margin: 0;
+    border: none;
 
     &-count {
+      padding: 0;
+      margin: 0;
       position: absolute;
       left: 20px;
       top: -1px;

@@ -11,8 +11,18 @@ class Main extends Component {
     this.state = {
       data: [],
       scrollY: 0,
-      sideFixed: false
+      sideFixed: false,
+      goTop: false
     };
+  }
+
+  componentDidMount = () => {
+    this._getApi("recommendation");
+    window.addEventListener("scroll", this._onScroll);
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._headerScroll);
   }
 
   _getApi = url => {
@@ -29,6 +39,7 @@ class Main extends Component {
 
   _onScroll = () => {
     const sideScroll = window.scrollY;
+    const goTopCheck = window.scrollY;
 
     if (sideScroll > 470) {
       this.setState({
@@ -41,6 +52,17 @@ class Main extends Component {
         scrollY: sideScroll
       });
     }
+
+    if (goTopCheck > 1700) {
+      this.setState({ goTop: true });
+    } else {
+      this.setState({ goTop: false });
+    }
+  };
+
+  _goTopClick = () => {
+    this.setState({ scrollY: 0 });
+    window.scrollTo(0, 0);
   };
 
   _mainCateList = () => {
@@ -68,15 +90,6 @@ class Main extends Component {
     return mainCateList;
   };
 
-  componentDidMount = () => {
-    this._getApi("recommendation");
-    window.addEventListener("scroll", this._onScroll);
-  };
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this._headerScroll);
-  }
-
   render() {
     return (
       <div>
@@ -87,7 +100,11 @@ class Main extends Component {
         <div className="main">
           <div
             className={this.state.sideFixed ? "quick-menu float" : "quick-menu"}
-            style={{ top: `${this.state.scrollY + 600}px` }}
+            style={{
+              top: this.state.sideFixed
+                ? `${this.state.scrollY + 150}px`
+                : "600px"
+            }}
           >
             <img
               width="80"
@@ -107,6 +124,11 @@ class Main extends Component {
             className="img-bottom"
             src="https://img-cf.kurly.com/shop/data/main/15/pc_img_1568875999.png"
             alt=""
+          />
+          <div
+            style={{ bottom: !this.state.goTop && "-100px" }}
+            onClick={this._goTopClick}
+            className="go-top"
           />
         </div>
         <Footer />

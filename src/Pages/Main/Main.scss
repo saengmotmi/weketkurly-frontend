@@ -3,14 +3,28 @@
   flex-direction: column;
   align-items: center;
 
+  .go-top {
+    background: url("https://res.kurly.com/pc/service/common/1903/btn_pagetop_v2.png")
+      no-repeat 50% 50%;
+
+    position: fixed;
+    z-index: 300;
+    right: 30px;
+    bottom: 15px;
+    width: 58px;
+    height: 58px;
+    cursor: pointer;
+    transition: bottom 0.5s;
+  }
+
   .quick-menu {
     position: absolute;
     float: right;
-    right: 20px;
+    right: 30px;
     width: 80px;
     z-index: 1;
     transition: top 0.2s;
-    z-index: 100;
+    // z-index: 100;
 
     .float {
       position: absolute;

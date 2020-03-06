@@ -34,7 +34,8 @@ class Nav extends Component {
         "상품 제안",
         "에코포장 피드백"
       ],
-      itemCartCount: 1
+      itemCartCount: 2,
+      isSameCartCount: 2
     };
   }
 
@@ -68,6 +69,10 @@ class Nav extends Component {
     this.setState({
       inputSearchValue: e.target.value
     });
+  };
+
+  _isSameCount = () => {
+    console.log("애니메이션 실행");
   };
 
   _visible = (name, idx) => {
@@ -123,8 +128,6 @@ class Nav extends Component {
 
   _liCategoryListdown = paramArr => {
     let liCateListdown = [];
-
-    console.log("paramArr", paramArr);
 
     liCateListdown =
       paramArr &&
@@ -212,6 +215,16 @@ class Nav extends Component {
     return (
       <div className="header">
         <div className="nav-top">
+          {/* <button
+            onClick={() => {
+              this.setState(
+                { itemCartCount: itemCartCount + 1 },
+                this._isSameCount
+              );
+            }}
+          >
+            장바구니
+          </button> */}
           {/* 최상단 */}
           <img
             alt="좌상단 배너"
@@ -339,12 +352,13 @@ class Nav extends Component {
                 alt="장바구니"
                 src="https://res.kurly.com/pc/ico/1908/ico_cart_x2_v2.png"
               />
-              <span
+              <input
+                type="text"
+                value={itemCartCount}
                 className="itemcart-count"
+                onChange={this._isSameCount}
                 style={{ display: !itemCartCount && "none" }}
-              >
-                {itemCartCount}
-              </span>
+              />
             </div>
           </ul>
         </div>

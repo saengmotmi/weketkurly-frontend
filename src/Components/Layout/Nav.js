@@ -267,8 +267,8 @@ class Nav extends Component {
                 onMouseEnter={() => this._visible("prof", 1)}
                 onMouseLeave={() => this._visible("prof", 1)}
               >
-                <span id="prof-grade">웰컴</span>
-                <span style={{ color: "#5f0080" }}>오종택님</span>
+                <span id="prof-grade">일반</span>
+                <span style={{ color: "#5f0080" }}>이은지님</span>
                 <ul
                   className="nav-prof-list"
                   style={{

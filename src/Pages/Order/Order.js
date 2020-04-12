@@ -54,13 +54,13 @@ export default class Order extends Component {
 
   onScroll = e => {
     const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
-    if (scrollTop < 2000) {
+    if (scrollTop < 1900) {
       this.setState({
         top: 0
       });
-    } else if (scrollTop > 2000 && scrollTop < 2650) {
+    } else if (scrollTop > 1900 && scrollTop < 2550) {
       this.setState({
-        top: scrollTop - 1990,
+        top: scrollTop - 1890,
         scrollTop: scrollTop
       });
     }

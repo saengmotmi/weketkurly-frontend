@@ -39,8 +39,13 @@
     ]
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^25.2.4",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^25.2.4",
     "prettier": "^1.19.1"
   }
 }

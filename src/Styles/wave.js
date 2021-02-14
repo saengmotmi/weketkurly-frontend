@@ -42,7 +42,7 @@ export default function Wave() {
 
         canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
 
-        const draw = function () {
+        const draw = function() {
           dataArray.reduce((acc, barHeight) => {
             canvasCtx.fillStyle = 'rgb(255,255,255)';
             canvasCtx.fillRect(acc, HEIGHT, barWidth, -barHeight / 2);

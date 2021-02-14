@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { usePreviewSongContext } from "./PreviewSong";
-const FFT_SIZE = 2048;
+var FFT_SIZE = 2048;
 export default function Wave() {
   const canvasRef = useRef(null);
   const { element, idx } = usePreviewSongContext();

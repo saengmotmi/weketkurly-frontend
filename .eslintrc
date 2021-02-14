@@ -4,7 +4,7 @@
     "no-var": "error",
     "no-multiple-empty-lines": "error",
     "no-nested-ternary": "error",
-    "object-curly-spacing": "error",
+    "prefer-const": "error",
     "prefer-object-spread": "error",
     "constructor-super": "error",
     "no-this-before-super": "error",

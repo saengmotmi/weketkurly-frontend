@@ -16,6 +16,8 @@ import Bar from "../../Components/Detail/Detail/Bar";
 import Footer from "../../Components/Layout/Footer";
 import "./Detail.scss";
 
+const PRODUCT_DETAIL_URL = "https://api.kurly.com/v3/home/products";
+
 export default class Detail extends Component {
   constructor(props) {
     super(props);
@@ -44,66 +46,54 @@ export default class Detail extends Component {
       // 장바구니로 Go!
       thumb: "",
       productName: "",
-      popPrice: 0
+      popPrice: 0,
     };
+  }
+
+  async fetchData(url, key) {
+    const res = await fetch("/data/data.json");
+    const json = await res.json();
+
+    this.setState({ [key]: json.data });
   }
 
   componentDidMount = () => {
     window.addEventListener("scroll", this.onScroll);
 
-    fetch("http://localhost:3000/data/data.json")
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res.data
-        });
-      });
-
-    fetch("https://api.kurly.com/v3/home/products/49635?&ver=1583460405278")
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          info: res.data
-        });
-      });
+    this.fetchData("/data/data.json", "data");
+    this.fetchData(PRODUCT_DETAIL_URL + "/49635?&ver=1583460405278", "info");
   };
 
   onScroll = e => {
-    // 스크롤 할때마다 state에 scroll한 만큼 scrollTop 값 증가하므로 이를 업데이트해줌,
-    //따라서 스크롤 시점에 따라 특정액션을 추후에 state를 활용하여 구현 가능
     const scrollTop = ("scroll", e.srcElement.scrollingElement.scrollTop);
-    if (scrollTop > 1270) {
-      this.setState({
-        scroll: true,
-        scrollTop: scrollTop
-      });
-    } else {
-      this.setState({
-        scroll: false
-      });
-    }
+    const isScrollTop = scrollTop > 1270;
+
+    this.setState({
+      scroll: !!isScrollTop,
+      scrollTop: isScrollTop ? scrollTop : null,
+    });
   };
 
   handleOnClickPlus = () => {
+    const { number, price, point } = this.state;
+
     this.setState({
-      number: this.state.number + 1,
-      price: this.state.price + 1350,
-      point: this.state.point + 7
+      number: number + 1,
+      price: price + 1350,
+      point: point + 7,
     });
   };
 
   handleOnClickMinus = () => {
+    const { number, price, point } = this.state;
+
     if (this.state.number <= 1) {
-      this.setState({
-        number: this.state.number,
-        price: this.state.price,
-        point: this.state.point
-      });
+      this.setState({ number, price, point });
     } else {
       this.setState({
-        number: this.state.number - 1,
-        price: this.state.price - 1350,
-        point: this.state.point - 7
+        number: number - 1,
+        price: price - 1350,
+        point: point - 7,
       });
     }
   };
@@ -111,31 +101,33 @@ export default class Detail extends Component {
   handleOnClickSave = () => {
     this.setState({
       save: true,
-      popUp: !this.state.popUp
+      popUp: !this.state.popUp,
     });
   };
 
   togglePopUp = () => {
     this.setState({
-      popUp: !this.state.popUp
+      popUp: !this.state.popUp,
     });
   };
 
   togglePopUpCart = () => {
     this.setState({
-      popUpCart: !this.state.popUpCart
+      popUpCart: !this.state.popUpCart,
     });
   };
 
   handleOnClickNext = e => {
     this.setState({
-      translate: this.state.translate === -1920 ? 0 : this.state.translate - 960
+      translate:
+        this.state.translate === -1920 ? 0 : this.state.translate - 960,
     });
   };
 
   handleOnClickBefore = e => {
     this.setState({
-      translate: this.state.translate === 0 ? -1920 : this.state.translate + 960
+      translate:
+        this.state.translate === 0 ? -1920 : this.state.translate + 960,
     });
   };
 
@@ -177,19 +169,19 @@ export default class Detail extends Component {
 
   onClickBarOpen = () => {
     this.setState({
-      display: true
+      display: true,
     });
   };
 
   onClickBarClose = () => {
     this.setState({
-      display: false
+      display: false,
     });
   };
 
   onClickMore = () => {
     this.setState({
-      moreBtn: !this.state.moreBtn
+      moreBtn: !this.state.moreBtn,
     });
   };
 
@@ -198,7 +190,7 @@ export default class Detail extends Component {
     this.setState({
       thumb: url,
       productName: name,
-      popPrice: price
+      popPrice: price,
     });
   };
 
@@ -215,16 +207,15 @@ export default class Detail extends Component {
       moreBtn,
       translate,
       info,
-      data
+      data,
     } = this.state;
 
     // 상품 이미지
     const mainImg = info.original_image_url;
 
     // 슬라이드 기능 구현
-    const x = translate;
     const next = {
-      transform: `translateX(${x}px)`
+      transform: `translateX(${translate}px)`,
     };
 
     return (
@@ -273,52 +264,26 @@ export default class Detail extends Component {
             }
             save={save}
           />
-          {popUp ? (
+          {popUp && (
             <PopUp
-              close={this.togglePopUp}
-              txt="늘 사는 리스트에 추가했습니다."
+              close={popUp ? this.togglePopUp : this.togglePopUpCart}
+              txt={
+                popUp
+                  ? "늘 사는 리스트에 추가했습니다."
+                  : "이미 동일한 상품이 장바구니에 존재합니다."
+              }
             />
-          ) : null}
-          {popUpCart ? (
-            <PopUp
-              close={this.togglePopUpCart}
-              txt="이미 동일한 상품이 장바구니에 존재합니다."
-            />
-          ) : null}
+          )}
         </div>
 
         <RelatedProductSlide
           next={next}
-          dataImg={
-            data &&
-            this.state.data.map(el => {
-              return (
-                <DetailSlide
-                  key={el.id}
-                  img={el.img}
-                  name={el.name}
-                  price={el.price}
-                />
-              );
-            })
-          }
+          dataImg={this.state.data.map(({ id, img, name, price }) => (
+            <DetailSlide key={id} img={img} name={name} price={price} />
+          ))}
           handleOnClickBefore={this.handleOnClickBefore}
           handleOnClickNext={this.handleOnClickNext}
         />
-
-        {/* <Tab
-          info={info}
-          tabInfo={tabInfo}
-          tabImg={tabImg}
-          tabDetail={tabDetail}
-          tabReview={tabReview}
-          tabQA={tabQA}
-          MoveToProduct={this.MoveToProduct}
-          MoveToImg={this.MoveToImg}
-          MoveToInfo={this.MoveToInfo}
-          MoveToReview={this.MoveToReview}
-          MoveToQA={this.MoveToQA}
-        /> */}
         <div className="tab">
           <ul>
             <li

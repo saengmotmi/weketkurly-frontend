@@ -25,7 +25,7 @@ class Nav extends Component {
         "적립금",
         "쿠폰",
         "개인 정보 수정",
-        "로그아웃"
+        "로그아웃",
       ],
       dataProfileList2: [
         "공지사항",
@@ -33,11 +33,11 @@ class Nav extends Component {
         "1:1 문의",
         "대량주문 문의",
         "상품 제안",
-        "에코포장 피드백"
+        "에코포장 피드백",
       ],
       itemCartCount: 2,
       isSameCartCount: 2,
-      isSameProps: ""
+      isSameProps: "",
     };
   }
 
@@ -73,7 +73,7 @@ class Nav extends Component {
       .then(
         res =>
           this.setState({
-            data: res.data
+            data: res.data,
           }),
         () => {
           console.log("data", this.state.data);
@@ -84,7 +84,7 @@ class Nav extends Component {
   _inputChange = e => {
     console.log(e.target.value);
     this.setState({
-      inputSearchValue: e.target.value
+      inputSearchValue: e.target.value,
     });
   };
 
@@ -93,7 +93,7 @@ class Nav extends Component {
       console.log("애니메이션 실행");
       this.setState({
         visibleCartPopup: !this.state.visibleCartPopup,
-        isSameProps: this.props.productName
+        isSameProps: this.props.productName,
       });
       setTimeout(() => {
         this.setState({ visibleCartPopup: !this.state.visibleCartPopup });
@@ -106,12 +106,12 @@ class Nav extends Component {
       switch (idx) {
         case 1:
           this.setState({
-            visibleProfile1: !this.state.visibleProfile1
+            visibleProfile1: !this.state.visibleProfile1,
           });
           break;
         case 2:
           this.setState({
-            visibleProfile2: !this.state.visibleProfile2
+            visibleProfile2: !this.state.visibleProfile2,
           });
           break;
         default:
@@ -121,12 +121,12 @@ class Nav extends Component {
       switch (idx) {
         case 0:
           this.setState({
-            visibleCategory0: !this.state.visibleCategory0
+            visibleCategory0: !this.state.visibleCategory0,
           });
           break;
         case 1:
           this.setState({
-            visibleCategory1: !this.state.visibleCategory1
+            visibleCategory1: !this.state.visibleCategory1,
           });
           break;
         default:
@@ -185,30 +185,13 @@ class Nav extends Component {
   };
 
   _onScroll = () => {
-    const headScroll = window.scrollY;
-    const sideScroll = window.scrollY;
+    const scroll = window.scrollY;
 
-    if (headScroll > 116) {
-      this.setState({
-        headerFixed: true,
-        scrollY: headScroll
-      });
-    } else {
-      this.setState({
-        headerFixed: false,
-        scrollY: headScroll
-      });
-    }
-
-    if (sideScroll > 470) {
-      this.setState({
-        sideFixed: true
-      });
-    } else {
-      this.setState({
-        sideFixed: false
-      });
-    }
+    this.setState({
+      headerFixed: scroll > 116,
+      sideFixed: scroll > 470,
+      scrollY: scroll,
+    });
   };
 
   _goToCart = () => {
@@ -237,25 +220,12 @@ class Nav extends Component {
       dataProfileList1,
       dataProfileList2,
       inputSearchValue,
-      itemCartCount
+      itemCartCount,
     } = this.state;
 
     return (
       <div className="header">
         <div className="nav-top">
-          {/* <button
-            style={{ position: "absolute", left: "100px" }}
-            onClick={() => {
-              this.setState(
-                { itemCartCount: itemCartCount + 1 },
-                this._isSameCount
-              );
-            }}
-          >
-            장바구니
-          </button> */}
-          {/* 최상단 */}
-          {/* {console.log(productName)} */}
           <img
             alt="좌상단 배너"
             src="https://res.kurly.com/pc/service/common/1908/delivery_190819.gif"
@@ -272,7 +242,7 @@ class Nav extends Component {
                 <ul
                   className="nav-prof-list"
                   style={{
-                    display: visibleProfile1 ? "block" : "none"
+                    display: visibleProfile1 ? "block" : "none",
                   }}
                 >
                   {this._liProfileListdown(dataProfileList1)}
@@ -287,7 +257,7 @@ class Nav extends Component {
                 <ul
                   className="nav-prof-list"
                   style={{
-                    display: visibleProfile2 ? "block" : "none"
+                    display: visibleProfile2 ? "block" : "none",
                   }}
                 >
                   {this._liProfileListdown(dataProfileList2)}
@@ -326,30 +296,25 @@ class Nav extends Component {
                 onMouseLeave={() => this._visible("cate", 1)}
                 style={{
                   display: visibleCategory0 ? "block" : "none",
-                  width: visibleCategory1 ? "438px" : null
+                  width: visibleCategory1 && "438px",
                 }}
               >
-                <div style={{ width: visibleCategory1 ? "438px" : null }}>
+                <div style={{ width: visibleCategory1 && "438px" }}>
                   <ul className="category-listdown-depth1">
-                    {data.categories
-                      ? this._liCategoryListdown(
-                          data.categories.map((param, _) => {
-                            return [param["name"], param["categories"]];
-                          })
-                        )
-                      : null}
+                    {data.categories &&
+                      this._liCategoryListdown(
+                        data.categories.map(({ name, categories }) => [
+                          name,
+                          categories,
+                        ])
+                      )}
                   </ul>
                   <ul
                     style={{ display: visibleCategory1 && "flex" }}
                     className="category-listdown-depth2"
                   >
                     {dataDepth2.map((param, idx) => (
-                      <li
-                        onClick={() => {
-                          this._movePath("기본 채소");
-                        }}
-                        key={idx}
-                      >
+                      <li onClick={() => this._movePath("기본 채소")} key={idx}>
                         <span>{param.name}</span>
                       </li>
                     ))}
@@ -396,7 +361,7 @@ class Nav extends Component {
               <div
                 style={{
                   opacity: this.state.visibleCartPopup ? "1" : "0",
-                  display: this.state.visibleCartPopup ? "flex" : "none"
+                  display: this.state.visibleCartPopup ? "flex" : "none",
                 }}
                 className="itemcart-popup"
               >

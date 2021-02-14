@@ -1,16 +1,16 @@
 {
   "extends": ["react-app", "plugin:prettier/recommended"],
   "rules": {
-    "no-var": "error", // var 금지
-    "no-multiple-empty-lines": "error", // 여러 줄 공백 금지
-    "no-nested-ternary": "error", //  중첩 삼항 연산자 금지
-    "object-curly-spacing": "error", // 중괄호 안쪽에 공백
-    "prefer-object-spread": "error", // .assign 보다 스프레드 연산자
-    "constructor-super": "error", // 생성자 함수에서 super 필수
-    "no-this-before-super": "error", // super 사용 전 this 금지
-    "prefer-spread": "error", // .apply 보다 스프레드 연산자
-    "no-console": "error", // console.log() 금지
-    "eqeqeq": "error", // 일치 연산자 사용 필수
-    "no-unused-vars": "error", // 사용하지 않는 변수 금지
+    "no-var": "error",
+    "no-multiple-empty-lines": "error",
+    "no-nested-ternary": "error",
+    "object-curly-spacing": "error",
+    "prefer-object-spread": "error",
+    "constructor-super": "error",
+    "no-this-before-super": "error",
+    "prefer-spread": "error",
+    "no-console": "error",
+    "eqeqeq": "error",
+    "no-unused-vars": "error",
   }
 }

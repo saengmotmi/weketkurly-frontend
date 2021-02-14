@@ -5,10 +5,8 @@ import { usePreviewSongContext } from './PreviewSong';
 const FFT_SIZE = 2048;
 
 export default function Wave() {
-  var canvasRef = useRef(null);
+  const canvasRef = useRef(null);
   const { element, idx } = usePreviewSongContext();
-
-  console.log('asdfasdf');
 
   useEffect(() => {
     let interval;

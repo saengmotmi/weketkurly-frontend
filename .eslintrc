@@ -5,12 +5,10 @@
     "no-multiple-empty-lines": "error",
     "no-nested-ternary": "error",
     "prefer-const": "error",
-    "prefer-object-spread": "error",
-    "constructor-super": "error",
-    "no-this-before-super": "error",
     "prefer-spread": "error",
     "no-console": "error",
     "eqeqeq": "error",
     "no-unused-vars": "error",
-  }
+    "prettier/prettier": "off"
+  },
 }

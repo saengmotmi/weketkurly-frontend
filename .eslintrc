@@ -1,14 +1,14 @@
 {
   "extends": ["react-app", "plugin:prettier/recommended"],
   "rules": {
-    "no-var": "error",
-    "no-multiple-empty-lines": "error",
-    "no-nested-ternary": "error",
-    "prefer-const": "error",
-    "prefer-spread": "error",
-    "no-console": "error",
-    "eqeqeq": "error",
-    "no-unused-vars": "error",
+    "no-var": "warn",
+    "no-multiple-empty-lines": "warn",
+    "no-nested-ternary": "warn",
+    "prefer-const": "warn",
+    "prefer-spread": "warn",
+    "no-console": "warn",
+    "eqeqeq": "warn",
+    "no-unused-vars": "warn",
     "prettier/prettier": "off"
   },
 }

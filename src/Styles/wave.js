@@ -4,6 +4,12 @@ import { usePreviewSongContext } from './PreviewSong';
 
 const FFT_SIZE = 2048;
 
+console.log('asdf');
+console.log('asdf');
+console.log('asdf');
+
+var V_FFT_SIZE = 2048;
+
 export default function Wave() {
   const canvasRef = useRef(null);
   const { element, idx } = usePreviewSongContext();

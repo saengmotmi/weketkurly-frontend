@@ -8,6 +8,8 @@ export default function Wave() {
   const canvasRef = useRef(null);
   const { element, idx } = usePreviewSongContext();
 
+  console.log('asdf');
+
   useEffect(() => {
     let interval;
     let audio;

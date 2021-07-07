@@ -16,9 +16,19 @@ import Bar from "../../Components/Detail/Detail/Bar";
 import Footer from "../../Components/Layout/Footer";
 import "./Detail.scss";
 
+const hi = "";
+const hihi = [].apply();
+const asdf = {}.assign();
+
+const hi = { asdfasdf: "asdfasdf" };
+const a = true ? true : true ? true : true;
+var v = "va";
+
+const ho = "a" == "a";
+
 export default class Detail extends Component {
   constructor(props) {
-    super(props);
+    // super(props);
     this.state = {
       number: 1,
       price: 1350,
@@ -44,7 +54,7 @@ export default class Detail extends Component {
       // 장바구니로 Go!
       thumb: "",
       productName: "",
-      popPrice: 0
+      popPrice: 0,
     };
   }
 
@@ -55,7 +65,7 @@ export default class Detail extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
-          data: res.data
+          data: res.data,
         });
       });
 
@@ -63,7 +73,7 @@ export default class Detail extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
-          info: res.data
+          info: res.data,
         });
       });
   };
@@ -75,11 +85,11 @@ export default class Detail extends Component {
     if (scrollTop > 1270) {
       this.setState({
         scroll: true,
-        scrollTop: scrollTop
+        scrollTop: scrollTop,
       });
     } else {
       this.setState({
-        scroll: false
+        scroll: false,
       });
     }
   };
@@ -88,7 +98,7 @@ export default class Detail extends Component {
     this.setState({
       number: this.state.number + 1,
       price: this.state.price + 1350,
-      point: this.state.point + 7
+      point: this.state.point + 7,
     });
   };
 
@@ -97,13 +107,13 @@ export default class Detail extends Component {
       this.setState({
         number: this.state.number,
         price: this.state.price,
-        point: this.state.point
+        point: this.state.point,
       });
     } else {
       this.setState({
         number: this.state.number - 1,
         price: this.state.price - 1350,
-        point: this.state.point - 7
+        point: this.state.point - 7,
       });
     }
   };
@@ -111,31 +121,33 @@ export default class Detail extends Component {
   handleOnClickSave = () => {
     this.setState({
       save: true,
-      popUp: !this.state.popUp
+      popUp: !this.state.popUp,
     });
   };
 
   togglePopUp = () => {
     this.setState({
-      popUp: !this.state.popUp
+      popUp: !this.state.popUp,
     });
   };
 
   togglePopUpCart = () => {
     this.setState({
-      popUpCart: !this.state.popUpCart
+      popUpCart: !this.state.popUpCart,
     });
   };
 
   handleOnClickNext = e => {
     this.setState({
-      translate: this.state.translate === -1920 ? 0 : this.state.translate - 960
+      translate:
+        this.state.translate === -1920 ? 0 : this.state.translate - 960,
     });
   };
 
   handleOnClickBefore = e => {
     this.setState({
-      translate: this.state.translate === 0 ? -1920 : this.state.translate + 960
+      translate:
+        this.state.translate === 0 ? -1920 : this.state.translate + 960,
     });
   };
 
@@ -177,19 +189,19 @@ export default class Detail extends Component {
 
   onClickBarOpen = () => {
     this.setState({
-      display: true
+      display: true,
     });
   };
 
   onClickBarClose = () => {
     this.setState({
-      display: false
+      display: false,
     });
   };
 
   onClickMore = () => {
     this.setState({
-      moreBtn: !this.state.moreBtn
+      moreBtn: !this.state.moreBtn,
     });
   };
 
@@ -198,7 +210,7 @@ export default class Detail extends Component {
     this.setState({
       thumb: url,
       productName: name,
-      popPrice: price
+      popPrice: price,
     });
   };
 
@@ -215,7 +227,7 @@ export default class Detail extends Component {
       moreBtn,
       translate,
       info,
-      data
+      data,
     } = this.state;
 
     // 상품 이미지
@@ -224,8 +236,10 @@ export default class Detail extends Component {
     // 슬라이드 기능 구현
     const x = translate;
     const next = {
-      transform: `translateX(${x}px)`
+      transform: `translateX(${x}px)`,
     };
+
+    console.log("asdfasdf");
 
     return (
       <div className="Detail">
